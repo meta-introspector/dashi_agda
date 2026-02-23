@@ -2285,4 +2285,70 @@ Data tests:
 
 You cannot answer the second with Agda alone.
 
+---
 
+# 2026-02-23 Milestone: Wire Real Operators + Nontrivial Isotropy/Finite-Speed
+
+Goal: Replace the current concrete-but-toy wiring (identity C/R, constant P, trivial isotropy/finite-speed) with the actual operator stack and real symmetry/locality proofs.
+
+Inputs required (not found in repo yet):
+- Concrete operators `Cᵣ`, `Pᵣ`, `Rᵣ` with proofs:
+  - `nonexpCᵣ : NonExpansive U Cᵣ`
+  - `nonexpRᵣ : NonExpansive U Rᵣ`
+  - `strictPᵣ : Contractive≢ U Pᵣ`
+- Nontrivial isotropy instance for the ternary carrier:
+  - `G`, `act`, `preservesMetric`, `commutesWithT`
+- Nontrivial finite-speed instance:
+  - `local` + `preservesLocality`
+
+Current state:
+- `AgreementUltrametric` is fully proven (no postulates).
+- Ternary carrier + involution defined.
+- RealOperatorStack and TernaryRealInstance currently use concrete but minimal stubs.
+
+Plan (next execution step):
+1) Locate or add `DASHI/Physics/RealOperators.agda` (or equivalent) containing `Cᵣ/Pᵣ/Rᵣ` + proofs.
+2) Locate or add real isotropy instance in `DASHI/Geometry/RealIsotropy.agda` (or equivalent).
+3) Locate or add real finite-speed instance in `DASHI/Geometry/RealFiniteSpeed.agda` (or equivalent).
+4) Wire those into:
+   - `DASHI/Physics/RealOperatorStack.agda`
+   - `DASHI/Physics/TernaryRealInstance.agda`
+5) Re-run `agda -i . -i /usr/share/agda/lib/stdlib DASHI_Tests.agda`.
+
+Open questions:
+- Where is the authoritative definition of the real operators (module path + names)?
+- What is the intended locality predicate for finite-speed?
+- What is the intended isotropy action (group and action)?
+
+---
+
+# 2026-02-23 Milestone: Close strictP + fixedT/uniqueT via quotient (fiber) contraction
+
+Decision: Use Option 1 (quotient-distinctness) so strict contraction is proven only within projection fibers, and fixed/unique are stated on observable space (tail band).
+
+Execution plan:
+1) Add `DASHI/Geometry/FiberContraction.agda` with `FiberDistinct` and `ContractiveOnFibers`.
+2) Extend `DASHI/Metric/FineAgreementUltrametric.agda` with `dNatFine-positive` and `dNatFine-zero→eq`.
+3) Replace `strictP` postulate with `strictP-fiber` proof in `DASHI/Physics/RealOperatorStack.agda`.
+4) Add `DASHI/Physics/RealClosureKitFiber.agda` (observable fixed/unique).
+5) Update `DASHI/Physics/TernaryRealInstance.agda` to use `RealClosureKitFiber` with concrete obs fixed/unique (tail digit).
+6) Re-run `agda -i . -i /usr/share/agda/lib/stdlib DASHI_Tests.agda`.
+
+---
+
+# 2026-02-23 Milestone: Iterated fiber collapse with stable coarse core
+
+Goal: Introduce nontrivial renormalization `Rᵣ` that shifts tail scale inward, prove finite-time tail collapse, and preserve a nontrivial coarse invariant subspace.
+
+Planned modules (as provided by user):
+1) `DASHI/Physics/TailCollapseProof.agda` (operators, split, tail collapse).
+2) `DASHI/Physics/LiftToFullState.agda` (coarse invariance + tail collapse lifted).
+3) `DASHI/Physics/TailCollapseMetricProof.agda` (metric-level collapse proof).
+
+Notes:
+- This uses tail-band semantics (Choice B).
+- Core/tail split is explicit via `m` and `k`.
+- Expect to adjust imports if stdlib names differ (`take/init/last`, `replicate`, `++`).
+
+Checkpoint before execution:
+- Confirm to implement these three modules verbatim (and fix any stdlib name mismatches to typecheck).
