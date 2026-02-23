@@ -9,7 +9,11 @@ open import DASHI.Physics.IndefiniteMaskQuadratic public using
 open import DASHI.Physics.SignatureFromMask public
 open import DASHI.Physics.MaskedQuadraticRenormalization public
 open import DASHI.Physics.MaskedConeStructure public
+open import DASHI.Physics.RealConeStructureInstance public
+open import DASHI.Physics.RealCausalStructureInstance public
 open import DASHI.Physics.OrbitFingerprintAssumptions public
+open import DASHI.Physics.OrbitFingerprintInstance public
+open import DASHI.Physics.OrbitShellPredicate public
 open import DASHI.Physics.MaskedClosureKit public
 open import DASHI.Physics.TernaryRealInstanceShift
 open import DASHI.Physics.DimensionBoundAssumptions public

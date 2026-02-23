@@ -9,6 +9,32 @@ NEWER:
 - Checkpoint: re-typecheck touched modules and update COMPACTIFIED_CONTEXT.
 
 2026-02-23 update:
+- Implemented Level 2 concrete instance for the ternary carrier:
+  - `RealConeStructureInstance` provides a trivial causal structure, a concrete cone monotonicity proof, and a no-two-timelike lemma for the one-minus mask.
+- Implemented Level 3 concrete wiring:
+  - `OrbitFingerprintInstance` maps `ShellOrbitProfile` to a signature-indexed `OrbitFingerprint`.
+- Cleaned all pattern-shadow warnings in `FineAgreementUltrametric` by using `Nat.zero` patterns.
+- Re-checked `ClosureOnAssumption` and new modules: all typecheck.
+
+2026-02-23 update (continued):
+- Added `OrbitShellPredicate` (shell |Qσ|=1) and `RealCausalStructureInstance` (locality-based causal structure + cone monotonicity proof).
+- Wired shell predicate + orbit fingerprint into `TernaryRealInstanceShift`.
+- Kept `fs` in `TernaryRealInstanceShift` trivial for now; shift stack lacks a nonexpansive proof for Pᵣ to reuse the nontrivial finite-speed instance.
+
+2026-02-23 update (continued):
+- Added projTail nonexpansive lemmas in `FineAgreementUltrametric` and `nonexpP` in `RealOperatorStackShift`.
+- Added `Geometry/RealFiniteSpeedInstanceShift.agda` and wired `TernaryRealInstanceShift.fs` to the nontrivial locality instance.
+- Re-checked updated modules: FAM, RealOperatorStackShift, RealFiniteSpeedInstanceShift, TernaryRealInstanceShift, ClosureOnAssumption.
+
+2026-02-23 update (continued):
+- Added locality-based causal structure and cone monotonicity wiring to `TernaryRealInstanceShift` (using `RealCausalStructureInstance`).
+
+2026-02-23 plan (requested: 1/2/3 next):
+- (1) Isotropy: replace trivial isotropy in `TernaryRealInstanceShift` with Bool sign‑flip. Blocker: current `Cᵣ` (canon) does not commute with invVec, so RealIsotropyInstance won’t typecheck. Needs a decision: (a) adjust canon to commute with invVec, or (b) move isotropy to a different stack.
+- (2) Orbit profile: replace postulate with a concrete external profile record (even if placeholder values).
+- (3) Causal structure: define delta ≠ zeroVec and wire a nontrivial cone monotonicity seam.
+
+2026-02-23 update:
 - Completed constructive nonexpansiveness proofs for Cᵣ and Rᵣ (no postulates).
 - Added/extended FineAgreementUltrametric lemmas (map/append/shiftTail monotonicity, dNatFine-++ and shiftTail ≤).
 - RealOperatorStackShift now wires nonexpR constructively and typechecks.

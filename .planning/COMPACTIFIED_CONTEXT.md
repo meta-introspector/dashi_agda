@@ -30,3 +30,17 @@ Added:
   - Added `DASHI/Physics/OrbitFingerprintAssumptions.agda` (orbit fingerprint predicate, minimality/saturation seams).
   - `DASHI/Physics/ClosureOnAssumption.agda` now re-exports these modules.
 - Agda checks pass for new modules; only remaining warnings are pattern-shadow in FineAgreementUltrametric.
+2026-02-23:
+- Added `DASHI/Physics/RealConeStructureInstance.agda` with concrete cone monotonicity proof for the trivial causal structure and a no-two-timelike lemma for the one-minus mask.
+- Added `DASHI/Physics/OrbitFingerprintInstance.agda` to map `ShellOrbitProfile` to a signature-indexed `OrbitFingerprint`.
+- Cleaned all pattern-shadow warnings in `DASHI/Metric/FineAgreementUltrametric.agda` (Nat.zero patterns); no warnings on recheck.
+2026-02-23:
+- Added `DASHI/Physics/OrbitShellPredicate.agda` and `DASHI/Physics/RealCausalStructureInstance.agda`.
+- `TernaryRealInstanceShift` now exposes `shell1` and `orbitFingerprint`.
+- Finite-speed instance in shift stack remains trivial (pending nonexpPᵣ for shift Pᵣ).
+2026-02-23:
+- Added projTail nonexpansive lemmas in `DASHI/Metric/FineAgreementUltrametric.agda`.
+- Added `nonexpP` in `DASHI/Physics/RealOperatorStackShift.agda`.
+- Added `DASHI/Geometry/RealFiniteSpeedInstanceShift.agda` and wired `TernaryRealInstanceShift.fs` to it.
+2026-02-23:
+- `TernaryRealInstanceShift` now includes a locality-based causal structure and cone monotonicity lemma.

@@ -11,6 +11,7 @@ open import DASHI.Physics.TailCollapseProof as TCP
 open import DASHI.Geometry.StrictContractionComposition as SCC
 open import DASHI.Geometry.RealIsotropy as RIS
 open import DASHI.Geometry.RealFiniteSpeed as RFS
+open import DASHI.Geometry.RealFiniteSpeedInstanceShift as RFSI
 open import DASHI.Geometry.Isotropy as Iso
 open import DASHI.Combinatorics.Entropy using (Involution)
 import DASHI.Physics.RealClosureKitFiber as RKF
@@ -18,9 +19,16 @@ import DASHI.Physics.MaskedClosureKit as MK
 open import DASHI.Physics.IndefiniteMaskQuadratic as IMQ
 open import DASHI.Physics.SignatureFromMask as SFM
 open import DASHI.Physics.DimensionBoundAssumptions as DBA
+open import DASHI.Physics.OrbitFingerprintAssumptions as OFA
+open import DASHI.Physics.OrbitFingerprintInstance as OFI
+open import DASHI.Physics.OrbitShellPredicate as OSP
+open import DASHI.Physics.MaskedConeStructure as MCS
+open import DASHI.Physics.RealCausalStructureInstance as RCSI
 open import Data.Nat.Properties as NatP
 open import Data.Unit using (⊤; tt)
 open import Data.Vec using (Vec; replicate)
+open import Data.Product using (proj₁; proj₂)
+open import Data.Integer using (+_) renaming (_≤_ to _≤ᵢ_)
 
 m′ : Nat
 m′ = 5
@@ -58,10 +66,7 @@ iso =
 
 fs : RFS.RealFiniteSpeed (λ x → ROSS.C {m} {k} (ROSS.P {m} {k} (ROSS.R {m} {k} x)))
 fs =
-  record
-    { local = λ _ _ → ⊤
-    ; preservesLocality = λ _ _ _ → tt
-    }
+  RFSI.realFiniteSpeedInstance {m} {k}
 
 obs : RTC.Carrier n → RTC.Carrier k
 obs = TCP.tailOf m k
@@ -77,6 +82,7 @@ obsFixed = refl
 
 obsUnique : ∀ o → obsT o ≡ o → o ≡ obs0
 obsUnique o eq = sym eq
+
 
 realKitFiber : RKF.RealClosureKitFiber
 realKitFiber =
@@ -112,3 +118,19 @@ postulate
 
 maskKit : MK.RealClosureKitFiberMask
 maskKit = MK.mkMaskKit {m = m} {k = k} realKitFiber mask orbitProfile
+
+-- Causal structure for the masked cone (locality-based)
+causal : MCS.CausalStructure m
+causal = RCSI.localCausal {m}
+
+coneMono :
+  ∀ (x y : RTC.Carrier m) →
+  MCS.CausalStructure._≼_ causal x y →
+  (+ 0) ≤ᵢ IMQ.Qσ mask (MCS.CausalStructure.delta causal x y)
+coneMono x y h = RCSI.coneMonotone-local mask x y h
+
+shell1 : RTC.Carrier m → Set
+shell1 = OSP.Shell1 mask
+
+orbitFingerprint : OFA.OrbitFingerprint m (proj₁ (SFM.signature mask)) (proj₂ (SFM.signature mask))
+orbitFingerprint = OFI.fingerprintFromShell mask orbitProfile

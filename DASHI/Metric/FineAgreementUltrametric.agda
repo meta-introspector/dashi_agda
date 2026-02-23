@@ -1,13 +1,14 @@
 module DASHI.Metric.FineAgreementUltrametric where
 
-open import Agda.Builtin.Nat using (Nat; suc; _+_)
+open import Agda.Builtin.Nat as Nat using (Nat; zero; suc; _+_)
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Contraction using (_≢_)
 open import Relation.Binary.PropositionalEquality using (cong; trans; sym; subst)
 open import Data.Nat using (_<_; _≤_; _≥_; _∸_; z≤n; s≤s)
 open import Data.Nat.Properties as NatP
+open import Data.Product using (_,_)
 open import Data.Vec using (Vec; []; map; _++_; _∷_)
-open import Data.Vec.Base using (reverse; _∷ʳ_; cast)
+open import Data.Vec.Base using (reverse; _∷ʳ_; cast; init; last; initLast)
 open import Data.Vec.Properties using (map-reverse; reverse-injective; reverse-∷; reverse-++; cast-is-id; cast-sym)
 open import Ultrametric as UMetric
 open import DASHI.Algebra.Trit using (Trit; neg; zer; pos; inv)
@@ -63,7 +64,7 @@ dNatFine-positive x≢y = AM.dNat-positive (reverse≢ x≢y)
 agreeDepth-map≤ :
   ∀ {n : Nat} (f : Trit → Trit) (x y : Vec Trit n) →
   AM.agreeDepth x y ≤ AM.agreeDepth (map f x) (map f y)
-agreeDepth-map≤ {zero} f [] [] = z≤n
+agreeDepth-map≤ {n = Nat.zero} f [] [] = z≤n
 agreeDepth-map≤ {suc n} f (neg ∷ xs) (neg ∷ ys) with f neg
 ... | neg = s≤s (agreeDepth-map≤ f xs ys)
 ... | zer = s≤s (agreeDepth-map≤ f xs ys)
@@ -105,7 +106,7 @@ dNatFine-map≤ {n} f x y =
 agreeDepth-++≥ :
   ∀ {m n : Nat} (a b : Vec Trit m) (c : Vec Trit n) →
   AM.agreeDepth (a ++ c) (b ++ c) ≥ AM.agreeDepth a b
-agreeDepth-++≥ {zero} {n} [] [] c = z≤n
+agreeDepth-++≥ {m = Nat.zero} {n} [] [] c = z≤n
 agreeDepth-++≥ {suc m} {n} (neg ∷ as) (neg ∷ bs) c =
   s≤s (agreeDepth-++≥ as bs c)
 agreeDepth-++≥ {suc m} {n} (zer ∷ as) (zer ∷ bs) c =
@@ -154,7 +155,7 @@ agreeDepth-++-mono :
   ∀ {m n : Nat} (u v u' v' : Vec Trit m) (p q : Vec Trit n) →
   AM.agreeDepth u v ≤ AM.agreeDepth u' v' →
   AM.agreeDepth (u ++ p) (v ++ q) ≤ AM.agreeDepth (u' ++ p) (v' ++ q)
-agreeDepth-++-mono {zero} {n} [] [] [] [] p q h = NatP.≤-refl
+agreeDepth-++-mono {m = Nat.zero} {n} [] [] [] [] p q h = NatP.≤-refl
 agreeDepth-++-mono {suc m} {n} (neg ∷ us) (neg ∷ vs) (neg ∷ us') (neg ∷ vs') p q (s≤s h≤) =
   s≤s (agreeDepth-++-mono us vs us' vs' p q h≤)
 agreeDepth-++-mono {suc m} {n} (neg ∷ us) (neg ∷ vs) (zer ∷ us') (zer ∷ vs') p q (s≤s h≤) =
@@ -183,7 +184,7 @@ agreeDepth-++-mono {suc m} {n} (pos ∷ us) (zer ∷ vs) u' v' p q h = z≤n
 agreeDepth-++-map≤ :
   ∀ {m n : Nat} (u v : Vec Trit m) (p q : Vec Trit n) (f : Trit → Trit) →
   AM.agreeDepth (u ++ p) (v ++ q) ≤ AM.agreeDepth (u ++ map f p) (v ++ map f q)
-agreeDepth-++-map≤ {zero} {n} [] [] p q f = agreeDepth-map≤ f p q
+agreeDepth-++-map≤ {m = Nat.zero} {n} [] [] p q f = agreeDepth-map≤ f p q
 agreeDepth-++-map≤ {suc m} {n} (neg ∷ us) (neg ∷ vs) p q f =
   s≤s (agreeDepth-++-map≤ us vs p q f)
 agreeDepth-++-map≤ {suc m} {n} (zer ∷ us) (zer ∷ vs) p q f =
@@ -200,15 +201,15 @@ agreeDepth-++-map≤ {suc m} {n} (pos ∷ us) (zer ∷ vs) p q f = z≤n
 agreeDepth-∷ʳ≤ :
   ∀ {n : Nat} (a b : Vec Trit n) (x y : Trit) →
   AM.agreeDepth (a ∷ʳ x) (b ∷ʳ y) ≤ suc (AM.agreeDepth a b)
-agreeDepth-∷ʳ≤ {zero} [] [] neg neg = s≤s z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] zer zer = s≤s z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] pos pos = s≤s z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] neg zer = z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] neg pos = z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] zer neg = z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] zer pos = z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] pos neg = z≤n
-agreeDepth-∷ʳ≤ {zero} [] [] pos zer = z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] neg neg = s≤s z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] zer zer = s≤s z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] pos pos = s≤s z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] neg zer = z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] neg pos = z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] zer neg = z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] zer pos = z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] pos neg = z≤n
+agreeDepth-∷ʳ≤ {n = Nat.zero} [] [] pos zer = z≤n
 agreeDepth-∷ʳ≤ {suc n} (neg ∷ as) (neg ∷ bs) x y =
   s≤s (agreeDepth-∷ʳ≤ as bs x y)
 agreeDepth-∷ʳ≤ {suc n} (zer ∷ as) (zer ∷ bs) x y =
@@ -222,10 +223,23 @@ agreeDepth-∷ʳ≤ {suc n} (zer ∷ as) (pos ∷ bs) x y = z≤n
 agreeDepth-∷ʳ≤ {suc n} (pos ∷ as) (neg ∷ bs) x y = z≤n
 agreeDepth-∷ʳ≤ {suc n} (pos ∷ as) (zer ∷ bs) x y = z≤n
 
+agreeDepth-∷≤ :
+  ∀ {n : Nat} (a b : Trit) (as bs : Vec Trit n) →
+  AM.agreeDepth (a ∷ as) (b ∷ bs) ≤ suc (AM.agreeDepth as bs)
+agreeDepth-∷≤ neg neg as bs = s≤s NatP.≤-refl
+agreeDepth-∷≤ zer zer as bs = s≤s NatP.≤-refl
+agreeDepth-∷≤ pos pos as bs = s≤s NatP.≤-refl
+agreeDepth-∷≤ neg zer as bs = z≤n
+agreeDepth-∷≤ neg pos as bs = z≤n
+agreeDepth-∷≤ zer neg as bs = z≤n
+agreeDepth-∷≤ zer pos as bs = z≤n
+agreeDepth-∷≤ pos neg as bs = z≤n
+agreeDepth-∷≤ pos zer as bs = z≤n
+
 agreeDepthFine-shiftTail≥ :
   ∀ {k : Nat} (t1 t2 : Vec Trit k) →
   agreeDepthFine t1 t2 ≤ agreeDepthFine (TCP.shiftTail t1) (TCP.shiftTail t2)
-agreeDepthFine-shiftTail≥ {zero} [] [] = z≤n
+agreeDepthFine-shiftTail≥ {k = Nat.zero} [] [] = z≤n
 agreeDepthFine-shiftTail≥ {suc k} (x ∷ xs) (y ∷ ys) =
   NatP.≤-trans
     (subst
@@ -250,6 +264,57 @@ dNatFine-shiftTail≤ :
   dNatFine (TCP.shiftTail t1) (TCP.shiftTail t2) ≤ dNatFine t1 t2
 dNatFine-shiftTail≤ {k} t1 t2 =
   NatP.∸-monoʳ-≤ k (agreeDepthFine-shiftTail≥ t1 t2)
+
+------------------------------------------------------------------------
+-- Nonexpansive for projTail (tail-only)
+
+agreeDepthFine-projTail≥ :
+  ∀ {k : Nat} (t1 t2 : Vec Trit k) →
+  agreeDepthFine t1 t2 ≤ agreeDepthFine (TCP.projTail t1) (TCP.projTail t2)
+agreeDepthFine-projTail≥ {k = Nat.zero} [] [] = z≤n
+agreeDepthFine-projTail≥ {k = Nat.suc k} (x ∷ xs) (y ∷ ys) =
+  NatP.≤-trans bound (NatP.≤-reflexive (sym (trans r1 r2)))
+  where
+    init-∷ʳ-last : ∀ {n : Nat} (t : Vec Trit (suc n)) → init t ∷ʳ last t ≡ t
+    init-∷ʳ-last t with initLast t
+    ... | ys , y , eq = sym eq
+
+    reverse-init-last :
+      ∀ {n : Nat} (t : Vec Trit (suc n)) →
+      reverse t ≡ last t ∷ reverse (init t)
+    reverse-init-last t =
+      trans
+        (cong reverse (sym (init-∷ʳ-last t)))
+        (reverse-∷ʳ (init t) (last t))
+
+    r1 : agreeDepthFine (TCP.projTail (x ∷ xs)) (TCP.projTail (y ∷ ys))
+         ≡ AM.agreeDepth (zer ∷ reverse (init (x ∷ xs))) (zer ∷ reverse (init (y ∷ ys)))
+    r1 rewrite reverse-∷ʳ (init (x ∷ xs)) zer | reverse-∷ʳ (init (y ∷ ys)) zer = refl
+
+    r2 : AM.agreeDepth (zer ∷ reverse (init (x ∷ xs))) (zer ∷ reverse (init (y ∷ ys)))
+         ≡ suc (AM.agreeDepth (reverse (init (x ∷ xs))) (reverse (init (y ∷ ys))))
+    r2 = refl
+    lhs1 : agreeDepthFine (x ∷ xs) (y ∷ ys)
+           ≡ AM.agreeDepth (last (x ∷ xs) ∷ reverse (init (x ∷ xs)))
+                           (last (y ∷ ys) ∷ reverse (init (y ∷ ys)))
+    lhs1 rewrite reverse-init-last (x ∷ xs)
+                | reverse-init-last (y ∷ ys)
+      = refl
+    bound :
+      agreeDepthFine (x ∷ xs) (y ∷ ys)
+      ≤ suc (AM.agreeDepth (reverse (init (x ∷ xs))) (reverse (init (y ∷ ys))))
+    bound =
+      subst
+        (λ v → v ≤ suc (AM.agreeDepth (reverse (init (x ∷ xs))) (reverse (init (y ∷ ys)))))
+        (sym lhs1)
+        (agreeDepth-∷≤ (last (x ∷ xs)) (last (y ∷ ys))
+                       (reverse (init (x ∷ xs))) (reverse (init (y ∷ ys))))
+
+dNatFine-projTail≤ :
+  ∀ {k : Nat} (t1 t2 : Vec Trit k) →
+  dNatFine (TCP.projTail t1) (TCP.projTail t2) ≤ dNatFine t1 t2
+dNatFine-projTail≤ {k} t1 t2 =
+  NatP.∸-monoʳ-≤ k (agreeDepthFine-projTail≥ t1 t2)
 
 dNatFine-++ :
   ∀ {m n : Nat} (c c' : Vec Trit m) (t t' : Vec Trit n) →
@@ -315,6 +380,26 @@ dNatFine-++-shiftTail≤ {m} {n} c c' t t'
         (reverse (TCP.shiftTail t)) (reverse (TCP.shiftTail t'))
         (reverse c) (reverse c')
         (agreeDepthFine-shiftTail≥ t t')
+  in
+  NatP.∸-monoʳ-≤ (n + m) depth≤
+
+dNatFine-++-projTail≤ :
+  ∀ {m n : Nat} (c c' : Vec Trit m) (t t' : Vec Trit n) →
+  dNatFine (c ++ TCP.projTail t) (c' ++ TCP.projTail t') ≤ dNatFine (c ++ t) (c' ++ t')
+dNatFine-++-projTail≤ {m} {n} c c' t t'
+  rewrite dNatFine-++ c c' (TCP.projTail t) (TCP.projTail t')
+        | dNatFine-++ c c' t t' =
+  let
+    depth≤ :
+      AM.agreeDepth (reverse t ++ reverse c) (reverse t' ++ reverse c')
+      ≤ AM.agreeDepth (reverse (TCP.projTail t) ++ reverse c)
+                     (reverse (TCP.projTail t') ++ reverse c')
+    depth≤ =
+      agreeDepth-++-mono
+        (reverse t) (reverse t')
+        (reverse (TCP.projTail t)) (reverse (TCP.projTail t'))
+        (reverse c) (reverse c')
+        (agreeDepthFine-projTail≥ t t')
   in
   NatP.∸-monoʳ-≤ (n + m) depth≤
 

@@ -66,6 +66,44 @@ nonexpR {m} {k} =
       in
       NatP.≤-trans step1 (NatP.≤-reflexive step2)
 
+nonexpP : ∀ {m k : Nat} → SCC.NonExpansive (FAM.ultrametricVec {n = m + k}) (P {m} {k})
+nonexpP {m} {k} =
+  record
+    { nonexp = nonexp }
+  where
+    nonexp : ∀ x y →
+      UMetric.Ultrametric.d (FAM.ultrametricVec {n = m + k}) (P {m} {k} x) (P {m} {k} y)
+        ≤ UMetric.Ultrametric.d (FAM.ultrametricVec {n = m + k}) x y
+    nonexp x y =
+      let
+        cx = TCP.coarseOf m k x
+        tx = TCP.tailOf m k x
+        cy = TCP.coarseOf m k y
+        ty = TCP.tailOf m k y
+        p : x ≡ cx ++ tx
+        p = sym (TCP.merge-split m k x)
+        q : y ≡ cy ++ ty
+        q = sym (TCP.merge-split m k y)
+        r : P {m} {k} x ≡ cx ++ TCP.projTail tx
+        r = trans (cong (λ v → P {m} {k} v) p) (TCP.Pᵣ-++ m k cx tx)
+        s : P {m} {k} y ≡ cy ++ TCP.projTail ty
+        s = trans (cong (λ v → P {m} {k} v) q) (TCP.Pᵣ-++ m k cy ty)
+        step : FAM.dNatFine (cx ++ TCP.projTail tx) (cy ++ TCP.projTail ty)
+               ≤ FAM.dNatFine (cx ++ tx) (cy ++ ty)
+        step = FAM.dNatFine-++-projTail≤ cx cy tx ty
+        step1 : FAM.dNatFine (P {m} {k} x) (P {m} {k} y)
+                 ≤ FAM.dNatFine (cx ++ tx) (cy ++ ty)
+        step1 =
+          subst₂
+            (λ a b → FAM.dNatFine a b ≤ FAM.dNatFine (cx ++ tx) (cy ++ ty))
+            (sym r) (sym s) step
+        step2 : FAM.dNatFine (cx ++ tx) (cy ++ ty) ≡ FAM.dNatFine x y
+        step2 = subst₂
+          (λ x' y' → FAM.dNatFine (cx ++ tx) (cy ++ ty) ≡ FAM.dNatFine x' y')
+          (sym p) (sym q) refl
+      in
+      NatP.≤-trans step1 (NatP.≤-reflexive step2)
+
 strictP-fiber :
   ∀ {m k : Nat} →
   FC.ContractiveOnFibers (FAM.ultrametricVec {n = m + k}) (P {m} {k})
