@@ -29,7 +29,7 @@ Every new lemma must land in Agda with a machine-checked bridge between the quan
   `EinsteinFromRGNoLeakage` now depends on an explicit `RGGeometryData` bundle (no postulates), and `AnomalyFreedom` requires concrete cubic/mixed anomaly values with cancellation proofs in its bundle.
 
 ### Active
-- None — the listed bridge theorems have been formalized; further work can resume from new downstream obligations when they arise.
+- Physics closure pass: add real-closure scaffolds (T-operator, strict contraction composition, real isotropy, real finite-speed, closure instance) and wire them into the closure spine; replace toy witnesses once the real operator and locality are fixed.
 
 ### Out of Scope
 - Spinor / gauge-field principal bundles and SM representations (deferred until the bridge theorems and background independence exist).

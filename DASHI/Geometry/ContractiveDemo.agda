@@ -67,9 +67,6 @@ Kproj t _ = t
 -- Distinctness helper
 ------------------------------------------------------------------------
 
-_≢_ : Nat → Nat → Set
-x ≢ y = ¬ (x ≡ y)
-
 dNat-x≢y=1 : ∀ {x y} → x ≢ y → dNat x y ≡ 1
 dNat-x≢y=1 {x} {y} x≢y with x ≟ y
 ... | yes eq = ⊥-elim (x≢y eq)
