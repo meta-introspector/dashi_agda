@@ -1,5 +1,3 @@
-{-# OPTIONS --safe #-}
-
 module DASHI.Geometry.SignatureElimination where
 
 open import Agda.Primitive using (Level; lsuc; _⊔_)

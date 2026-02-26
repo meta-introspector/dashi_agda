@@ -3,6 +3,7 @@
 module DASHI.Energy.TranslationInvariantMetric where
 
 open import Agda.Primitive using (Level; lsuc; _⊔_)
+open import Relation.Binary.PropositionalEquality using (_≡_)
 open import DASHI.Energy.Core
 
 record AddGroup {ℓ} (X : Set ℓ) : Set (lsuc ℓ) where

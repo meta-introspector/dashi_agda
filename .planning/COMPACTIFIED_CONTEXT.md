@@ -129,6 +129,15 @@ Added:
 - Added new geometry packs per spec: `ClosestPoint`, `Parallelogram`, `Polarization`, `InnerProductFromParallelogram`, `QuadraticFromNorm`, `MaskedQuadratic`, `MQContractive`.
 - Added `DASHI/Physics/OrbitSignatureDiscriminant.agda` (profile injectivity + measured profile bridge).
 2026-02-25 update:
+- Added empirical-geometry modules: `DASHI/Energy/Core.agda`, `DASHI/Energy/Fejer.agda`, `DASHI/Energy/L1.agda`, `DASHI/Energy/TranslationInvariantMetric.agda`, `DASHI/Energy/FejerToClosestPointCore.agda`.
+- Added descent/split skeletons: `DASHI/MDL/MDLDescentProof.agda`, `DASHI/Energy/EnergySplitProof.agda`, `DASHI/Geometry/QuadraticEmergence.agda`, `DASHI/Geometry/SignatureElimination.agda`.
+- Added `DASHI/Ultrametric/ConeMonotonicity.agda` with explicit nonzero premise.
+2026-02-25 update:
+- Added geometry packs from latest spec: `DASHI/Geometry/FejerSet.agda`, `DASHI/Geometry/ClosestPoint` (EnergyDist/ProxLike), `DASHI/Geometry/QuadraticFromParallelogram.agda`.
+- Added `DASHI/Physics/SignatureElimination.agda` (orbit-profile eliminator stub).
+2026-02-25 update:
+- Added defect monotonicity pack: `DASHI/Geometry/DefectCollapse.agda` and shift instance `DASHI/Physics/Closure/DefectCollapseShiftInstance.agda`.
+2026-02-25 update:
 - Added skeletons from empirical geometry: `DASHI/Geometry/QuadraticEmergence.agda`, `DASHI/Energy/EnergySplitProof.agda`, `DASHI/Geometry/SignatureUniqueness.agda`, `DASHI/MDL/MDLDescent.agda`.
 - Updated `DASHI/Energy/FejerToClosestPoint.agda` with a formal Fejér→ClosestPoint postulate.
 2026-02-24 plan (go on 1/2/3):

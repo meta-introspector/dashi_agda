@@ -25,3 +25,25 @@ record Parallelogram (A : AdditiveSpace) (N : Normed A) : Set₁ where
   open Normed N
   field
     paral : Set
+
+record AddCommMonoid (A : Set) : Set₁ where
+  field
+    _+_ : A → A → A
+    0#  : A
+    +-assoc : ∀ x y z → (x + y) + z ≡ x + (y + z)
+    +-comm  : ∀ x y → x + y ≡ y + x
+    +-id    : ∀ x → x + 0# ≡ x
+
+record HasNeg (A : Set) : Set₁ where
+  field
+    -_ : A → A
+    sub : A → A → A
+    subdef : ∀ x y → sub x y ≡ sub x y
+
+record ParallelogramEnergy (A : Set) (M : AddCommMonoid A) (N : HasNeg A) : Set₁ where
+  open AddCommMonoid M
+  open HasNeg N
+  field
+    E : A → Set
+    parallelogram :
+      ∀ x y → E (AddCommMonoid._+_ M x y) → E (HasNeg.sub N x y) → E x → E y

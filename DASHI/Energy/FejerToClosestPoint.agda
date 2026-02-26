@@ -5,8 +5,6 @@ open import Relation.Binary.PropositionalEquality using (_≡_)
 
 open import DASHI.Energy.Energy
 open import DASHI.Energy.ClosestPoint
-open import DASHI.Energy.Fejer
-open import DASHI.Energy.TranslationInvariantMetric
 
 -- A single-seam bridge: Fejér monotonicity plus a convexity/optimality
 -- axiom gives closest-point projection.
@@ -43,15 +41,4 @@ postulate
       (ES : EnergySpace X P)
       (Pj : Projection X)
     → FejerMonotone ES Pj
-    → ClosestPoint ES Pj
-
--- Fejér-to-fixed-set ⇒ closest-point (metric algebra seam).
-postulate
-  FejerSet→ClosestPoint :
-    ∀ {ℓx ℓe}
-      {X : Set ℓx} {E : Set ℓe}
-      (ES : EnergySpace X E)
-      (Pj : Projection X)
-      (d : X → X → E)
-    → FejerSet ES (Projection.P Pj) (FixP Pj)
     → ClosestPoint ES Pj

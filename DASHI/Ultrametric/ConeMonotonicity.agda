@@ -2,24 +2,17 @@
 
 module DASHI.Ultrametric.ConeMonotonicity where
 
-open import Agda.Primitive using (Level; lsuc; _⊔_)
-open import Agda.Builtin.Equality using (_≡_)
-open import Relation.Nullary using (¬_)
+open import Relation.Binary.PropositionalEquality using (_≡_)
 
-record Ultrametric {ℓx ℓd} (X : Set ℓx) (D : Set ℓd) : Set (lsuc (ℓx ⊔ ℓd)) where
+record Ultrametric (X D : Set) : Set₁ where
   field
     d : X → X → D
 
-record StrictProgress {ℓx ℓd} {X : Set ℓx} {D : Set ℓd}
-  (U : Ultrametric X D) : Set (lsuc (ℓx ⊔ ℓd)) where
-  field
-    _<_ : D → D → Set _
-    nonTie : ∀ {x} → ¬ (_<_ x x)
-
-record ConeMono {ℓx ℓd} {X : Set ℓx} {D : Set ℓd}
+record ConeMono {X D : Set}
   (U : Ultrametric X D) (T : X → X)
-  : Set (lsuc (ℓx ⊔ ℓd)) where
+  : Set₁ where
   field
-    _≤_ : D → D → Set _
-    NonZero : D → Set _
-    mono : ∀ {x y} → NonZero (d U x y) → _≤_ (d U (T x) (T y)) (d U x y)
+    _≤_ : D → D → Set
+    NonZero : D → Set
+    mono : ∀ {x y} → NonZero (Ultrametric.d U x y) →
+      _≤_ (Ultrametric.d U (T x) (T y)) (Ultrametric.d U x y)

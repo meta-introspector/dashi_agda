@@ -1,8 +1,7 @@
-{-# OPTIONS --safe #-}
-
 module DASHI.MDL.MDLDescentProof where
 
 open import Agda.Primitive using (Level; lsuc; _⊔_)
+open import Relation.Binary.PropositionalEquality using (_≡_)
 open import DASHI.Energy.Core
 open import DASHI.Energy.ClosestPoint
 
@@ -42,4 +41,7 @@ record Descent
   (M : MDL X E)
   : Set (lsuc (ℓx ⊔ ℓe)) where
   field
-    descent : ∀ x → MDL.mdl M (T x) ≤ MDL.mdl M x
+    descent : ∀ x →
+      Preorder._≤_ (EnergySpace.P ES)
+        (MDL.mdl M (T x))
+        (MDL.mdl M x)

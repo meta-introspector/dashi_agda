@@ -64,3 +64,12 @@ postulate
       _≤_
         (Quadratic.Q Qd (Quadratic._-_ Qd (ProjectionOnto.P Prj x) s))
         (Quadratic.Q Qd (Quadratic._-_ Qd x s))
+
+record EnergyDist (A : Set) : Set₁ where
+  field
+    E : A → A → Set
+
+record ProxLike {A : Set} (ED : EnergyDist A) (P : A → A) (Fix : A → Set) : Set₁ where
+  open EnergyDist ED
+  field
+    closest : ∀ x y → Fix y → E x (P x) → E x y
