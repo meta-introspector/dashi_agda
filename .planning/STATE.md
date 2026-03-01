@@ -54,6 +54,8 @@ None yet.
 - Closure spine modules are postulate-free (AgreementUltrametric, RealOperatorStack*, TernaryRealInstance*).
 - Assumption postulates moved out of spine modules into separate assumption files.
 - FineAgreement guarded strictness path is concrete for shift carrier.
+- Assumption-based signature law added for closure harness (`SignatureUniquenessAssumed`).
+- Assumption-based PhysicsClosure instance added (`PhysicsClosureInstanceAssumed`).
 
 ## Session Continuity
 

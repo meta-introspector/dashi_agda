@@ -40,7 +40,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p site
-          agda -i . \
+          agda -i . -l standard-library \
             --html --html-dir=site \
             DASHI/Everything.agda
 
@@ -48,7 +48,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p build/latex
-          agda -i . \
+          agda -i . -l standard-library \
             --latex --latex-dir=build/latex \
             docs/Theory.lagda.tex
 

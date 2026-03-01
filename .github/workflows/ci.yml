@@ -24,7 +24,7 @@ jobs:
       - name: Typecheck (root module)
         run: |
           set -euxo pipefail
-          agda -i . DASHI/Everything.agda | tee agda-typecheck.log
+          agda -i . -l standard-library DASHI/Everything.agda | tee agda-typecheck.log
 
       - name: Upload typecheck log
         if: always()
