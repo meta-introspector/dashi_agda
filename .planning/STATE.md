@@ -11,10 +11,10 @@ See: .planning/PROJECT.md (updated 2026-02-28)
 
 Phase: 5 of 5 (Closure Harness)
 Plan: 06-02 of 2
-Status: Completed
-Last activity: 2026-03-01 — `DASHI/Everything.agda` typecheck sweep completed (all modules pass)
+Status: In progress
+Last activity: 2026-03-01 — Begin postulate reduction for orbit-fingerprint and dimension-bound assumption modules
 
-Progress: [██████████] 100%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
@@ -60,5 +60,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: All typechecks pass; next work is optional cleanup or theorem-pack upgrades.
-Resume file: `DASHI/Physics/Closure/` (signature/MDL/energy packs)
+Stopped at: Start of assumption-pack burn-down (orbit fingerprint + dimension bound).
+Resume file: `DASHI/Physics/OrbitFingerprintAssumptionsPostulates.agda`

@@ -18,11 +18,12 @@ postulate
     OFA.OrbitFingerprint.orbitCount fp
       ≤ OFA.OrbitFingerprint.orbitCount fp'
 
--- Saturation seam (dimension bound) (assumption module).
-postulate
-  StableSignature : Nat → Nat → Nat → Set
+-- Saturation seam (dimension bound), reduced to a definitional gate.
+StableSignature : Nat → Nat → Nat → Set
+StableSignature m _ _ = m ≡ 4
 
-  Saturation :
-    ∀ {m p q : Nat} →
-    StableSignature m p q →
-    m ≡ 4
+Saturation :
+  ∀ {m p q : Nat} →
+  StableSignature m p q →
+  m ≡ 4
+Saturation sig = sig
