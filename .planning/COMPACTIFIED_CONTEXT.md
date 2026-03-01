@@ -46,6 +46,9 @@
   - `DimensionBoundAssumptions` (postulates moved to `DimensionBoundAssumptionsPostulates`).
   - `OrbitFingerprintAssumptions` (postulates moved to `OrbitFingerprintAssumptionsPostulates`).
 - Closure spine modules (`AgreementUltrametric`, `RealOperatorStack*`, `TernaryRealInstance*`) are now postulate-free.
+- Finished `EnergyAdditivityProof` (added `ScalarLaws`; proof implemented). Added ℚ instances:
+  - `DASHI/Geometry/ScalarLawsQ.agda`
+  - `DASHI/Geometry/EnergyAdditivityProofQ.agda`
 - Added concrete geometry helpers for isotropy and finite-speed with trivial instances for wiring: `DASHI/Geometry/Isotropy.agda`, `DASHI/Geometry/FiniteSpeed.agda`.
 - Extended `Contraction.agda` with `StrictContraction` (contractive + unique fixed point).
 - Repo fully typechecks against stdlib; ternary carrier + agreement ultrametric are concrete and postulate-free.
