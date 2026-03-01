@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-28)
 Phase: 5 of 5 (Closure Harness)
 Plan: 06-01 of 2
 Status: In progress
-Last activity: 2026-03-01 — Added severity-guard shift wiring that consumes a concrete severity policy
+Last activity: 2026-03-01 — Added concrete severity mapping/restoration + shift wiring (with postulated P‑strict/restore laws)
 
 Progress: [█████████░] 92%
 
@@ -57,5 +57,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Added `SeverityGuardShiftWiring` and resolved projection ambiguities; all new modules compile.
-Resume file: `DASHI/Physics/SeverityGuardShiftWiring.agda`
+Stopped at: `SeverityGuardShiftConcrete` compiles; remaining postulate is guarded strictness `P-strict-on` only.
+Resume file: `DASHI/Physics/SeverityGuardShiftConcrete.agda`

@@ -5,6 +5,7 @@ open import Relation.Binary.PropositionalEquality using (_≡_; refl; cong; tran
 open import Data.Nat using (_+_; _≤_; zero; z≤n)
 open import Data.Nat.Properties as NatP using (≤-refl; ≤-trans; +-mono-≤; +-identityʳ; +-identityˡ; +-assoc; m≤n+m)
 open import Data.Vec using (Vec; []; _∷_)
+open import Data.Vec as V using (replicate)
 open import Data.Vec.Base using (init; _∷ʳ_)
 open import Data.Product using (_,_; proj₂)
 
@@ -46,6 +47,15 @@ countNZ-snoc [] a =
 countNZ-snoc (x ∷ xs) a =
   trans (cong (λ k → nz x + k) (countNZ-snoc xs a))
         (sym (NatP.+-assoc (nz x) (countNZ xs) (nz a)))
+
+-- CountNZ of an all-zero tail is zero.
+countNZ-replicate-zer :
+  ∀ {k : Nat} → countNZ (V.replicate k zer) ≡ 0
+countNZ-replicate-zer {zero} = refl
+countNZ-replicate-zer {suc k} =
+  trans
+    (cong (λ n → nz zer + n) (countNZ-replicate-zer {k}))
+    (sym (NatP.+-identityʳ 0))
 
 countNZ-init≤ :
   ∀ {k : Nat} (t : Vec Trit (suc k)) → countNZ (init t) ≤ countNZ t

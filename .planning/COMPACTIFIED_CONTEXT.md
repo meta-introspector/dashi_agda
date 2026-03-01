@@ -29,6 +29,11 @@
 - Added `DASHI/Physics/SeverityGuardedStrict.agda` (adapter from SeverityPolicy to guarded strictness interface).
 - Added `DASHI/Physics/SeverityGuardShiftInstance.agda` (shift carrier severity policy + guarded strictness bundle, parameterized by code/thresholds/restore).
 - Added `DASHI/Physics/SeverityGuardShiftWiring.agda` (shift wiring that takes a concrete severity policy and builds a guarded strictness bundle).
+- Added `DASHI/Physics/SeverityMapping.agda` (severity mapping from tail countNZ; thresholds safe=3, broken=4).
+- Added `DASHI/Physics/MaassRestorationShift.agda` (restore = embedCoarse ∘ coarseOf).
+- Added `DASHI/Physics/SeverityGuardShiftConcrete.agda` (concrete wiring with postulates for `P-strict-on` and restoration laws; compiles).
+- `MaassRestorationShift` now proves `restore-idem` and `tailOf-restore`; `restore-normal-form''` is discharged via tail=0 and countNZ-replicate-zer.
+- Remaining postulate: `P-strict-on` (strictness under Guard with real LCP stream).
 - Added concrete geometry helpers for isotropy and finite-speed with trivial instances for wiring: `DASHI/Geometry/Isotropy.agda`, `DASHI/Geometry/FiniteSpeed.agda`.
 - Extended `Contraction.agda` with `StrictContraction` (contractive + unique fixed point).
 - Repo fully typechecks against stdlib; ternary carrier + agreement ultrametric are concrete and postulate-free.
