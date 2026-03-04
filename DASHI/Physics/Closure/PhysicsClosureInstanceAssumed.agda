@@ -1,6 +1,7 @@
 module DASHI.Physics.Closure.PhysicsClosureInstanceAssumed where
 
-open import Data.Unit using (⊤; tt)
+open import Data.Unit as DU using (⊤; tt)
+open import DASHI.Physics.Closure.OrthogonalityZLift as OZ
 open import Data.Product using (_,_)
 open import Relation.Binary.PropositionalEquality using (refl)
 
@@ -8,16 +9,27 @@ open import DASHI.Physics.Closure.PhysicsClosure as PC
 open import DASHI.Physics.MyRealInstance as MRI
 open import DASHI.Geometry.QuadraticFormFromProjection as QFP
 open import DASHI.Geometry.SignatureUniqueness31 as SU
-open import DASHI.Physics.SignatureUniquenessAssumed as SUA
+open import DASHI.Physics.SignatureUniquenessOrbitLock as SUL
+open import DASHI.Physics.SignatureUniquenessOrbitLockInstance as SULI
 open import DASHI.Physics.Constraints.Generators as CG
 open import DASHI.Physics.Constraints.Bracket as CB
 open import DASHI.Physics.Constraints.Closure as CC
+open import Data.Nat using (zero; z≤n)
+open import MDL as OldMDL
 open import DASHI.Physics.UniversalityTheorem as UTH
+open import DASHI.Physics.RealClosureKit as RK
+
+mdlLyapTrivial : ∀ {S : Set} (T : S → S) → OldMDL.Lyapunov T
+mdlLyapTrivial T =
+  record
+    { L = λ _ → zero
+    ; descent = λ _ → z≤n
+    }
 
 -- Concrete instance: wires the Bool closure stack into PhysicsClosure,
--- using the assumption-based signature law.
-physicsClosureAssumed : SUA.SignatureAssumedAxioms → PC.PhysicsClosure
-physicsClosureAssumed ax =
+-- using the concrete signature lock from shift-Z instance.
+physicsClosureAssumed : PC.PhysicsClosure
+physicsClosureAssumed =
   record
     { kit = MRI.myKit
     ; metricEmergence = record
@@ -27,8 +39,8 @@ physicsClosureAssumed ax =
             ; parallelogram = record { paral = ⊤ }
             }
         }
-    ; orthogonality = ⊤
-    ; signature31 = SUA.signature31-assumed ax
+    ; orthogonalityZ = λ {m} → OZ.orthogonalityZLift {m}
+    ; signature31 = SUL.signature31-orbit-from-conearrow SULI.coneArrowMeasuredProfileInstance
     ; CS = record
         { Constraint = ⊤
         ; actsOn = λ X → X
@@ -40,10 +52,9 @@ physicsClosureAssumed ax =
         ; jacobi = ⊤
         }
     ; constraintClosure = record { closes = λ _ _ → (tt , refl) }
-    ; mdlLyap = λ {S} T → ⊤
-    ; universality = record { statement = ⊤ }
+    ; mdlLyap = λ {S} T → mdlLyapTrivial T
+    ; universality = UTH.canonicalUniversality (RK.RealClosureKit.C MRI.myKit)
     }
 
 physicsClosureAssumedDefault : PC.PhysicsClosure
-physicsClosureAssumedDefault =
-  physicsClosureAssumed SUA.signatureAssumedAxioms
+physicsClosureAssumedDefault = physicsClosureAssumed

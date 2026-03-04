@@ -2,6 +2,7 @@ module DASHI.Physics.Closure.PhysicsClosureFull where
 
 open import Agda.Builtin.Sigma using (Σ; _,_)
 open import Agda.Primitive using (Setω)
+open import Agda.Builtin.Nat using (Nat)
 open import Data.Unit using (⊤; tt)
 
 open import DASHI.Physics.RealClosureKit
@@ -14,9 +15,12 @@ open import DASHI.Geometry.Signature31FromConeArrowIsotropy
 open import DASHI.Physics.Constraints.Generators
 open import DASHI.Physics.Constraints.Bracket
 open import DASHI.Physics.Constraints.Closure
-open import DASHI.MDL.MDLLyapunov
+open import MDL as OldMDL
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
+open import DASHI.Physics.Closure.OrthogonalityZLift
 open import DASHI.Physics.UniversalityTheorem
+open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
+open import DASHI.Geometry.OrthogonalityFromPolarization as OP
 
 record PhysicsClosureFull : Setω where
   field
@@ -27,9 +31,14 @@ record PhysicsClosureFull : Setω where
       ∀ {ℓv ℓs} (A : Additive ℓv) (F : ScalarField ℓs)
         (PD : ProjectionDefect A) (Ax : QuadraticEmergenceAxioms A F PD)
       → Σ (QuadraticForm A F) (λ _ → ⊤)
-    quadraticForm   : Set
-    polarization    : Set
-    orthogonality   : Set
+    quadraticFormZ  :
+      ∀ {m : Nat} →
+        QuadraticForm (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ
+    polarizationZ   :
+      ∀ {m : Nat} →
+        OP.Polarization (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ
+    -- Orthogonality seam specialized to the ℤ-lifted carrier.
+    orthogonalityZ  : ∀ {m : Nat} → DASHI.Physics.Closure.OrthogonalityZLift.OrthogonalityZLift {m}
 
     -- Signature lock
     signature31 : Signature
@@ -40,8 +49,8 @@ record PhysicsClosureFull : Setω where
     constraintClosure : ClosureLaw CS L
 
     -- MDL Lyapunov descent
-    mdlLyap : ∀ {S : Set} (T : S → S) → Set
+    mdlLyap : ∀ {S : Set} (T : S → S) → OldMDL.Lyapunov T
     mdlFejer : MDLFA.MDLFejerAxiomsShift
 
     -- Universality
-    universality : Universality
+    universality : Universality (RealClosureKit.C kit)

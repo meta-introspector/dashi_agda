@@ -17,8 +17,10 @@ open import DASHI.Geometry.QuadraticFormEmergence as QFE
 open import DASHI.Geometry.Signature.HyperbolicFormZ as HFZ
 open import DASHI.Geometry.Signature31Lock as SLock
 open import DASHI.Physics.OrbitSignatureDiscriminant as OSD
+open import DASHI.Physics.OrbitProfileComputedSignedPermEvidence as OPCE
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
 open import DASHI.Physics.QuadraticPolarization as QP
+open import DASHI.Physics.SignedPerm4 as SP
 
 -- Fix dimension for the ℤ-lifted quadratic.
 -- We use 4 = 1 time + 3 spatial components.
@@ -56,19 +58,7 @@ sigma-toCounts' : ∀ t s → HFZ.sigma (toCounts' t s) ≡ s
 sigma-toCounts' t s = refl
 
 ------------------------------------------------------------------------
--- Signed permutations on 3 spatial components
-
-data Perm3 : Set where
-  p012 p021 p102 p120 p201 p210 : Perm3
-
-permute3 : Perm3 → Vec ℤ (suc (suc (suc 0))) → Vec ℤ (suc (suc (suc 0)))
-permute3 p (a ∷ b ∷ c ∷ []) with p
-... | p012 = a ∷ b ∷ c ∷ []
-... | p021 = a ∷ c ∷ b ∷ []
-... | p102 = b ∷ a ∷ c ∷ []
-... | p120 = b ∷ c ∷ a ∷ []
-... | p201 = c ∷ a ∷ b ∷ []
-... | p210 = c ∷ b ∷ a ∷ []
+-- Signed permutations on 3 spatial components (shared definition)
 
 flipVal : Bool → ℤ → ℤ
 flipVal true x = x
@@ -82,26 +72,35 @@ flipBy (f1 ∷ f2 ∷ f3 ∷ []) (a ∷ b ∷ c ∷ []) =
 
 record SignedPerm3 : Set where
   field
-    perm : Perm3
+    perm : SP.Perm3
     flip : Vec Bool (suc (suc (suc 0)))
 
 applySigned : SignedPerm3 → Vec ℤ (suc (suc (suc 0))) → Vec ℤ (suc (suc (suc 0)))
-applySigned sp v = flipBy (SignedPerm3.flip sp) (permute3 (SignedPerm3.perm sp) v)
+applySigned sp v = flipBy (SignedPerm3.flip sp) (SP.permute3 (SignedPerm3.perm sp) v)
 
 actIso : SignedPerm3 → Vec ℤ (suc (suc (suc (suc 0)))) → Vec ℤ (suc (suc (suc (suc 0))))
 actIso sp (t ∷ s1 ∷ s2 ∷ s3 ∷ []) =
-  t ∷ flipBy (SignedPerm3.flip sp) (permute3 (SignedPerm3.perm sp) (s1 ∷ s2 ∷ s3 ∷ []))
+  t ∷ flipBy (SignedPerm3.flip sp) (SP.permute3 (SignedPerm3.perm sp) (s1 ∷ s2 ∷ s3 ∷ []))
+
+flipTritℤ : Bool → ℤ → ℤ
+flipTritℤ true x = x
+flipTritℤ false x = Int.-_ x
+
+actIso4 : SP.SignedPerm4 → Vec ℤ (suc (suc (suc (suc 0)))) → Vec ℤ (suc (suc (suc (suc 0))))
+actIso4 sp (t ∷ s1 ∷ s2 ∷ s3 ∷ []) =
+  flipTritℤ (SP.SignedPerm4.flipT sp) t ∷
+  flipBy (SP.SignedPerm4.flipS sp) (SP.permute3 (SP.SignedPerm4.perm sp) (s1 ∷ s2 ∷ s3 ∷ []))
 
 tau-actIso :
   ∀ sp t s1 s2 s3 →
   HFZ.tau (toCounts (actIso sp (t ∷ s1 ∷ s2 ∷ s3 ∷ []))) ≡ t
 tau-actIso (record { perm = p ; flip = f1 ∷ f2 ∷ f3 ∷ [] }) t s1 s2 s3 with p
-... | p012 = refl
-... | p021 = refl
-... | p102 = refl
-... | p120 = refl
-... | p201 = refl
-... | p210 = refl
+... | SP.p012 = refl
+... | SP.p021 = refl
+... | SP.p102 = refl
+... | SP.p120 = refl
+... | SP.p201 = refl
+... | SP.p210 = refl
 
 ------------------------------------------------------------------------
 -- Sum of squares invariance under signed permutations
@@ -126,8 +125,8 @@ sumSq-flipBy (f1 ∷ f2 ∷ f3 ∷ []) (a ∷ b ∷ c ∷ []) =
       (sq-flipVal f2 b)
       (cong₂ Int._+_ (sq-flipVal f3 c) refl))
 
-sumSq-perm : ∀ (p : Perm3) (s : Vec ℤ (suc (suc (suc 0)))) →
-  HFZ.sumSq (permute3 p s) ≡ HFZ.sumSq s
+sumSq-perm : ∀ (p : SP.Perm3) (s : Vec ℤ (suc (suc (suc 0)))) →
+  HFZ.sumSq (SP.permute3 p s) ≡ HFZ.sumSq s
 sumSq3' : ∀ a b c →
   HFZ.sumSq (a ∷ b ∷ c ∷ []) ≡ a * a + (b * b + (c * c + + 0))
 sumSq3' a b c = refl
@@ -148,26 +147,26 @@ swap-inner a b c =
   cong (λ x → a + x) (IntP.+-comm b c)
 
 sumSq-perm p (a ∷ b ∷ c ∷ []) with p
-... | p012 = trans (sumSq3 a b c) (sym (sumSq3 a b c))
-... | p021 =
+... | SP.p012 = trans (sumSq3 a b c) (sym (sumSq3 a b c))
+... | SP.p021 =
   trans (sumSq3 a c b)
         (trans (swap-inner (a * a) (c * c) (b * b))
                (sym (sumSq3 a b c)))
-... | p102 =
+... | SP.p102 =
   trans (sumSq3 b a c)
         (trans (sym (swap-left (a * a) (b * b) (c * c)))
                (sym (sumSq3 a b c)))
-... | p120 =
+... | SP.p120 =
   trans (sumSq3 b c a)
         (trans (swap-inner (b * b) (c * c) (a * a))
                (trans (sym (swap-left (a * a) (b * b) (c * c)))
                       (sym (sumSq3 a b c))))
-... | p201 =
+... | SP.p201 =
   trans (sumSq3 c a b)
         (trans (sym (swap-left (a * a) (c * c) (b * b)))
                (trans (swap-inner (a * a) (c * c) (b * b))
                       (sym (sumSq3 a b c))))
-... | p210 =
+... | SP.p210 =
   trans (sumSq3 c b a)
         (trans (swap-inner (c * c) (b * b) (a * a))
                (trans (sym (swap-left (a * a) (c * c) (b * b)))
@@ -188,12 +187,12 @@ qcore-pres sp (t ∷ s1 ∷ s2 ∷ s3 ∷ []) =
     (trans
       (cong (λ n → Int._+_ (t * t) n)
         (trans
-          (sumSq-flipBy (SignedPerm3.flip sp) (permute3 (SignedPerm3.perm sp) (s1 ∷ s2 ∷ s3 ∷ [])))
+          (sumSq-flipBy (SignedPerm3.flip sp) (SP.permute3 (SignedPerm3.perm sp) (s1 ∷ s2 ∷ s3 ∷ [])))
           (sumSq-perm (SignedPerm3.perm sp) (s1 ∷ s2 ∷ s3 ∷ []))))
       (sym (cong (λ n → Int._+_ (t * t) n) (qcore-sumSq (s1 ∷ s2 ∷ s3 ∷ [])))))
 
 cone-pres-go :
-  (p' : Perm3) →
+  (p' : SP.Perm3) →
   (f1 f2 f3 : Bool) →
   (t s1 s2 s3 : ℤ) →
   HFZ.ConeBound (+ 1) (toCounts (t ∷ s1 ∷ s2 ∷ s3 ∷ [])) →
@@ -208,11 +207,11 @@ cone-pres-go p' f1 f2 f3 t s1 s2 s3 h
         (λ u → HFZ.sumSq s ≤ ( (+ 1) * (+ 1) ) * (u * u))
         (tau-toCounts t s)
         h
-    s' = flipBy (f1 ∷ f2 ∷ f3 ∷ []) (permute3 p' s)
+    s' = flipBy (f1 ∷ f2 ∷ f3 ∷ []) (SP.permute3 p' s)
     eq : HFZ.sumSq s' ≡ HFZ.sumSq s
     eq =
       trans
-        (sumSq-flipBy (f1 ∷ f2 ∷ f3 ∷ []) (permute3 p' s))
+        (sumSq-flipBy (f1 ∷ f2 ∷ f3 ∷ []) (SP.permute3 p' s))
         (sumSq-perm p' s)
   in
   subst
@@ -249,8 +248,8 @@ sigAxioms =
           }
     ; Iso =
         record
-          { G = SignedPerm3
-          ; _•_ = actIso
+          { G = SP.SignedPerm4
+          ; _•_ = actIso4
           ; PresCone = λ _ _ → tt
           ; PresQ = λ g x → tt
           }
@@ -272,3 +271,8 @@ signature31 =
     QF
     sigAxioms
     sig31Axioms
+
+-- Shift-instance bridge: cone+arrow+isotropy (in sigAxioms) yields
+-- the measured orbit profile for sig31.
+measuredFromConeArrowShift : OSD.MeasuredProfile ≡ OSD.ProfileOf OSD.sig31
+measuredFromConeArrowShift = OPCE.measuredProfileFromComputed

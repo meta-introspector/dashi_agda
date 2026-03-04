@@ -8,11 +8,14 @@ open import DASHI.Physics.Constraints.Generators
 open import DASHI.Physics.Constraints.Bracket
 open import DASHI.Physics.Constraints.Closure
 
--- A concrete, minimal constraint system with a single constraint.
+-- A concrete, small constraint system with three generators.
+data C : Set where
+  CR CP CC : C
+
 CS : ConstraintSystem
 CS =
   record
-    { Constraint = ⊤
+    { Constraint = C
     ; actsOn = λ S → S
     ; apply = λ {S} _ x → x
     }
@@ -20,13 +23,24 @@ CS =
 L : LieLike CS
 L =
   record
-    { _[_,]_ = λ _ _ → tt
+    { _[_,]_ = bracket
     ; antisym = ⊤
     ; jacobi = ⊤
     }
+  where
+    bracket : C → C → C
+    bracket CR CP = CC
+    bracket CP CR = CC
+    bracket CP CC = CR
+    bracket CC CP = CR
+    bracket CR CC = CP
+    bracket CC CR = CP
+    bracket CR CR = CR
+    bracket CP CP = CP
+    bracket CC CC = CC
 
 closure : ClosureLaw CS L
 closure =
   record
-    { closes = λ _ _ → (tt , refl)
+    { closes = λ c₁ c₂ → (LieLike._[_,]_ L c₁ c₂ , refl)
     }

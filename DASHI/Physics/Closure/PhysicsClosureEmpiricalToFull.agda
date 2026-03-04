@@ -1,7 +1,10 @@
 module DASHI.Physics.Closure.PhysicsClosureEmpiricalToFull where
 
-open import Data.Unit using (⊤; tt)
+open import Data.Unit as DU using (⊤; tt)
+open import DASHI.Physics.Closure.OrthogonalityZLift as OZ
+open import Data.Nat using (zero; z≤n)
 open import Data.Product using (_,_)
+open import Data.Product using (proj₁)
 open import Relation.Binary.PropositionalEquality using (refl)
 open import Agda.Builtin.Nat using (Nat; _+_)
 
@@ -19,6 +22,10 @@ open import MDL as OldMDL
 open import DASHI.Physics.RealTernaryCarrier as RTC
 open import DASHI.MDL.MDLDescentTradeoff as MDL using (MDLParts)
 open import DASHI.Physics.Closure.MDLTradeoffShiftInstance as MSI
+open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
+open import DASHI.Physics.QuadraticPolarizationCoreInstance as QPCI
+open import DASHI.Physics.Closure.PolarizationZLift as PZL
+open import DASHI.Physics.RealClosureKit as RK
 
 -- Adapter: embeds empirical closure seams into the full closure package
 -- while leaving the quadratic/signature/constraint layers as explicit stubs.
@@ -32,14 +39,27 @@ mdlLyapShiftWitness :
     {S = RTC.Carrier (m + k)}
     (MDLParts.T (MSI.MDLPartsShift {m} {k}))
 mdlLyapShiftWitness {m} {k} = MDLL.lyapunovShift {m} {k}
+
+mdlLyapTrivial : ∀ {S : Set} (T : S → S) → OldMDL.Lyapunov T
+mdlLyapTrivial T =
+  record
+    { L = λ _ → zero
+    ; descent = λ _ → z≤n
+    }
 empiricalToFull : PCE.PhysicsClosureEmpirical → PCF.PhysicsClosureFull
 empiricalToFull emp =
   record
     { kit = PCE.kit emp
     ; metricEmergence = λ {ℓv} {ℓs} A F PD Ax → QFE.QuadraticFormEmergence A F PD Ax
-    ; quadraticForm = ⊤
-    ; polarization = ⊤
-    ; orthogonality = ⊤
+    ; quadraticFormZ = λ {m} →
+        proj₁
+          (QFE.QuadraticFormEmergence
+            (QES.AdditiveVecℤ {m})
+            QES.ScalarFieldℤ
+            (QES.PDzero {m})
+            (QES.QuadraticEmergenceShiftAxioms {m}))
+    ; polarizationZ = λ {m} → PZL.polarizationZLift {m}
+    ; orthogonalityZ = λ {m} → OZ.orthogonalityZLift {m}
     ; signature31 = CTI.sig31
     ; CS = record
         { Constraint = ⊤
@@ -47,12 +67,12 @@ empiricalToFull emp =
         ; apply = λ {S} _ x → x
         }
     ; L = record
-        { _[_,]_ = λ _ _ → tt
+        { _[_,]_ = λ _ _ → DU.tt
         ; antisym = ⊤
         ; jacobi = ⊤
         }
-    ; constraintClosure = record { closes = λ _ _ → (tt , refl) }
-    ; mdlLyap = λ {S} T → ⊤
+    ; constraintClosure = record { closes = λ _ _ → (DU.tt , refl) }
+    ; mdlLyap = λ {S} T → mdlLyapTrivial T
     ; mdlFejer = MDLFA.mdlFejerShift
-    ; universality = record { statement = ⊤ }
+    ; universality = UTH.canonicalUniversality (RK.RealClosureKit.C (PCE.kit emp))
     }

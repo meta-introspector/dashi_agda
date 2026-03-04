@@ -214,6 +214,9 @@ import DASHI.Physics.Closure.PhysicsClosureEmpiricalToFull
 import DASHI.Physics.Closure.PhysicsClosureEmpiricalWithConeSplit
 import DASHI.Physics.Closure.PhysicsClosureFull
 import DASHI.Physics.Closure.PhysicsClosureFullInstance
+import DASHI.Physics.Closure.PhysicsClosureFullShift
+import DASHI.Physics.Closure.PhysicsClosureFullShiftInstance
+import DASHI.Physics.Closure.PhysicsClosureSummary
 import DASHI.Physics.Closure.PhysicsClosureInstanceAssumed
 import DASHI.Physics.Closure.ShiftEnergyMDLInstances
 import DASHI.Physics.Closure.ShiftSeamCertificates
