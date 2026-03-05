@@ -153,6 +153,12 @@ import DASHI.Geometry.Signature31AndDim3
 import DASHI.Geometry.Signature31AndDim3Glue
 import DASHI.Geometry.Signature31FromConeArrowIsotropy
 import DASHI.Geometry.Signature31Lock
+import DASHI.Geometry.CliffordGate
+import DASHI.Geometry.SpinGate
+import DASHI.Physics.AxiomSet
+import DASHI.Physics.FiniteAlgebraCandidates
+import DASHI.Physics.ConeArrowIsotropyForcesProfile
+import DASHI.Physics.ConeArrowIsotropyForcesProfileShiftInstance
 import DASHI.Geometry.Signature.ConeArrowInstances
 import DASHI.Geometry.SignatureElimination
 import DASHI.Geometry.Signature.HyperbolicForm
@@ -187,11 +193,13 @@ import DASHI.Physics.CanonicalizationMinimal
 import DASHI.Physics.CCRAssumptions
 import DASHI.Physics.CliffordAssumptions
 import DASHI.Physics.CliffordEvenLiftBridge
+import DASHI.Physics.SpinDiracGateFromMetric
 import DASHI.Physics.Closure.BetaSeamCertificates
 import DASHI.Physics.Closure.BetaSeamCertificatesInstance
 import DASHI.Physics.Closure.BetaSeamCSVEvidence
 import DASHI.Physics.ClosureBuilder
 import DASHI.Physics.Closure.ClosestPointAxiomsShift
+import DASHI.Physics.Closure.SpinDiracGateFromClosure
 import DASHI.Physics.Closure.DefectCollapseShiftInstance
 import DASHI.Physics.Closure.EmpiricalClosureWithSignatureLock
 import DASHI.Physics.Closure.EmpiricalClosureWithWitnessPolicy

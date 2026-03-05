@@ -10,3 +10,4 @@ open import DASHI.Physics.SignatureUniquenessOrbitLock as SUL public
 open import DASHI.Physics.SignatureUniquenessOrbitLockInstance as SULI public
 open import DASHI.Physics.OrbitProfileComputedSignedPermEvidence as OPCE public
 open import DASHI.Physics.Signature31OrbitActionAgreement as OAA public
+open import DASHI.Physics.Closure.SpinDiracGateFromClosure as SDGC public
