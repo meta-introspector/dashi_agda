@@ -19,6 +19,9 @@ record SignatureAxioms {ℓv ℓs}
     ConeS : ConeStructure (Additive.Carrier A)
     Arrow : TimeArrow (Additive.Carrier A)
     Iso   : IsotropyAction (Additive.Carrier A)
+    ShellS : ShellStructure (Additive.Carrier A)
+    MoveS  : AdmissibleMove (Additive.Carrier A)
+    ShellIso : ShellIsotropyAction (Additive.Carrier A) ShellS Iso
     Timelike↔Cone : ∀ (x : Additive.Carrier A) → ⊤
 
 open SignatureAxioms public

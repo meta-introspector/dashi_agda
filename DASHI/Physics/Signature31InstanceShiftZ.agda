@@ -16,12 +16,12 @@ open import DASHI.Geometry.Signature31FromConeArrowIsotropy as S31
 open import DASHI.Geometry.QuadraticForm as QF
 open import DASHI.Geometry.QuadraticFormEmergence as QFE
 open import DASHI.Geometry.Signature.HyperbolicFormZ as HFZ
-open import DASHI.Geometry.Signature31Lock as SLock
-open import DASHI.Physics.OrbitProfileComputedSignedPermEvidence as OPCE
 open import DASHI.Physics.OrbitSignatureDiscriminant as OSD
+open import DASHI.Physics.OrbitProfileComputedSignedPerm as OPCSP
 open import DASHI.Physics.OrbitProfileData as OPD
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
 open import DASHI.Physics.QuadraticPolarization as QP
+open import DASHI.Physics.Signature31ShiftProfileWitness as SPW
 open import DASHI.Physics.SignedPerm4 as SP
 
 -- Fix dimension for the ℤ-lifted quadratic.
@@ -117,6 +117,10 @@ sq-flipVal : ∀ b x → flipVal b x * flipVal b x ≡ x * x
 sq-flipVal true x = refl
 sq-flipVal false x = sq-neg x
 
+sq-flipTritℤ : ∀ b x → flipTritℤ b x * flipTritℤ b x ≡ x * x
+sq-flipTritℤ true x = refl
+sq-flipTritℤ false x = sq-neg x
+
 sumSq-flipBy :
   ∀ (f : Vec Bool (suc (suc (suc 0)))) (s : Vec ℤ (suc (suc (suc 0)))) →
   HFZ.sumSq (flipBy f s) ≡ HFZ.sumSq s
@@ -193,6 +197,39 @@ qcore-pres sp (t ∷ s1 ∷ s2 ∷ s3 ∷ []) =
           (sumSq-perm (SignedPerm3.perm sp) (s1 ∷ s2 ∷ s3 ∷ []))))
       (sym (cong (λ n → Int._+_ (t * t) n) (qcore-sumSq (s1 ∷ s2 ∷ s3 ∷ [])))))
 
+sumSq-actIso4 :
+  ∀ (sp : SP.SignedPerm4) (x : Vec ℤ (suc (suc (suc (suc 0))))) →
+  HFZ.sumSq (actIso4 sp x) ≡ HFZ.sumSq x
+sumSq-actIso4 sp (t ∷ s1 ∷ s2 ∷ s3 ∷ []) =
+  cong₂ Int._+_
+    (sq-flipTritℤ (SP.SignedPerm4.flipT sp) t)
+    (trans
+      (sumSq-flipBy (SP.SignedPerm4.flipS sp)
+        (SP.permute3 (SP.SignedPerm4.perm sp) (s1 ∷ s2 ∷ s3 ∷ [])))
+      (sumSq-perm (SP.SignedPerm4.perm sp) (s1 ∷ s2 ∷ s3 ∷ [])))
+
+qcore-pres4 :
+  ∀ (sp : SP.SignedPerm4) (x : Vec ℤ (suc (suc (suc (suc 0))))) →
+  QP.Q̂core (actIso4 sp x) ≡ QP.Q̂core x
+qcore-pres4 sp x =
+  trans
+    (qcore-sumSq (actIso4 sp x))
+    (trans
+      (sumSq-actIso4 sp x)
+      (sym (qcore-sumSq x)))
+
+shell1-pres :
+  ∀ (sp : SP.SignedPerm4) (x : Vec ℤ (suc (suc (suc (suc 0))))) →
+  QP.Q̂core x ≡ (+ 1) →
+  QP.Q̂core (actIso4 sp x) ≡ (+ 1)
+shell1-pres sp x h = trans (qcore-pres4 sp x) h
+
+shell2-pres :
+  ∀ (sp : SP.SignedPerm4) (x : Vec ℤ (suc (suc (suc (suc 0))))) →
+  QP.Q̂core x ≡ (+ 2) →
+  QP.Q̂core (actIso4 sp x) ≡ (+ 2)
+shell2-pres sp x h = trans (qcore-pres4 sp x) h
+
 cone-pres-go :
   (p' : SP.Perm3) →
   (f1 f2 f3 : Bool) →
@@ -255,6 +292,20 @@ sigAxioms =
           ; PresCone = λ _ _ → tt
           ; PresQ = λ g x → tt
           }
+    ; ShellS =
+        record
+          { Shell1 = λ x → QP.Q̂core x ≡ (+ 1)
+          ; Shell2 = λ x → QP.Q̂core x ≡ (+ 2)
+          }
+    ; MoveS =
+        record
+          { _↦_ = λ _ _ → ⊤
+          }
+    ; ShellIso =
+        record
+          { PresShell1 = λ g x → let _ = shell1-pres g x in tt
+          ; PresShell2 = λ g x → let _ = shell2-pres g x in tt
+          }
     ; Timelike↔Cone = λ _ → tt
     }
 
@@ -262,7 +313,7 @@ sig31Axioms : S31.Signature31FromConeArrowIsotropyAxioms (QES.AdditiveVecℤ {m}
 sig31Axioms =
   record
     { Signature31Theorem = λ _ →
-        SLock.signatureLockFromOrbit OSD.measured-profile-def
+        CTI.sig31
     }
 
 signature31 : CTI.Signature
@@ -282,4 +333,7 @@ orientationTagFromArrow :
 orientationTagFromArrow _ = refl
 
 measuredFromConeArrowShift : OSD.MeasuredProfile ≡ OSD.ProfileOf OSD.sig31
-measuredFromConeArrowShift = OPCE.measuredProfileFromComputed
+measuredFromConeArrowShift =
+  trans
+    SPW.measured≡computed
+    SPW.computed≡sig31Profile

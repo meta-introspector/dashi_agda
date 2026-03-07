@@ -89,6 +89,8 @@ import DASHI.Geometry.COL
 import DASHI.Geometry.CompleteUltrametric
 import DASHI.Geometry.CompleteUltrametricNat
 import DASHI.Geometry.ConeMetricCompatibility
+import DASHI.Geometry.ConeArrowIsotropyOrbitProfile
+import DASHI.Geometry.ConeArrowIsotropyShellAction
 import DASHI.Geometry.ConeTimeIsotropy
 import DASHI.Geometry.ContractiveDemo
 import DASHI.Geometry.DefectCollapse
@@ -158,6 +160,8 @@ import DASHI.Geometry.SpinGate
 import DASHI.Physics.AxiomSet
 import DASHI.Physics.FiniteAlgebraCandidates
 import DASHI.Physics.ConeArrowIsotropyForcesProfile
+import DASHI.Physics.ConeArrowIsotropyOrbitProfileAgreement
+import DASHI.Physics.ConeArrowIsotropyShiftOrbitEnumeration
 import DASHI.Physics.ConeArrowIsotropyForcesProfileShiftInstance
 import DASHI.Geometry.Signature.ConeArrowInstances
 import DASHI.Geometry.SignatureElimination
@@ -299,6 +303,7 @@ import DASHI.Physics.SeverityGuardShiftWiringFine
 import DASHI.Physics.SeverityMapping
 import DASHI.Physics.ShellOrbitProfileGenerator
 import DASHI.Physics.Signature31
+import DASHI.Physics.Signature31FromShiftOrbitProfile
 import DASHI.Physics.Signature31InstanceShiftZ
 import DASHI.Physics.SignatureAssumptions
 import DASHI.Physics.SignatureClassificationBridge

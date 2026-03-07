@@ -9,8 +9,7 @@ open import DASHI.Physics.Closure.PhysicsClosure as PC
 open import DASHI.Physics.MyRealInstance as MRI
 open import DASHI.Geometry.QuadraticFormFromProjection as QFP
 open import DASHI.Geometry.SignatureUniqueness31 as SU
-open import DASHI.Physics.SignatureUniquenessOrbitLock as SUL
-open import DASHI.Physics.SignatureUniquenessOrbitLockInstance as SULI
+import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
 open import DASHI.Physics.Constraints.Generators as CG
 open import DASHI.Physics.Constraints.Bracket as CB
 open import DASHI.Physics.Constraints.Closure as CC
@@ -27,7 +26,7 @@ mdlLyapTrivial T =
     }
 
 -- Concrete instance: wires the Bool closure stack into PhysicsClosure,
--- using the concrete signature lock from shift-Z instance.
+-- using the concrete shift-orbit theorem path.
 physicsClosureAssumed : PC.PhysicsClosure
 physicsClosureAssumed =
   record
@@ -40,7 +39,7 @@ physicsClosureAssumed =
             }
         }
     ; orthogonalityZ = λ {m} → OZ.orthogonalityZLift {m}
-    ; signature31 = SUL.signature31-orbit-from-conearrow SULI.coneArrowMeasuredProfileInstance
+    ; signature31 = S31OP.signature31-theorem
     ; CS = record
         { Constraint = ⊤
         ; actsOn = λ X → X

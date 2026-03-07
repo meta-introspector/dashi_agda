@@ -2,6 +2,7 @@ module DASHI.Geometry.Signature.Signature31Instance where
 
 open import Data.Unit using (⊤; tt)
 open import Data.Nat using (ℕ; zero; suc; _+_; _*_)
+open import Data.List using ([]; _∷_)
 open import Data.Vec using (Vec; replicate)
 open import Relation.Binary.PropositionalEquality using (refl)
 
@@ -52,6 +53,20 @@ sigAxioms =
     { ConeS = CAI.coneStructure 1
     ; Arrow = CAI.timeArrow
     ; Iso = CAI.isotropyTrivial
+    ; ShellS =
+        record
+          { Shell1 = λ _ → ⊤
+          ; Shell2 = λ _ → ⊤
+          }
+    ; MoveS =
+        record
+          { _↦_ = λ _ _ → ⊤
+          }
+    ; ShellIso =
+        record
+          { PresShell1 = λ _ _ → tt
+          ; PresShell2 = λ _ _ → tt
+          }
     ; Timelike↔Cone = λ _ → tt
     }
 
