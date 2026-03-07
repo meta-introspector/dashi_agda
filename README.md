@@ -1,3 +1,26 @@
+## Repository Status
+
+Current theorem status:
+
+- Stage A is complete: the orbit-profile discriminant selects Lorentz signature
+  `(3,1)` in the current 4D framework.
+- Stage B is complete for the current finite 4D realization: the
+  cone/arrow/isotropy stack now drives shell enumeration through abstract
+  interfaces rather than a shift-specific proof source.
+- Stage C is still open: the current target is **minimal credible physics
+  closure**, meaning a theorem-backed dynamics package plus an
+  observable-consequence package for the same 4D framework. That package must
+  distinguish what is already proved from what is only a forward prediction
+  claim. The next concrete benchmark is profile rigidity across new 4D
+  realizations.
+
+The repo does **not** currently claim full physics closure or “solved
+physics”.
+
+For the current forward-claim shortlist and falsifiability criteria, see
+`Docs/MinimalCrediblePhysicsClosure.md`.
+For the current milestone order, see `Docs/PhysicsClosurePriorities.md`.
+
 # I. State Space 
 
 ### 1. Carrier
@@ -347,4 +370,3 @@ You now have:
 * Deterministic classification
 * Explicit overflow rule
 * No metaphors required
-

@@ -1,0 +1,70 @@
+module DASHI.Physics.Signature31IntrinsicShiftInstance where
+
+open import Relation.Binary.PropositionalEquality using (_≡_)
+
+open import DASHI.Geometry.ConeArrowOrientationAsymmetry as CAOA
+open import DASHI.Geometry.ConeArrowOrbitStructure as CAOS
+open import DASHI.Geometry.ConeArrowShellStratification as CASS
+open import DASHI.Geometry.ConeArrowIsotropyOrbitProfile as CAOP
+open import DASHI.Geometry.ConeTimeIsotropy as CTI
+open import DASHI.Geometry.Signature31FromIntrinsicShellForcing as S31ISF
+open import DASHI.Geometry.SignatureUniqueness31 as SU using (Signature31Theorem)
+open import DASHI.Physics.ConeArrowIsotropyShiftOrbitEnumeration as SOE
+open import DASHI.Physics.OrbitSignatureDiscriminant as OSD
+open import DASHI.Physics.Signature31ShiftProfileWitness as SPW
+
+shiftShellStratification :
+  CASS.IntrinsicShellStratification
+shiftShellStratification =
+  record
+    { shell1OrbitSizes = SOE.shell1Derived
+    ; shell2OrbitSizes = SOE.shell2Derived
+    }
+
+shiftOrbitStructure :
+  CAOS.IntrinsicOrbitStructure
+shiftOrbitStructure =
+  CAOS.buildIntrinsicOrbitStructure shiftShellStratification
+
+shiftOrientation : CAOA.IntrinsicOrientation
+shiftOrientation =
+  record
+    { orientationTag = 31
+    ; orientationTag≡sig31 = SOE.orientationTagDerived
+    }
+
+shiftProfileMatches31 :
+  CAOP.toProfile
+    (CAOS.buildAbstractOrbitProfile
+      (CAOA.IntrinsicOrientation.orientationTag shiftOrientation)
+      shiftOrbitStructure)
+  ≡ OSD.ProfileOf OSD.sig31
+shiftProfileMatches31
+  rewrite SOE.orientationTagDerived
+        | SOE.shiftEnumeration-shell1≡computed
+        | SOE.shiftEnumeration-shell2≡computed =
+  SPW.computed≡sig31Profile
+
+shiftIntrinsicAxioms :
+  S31ISF.IntrinsicSignatureAxioms
+shiftIntrinsicAxioms =
+  record
+    { shellStratification = shiftShellStratification
+    ; orientation = shiftOrientation
+    ; profileMatches31 = shiftProfileMatches31
+    }
+
+profileEq :
+  CAOP.toProfile
+    (CAOS.buildAbstractOrbitProfile
+      (CAOA.IntrinsicOrientation.orientationTag shiftOrientation)
+      shiftOrbitStructure)
+  ≡ OSD.ProfileOf OSD.sig31
+profileEq = S31ISF.profileEqFromIntrinsic shiftIntrinsicAxioms
+
+signature31-theorem : Signature31Theorem
+signature31-theorem =
+  S31ISF.signature31-theoremFromIntrinsic shiftIntrinsicAxioms
+
+signature31 : CTI.Signature
+signature31 = S31ISF.signature31FromIntrinsic shiftIntrinsicAxioms

@@ -17,6 +17,7 @@ open import DASHI.Physics.Constraints.Bracket
 open import DASHI.Physics.Constraints.Closure
 open import MDL as OldMDL
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
+open import DASHI.Physics.Closure.DynamicalClosure as DC
 open import DASHI.Physics.Closure.OrthogonalityZLift
 open import DASHI.Physics.UniversalityTheorem
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
@@ -51,6 +52,7 @@ record PhysicsClosureFull : Setω where
     -- MDL Lyapunov descent
     mdlLyap : ∀ {S : Set} (T : S → S) → OldMDL.Lyapunov T
     mdlFejer : MDLFA.MDLFejerAxiomsShift
+    dynamics : DC.DynamicalClosure
 
     -- Universality
     universality : Universality (RealClosureKit.C kit)

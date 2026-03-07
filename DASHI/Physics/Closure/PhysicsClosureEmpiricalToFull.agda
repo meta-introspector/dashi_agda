@@ -17,6 +17,8 @@ open import DASHI.Physics.Constraints.Bracket as CB
 open import DASHI.Physics.Constraints.Closure as CC
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
 open import DASHI.Physics.Closure.MDLLyapunovShiftInstance as MDLL
+open import DASHI.Physics.Closure.DynamicalClosure as DC
+open import DASHI.Physics.Closure.DynamicalClosureShiftInstance as DCSI
 open import DASHI.Physics.UniversalityTheorem as UTH
 open import MDL as OldMDL
 open import DASHI.Physics.RealTernaryCarrier as RTC
@@ -26,12 +28,14 @@ open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
 open import DASHI.Physics.QuadraticPolarizationCoreInstance as QPCI
 open import DASHI.Physics.Closure.PolarizationZLift as PZL
 open import DASHI.Physics.RealClosureKit as RK
+open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
 
 -- Adapter: embeds empirical closure seams into the full closure package
 -- while leaving the quadratic/signature/constraint layers as explicit stubs.
 --
 -- Note: PhysicsClosureFull.mdlLyap is a generic Set-valued field. We keep it
--- as ⊤ here and expose a concrete shift witness below.
+-- as a compatibility fallback here. The authoritative Stage C witness is
+-- carried by `dynamics`.
 
 mdlLyapShiftWitness :
   ∀ {m k : Nat} →
@@ -60,7 +64,7 @@ empiricalToFull emp =
             (QES.QuadraticEmergenceShiftAxioms {m}))
     ; polarizationZ = λ {m} → PZL.polarizationZLift {m}
     ; orthogonalityZ = λ {m} → OZ.orthogonalityZLift {m}
-    ; signature31 = CTI.sig31
+    ; signature31 = S31OP.signature31
     ; CS = record
         { Constraint = ⊤
         ; actsOn = λ X → X
@@ -74,5 +78,16 @@ empiricalToFull emp =
     ; constraintClosure = record { closes = λ _ _ → (DU.tt , refl) }
     ; mdlLyap = λ {S} T → mdlLyapTrivial T
     ; mdlFejer = MDLFA.mdlFejerShift
+    ; dynamics = DCSI.shiftDynamics
     ; universality = UTH.canonicalUniversality (RK.RealClosureKit.C (PCE.kit emp))
     }
+
+authoritativeLyapunovShift :
+  ∀ {m k : Nat} (emp : PCE.PhysicsClosureEmpirical) →
+  OldMDL.Lyapunov
+    {S = RTC.Carrier (m + k)}
+    (MDLParts.T (MSI.MDLPartsShift {m} {k}))
+authoritativeLyapunovShift {m} {k} emp =
+  DC.DynamicalClosure.lyapunovShift
+    (PCF.PhysicsClosureFull.dynamics (empiricalToFull emp))
+    {m} {k}

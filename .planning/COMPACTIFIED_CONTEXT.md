@@ -1,5 +1,51 @@
 # Compactified Context
 
+- 2026-03-08:
+  - clarified the closure-facing observable package boundary:
+    proved outputs and excluded alternatives remain typed;
+    genuinely forward predictions are documented separately until they have a
+    real formal interface.
+  - added a forward-prediction shortlist to `Docs/MinimalCrediblePhysicsClosure.md`
+    with confidence levels and falsifiers:
+    profile rigidity, Fejér-over-χ² monotonicity, observable-space collapse,
+    snap-threshold transition laws, witness-policy robustness, cone-split
+    persistence, plus more speculative defect-curvature and area-law claims.
+  - set the next Stage C implementation phase to:
+    closure hardening plus a profile-rigidity validation harness.
+  - added typed validation modules under
+    `DASHI/Physics/Closure/Validation/`:
+    a realization-observation interface, benchmark verdict/report types,
+    a signed-permutation reference report, and a tail-permutation alternate
+    slot.
+  - upgraded the tail-permutation slot into a real comparison case with
+    computed shell-1 and shell-2 profiles for the `(3,1)` mask.
+  - tail permutations are now treated as a negative control for profile
+    rigidity, not as an admissible comparison realization.
+  - added `Docs/PhysicsClosurePriorities.md` with the current `P0/P1/P2`
+    order:
+    P0 validation and closure hardening,
+    P1 runnable forward benchmarks,
+    P2 stronger dynamics and broader closure.
+  - formalized an `AdmissibleComparisonRealization` interface in the profile
+    rigidity harness so future alternate realizations must expose the full
+    orientation/profile/signature surface.
+  - implemented the first admissible alternate realization:
+    the 4D Bool inversion candidate on the `(3,1)` mask.
+  - `signatureOnlyMatch` now means:
+    same signature, different shell-profile class.
+  - added an aggregate rigidity-suite report that groups:
+    self exact match,
+    Bool inversion admissible result,
+    and tail-permutation negative control.
+  - added a closure-facing validation adapter on top of
+    `MinimalCrediblePhysicsClosure`, so the Stage C entrypoint can expose
+    current rigidity verdicts directly.
+  - refactored the intrinsic shell/orbit theorem boundary so theorem-critical
+    records no longer mention finite realization fields; the finite
+    enumeration bridge remains on the shift-instance side.
+  - tightened the Stage C closure boundary with explicit authoritative-dynamics
+    accessors and a minimum-credible spin/Dirac entrypoint.
+
 - Physics bridge stubs were added under `DASHI/Physics/` to mirror the remaining “unproven” list with minimal records/postulates.
 - A new `AdmissibleQuadratic` interface now bundles contraction, isotropy, involution, and finite-speed invariances; uniqueness is the intended bottleneck.
 - Shared symmetry definitions (`Isotropy`, `PreservesQuadratic`) live in `DASHI/Physics/Core.agda`.

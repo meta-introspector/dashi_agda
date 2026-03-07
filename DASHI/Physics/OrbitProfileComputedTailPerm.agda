@@ -7,7 +7,7 @@ open import Data.List.Base using (List; []; _∷_; map; filterᵇ; length)
 open import Relation.Nullary using (Dec; yes; no)
 open import Data.Nat.Properties as NatP using (_≤?_)
 open import Data.Integer.Base using (ℤ; +_; -1ℤ)
-open import Data.Integer using (_≟_)
+open import Data.Integer using (_≟_; -_)
 open import Data.Vec using (Vec; []; _∷_; head; tail)
 open import Data.Fin as Fin using (Fin)
 
@@ -16,6 +16,7 @@ open import DASHI.Physics.IndefiniteMaskQuadratic as IMQ
 open import DASHI.Physics.OrbitShellPredicate as OSP
 open import DASHI.Physics.DimensionBoundAssumptions as DBA
 open import DASHI.Physics.ShellOrbitProfileGenerator as SOPG
+open import DASHI.Physics.SignatureFromMask as SFM
 open import DASHI.Geometry.ShiftIsotropyTailPerm as TP
 
 ------------------------------------------------------------------------
@@ -67,15 +68,15 @@ decEqVec (x ∷ xs) (y ∷ ys) with decEqTrit x y
 ------------------------------------------------------------------------
 -- Shell list and orbit sizes
 
-isShell1 : ∀ {m : Nat} → Vec IMQ.Sign m → Vec Trit m → Bool
-isShell1 σ x with IMQ.Qσ σ x ≟ (+ 1)
+isShell : ∀ {m : Nat} → Nat → Vec IMQ.Sign m → Vec Trit m → Bool
+isShell k σ x with IMQ.Qσ σ x ≟ (+ k)
 ... | yes _ = true
-... | no _ with IMQ.Qσ σ x ≟ -1ℤ
+... | no _ with IMQ.Qσ σ x ≟ - (+ k)
 ... | yes _ = true
 ... | no _  = false
 
-shell1List : ∀ {m : Nat} → Vec IMQ.Sign m → List (Vec Trit m)
-shell1List {m} σ = filterᵇ (isShell1 σ) (allVecTrit m)
+shellList : ∀ {m : Nat} → Nat → Vec IMQ.Sign m → List (Vec Trit m)
+shellList {m} k σ = filterᵇ (isShell k σ) (allVecTrit m)
 
 member : ∀ {A : Set} → ((x y : A) → Dec (x ≡ y)) → A → List A → Bool
 member dec x [] = false
@@ -119,6 +120,23 @@ allPerms (suc zero) =
   let f0 : Fin 1
       f0 = Fin.zero
   in (f0 ∷ []) ∷ []
+allPerms (suc (suc (suc zero))) =
+  let
+    f0 : Fin 3
+    f0 = Fin.zero
+    f1 : Fin 3
+    f1 = Fin.suc Fin.zero
+    f2 : Fin 3
+    f2 = Fin.suc (Fin.suc Fin.zero)
+
+    p0 = f0 ∷ f1 ∷ f2 ∷ []
+    p1 = f0 ∷ f2 ∷ f1 ∷ []
+    p2 = f1 ∷ f0 ∷ f2 ∷ []
+    p3 = f1 ∷ f2 ∷ f0 ∷ []
+    p4 = f2 ∷ f0 ∷ f1 ∷ []
+    p5 = f2 ∷ f1 ∷ f0 ∷ []
+  in
+  p0 ∷ p1 ∷ p2 ∷ p3 ∷ p4 ∷ p5 ∷ []
 allPerms (suc (suc (suc (suc zero)))) =
   let
     f0 : Fin 4
@@ -169,7 +187,18 @@ orbitProfileTailPerm :
   ∀ {m k : Nat} → Vec IMQ.Sign (m + k) → DBA.ShellOrbitProfile (m + k)
 orbitProfileTailPerm {m} {k} σ =
   let
-    shell = shell1List σ
+    shell = shellList 1 σ
     sizes = orbitSizes {m} {k} (allPerms k) shell
   in
   SOPG.profileFromSorted (sortDesc sizes)
+
+mask31 : Vec IMQ.Sign 4
+mask31 = SFM.oneMinusRestPlus {m = suc (suc (suc zero))}
+
+shell1_p3_q1_tailperm_computed : List Nat
+shell1_p3_q1_tailperm_computed =
+  sortDesc (orbitSizes {m = 1} {k = 3} (allPerms 3) (shellList 1 mask31))
+
+shell2_p3_q1_tailperm_computed : List Nat
+shell2_p3_q1_tailperm_computed =
+  sortDesc (orbitSizes {m = 1} {k = 3} (allPerms 3) (shellList 2 mask31))

@@ -91,6 +91,9 @@ import DASHI.Geometry.CompleteUltrametricNat
 import DASHI.Geometry.ConeMetricCompatibility
 import DASHI.Geometry.ConeArrowIsotropyOrbitProfile
 import DASHI.Geometry.ConeArrowIsotropyShellAction
+import DASHI.Geometry.ConeArrowOrbitStructure
+import DASHI.Geometry.ConeArrowOrientationAsymmetry
+import DASHI.Geometry.ConeArrowShellStratification
 import DASHI.Geometry.ConeTimeIsotropy
 import DASHI.Geometry.ContractiveDemo
 import DASHI.Geometry.DefectCollapse
@@ -154,6 +157,7 @@ import DASHI.Geometry.ShiftIsotropyTailPerm
 import DASHI.Geometry.Signature31AndDim3
 import DASHI.Geometry.Signature31AndDim3Glue
 import DASHI.Geometry.Signature31FromConeArrowIsotropy
+import DASHI.Geometry.Signature31FromIntrinsicShellForcing
 import DASHI.Geometry.Signature31Lock
 import DASHI.Geometry.CliffordGate
 import DASHI.Geometry.SpinGate
@@ -163,11 +167,13 @@ import DASHI.Physics.ConeArrowIsotropyForcesProfile
 import DASHI.Physics.ConeArrowIsotropyOrbitProfileAgreement
 import DASHI.Physics.ConeArrowIsotropyShiftOrbitEnumeration
 import DASHI.Physics.ConeArrowIsotropyForcesProfileShiftInstance
+import DASHI.Physics.Signature31IntrinsicShiftInstance
 import DASHI.Geometry.Signature.ConeArrowInstances
 import DASHI.Geometry.SignatureElimination
 import DASHI.Geometry.Signature.HyperbolicForm
 import DASHI.Geometry.Signature.HyperbolicFormZ
 import DASHI.Geometry.Signature.Signature31Instance
+import DASHI.Geometry.SignatureExclusionFromOrbitProfile
 import DASHI.Geometry.SignatureUniqueness31
 import DASHI.Geometry.SignatureUniqueness31Proof
 import DASHI.Geometry.SignatureUniqueness
@@ -201,6 +207,8 @@ import DASHI.Physics.SpinDiracGateFromMetric
 import DASHI.Physics.Closure.BetaSeamCertificates
 import DASHI.Physics.Closure.BetaSeamCertificatesInstance
 import DASHI.Physics.Closure.BetaSeamCSVEvidence
+import DASHI.Physics.Closure.DynamicalClosure
+import DASHI.Physics.Closure.DynamicalClosureShiftInstance
 import DASHI.Physics.ClosureBuilder
 import DASHI.Physics.Closure.ClosestPointAxiomsShift
 import DASHI.Physics.Closure.SpinDiracGateFromClosure
@@ -217,6 +225,14 @@ import DASHI.Physics.Closure.MDLDescentShiftInstance
 import DASHI.Physics.Closure.MDLFejerAxiomsShift
 import DASHI.Physics.Closure.MDLLyapunovShiftInstance
 import DASHI.Physics.Closure.MDLTradeoffShiftInstance
+import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure
+import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureShiftInstance
+import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation
+import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidationShiftInstance
+import DASHI.Physics.Closure.ObservablePredictionPackage
+import DASHI.Physics.Closure.Validation.RealizationProfileRigidity
+import DASHI.Physics.Closure.Validation.RealizationProfileRigidityReport
+import DASHI.Physics.Closure.Validation.RealizationProfileRigidityShift
 import DASHI.Physics.ClosureOnAssumption
 import DASHI.Physics.Closure.PhysicsClosure
 import DASHI.Physics.Closure.PhysicsClosureEmpirical
@@ -230,6 +246,7 @@ import DASHI.Physics.Closure.PhysicsClosureFullShift
 import DASHI.Physics.Closure.PhysicsClosureFullShiftInstance
 import DASHI.Physics.Closure.PhysicsClosureSummary
 import DASHI.Physics.Closure.PhysicsClosureInstanceAssumed
+import DASHI.Physics.Closure.ShiftObservablePredictionInstance
 import DASHI.Physics.Closure.ShiftEnergyMDLInstances
 import DASHI.Physics.Closure.ShiftSeamCertificates
 import DASHI.Physics.Closure.SignatureLockCSVEvidence
@@ -269,6 +286,7 @@ import DASHI.Physics.OrbitFingerprintAssumptions
 import DASHI.Physics.OrbitFingerprintAssumptionsPostulates
 import DASHI.Physics.OrbitFingerprintInstance
 import DASHI.Physics.OrbitProfileComputed
+import DASHI.Physics.OrbitProfileComputedBoolInv4
 import DASHI.Physics.OrbitProfileComputedTailPerm
 import DASHI.Physics.OrbitProfileExternal
 import DASHI.Physics.OrbitShellPredicate

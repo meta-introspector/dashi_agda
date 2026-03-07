@@ -4,12 +4,16 @@ open import Agda.Primitive using (Level; _⊔_; lsuc)
 
 open import DASHI.Geometry.CliffordGate using (RingLike)
 open import DASHI.Geometry.QuadraticForm as QF
+open import DASHI.Physics.Closure.DynamicalClosure as DC
+open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.SpinDiracGateFromMetric
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
 
 -- Expose the spin/dirac gate type tied to the forced metric from a closure.
--- This does not assume an instance; it just pins the dependency.
+-- Stage C prefers the minimum-credible closure boundary so downstream
+-- consumers stay attached to the real dynamics package instead of only the
+-- metric seam.
 SpinDiracGateType :
   (C : PCF.PhysicsClosureFull) →
   ∀ {m ℓψ ℓa ℓg} (Ψ : Set ℓψ)
@@ -22,3 +26,19 @@ SpinDiracGateType C {m} {ℓψ} {ℓa} {ℓg} Ψ R =
     (PCF.PhysicsClosureFull.polarizationZ C {m})
     R
     Ψ
+
+requiredDynamics :
+  (C : PCF.PhysicsClosureFull) → DC.DynamicalClosure
+requiredDynamics C = PCF.PhysicsClosureFull.dynamics C
+
+SpinDiracGateTypeFromMinimal :
+  (C : MCPC.MinimalCrediblePhysicsClosure) →
+  ∀ {m ℓψ ℓa ℓg} (Ψ : Set ℓψ)
+    (R : RingLike (QF.ScalarField.S QES.ScalarFieldℤ)) →
+  Set (lsuc (ℓψ ⊔ ℓa ⊔ ℓg))
+SpinDiracGateTypeFromMinimal C {m} {ℓψ} {ℓa} {ℓg} Ψ R =
+  SpinDiracGateType (MCPC.full C) {m} {ℓψ} {ℓa} {ℓg} Ψ R
+
+requiredDynamicsFromMinimal :
+  (C : MCPC.MinimalCrediblePhysicsClosure) → DC.DynamicalClosure
+requiredDynamicsFromMinimal = MCPC.authoritativeDynamics

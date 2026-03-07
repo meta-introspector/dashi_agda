@@ -91,20 +91,61 @@ What remains open beyond Stage B:
 - derive the shell-orbit structure from more intrinsic abstract hypotheses,
 - generalize beyond the current ternary 4D signed-permutation model.
 
-## Stage C — Full Closure Program
+## Stage C — Minimal Credible Physics Closure
 
-Stage C is a speculative long-horizon research program, not a current theorem.
+Stage C is the next major program after the current signature closure result.
+It is still open. In this repo, Stage C should now be read as:
 
-The intended direction is:
+> a minimal credible physics closure for the current 4D framework,
+> not a final or “solved physics” claim.
 
-`ultrametric contraction`
--> `quadratic / polarization / orthogonality`
--> `cone structure`
--> `signature forcing`
--> `closure consequences`
--> possible deep symmetry structure
+Stage C is split into two coordinated tracks.
 
-Possible downstream themes include:
+### Track T — Theorem/Dynamics Closure
+
+Target:
+
+`signature closure`
+-> `causal/dynamical closure`
+-> `nontrivial full closure instance`
+
+This track is responsible for:
+
+- theorem-backed dynamics rather than type-only wiring,
+- causal propagation and closure laws tied to the current shift stack,
+- real Lyapunov / Fejer / closest-point witnesses on the minimum closure path,
+- nontrivial closure consumers downstream of the signature theorem.
+
+### Track E — Observable Consequences and Forward Predictions
+
+Target:
+
+`signature closure`
+-> `observable consequence package`
+-> `forward prediction package`
+
+This track is responsible for:
+
+- explicit observable bundles rather than scattered evidence modules,
+- exact shell/profile outputs for the current 4D shift realization,
+- exclusion statements for the non-`(3,1)` 4D candidates,
+- explicit separation between theorem outputs and forward prediction claims,
+- forward predictions for new realizations or new external regimes,
+- packaging orbit/signature, MDL/Fejer, and closure seams into one interface,
+- concrete falsifiability/deviation statements for the current framework,
+- a unified report boundary that separates proved, evidence-backed, and
+  predicted claims.
+
+Current leading forward claims:
+
+- profile rigidity across new realizations,
+- Fejér-over-χ² monotonicity,
+- observable-space collapse,
+- snap-threshold transition laws,
+- witness-policy robustness,
+- cone-split persistence.
+
+Possible downstream themes still remain:
 
 - stronger closure and geometric rigidity results,
 - representation-theoretic explanations of the orbit invariant,
@@ -114,6 +155,22 @@ Possible downstream themes include:
 Stage C must not be described as proved by the current repo state.
 Any Monster/Moonshine interpretation remains explicitly downstream and
 speculative unless supported by separate theorem-level bridges.
+
+Immediate next phase inside Stage C:
+
+- closure hardening on the minimum-credible path,
+- a typed profile-rigidity validation harness,
+- one reference benchmark using the signed-permutation shift realization,
+- one alternate realization slot,
+- explicit distinction between:
+  admissible comparison realizations,
+  and negative controls.
+
+Current benchmark decision:
+
+- the existing tail-permutation surface is treated as a negative control,
+  because it is useful for structured mismatch detection but is not the right
+  closure-compatible comparison target.
 
 ## Milestones and Exit Criteria
 
@@ -148,9 +205,12 @@ Status: speculative.
 
 Exit criterion:
 
-- closure, symmetry, and downstream physical structures are linked by
-  theorem-level bridges rather than assumption packages or compatibility
-  scaffolding.
+- the minimum closure instance carries a real dynamics package,
+- the signature theorem feeds that closure through theorem-level bridges,
+- observable consequences, excluded alternatives, and forward prediction claims
+  are exposed through one explicit package,
+- the repo can distinguish proved claims, evidence-backed claims, and
+  predictions without mixing them.
 
 ## Practical Implications by Stage
 
@@ -168,12 +228,12 @@ Exit criterion:
 
 ### C — Full closure
 
-- speculative foundational structure,
-- possible deep symmetry interpretation,
-- potential long-term bridge between dynamics, geometry, and algebra.
+- minimal credible physics closure for the current 4D framework,
+- theorem-backed dynamics plus an observable/prediction package,
+- possible later bridge between dynamics, geometry, and algebra.
 
 The intended reading discipline is:
 
 - A is proved,
 - B is solved for the current finite 4D realization,
-- C is a research program.
+- C is the open physics-closure program.

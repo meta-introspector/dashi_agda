@@ -10,7 +10,7 @@ open import Data.Nat using (_≤_)
 open import Data.Nat.Properties as NatP using (_≤?_)
 open import Data.Vec using (Vec; []; _∷_; head; tail)
 open import Data.Integer.Base using (ℤ; +_; -1ℤ)
-open import Data.Integer using (_≟_)
+open import Data.Integer using (_≟_; -_)
 
 open import DASHI.Algebra.Trit using (Trit; neg; zer; pos)
 open import DASHI.Physics.RealTernaryCarrier as RTC
@@ -84,17 +84,20 @@ allVecTrit (suc n) =
     allTrit
 
 ------------------------------------------------------------------------
--- Shell1 list from a mask
+-- Shell list from a mask
 
-isShell1 : ∀ {m : Nat} → Vec IMQ.Sign m → Vec Trit m → Bool
-isShell1 σ x with IMQ.Qσ σ x ≟ (+ 1)
+isShell : ∀ {m : Nat} → Nat → Vec IMQ.Sign m → Vec Trit m → Bool
+isShell k σ x with IMQ.Qσ σ x ≟ (+ k)
 ... | yes _ = true
-... | no _ with IMQ.Qσ σ x ≟ -1ℤ
+... | no _ with IMQ.Qσ σ x ≟ - (+ k)
 ... | yes _ = true
 ... | no _  = false
 
+shellList : ∀ {m : Nat} → Nat → Vec IMQ.Sign m → List (Vec Trit m)
+shellList {m} k σ = filterᵇ (isShell k σ) (allVecTrit m)
+
 shell1List : ∀ {m : Nat} → Vec IMQ.Sign m → List (Vec Trit m)
-shell1List {m} σ = filterᵇ (isShell1 σ) (allVecTrit m)
+shell1List σ = shellList 1 σ
 
 ------------------------------------------------------------------------
 -- Orbit sizes under a finite action list

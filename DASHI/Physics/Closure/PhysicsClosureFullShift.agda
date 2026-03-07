@@ -11,6 +11,7 @@ open import MDL as OldMDL
 open import DASHI.MDL.MDLDescentTradeoff as MDL using (MDLParts)
 open import DASHI.Physics.Closure.MDLTradeoffShiftInstance as MSI
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
+open import DASHI.Physics.Closure.DynamicalClosure as DC
 open import DASHI.Physics.UniversalityTheorem
 open import DASHI.Physics.Constraints.Generators
 open import DASHI.Physics.Constraints.Bracket
@@ -26,6 +27,7 @@ record PhysicsClosureFullShift : Setω where
     signature31 : Signature
     mdlLyap : ∀ {m k : Nat} → OldMDL.Lyapunov (MDLParts.T (MSI.MDLPartsShift {m} {k}))
     mdlFejer : MDLFA.MDLFejerAxiomsShift
+    dynamics : DC.DynamicalClosure
     quadraticFormZ :
       ∀ {m : Nat} →
         QuadraticForm (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ

@@ -6,6 +6,7 @@ open import DASHI.Physics.Closure.OrthogonalityZLift as OZ
 open import DASHI.Physics.Closure.PhysicsClosureFullShift as PCFS
 open import DASHI.Physics.TernaryRealInstanceShift as TRIS
 open import DASHI.Geometry.SignatureUniqueness31 using (sig31)
+open import DASHI.Physics.Closure.DynamicalClosureShiftInstance as DCSI
 open import DASHI.Physics.Closure.MDLLyapunovShiftInstance as MDLL
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
 open import DASHI.Physics.UniversalityTheorem as UTH
@@ -25,6 +26,7 @@ physicsClosureFullShift =
     ; signature31 = sig31
     ; mdlLyap = λ {m} {k} → MDLL.lyapunovShift {m} {k}
     ; mdlFejer = MDLFA.mdlFejerShift
+    ; dynamics = DCSI.shiftDynamics
     ; quadraticFormZ = λ {m} →
         proj₁
           (QFE.QuadraticFormEmergence
