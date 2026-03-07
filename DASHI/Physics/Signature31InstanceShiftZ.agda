@@ -17,6 +17,7 @@ open import DASHI.Geometry.QuadraticForm as QF
 open import DASHI.Geometry.QuadraticFormEmergence as QFE
 open import DASHI.Geometry.Signature.HyperbolicFormZ as HFZ
 open import DASHI.Geometry.Signature31Lock as SLock
+open import DASHI.Physics.OrbitProfileComputedSignedPermEvidence as OPCE
 open import DASHI.Physics.OrbitSignatureDiscriminant as OSD
 open import DASHI.Physics.OrbitProfileData as OPD
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
@@ -274,14 +275,11 @@ signature31 =
     sig31Axioms
 
 -- Shift-instance bridge: cone+arrow+isotropy (in sigAxioms) yields
--- the measured orbit profile for sig31.
+-- the internally computed orbit profile for sig31.
 orientationTagFromArrow :
   S31.SignatureAxioms (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ QF →
   31 ≡ OSD.OrientationTag OSD.sig31
 orientationTagFromArrow _ = refl
 
 measuredFromConeArrowShift : OSD.MeasuredProfile ≡ OSD.ProfileOf OSD.sig31
-measuredFromConeArrowShift =
-  cong
-    (λ t → OSD.append3 (List._∷_ t List.[]) OPD.shell1_p3_q1 OPD.shell2_p3_q1)
-    (orientationTagFromArrow sigAxioms)
+measuredFromConeArrowShift = OPCE.measuredProfileFromComputed
