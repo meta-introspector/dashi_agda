@@ -57,6 +57,16 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 -- Current wave-series status:
 --   concrete grade-0 prototype only,
 --   not on the theorem-critical closure path.
+-- Current moonshine-facing prototype status:
+--   finite graded shell series present for shift and standalone `B₄`,
+--   finite twined fixed-point traces present for shift and standalone `B₄`,
+--   wave-graded shell adapter present as a prototype-only grading bridge,
+--   no modularity, umbral, or Monster claim yet.
+-- Current Stage C widening status:
+--   carrier-parametric gauge/constraint theorem now has a second realized
+--   carrier instance,
+--   local known-limits widening now includes a geometry-transport theorem,
+--   canonical theorem bundle now aggregates the full current runway ladder.
 -- The current theorem path is solved only for the present finite 4D
 -- realization framework; realization-independent generalization remains open.
 -- Current closure hardening status:
@@ -75,14 +85,53 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   canonical gauge/constraint bridge theorem now exported explicitly,
 --   canonical constraint/gauge package now exported explicitly,
 --   canonical parametric gauge/constraint theorem now exported explicitly,
+--   canonical realized gauge-instance report now exported explicitly,
 --   canonical propagation/spin theorem now exported explicitly,
 --   canonical known-limits recovery package now exported explicitly,
 --   canonical local causal/effective propagation theorem now exported
+--   explicitly,
+--   canonical local causal-geometry coherence theorem now exported
 --   explicitly,
 --   canonical spin/Dirac consumer now depends on the stronger witness-bearing
 --   Stage C surface rather than only the forced metric seam,
 --   legacy wrappers are compatibility-only,
 --   wave-series / unification surfaces remain prototype-only.
+-- Current pre-moonshine hardening status:
+--   richer twiner libraries are now landed for shift and standalone `B₄`,
+--   a detailed graded/twined comparison report is now exported,
+--   a stronger wave-graded shell prototype summary is now exported,
+--   the track remains explicitly finite, Weyl/theta-like, and non-modular.
+-- Current broader widening status:
+--   a stronger parametric algebraic-closure theorem is now exported on the
+--   canonical gauge package layer,
+--   a broader extended local recovery theorem is now exported on the
+--   canonical known-limits side,
+--   a propagation-facing canonical consumer is now exported on the
+--   authoritative Stage C ladder.
+-- Current newest widening status:
+--   a stronger parametric algebraic-coherence theorem is now exported on the
+--   canonical gauge package layer,
+--   and a local physics-coherence theorem is now exported above the current
+--   extended local recovery slice.
+-- Current latest widening status:
+--   a stronger parametric algebraic-stability theorem is now exported above
+--   the current algebraic-coherence layer,
+--   and a recovered-local-regime theorem is now exported above the current
+--   local physics-coherence layer.
+-- Current newest widening status:
+--   a stronger parametric algebraic-closure bundle theorem is now exported
+--   above the current algebraic-stability layer,
+--   and a complete-local-regime theorem is now exported above the current
+--   recovered-local-regime layer.
+-- Current next-cycle widening status:
+--   a stronger parametric algebraic persistence theorem is now exported
+--   above the current admissibility-transport layer,
+--   a recovered-observable-geometry theorem is now exported above the current
+--   recovered-observables layer,
+--   a regime-facing downstream consumer is now exported on the canonical
+--   ladder,
+--   and a richer moonshine orbit-trace summary is now exported on the
+--   parallel finite graded/twined track.
 
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF public
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI public
@@ -169,10 +218,56 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; shiftOrbitShellSeries
     ; b4OrbitShellSeries
     ; b4SeriesVerdict
+    ; shiftFiniteGradedShellSeries
+    ; b4FiniteGradedShellSeries
+    ; shiftIdentityTwinedTrace
+    ; shiftNontrivialTwinedTrace
+    ; b4IdentityTwinedTrace
+    ; b4NontrivialTwinedTrace
+    ; finiteTwinedDetailedReport
+    ; shiftWaveGradedShellPrototype
     ; canonicalGaugeConstraintBridgeTheoremSummary
     ; canonicalConstraintGaugePackageSummary
     ; canonicalParametricGaugeConstraintTheoremSummary
+    ; canonicalParametricGaugeConstraintBridgeTheoremSummary
+    ; secondaryConstraintGaugePackageSummary
+    ; secondaryParametricGaugeConstraintTheoremSummary
+    ; secondaryParametricGaugeConstraintBridgeTheoremSummary
+    ; canonicalGaugeConstraintRealizedInstancesSummary
+    ; canonicalParametricAlgebraicClosureTheoremSummary
+    ; secondaryParametricAlgebraicClosureTheoremSummary
+    ; canonicalParametricAlgebraicCoherenceTheoremSummary
+    ; secondaryParametricAlgebraicCoherenceTheoremSummary
+    ; canonicalParametricAlgebraicStabilityTheoremSummary
+    ; secondaryParametricAlgebraicStabilityTheoremSummary
+    ; canonicalParametricAlgebraicClosureBundleTheoremSummary
+    ; secondaryParametricAlgebraicClosureBundleTheoremSummary
+    ; canonicalParametricAlgebraicConsistencyTheoremSummary
+    ; secondaryParametricAlgebraicConsistencyTheoremSummary
+    ; canonicalParametricAlgebraicAdmissibilityTransportTheoremSummary
+    ; secondaryParametricAlgebraicAdmissibilityTransportTheoremSummary
+    ; canonicalParametricAlgebraicPersistenceTheoremSummary
+    ; secondaryParametricAlgebraicPersistenceTheoremSummary
     ; canonicalKnownLimitsRecoveryPackageSummary
     ; canonicalKnownLimitsCausalPropagationTheoremSummary
+    ; canonicalKnownLimitsGeometryTransportTheoremSummary
+    ; canonicalKnownLimitsLocalCoherenceTheoremSummary
+    ; canonicalKnownLimitsExtendedLocalRecoveryTheoremSummary
+    ; canonicalKnownLimitsLocalPhysicsCoherenceTheoremSummary
+    ; canonicalKnownLimitsRecoveredLocalRegimeTheoremSummary
+    ; canonicalKnownLimitsCompleteLocalRegimeTheoremSummary
+    ; canonicalKnownLimitsRecoveredDynamicsTheoremSummary
+    ; canonicalKnownLimitsRecoveredObservablesTheoremSummary
+    ; canonicalKnownLimitsRecoveredObservableGeometryTheoremSummary
     ; canonicalKnownLimitsPropagationSpinTheoremSummary
+    ; canonicalPropagationConsumerSummary
+    ; canonicalGeometryConsumerSummary
+    ; canonicalObservableConsumerSummary
+    ; canonicalRegimeConsumerSummary
+    ; canonicalTheoremBundleSummary
+    ; canonicalSummaryBundle
+    ; shiftWaveGradedShellPrototypeSummary
+    ; canonicalTwinedComparisonSummary
+    ; canonicalMoonshinePrototypeComparisonBundleSummary
+    ; canonicalMoonshineTraceFamilySummary
     )

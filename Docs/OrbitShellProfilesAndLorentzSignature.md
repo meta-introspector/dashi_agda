@@ -159,6 +159,20 @@ Immediate uses:
 This is an algebraic repackaging of the present shell data. It is **not** yet
 a theta-series theorem or a graded-trace theorem.
 
+The current symmetry-facing prototype layer is:
+
+- finite graded shell series built from actual shell-state counts,
+- finite signed/Weyl actions on shell states,
+- twined finite traces computed as fixed-point counts on graded shell pieces,
+- a wave-facing grading adapter kept explicitly as a prototype.
+
+This is now landed as **pre-moonshine** infrastructure. It does not yet claim:
+
+- modularity,
+- Niemeier/umbral identification,
+- Monster traces,
+- or a graded infinite-dimensional module.
+
 ## One-Minus Shell Family
 
 The current one-minus family visible in the repo is:

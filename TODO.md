@@ -56,10 +56,10 @@ Priority bucket: `P0`
   and add a local causal-effective propagation theorem beyond the current
   local propagation/spin bridge.
 - After that:
-  add a less toy second carrier instance for the parametric gauge theorem if
-  it can be done honestly,
+  add a package-parametric gauge-constraint bridge theorem on the algebra
+  side,
   and widen known-limits beyond the current local causal/effective propagation
-  regime.
+  regime with a local causal-geometry coherence theorem.
 - Keep legacy assumption-backed modules outside the canonical Stage C story.
   Current explicit legacy surfaces:
   `PhysicsClosureInstanceAssumed`,
@@ -86,6 +86,26 @@ Priority bucket: `P0` first, then `P1`
   snap-threshold transition laws,
   witness-policy robustness,
   cone-split persistence.
+- Add a parallel symmetry prototype track:
+  finite graded shell series,
+  finite signed/Weyl actions on shell states,
+  twined fixed-point traces,
+  and a wave-facing graded adapter.
+- Treat the current finite graded/twined layer as landed infrastructure and
+  move the next moonshine-facing work to:
+  explicit twiner libraries, richer grading choices, and only then later
+  modularity/umbral tests.
+- Current immediate moonshine hardening target:
+  add explicit twiner libraries for shift and `B₄`, plus a first
+  graded/twined comparison report surface.
+- Those are now landed.
+  Next moonshine hardening target:
+  broaden twiner coverage and expose a richer graded/twined comparison
+  summary, then strengthen the wave-grading prototype summary.
+- Keep that track explicitly pre-moonshine:
+  no modularity theorem,
+  no umbral identification,
+  no Monster trace claim yet.
 - Add a validation table for each forward claim:
   source modules,
   confidence level,
@@ -222,6 +242,30 @@ Priority bucket: `P0` first, then `P1`
 - Keep the canonical Stage C entrypoint authoritative in code:
   `DASHI.Physics.Closure.CanonicalStageC` is the recommended import surface,
   while legacy assumed/prototype modules remain compatibility-only.
+- Current newest physics-first widening is also landed:
+  a stronger extended local recovery theorem beyond the current coherence
+  slice,
+  plus a stronger algebraic-coherence theorem beyond the current
+  package-parametric bridge.
+- That next physics-first widening is now landed:
+  one stronger recovered-local-regime theorem above the current local
+  physics-coherence slice,
+  and one stronger algebraic-stability theorem above the current
+  algebraic-coherence slice.
+- That next physics-first cycle is now landed:
+  one stronger recovered-dynamics theorem above the current complete-local
+  regime slice,
+  one stronger algebraic-consistency theorem above the current
+  algebraic-bundle/stability slice,
+  one geometry-facing downstream consumer on the canonical ladder,
+  and one richer moonshine comparison bundle.
+- Current next physics-first cycle:
+  one stronger recovered-observable-geometry theorem above the current
+  recovered-observables slice,
+  one stronger algebraic persistence theorem above the current
+  admissibility-transport slice,
+  one regime-facing downstream consumer on the canonical ladder,
+  and one richer moonshine orbit-trace summary.
 - After the full parametric theorem lands, the next milestone is:
   a second Lorentz-family realization search.
 - Add a finite orbit-shell generating series layer:

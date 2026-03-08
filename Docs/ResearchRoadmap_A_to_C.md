@@ -180,9 +180,38 @@ Current state:
 - the scoped gauge-contract theorem is now on the canonical Stage C path,
 - the scoped spin/local-Lorentz bridge theorem is now on the canonical Stage C
   path,
+- the carrier-parametric gauge/constraint theorem is now landed on the
+  canonical Stage C path,
+- a second realized carrier instance now exists for that theorem,
+- the local causal-effective propagation theorem is now landed on the
+  canonical Stage C path,
 - and the next broader widening is now:
-  a carrier-parametric gauge/constraint theorem,
-  plus a local causal-effective propagation theorem.
+  a package-parametric gauge-constraint bridge theorem beyond the current
+  carrier package layer,
+  plus a local causal-geometry coherence theorem beyond the current local
+  geometry-transport slice.
+- Those widening slices are now landed.
+  The current newest broader widening is also landed:
+  a stronger local recovery theorem beyond the current coherence slice,
+  followed by a stronger algebraic-coherence theorem beyond the current
+  package-parametric bridge.
+- That next broader widening is now landed:
+  one stronger recovered-local-regime theorem above the current local
+  physics-coherence slice,
+  followed by one stronger algebraic-stability theorem above the current
+  algebraic-coherence slice.
+- That next broader widening cycle is now landed:
+  one stronger recovered-dynamics theorem above the current complete-local
+  regime slice,
+  followed by one stronger algebraic-consistency theorem above the current
+  algebraic-bundle/stability slice,
+  plus one new geometry-facing downstream consumer on the canonical ladder.
+- Current next broader widening cycle:
+  one stronger recovered-observable-geometry theorem above the current
+  recovered-observables slice,
+  followed by one stronger algebraic persistence theorem above the current
+  admissibility-transport slice,
+  plus one new regime-facing downstream consumer on the canonical ladder.
 
 Immediate mathematical milestone before another Lorentz-family realization
 search:

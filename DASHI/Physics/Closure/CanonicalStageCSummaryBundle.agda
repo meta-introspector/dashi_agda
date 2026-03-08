@@ -1,0 +1,64 @@
+module DASHI.Physics.Closure.CanonicalStageCSummaryBundle where
+
+open import Agda.Primitive using (Setω)
+
+open import DASHI.Physics.Closure.CanonicalStageC as CSC
+open import DASHI.Physics.Closure.CanonicalStageCStatus as CSS
+open import DASHI.Physics.Closure.CanonicalStageCTheoremBundle as CSTB
+open import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI
+open import DASHI.Physics.Closure.KnownLimitsLocalCoherenceTheorem as KLLCT
+open import DASHI.Physics.Closure.KnownLimitsExtendedLocalRecoveryTheorem as KLER
+open import DASHI.Physics.Closure.KnownLimitsLocalPhysicsCoherenceTheorem as KLLPC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredLocalRegimeTheorem as KLRLR
+open import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem as KLCLR
+open import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem as KLRDT
+open import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem as KLROT
+open import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem as KLROG
+open import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
+open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
+open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC
+open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
+
+record CanonicalStageCSummaryBundle : Setω where
+  field
+    closureStatus : CSS.ClosureSurfaceStatus
+    theoremBundle : CSTB.CanonicalStageCTheoremBundle
+    realizedGaugeInstances : CGCRI.CanonicalGaugeConstraintRealizedInstances
+    localCoherence : KLLCT.KnownLimitsLocalCoherenceTheorem
+    extendedLocalRecovery : KLER.KnownLimitsExtendedLocalRecoveryTheorem
+    localPhysicsCoherence : KLLPC.KnownLimitsLocalPhysicsCoherenceTheorem
+    recoveredLocalRegime : KLRLR.KnownLimitsRecoveredLocalRegimeTheorem
+    completeLocalRegime : KLCLR.KnownLimitsCompleteLocalRegimeTheorem
+    recoveredDynamics : KLRDT.KnownLimitsRecoveredDynamicsTheorem
+    recoveredObservables : KLROT.KnownLimitsRecoveredObservablesTheorem
+    recoveredObservableGeometry :
+      KLROG.KnownLimitsRecoveredObservableGeometryTheorem
+    geometryConsumer : CGC.GeometryConsumerFromMinimal CSC.canonicalClosure
+    observableConsumer : COC.ObservableConsumerFromMinimal CSC.canonicalClosure
+    regimeConsumer : CRC.RegimeConsumerFromMinimal CSC.canonicalClosure
+    selfVerdict : RPR.RigidityVerdict
+    admissibleVerdict : RPR.RigidityVerdict
+    negativeControlVerdict : RPR.RigidityVerdict
+
+canonicalStageCSummaryBundle : CanonicalStageCSummaryBundle
+canonicalStageCSummaryBundle =
+  record
+    { closureStatus = CSC.canonicalClosureStatus
+    ; theoremBundle = CSTB.canonicalStageCTheoremBundle
+    ; realizedGaugeInstances = CGCRI.canonicalGaugeConstraintRealizedInstances
+    ; localCoherence = KLLCT.canonicalKnownLimitsLocalCoherenceTheorem
+    ; extendedLocalRecovery = CSC.canonicalKnownLimitsExtendedLocalRecoveryTheorem
+    ; localPhysicsCoherence = CSC.canonicalKnownLimitsLocalPhysicsCoherenceTheorem
+    ; recoveredLocalRegime = CSC.canonicalKnownLimitsRecoveredLocalRegimeTheorem
+    ; completeLocalRegime = CSC.canonicalKnownLimitsCompleteLocalRegimeTheorem
+    ; recoveredDynamics = CSC.canonicalKnownLimitsRecoveredDynamicsTheorem
+    ; recoveredObservables = CSC.canonicalKnownLimitsRecoveredObservablesTheorem
+    ; recoveredObservableGeometry =
+        CSC.canonicalKnownLimitsRecoveredObservableGeometryTheorem
+    ; geometryConsumer = CSC.canonicalGeometryConsumer
+    ; observableConsumer = CSC.canonicalObservableConsumer
+    ; regimeConsumer = CSC.canonicalRegimeConsumer
+    ; selfVerdict = CSC.canonicalSelfVerdict
+    ; admissibleVerdict = CSC.canonicalAdmissibleVerdict
+    ; negativeControlVerdict = CSC.canonicalNegativeControlVerdict
+    }

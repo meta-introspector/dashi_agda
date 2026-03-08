@@ -53,6 +53,14 @@ Immediate next step after this snapshot:
   add a finite orbit-shell generating series for the theorem-backed shift
   profile, then compare `B₄` at the series level before attempting any
   admissible promotion.
+- current symmetry-side prototype after that:
+  finite graded shell series and twined fixed-point traces are now present for
+  the shift signed action and the `B₄` Weyl action, while the wave lift
+  remains a prototype grading adapter only.
+- next symmetry-side hardening step:
+  broaden twiner coverage and promote the current graded/twined report into a
+  richer comparison summary, while keeping the whole track explicitly
+  pre-moonshine and non-modular.
 - current theorem object:
   use the bounded one-minus shell family plus the landed parametric `m`
   shell-1 theorem as the baseline shell-neighborhood story, then move to
@@ -98,9 +106,40 @@ Immediate next step after this snapshot:
   both scoped runway theorems now sit on the canonical Stage C path; the next
   widening step is beyond these scoped slices.
 - current widened target:
-  the next widening step is now:
-  a carrier-parametric gauge/constraint theorem,
-  and a local causal-effective propagation theorem.
+  the carrier-parametric gauge/constraint theorem is now landed with a second
+  realized carrier instance,
+  and the local causal-effective propagation theorem is now landed with a
+  further local geometry-transport theorem.
+- next widening step:
+  add a package-parametric gauge-constraint bridge theorem on the algebra
+  side,
+  and add a local causal-geometry coherence theorem beyond the current local
+  geometry-transport slice on the known-limits side.
+- Those are now landed.
+  Current newest physics-first widening is also landed:
+  a stronger extended local recovery theorem beyond the current coherence
+  slice,
+  plus a stronger algebraic-coherence theorem on top of the current package
+  layer.
+- That next physics-first widening is now landed:
+  one stronger recovered-local-regime theorem above the current local
+  physics-coherence slice,
+  and one stronger algebraic-stability theorem above the current
+  algebraic-coherence slice.
+- That next physics-first cycle is now landed:
+  one stronger recovered-dynamics theorem above the current complete-local
+  regime slice,
+  one stronger algebraic-consistency theorem above the current
+  algebraic-bundle/stability slice,
+  one geometry-facing downstream consumer on the widened canonical ladder,
+  and one richer moonshine comparison bundle on the prototype track.
+- Current next physics-first cycle:
+  one stronger recovered-observable-geometry theorem above the current
+  recovered-observables slice,
+  one stronger algebraic persistence theorem above the current
+  admissibility-transport slice,
+  one regime-facing downstream consumer on the widened canonical ladder,
+  and one richer moonshine orbit-trace summary on the prototype track.
 
 ## P1 — Runnable Forward Benchmarks
 

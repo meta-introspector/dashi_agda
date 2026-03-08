@@ -68,11 +68,39 @@ Current theorem status:
   and a scoped spin/local-Lorentz bridge theorem on top of the local recovery
   and effective-geometry baseline.
 - Those two scoped runway theorems now live on the canonical Stage C path.
-- The next widening beyond those scoped slices is now:
+- The current widening beyond those scoped slices is now landed:
   a carrier-parametric gauge/constraint theorem with the current concrete
-  carrier as its first instance,
-  and a local causal-effective propagation theorem on the current recovery
-  baseline.
+  carrier as its first instance, plus a second realized carrier instance,
+  and a local causal-effective propagation theorem with a further local
+  geometry-transport theorem on the current recovery baseline.
+- Next widening step:
+  a package-parametric gauge-constraint bridge theorem on top of the current
+  carrier-parametric theorem, and a local causal-geometry coherence theorem
+  above the transport slice.
+- Those widening slices are now landed.
+  Current newest physics-first widening is also landed:
+  a stronger local recovery theorem beyond the current coherence slice,
+  plus a stronger algebraic-coherence theorem beyond the current
+  package-parametric bridge.
+- That next physics-first widening is now landed:
+  one stronger local recovered-regime theorem on top of the current local
+  physics coherence slice,
+  and one stronger algebraic-stability theorem on top of the current
+  algebraic-coherence slice.
+- That next physics-first cycle is now landed:
+  one stronger recovered-dynamics theorem above the current complete-local
+  regime slice,
+  one stronger algebraic-consistency theorem above the current
+  algebraic-bundle/stability slice,
+  one geometry-facing downstream consumer on the widened canonical ladder,
+  and one richer moonshine comparison bundle on the prototype track.
+- Current next physics-first cycle:
+  one stronger recovered-observable-geometry theorem above the current
+  recovered-observables slice,
+  one stronger algebraic persistence theorem above the current
+  admissibility-transport slice,
+  one regime-facing downstream consumer on the widened canonical ladder,
+  and one richer moonshine orbit-trace summary on the prototype track.
 - Next algebraic milestone:
   add a finite orbit-shell generating series for the current shift profile,
   then use it for standalone `B₄` comparison and a prototype wave lift.
@@ -82,6 +110,15 @@ Current theorem status:
   only ask Niemeier/umbral-style questions if a genuine root-lattice shell
   realization appears;
   reserve Monster/Moonshine language for a future graded-module / trace bridge.
+- Current moonshine-facing prototype:
+  finite graded shell series and twined fixed-point traces are now present for
+  the shift signed action and the standalone `B₄` Weyl action; the wave lift
+  remains a prototype grading adapter rather than a theorem-bearing trace
+  module.
+  Richer twiner libraries and a first graded/twined comparison report surface
+  are now landed.
+  A richer comparison bundle now sits over the existing detailed report and
+  wave summary while staying pre-moonshine and non-modular.
 - Next theorem milestone:
   the bounded one-minus shell family is now the base layer and the parametric
   shell-1 theorem is now in place; the next theorem milestone is a second

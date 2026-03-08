@@ -73,10 +73,34 @@
     one-minus shell-family theorem for `m = 2..8`, then push to a parametric
     `m` family layer, then a full parametric theorem, before resuming the
     search for another Lorentz-family realization.
-  - current closure hardening target:
-    keep the canonical Stage C path and the empirical full adapter on the same
-    concrete constraint-closure witness, instead of leaving the empirical full
-    adapter on a trivial compatibility shim.
+- current closure hardening target:
+  keep the canonical Stage C path and the empirical full adapter on the same
+  concrete constraint-closure witness, instead of leaving the empirical full
+  adapter on a trivial compatibility shim.
+- current newest physics-first widening now landed:
+  stronger local recovery beyond the current coherence slice with a broader
+  extended local recovery theorem,
+  plus a stronger algebraic-coherence theorem beyond the current
+  package-parametric bridge.
+- that next physics-first widening is now landed:
+  one stronger recovered-local-regime theorem above the current local
+  physics-coherence slice,
+  and one stronger algebraic-stability theorem above the current
+  algebraic-coherence slice.
+- that next physics-first cycle is now landed:
+  one stronger recovered-dynamics theorem above the current complete-local
+  regime slice,
+  one stronger algebraic-consistency theorem above the current
+  algebraic-bundle/stability slice,
+  one geometry-facing downstream consumer on the canonical ladder,
+  and one richer moonshine comparison bundle on the prototype track.
+- current next physics-first cycle:
+  one stronger recovered-observable-geometry theorem above the current
+  recovered-observables slice,
+  one stronger algebraic persistence theorem above the current
+  admissibility-transport slice,
+  one regime-facing downstream consumer on the canonical ladder,
+  and one richer moonshine orbit-trace summary on the prototype track.
   - current closure-hardening gain:
     `DASHI.Physics.Closure.CanonicalStageC` now makes the authoritative
     minimum-credible closure path explicit in code, while legacy/prototype
@@ -361,8 +385,26 @@ Added:
   scoped gauge-contract theorem first,
   then scoped spin/local-Lorentz bridge theorem.
 - Both scoped runway theorems are now landed on the canonical Stage C path.
-- The next widening beyond those scoped slices is now:
+- The next widening beyond those scoped slices is now landed:
   a carrier-parametric gauge/constraint theorem with the current concrete
   closure carrier as its first instance,
+  a second realized carrier instance for that theorem,
   and a local causal-effective propagation theorem on the current recovery
-  baseline.
+  baseline, plus a further local geometry-transport theorem.
+- The next widening after that is:
+  a package-parametric gauge-constraint bridge theorem,
+  plus a local causal-geometry coherence theorem above the transport slice.
+- Those widening slices are now landed.
+  The next physics-first widening is:
+  a broader local recovery theorem beyond the current coherence slice,
+  followed by a less toy algebraic closure theorem beyond the current
+  package-parametric bridge.
+- Current moonshine-facing prototype:
+  finite graded shell series,
+  finite signed/Weyl shell actions,
+  twined fixed-point traces for shift and `B₄`,
+  and a wave grading adapter kept explicitly prototype-only.
+- Richer twiner libraries and a first graded/twined comparison report are now
+  landed; next hardening is broader twiner coverage and a richer comparison
+  summary, then a stronger wave-grading summary, still without any modularity
+  or umbral claim.

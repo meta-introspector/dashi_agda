@@ -2,6 +2,19 @@
 
 ## 2026-03-08
 
+- added `ParametricAlgebraicAdmissibilityTransportTheorem` as the next
+  algebraic widening above the current algebraic-consistency layer,
+- added `KnownLimitsRecoveredObservablesTheorem` as the next local-recovery
+  widening above the current recovered-dynamics slice,
+- added `CanonicalObservableConsumer` so the widened canonical Stage C ladder
+  now has an observable-facing downstream consumer in addition to the spin,
+  propagation, and geometry consumers,
+- added `MoonshineTraceFamilySummary` as a richer finite graded/twined summary
+  on the parallel pre-moonshine track,
+- threaded those new slices through `CanonicalStageC`,
+  `CanonicalStageCTheoremBundle`, `CanonicalStageCSummaryBundle`,
+  `PhysicsClosureValidationSummary`, `PhysicsClosureSummary`, and
+  `Everything.agda`,
 - clarified the safe symmetry-interpretation order for the orbit-shell story:
   Weyl/root-system/theta-like first,
   Niemeier/umbral-style only after a genuine root-lattice shell realization,
@@ -31,6 +44,34 @@
 - rewired `SpinLocalLorentzBridgeTheorem` to depend on the stronger local
   causal-propagation theorem rather than directly on the older local/effective
   geometry pair,
+- added `ParametricAlgebraicClosureTheorem` as a stronger algebraic widening
+  over the current canonical gauge-package layer,
+- added `KnownLimitsExtendedLocalRecoveryTheorem` and a
+  propagation-facing canonical consumer so the local physics runway no longer
+  stops at the current coherence slice,
+- added `ParametricAlgebraicCoherenceTheorem` as a stronger algebraic
+  widening above the current package-parametric bridge,
+- added `KnownLimitsLocalPhysicsCoherenceTheorem` as a stronger local
+  recovery widening above the current extended local recovery slice,
+- added `ParametricAlgebraicStabilityTheorem` as a further algebraic widening
+  above the current algebraic-coherence layer,
+- added `KnownLimitsRecoveredLocalRegimeTheorem` as a further local-recovery
+  widening above the current local-physics-coherence layer,
+- added `ParametricAlgebraicConsistencyTheorem` as a stronger algebraic
+  widening above the current algebraic-bundle/stability layer,
+- added `KnownLimitsRecoveredDynamicsTheorem` as a stronger local widening
+  above the current complete-local-regime layer,
+- added `CanonicalGeometryConsumer` so the widened canonical Stage C ladder now
+  has a geometry-facing downstream consumer in addition to the spin and
+  propagation consumers,
+- added `MoonshinePrototypeComparisonBundle` as a richer prototype-only bundle
+  over the existing detailed twined report and wave summary,
+- threaded those widened theorem slices through `CanonicalStageC`,
+  `CanonicalStageCTheoremBundle`, `CanonicalStageCSummaryBundle`,
+  `PhysicsClosureValidationSummary`, and `PhysicsClosureSummary`,
+- added richer moonshine-side summary surfaces:
+  `WaveGradedShellPrototypeSummary` and `TwinedComparisonSummary`,
+  keeping the track explicitly finite, graded/twined, and prototype-only,
 - added a dedicated design note for the minimum acceptable physics-closure
   boundary,
 - reorganized `TODO.md` into theorem/dynamics, observable/prediction, shared
@@ -219,3 +260,34 @@
 - added a scoped canonical gauge-contract theorem on top of the concrete
   closure baseline, and a scoped spin/local-Lorentz bridge theorem on top of
   the local recovery/effective-geometry baseline.
+- added finite graded orbit-shell series for the shift signed action and the
+  standalone `B₄` Weyl action.
+- added finite shell actions for the shift signed action and the standalone
+  `B₄` Weyl action.
+- added finite twined shell traces via fixed-point counts for both shift and
+  `B₄`, including identity and non-identity examples.
+- added a wave-graded shell-module/trace adapter as a prototype-only grading
+  bridge, explicitly outside the canonical Stage C closure path.
+- updated docs and summary surfaces to classify this as pre-moonshine
+  Weyl/theta-like infrastructure rather than a modularity, umbral, or Monster
+  claim.
+- added a second realized carrier instance for the carrier-parametric
+  gauge/constraint theorem.
+- added a local geometry-transport theorem above the current local
+  causal-effective propagation slice and rewired the spin/local-Lorentz bridge
+  to sit downstream of it.
+- added a canonical Stage C theorem bundle aggregating the current runway
+  theorem ladder.
+- added richer finite twiner libraries for shift and `B₄`, plus a first
+  graded/twined comparison report surface for the pre-moonshine track.
+- added a package-parametric gauge-constraint bridge theorem layer on top of
+  the existing carrier-parametric gauge theorem, plus a realized-instances
+  report covering the current primary and secondary carriers.
+- added a local causal-geometry coherence theorem above the current
+  geometry-transport slice and rewired the spin/local-Lorentz bridge to sit
+  downstream of that stronger local theorem.
+- added a canonical Stage C summary bundle as a read-only aggregation surface
+  over the authoritative theorem/validation ladder.
+- widened the pre-moonshine comparison layer with additional labeled twiner
+  cases for shift and `B₄`, plus a richer detailed graded/twined comparison
+  report.

@@ -11,6 +11,16 @@ import DASHI.Physics.Closure.CanonicalGaugeContractTheorem as CGCT
 import DASHI.Physics.Closure.CanonicalGaugeConstraintBridgeTheorem as CGCBT
 import DASHI.Physics.Closure.CanonicalConstraintGaugePackage as CCGP
 import DASHI.Physics.Closure.ParametricGaugeConstraintTheorem as PGCT
+import DASHI.Physics.Closure.SecondaryConstraintGaugeInstance as SCGI
+import DASHI.Physics.Closure.ParametricGaugeConstraintBridgeTheorem as PGCBT
+import DASHI.Physics.Closure.ParametricAlgebraicClosureTheorem as PACT
+import DASHI.Physics.Closure.ParametricAlgebraicCoherenceTheorem as PACTC
+import DASHI.Physics.Closure.ParametricAlgebraicStabilityTheorem as PACTS
+import DASHI.Physics.Closure.ParametricAlgebraicClosureBundleTheorem as PACTB
+import DASHI.Physics.Closure.ParametricAlgebraicConsistencyTheorem as PACTX
+import DASHI.Physics.Closure.ParametricAlgebraicAdmissibilityTransportTheorem as PACTAT
+import DASHI.Physics.Closure.ParametricAlgebraicPersistenceTheorem as PACTP
+import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI
 import DASHI.Algebra.GaugeGroupContract as GGC
 import DASHI.Physics.Constraints.ConcreteInstance as CI
 import DASHI.Physics.Closure.CanonicalSpinDiracConsumer as CSDC
@@ -20,9 +30,22 @@ import DASHI.Physics.Closure.KnownLimitsEffectiveGeometryTheorem as KLET
 import DASHI.Physics.Closure.KnownLimitsLocalRecoveryTheorem as KLRT
 import DASHI.Physics.Closure.KnownLimitsRecoveryPackage as KLRP
 import DASHI.Physics.Closure.KnownLimitsRecoveryWitness as KLRW
+import DASHI.Physics.Closure.KnownLimitsGeometryTransportTheorem as KLGT
+import DASHI.Physics.Closure.KnownLimitsLocalCoherenceTheorem as KLLCT
+import DASHI.Physics.Closure.KnownLimitsExtendedLocalRecoveryTheorem as KLER
+import DASHI.Physics.Closure.KnownLimitsLocalPhysicsCoherenceTheorem as KLLPC
+import DASHI.Physics.Closure.KnownLimitsRecoveredLocalRegimeTheorem as KLRLR
+import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem as KLCLR
+import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem as KLRDT
+import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem as KLROT
+import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem as KLROG
 import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
 import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem as KLPST
 import DASHI.Physics.Closure.KnownLimitsCausalPropagationTheorem as KLCPT
+import DASHI.Physics.Closure.CanonicalPropagationConsumer as CPC
+import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
+import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
+import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureShiftInstance as MCCSI
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation as MCPCV
@@ -70,6 +93,108 @@ canonicalParametricGaugeConstraintTheorem :
 canonicalParametricGaugeConstraintTheorem =
   PGCT.canonicalParametricGaugeConstraintTheorem
 
+secondaryConstraintGaugePackage :
+  CCGP.CanonicalConstraintGaugePackage
+secondaryConstraintGaugePackage = SCGI.secondaryConstraintGaugePackage
+
+secondaryParametricGaugeConstraintTheorem :
+  PGCT.ParametricGaugeConstraintTheorem secondaryConstraintGaugePackage
+secondaryParametricGaugeConstraintTheorem =
+  SCGI.secondaryParametricGaugeConstraintTheorem
+
+canonicalParametricGaugeConstraintBridgeTheorem :
+  PGCBT.ParametricGaugeConstraintBridgeTheorem canonicalConstraintGaugePackage
+canonicalParametricGaugeConstraintBridgeTheorem =
+  PGCBT.parametricGaugeConstraintBridgeTheorem canonicalConstraintGaugePackage
+
+secondaryParametricGaugeConstraintBridgeTheorem :
+  PGCBT.ParametricGaugeConstraintBridgeTheorem secondaryConstraintGaugePackage
+secondaryParametricGaugeConstraintBridgeTheorem =
+  PGCBT.parametricGaugeConstraintBridgeTheorem secondaryConstraintGaugePackage
+
+canonicalGaugeConstraintRealizedInstances :
+  CGCRI.CanonicalGaugeConstraintRealizedInstances
+canonicalGaugeConstraintRealizedInstances =
+  CGCRI.canonicalGaugeConstraintRealizedInstances
+
+canonicalParametricAlgebraicClosureTheorem :
+  PACT.ParametricAlgebraicClosureTheorem canonicalConstraintGaugePackage
+canonicalParametricAlgebraicClosureTheorem =
+  PACT.parametricAlgebraicClosureTheorem canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicClosureTheorem :
+  PACT.ParametricAlgebraicClosureTheorem secondaryConstraintGaugePackage
+secondaryParametricAlgebraicClosureTheorem =
+  PACT.parametricAlgebraicClosureTheorem secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicCoherenceTheorem :
+  PACTC.ParametricAlgebraicCoherenceTheorem canonicalConstraintGaugePackage
+canonicalParametricAlgebraicCoherenceTheorem =
+  PACTC.parametricAlgebraicCoherenceTheorem canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicCoherenceTheorem :
+  PACTC.ParametricAlgebraicCoherenceTheorem secondaryConstraintGaugePackage
+secondaryParametricAlgebraicCoherenceTheorem =
+  PACTC.parametricAlgebraicCoherenceTheorem secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicStabilityTheorem :
+  PACTS.ParametricAlgebraicStabilityTheorem canonicalConstraintGaugePackage
+canonicalParametricAlgebraicStabilityTheorem =
+  PACTS.parametricAlgebraicStabilityTheorem canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicStabilityTheorem :
+  PACTS.ParametricAlgebraicStabilityTheorem secondaryConstraintGaugePackage
+secondaryParametricAlgebraicStabilityTheorem =
+  PACTS.parametricAlgebraicStabilityTheorem secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicClosureBundleTheorem :
+  PACTB.ParametricAlgebraicClosureBundleTheorem
+    canonicalConstraintGaugePackage
+canonicalParametricAlgebraicClosureBundleTheorem =
+  PACTB.parametricAlgebraicClosureBundleTheorem canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicClosureBundleTheorem :
+  PACTB.ParametricAlgebraicClosureBundleTheorem
+    secondaryConstraintGaugePackage
+secondaryParametricAlgebraicClosureBundleTheorem =
+  PACTB.parametricAlgebraicClosureBundleTheorem secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicConsistencyTheorem :
+  PACTX.ParametricAlgebraicConsistencyTheorem canonicalConstraintGaugePackage
+canonicalParametricAlgebraicConsistencyTheorem =
+  PACTX.parametricAlgebraicConsistencyTheorem canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicConsistencyTheorem :
+  PACTX.ParametricAlgebraicConsistencyTheorem secondaryConstraintGaugePackage
+secondaryParametricAlgebraicConsistencyTheorem =
+  PACTX.parametricAlgebraicConsistencyTheorem secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicAdmissibilityTransportTheorem :
+  PACTAT.ParametricAlgebraicAdmissibilityTransportTheorem
+    canonicalConstraintGaugePackage
+canonicalParametricAlgebraicAdmissibilityTransportTheorem =
+  PACTAT.parametricAlgebraicAdmissibilityTransportTheorem
+    canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicAdmissibilityTransportTheorem :
+  PACTAT.ParametricAlgebraicAdmissibilityTransportTheorem
+    secondaryConstraintGaugePackage
+secondaryParametricAlgebraicAdmissibilityTransportTheorem =
+  PACTAT.parametricAlgebraicAdmissibilityTransportTheorem
+    secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicPersistenceTheorem :
+  PACTP.ParametricAlgebraicPersistenceTheorem
+    canonicalConstraintGaugePackage
+canonicalParametricAlgebraicPersistenceTheorem =
+  PACTP.parametricAlgebraicPersistenceTheorem canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicPersistenceTheorem :
+  PACTP.ParametricAlgebraicPersistenceTheorem
+    secondaryConstraintGaugePackage
+secondaryParametricAlgebraicPersistenceTheorem =
+  PACTP.parametricAlgebraicPersistenceTheorem secondaryConstraintGaugePackage
+
 canonicalKnownLimitsStatus : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatus = KLS.canonicalKnownLimitsStatus
 
@@ -99,6 +224,51 @@ canonicalKnownLimitsCausalPropagationTheorem :
 canonicalKnownLimitsCausalPropagationTheorem =
   KLCPT.canonicalKnownLimitsCausalPropagationTheorem
 
+canonicalKnownLimitsGeometryTransportTheorem :
+  KLGT.KnownLimitsGeometryTransportTheorem
+canonicalKnownLimitsGeometryTransportTheorem =
+  KLGT.canonicalKnownLimitsGeometryTransportTheorem
+
+canonicalKnownLimitsLocalCoherenceTheorem :
+  KLLCT.KnownLimitsLocalCoherenceTheorem
+canonicalKnownLimitsLocalCoherenceTheorem =
+  KLLCT.canonicalKnownLimitsLocalCoherenceTheorem
+
+canonicalKnownLimitsExtendedLocalRecoveryTheorem :
+  KLER.KnownLimitsExtendedLocalRecoveryTheorem
+canonicalKnownLimitsExtendedLocalRecoveryTheorem =
+  KLER.canonicalKnownLimitsExtendedLocalRecoveryTheorem
+
+canonicalKnownLimitsLocalPhysicsCoherenceTheorem :
+  KLLPC.KnownLimitsLocalPhysicsCoherenceTheorem
+canonicalKnownLimitsLocalPhysicsCoherenceTheorem =
+  KLLPC.canonicalKnownLimitsLocalPhysicsCoherenceTheorem
+
+canonicalKnownLimitsRecoveredLocalRegimeTheorem :
+  KLRLR.KnownLimitsRecoveredLocalRegimeTheorem
+canonicalKnownLimitsRecoveredLocalRegimeTheorem =
+  KLRLR.canonicalKnownLimitsRecoveredLocalRegimeTheorem
+
+canonicalKnownLimitsCompleteLocalRegimeTheorem :
+  KLCLR.KnownLimitsCompleteLocalRegimeTheorem
+canonicalKnownLimitsCompleteLocalRegimeTheorem =
+  KLCLR.canonicalKnownLimitsCompleteLocalRegimeTheorem
+
+canonicalKnownLimitsRecoveredDynamicsTheorem :
+  KLRDT.KnownLimitsRecoveredDynamicsTheorem
+canonicalKnownLimitsRecoveredDynamicsTheorem =
+  KLRDT.canonicalKnownLimitsRecoveredDynamicsTheorem
+
+canonicalKnownLimitsRecoveredObservablesTheorem :
+  KLROT.KnownLimitsRecoveredObservablesTheorem
+canonicalKnownLimitsRecoveredObservablesTheorem =
+  KLROT.canonicalKnownLimitsRecoveredObservablesTheorem
+
+canonicalKnownLimitsRecoveredObservableGeometryTheorem :
+  KLROG.KnownLimitsRecoveredObservableGeometryTheorem
+canonicalKnownLimitsRecoveredObservableGeometryTheorem =
+  KLROG.canonicalKnownLimitsRecoveredObservableGeometryTheorem
+
 canonicalSpinLocalLorentzBridge :
   SLLB.SpinLocalLorentzBridge canonicalClosure
 canonicalSpinLocalLorentzBridge = SLLB.canonicalSpinLocalLorentzBridge
@@ -112,6 +282,22 @@ canonicalSpinDiracConsumer :
   CSDC.SpinDiracConsumerFromMinimal canonicalClosure
 canonicalSpinDiracConsumer =
   CSDC.spinDiracConsumerFromMinimal canonicalClosure
+
+canonicalPropagationConsumer :
+  CPC.PropagationConsumerFromMinimal canonicalClosure
+canonicalPropagationConsumer = CPC.canonicalPropagationConsumer
+
+canonicalGeometryConsumer :
+  CGC.GeometryConsumerFromMinimal canonicalClosure
+canonicalGeometryConsumer = CGC.canonicalGeometryConsumer
+
+canonicalObservableConsumer :
+  COC.ObservableConsumerFromMinimal canonicalClosure
+canonicalObservableConsumer = COC.canonicalObservableConsumer
+
+canonicalRegimeConsumer :
+  CRC.RegimeConsumerFromMinimal canonicalClosure
+canonicalRegimeConsumer = CRC.canonicalRegimeConsumer
 
 canonicalClosureStatus : CSS.ClosureSurfaceStatus
 canonicalClosureStatus = CSS.canonicalProved

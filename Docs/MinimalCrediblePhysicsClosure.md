@@ -195,11 +195,45 @@ Current admissible candidate:
   and a scoped spin/local-Lorentz bridge theorem for the canonical
   spin-facing consumer.
 - both of those scoped runway theorems now live on the canonical Stage C path.
-- the next widening beyond those scoped slices is now:
+- the widening beyond those scoped slices is now landed:
   a carrier-parametric gauge/constraint theorem with the current canonical
   concrete carrier as its first realized instance,
-  and a local causal-effective propagation theorem that sits above the current
+  a second realized carrier instance for that theorem,
+  a local causal-effective propagation theorem,
+  and a local geometry-transport theorem above the current
   local recovery/effective-geometry slice.
+- next widening:
+  a package-parametric gauge-constraint bridge theorem,
+  and a local causal-geometry coherence theorem above the current transport
+  slice.
+- Those widening slices are now landed.
+  Current newest physics-first widening is also landed:
+  broaden local recovery beyond the current coherence slice with a stronger
+  extended local recovery theorem,
+  and broaden the algebra side beyond the current package-parametric bridge
+  with a stronger algebraic-coherence theorem.
+- That next physics-first widening is now landed:
+  add one stronger recovered-local-regime theorem above the current local
+  physics-coherence slice,
+  and one stronger algebraic-stability theorem above the current
+  algebraic-coherence slice.
+- That next physics-first cycle is now landed:
+  add one stronger recovered-dynamics theorem above the current
+  complete-local-regime slice,
+  add one stronger algebraic-consistency theorem above the current
+  algebraic-bundle/stability slice,
+  attach one geometry-facing downstream consumer to the widened canonical
+  ladder,
+  and keep moonshine hardening secondary through a richer comparison bundle.
+- Current next physics-first cycle:
+  add one stronger recovered-observable-geometry theorem above the current
+  recovered-observables slice,
+  add one stronger algebraic persistence theorem above the current
+  admissibility-transport slice,
+  attach one regime-facing downstream consumer to the widened canonical
+  ladder,
+  and keep moonshine hardening secondary through a richer orbit-trace
+  summary.
 
 ## Next Mathematical Realization Target
 
@@ -283,6 +317,19 @@ Immediate targets:
 This series work is intended to strengthen comparison and future grading
 questions. It does **not** by itself upgrade the repo to a theorem-backed
 theta-series or moonshine claim.
+
+The current prototype layer after this finite series is:
+
+- finite graded shell series for shift and `B₄`,
+- finite twined traces for signed/Weyl actions on graded shell pieces,
+- and a wave-facing graded adapter that remains explicitly prototype-only.
+
+This is now present as a Weyl/theta-like pre-moonshine layer, not as a closure
+theorem or a modularity claim.
+
+The next prototype hardening step is broader twiner coverage, a richer
+graded/twined comparison summary, and then a stronger wave-grading summary,
+while still avoiding any umbral or Monster claim.
 
 ## Current Validation Snapshot
 

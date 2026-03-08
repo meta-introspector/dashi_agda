@@ -60,6 +60,17 @@ open import DASHI.Physics.OrbitShellGeneratingSeries as OSG public
   using (OrbitShellSeries; SizeMultiplicity)
 open import DASHI.Physics.OrbitShellGeneratingSeriesShift as OSGS
 open import DASHI.Physics.OrbitShellGeneratingSeriesRootSystemB4 as OSGB4
+open import DASHI.Physics.Moonshine.FiniteGradedShellSeries as MFGSS public
+  using (FiniteGradedShellSeries)
+import DASHI.Physics.Moonshine.FiniteGradedShellSeriesShift as MFGSSS
+import DASHI.Physics.Moonshine.FiniteGradedShellSeriesRootSystemB4 as MFGSSB4
+open import DASHI.Physics.Moonshine.FiniteTwinedShellTrace as MFTST public
+  using (FiniteTwinedShellTrace)
+import DASHI.Physics.Moonshine.FiniteTwinedShellTraceShift as MFTSTS
+import DASHI.Physics.Moonshine.FiniteTwinedShellTraceRootSystemB4 as MFTSTB4
+open import DASHI.Physics.Moonshine.WaveGradedShellModule as MWGSM public
+  using (WaveGradedShellModule)
+import DASHI.Physics.Moonshine.WaveGradedShellTracePrototype as MWGSTP
 open import DASHI.Physics.ShellNeighborhoodClass as SNC public
   using (ShellNeighborhoodClass)
 open import DASHI.Physics.OneMinusShellFamilyParametric as OMSFP
@@ -88,6 +99,26 @@ open import DASHI.Physics.Closure.CanonicalConstraintGaugePackage as CCGP public
   using (CanonicalConstraintGaugePackage)
 open import DASHI.Physics.Closure.ParametricGaugeConstraintTheorem as PGCT public
   using (ParametricGaugeConstraintTheorem)
+open import DASHI.Physics.Closure.SecondaryConstraintGaugeInstance as SCGI public
+  using (secondaryConstraintGaugePackage; secondaryParametricGaugeConstraintTheorem)
+open import DASHI.Physics.Closure.ParametricGaugeConstraintBridgeTheorem as PGCBT public
+  using (ParametricGaugeConstraintBridgeTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicClosureTheorem as PACT public
+  using (ParametricAlgebraicClosureTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicCoherenceTheorem as PACTC public
+  using (ParametricAlgebraicCoherenceTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicStabilityTheorem as PACTS public
+  using (ParametricAlgebraicStabilityTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicClosureBundleTheorem as PACTB public
+  using (ParametricAlgebraicClosureBundleTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicConsistencyTheorem as PACTX public
+  using (ParametricAlgebraicConsistencyTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicAdmissibilityTransportTheorem as PACTAT public
+  using (ParametricAlgebraicAdmissibilityTransportTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicPersistenceTheorem as PACTP public
+  using (ParametricAlgebraicPersistenceTheorem)
+open import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI public
+  using (CanonicalGaugeConstraintRealizedInstances)
 open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
   using
     ( KnownLimitsStatus
@@ -110,6 +141,8 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveryWitness as KLRW public
   using (KnownLimitsRecoveryWitnessPlus)
 open import DASHI.Physics.Closure.CanonicalSpinDiracConsumer as CSDC public
   using (SpinDiracConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalPropagationConsumer as CPC public
+  using (PropagationConsumerFromMinimal)
 open import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB public
   using (SpinLocalLorentzBridge)
 open import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem as KLPST public
@@ -118,6 +151,44 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveryPackage as KLRP public
   using (KnownLimitsRecoveryPackage)
 open import DASHI.Physics.Closure.KnownLimitsCausalPropagationTheorem as KLCPT public
   using (KnownLimitsCausalPropagationTheorem)
+open import DASHI.Physics.Closure.KnownLimitsGeometryTransportTheorem as KLGT public
+  using (KnownLimitsGeometryTransportTheorem)
+open import DASHI.Physics.Closure.KnownLimitsLocalCoherenceTheorem as KLLCT public
+  using (KnownLimitsLocalCoherenceTheorem)
+open import DASHI.Physics.Closure.KnownLimitsExtendedLocalRecoveryTheorem as KLER public
+  using (KnownLimitsExtendedLocalRecoveryTheorem)
+open import DASHI.Physics.Closure.KnownLimitsLocalPhysicsCoherenceTheorem as KLLPC public
+  using (KnownLimitsLocalPhysicsCoherenceTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredLocalRegimeTheorem as KLRLR public
+  using (KnownLimitsRecoveredLocalRegimeTheorem)
+open import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem as KLCLR public
+  using (KnownLimitsCompleteLocalRegimeTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem as KLRDT public
+  using (KnownLimitsRecoveredDynamicsTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem as KLROT public
+  using (KnownLimitsRecoveredObservablesTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem as KLROG public
+  using (KnownLimitsRecoveredObservableGeometryTheorem)
+open import DASHI.Physics.Closure.CanonicalStageCTheoremBundle as CSTB public
+  using (CanonicalStageCTheoremBundle)
+open import DASHI.Physics.Closure.CanonicalStageCSummaryBundle as CSSB public
+  using (CanonicalStageCSummaryBundle)
+open import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC public
+  using (GeometryConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC public
+  using (ObservableConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC public
+  using (RegimeConsumerFromMinimal)
+open import DASHI.Physics.Moonshine.FiniteTwinedTraceDetailedReport as MFTDR public
+  using (FiniteTwinedTraceDetailedReport)
+open import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary as MWGSPS public
+  using (WaveGradedShellPrototypeSummary)
+open import DASHI.Physics.Moonshine.TwinedComparisonSummary as MTCS public
+  using (TwinedComparisonSummary)
+open import DASHI.Physics.Moonshine.MoonshinePrototypeComparisonBundle as MPCB public
+  using (MoonshinePrototypeComparisonBundle)
+open import DASHI.Physics.Moonshine.MoonshineTraceFamilySummary as MTFS public
+  using (MoonshineTraceFamilySummary)
 
 validationBundle : MCPCV.MinimalCrediblePhysicsClosureValidation
 validationBundle = MCPCVS.minimumCredibleClosureValidationShift
@@ -156,6 +227,118 @@ canonicalParametricGaugeConstraintTheoremSummary :
 canonicalParametricGaugeConstraintTheoremSummary =
   CSC.canonicalParametricGaugeConstraintTheorem
 
+secondaryConstraintGaugePackageSummary :
+  CCGP.CanonicalConstraintGaugePackage
+secondaryConstraintGaugePackageSummary =
+  CSC.secondaryConstraintGaugePackage
+
+secondaryParametricGaugeConstraintTheoremSummary :
+  PGCT.ParametricGaugeConstraintTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricGaugeConstraintTheoremSummary =
+  CSC.secondaryParametricGaugeConstraintTheorem
+
+canonicalParametricGaugeConstraintBridgeTheoremSummary :
+  PGCBT.ParametricGaugeConstraintBridgeTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricGaugeConstraintBridgeTheoremSummary =
+  CSC.canonicalParametricGaugeConstraintBridgeTheorem
+
+secondaryParametricGaugeConstraintBridgeTheoremSummary :
+  PGCBT.ParametricGaugeConstraintBridgeTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricGaugeConstraintBridgeTheoremSummary =
+  CSC.secondaryParametricGaugeConstraintBridgeTheorem
+
+canonicalGaugeConstraintRealizedInstancesSummary :
+  CGCRI.CanonicalGaugeConstraintRealizedInstances
+canonicalGaugeConstraintRealizedInstancesSummary =
+  CSC.canonicalGaugeConstraintRealizedInstances
+
+canonicalParametricAlgebraicClosureTheoremSummary :
+  PACT.ParametricAlgebraicClosureTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicClosureTheoremSummary =
+  CSC.canonicalParametricAlgebraicClosureTheorem
+
+secondaryParametricAlgebraicClosureTheoremSummary :
+  PACT.ParametricAlgebraicClosureTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicClosureTheoremSummary =
+  CSC.secondaryParametricAlgebraicClosureTheorem
+
+canonicalParametricAlgebraicCoherenceTheoremSummary :
+  PACTC.ParametricAlgebraicCoherenceTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicCoherenceTheoremSummary =
+  CSC.canonicalParametricAlgebraicCoherenceTheorem
+
+secondaryParametricAlgebraicCoherenceTheoremSummary :
+  PACTC.ParametricAlgebraicCoherenceTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicCoherenceTheoremSummary =
+  CSC.secondaryParametricAlgebraicCoherenceTheorem
+
+canonicalParametricAlgebraicStabilityTheoremSummary :
+  PACTS.ParametricAlgebraicStabilityTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicStabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicStabilityTheorem
+
+secondaryParametricAlgebraicStabilityTheoremSummary :
+  PACTS.ParametricAlgebraicStabilityTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicStabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicStabilityTheorem
+
+canonicalParametricAlgebraicClosureBundleTheoremSummary :
+  PACTB.ParametricAlgebraicClosureBundleTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicClosureBundleTheoremSummary =
+  CSC.canonicalParametricAlgebraicClosureBundleTheorem
+
+secondaryParametricAlgebraicClosureBundleTheoremSummary :
+  PACTB.ParametricAlgebraicClosureBundleTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicClosureBundleTheoremSummary =
+  CSC.secondaryParametricAlgebraicClosureBundleTheorem
+
+canonicalParametricAlgebraicConsistencyTheoremSummary :
+  PACTX.ParametricAlgebraicConsistencyTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicConsistencyTheoremSummary =
+  CSC.canonicalParametricAlgebraicConsistencyTheorem
+
+secondaryParametricAlgebraicConsistencyTheoremSummary :
+  PACTX.ParametricAlgebraicConsistencyTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicConsistencyTheoremSummary =
+  CSC.secondaryParametricAlgebraicConsistencyTheorem
+
+canonicalParametricAlgebraicAdmissibilityTransportTheoremSummary :
+  PACTAT.ParametricAlgebraicAdmissibilityTransportTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicAdmissibilityTransportTheoremSummary =
+  CSC.canonicalParametricAlgebraicAdmissibilityTransportTheorem
+
+secondaryParametricAlgebraicAdmissibilityTransportTheoremSummary :
+  PACTAT.ParametricAlgebraicAdmissibilityTransportTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicAdmissibilityTransportTheoremSummary =
+  CSC.secondaryParametricAlgebraicAdmissibilityTransportTheorem
+
+canonicalParametricAlgebraicPersistenceTheoremSummary :
+  PACTP.ParametricAlgebraicPersistenceTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicPersistenceTheoremSummary =
+  CSC.canonicalParametricAlgebraicPersistenceTheorem
+
+secondaryParametricAlgebraicPersistenceTheoremSummary :
+  PACTP.ParametricAlgebraicPersistenceTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicPersistenceTheoremSummary =
+  CSC.secondaryParametricAlgebraicPersistenceTheorem
+
 canonicalKnownLimitsStatusSummary : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatusSummary = CSC.canonicalKnownLimitsStatus
 
@@ -187,6 +370,51 @@ canonicalKnownLimitsCausalPropagationTheoremSummary :
 canonicalKnownLimitsCausalPropagationTheoremSummary =
   CSC.canonicalKnownLimitsCausalPropagationTheorem
 
+canonicalKnownLimitsGeometryTransportTheoremSummary :
+  KLGT.KnownLimitsGeometryTransportTheorem
+canonicalKnownLimitsGeometryTransportTheoremSummary =
+  CSC.canonicalKnownLimitsGeometryTransportTheorem
+
+canonicalKnownLimitsLocalCoherenceTheoremSummary :
+  KLLCT.KnownLimitsLocalCoherenceTheorem
+canonicalKnownLimitsLocalCoherenceTheoremSummary =
+  CSC.canonicalKnownLimitsLocalCoherenceTheorem
+
+canonicalKnownLimitsExtendedLocalRecoveryTheoremSummary :
+  KLER.KnownLimitsExtendedLocalRecoveryTheorem
+canonicalKnownLimitsExtendedLocalRecoveryTheoremSummary =
+  CSC.canonicalKnownLimitsExtendedLocalRecoveryTheorem
+
+canonicalKnownLimitsLocalPhysicsCoherenceTheoremSummary :
+  KLLPC.KnownLimitsLocalPhysicsCoherenceTheorem
+canonicalKnownLimitsLocalPhysicsCoherenceTheoremSummary =
+  CSC.canonicalKnownLimitsLocalPhysicsCoherenceTheorem
+
+canonicalKnownLimitsRecoveredLocalRegimeTheoremSummary :
+  KLRLR.KnownLimitsRecoveredLocalRegimeTheorem
+canonicalKnownLimitsRecoveredLocalRegimeTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredLocalRegimeTheorem
+
+canonicalKnownLimitsCompleteLocalRegimeTheoremSummary :
+  KLCLR.KnownLimitsCompleteLocalRegimeTheorem
+canonicalKnownLimitsCompleteLocalRegimeTheoremSummary =
+  CSC.canonicalKnownLimitsCompleteLocalRegimeTheorem
+
+canonicalKnownLimitsRecoveredDynamicsTheoremSummary :
+  KLRDT.KnownLimitsRecoveredDynamicsTheorem
+canonicalKnownLimitsRecoveredDynamicsTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredDynamicsTheorem
+
+canonicalKnownLimitsRecoveredObservablesTheoremSummary :
+  KLROT.KnownLimitsRecoveredObservablesTheorem
+canonicalKnownLimitsRecoveredObservablesTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredObservablesTheorem
+
+canonicalKnownLimitsRecoveredObservableGeometryTheoremSummary :
+  KLROG.KnownLimitsRecoveredObservableGeometryTheorem
+canonicalKnownLimitsRecoveredObservableGeometryTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredObservableGeometryTheorem
+
 canonicalSpinLocalLorentzBridgeSummary :
   SLLB.SpinLocalLorentzBridge CSC.canonicalClosure
 canonicalSpinLocalLorentzBridgeSummary =
@@ -200,6 +428,38 @@ canonicalKnownLimitsPropagationSpinTheoremSummary =
 canonicalSpinDiracConsumerSummary :
   CSDC.SpinDiracConsumerFromMinimal CSC.canonicalClosure
 canonicalSpinDiracConsumerSummary = CSC.canonicalSpinDiracConsumer
+
+canonicalPropagationConsumerSummary :
+  CPC.PropagationConsumerFromMinimal CSC.canonicalClosure
+canonicalPropagationConsumerSummary = CSC.canonicalPropagationConsumer
+
+canonicalGeometryConsumerSummary :
+  CGC.GeometryConsumerFromMinimal CSC.canonicalClosure
+canonicalGeometryConsumerSummary = CSC.canonicalGeometryConsumer
+
+canonicalObservableConsumerSummary :
+  COC.ObservableConsumerFromMinimal CSC.canonicalClosure
+canonicalObservableConsumerSummary = CSC.canonicalObservableConsumer
+
+canonicalRegimeConsumerSummary :
+  CRC.RegimeConsumerFromMinimal CSC.canonicalClosure
+canonicalRegimeConsumerSummary = CSC.canonicalRegimeConsumer
+
+canonicalTheoremBundleSummary : CSTB.CanonicalStageCTheoremBundle
+canonicalTheoremBundleSummary = CSTB.canonicalStageCTheoremBundle
+
+canonicalSummaryBundle : CSSB.CanonicalStageCSummaryBundle
+canonicalSummaryBundle = CSSB.canonicalStageCSummaryBundle
+
+canonicalMoonshinePrototypeComparisonBundleSummary :
+  MPCB.MoonshinePrototypeComparisonBundle
+canonicalMoonshinePrototypeComparisonBundleSummary =
+  MPCB.canonicalMoonshinePrototypeComparisonBundle
+
+canonicalMoonshineTraceFamilySummary :
+  MTFS.MoonshineTraceFamilySummary
+canonicalMoonshineTraceFamilySummary =
+  MTFS.canonicalMoonshineTraceFamilySummary
 
 selfSnapshotVerdict : RPR.RigidityVerdict
 selfSnapshotVerdict = MCPCV.selfVerdict validationBundle
@@ -312,3 +572,35 @@ b4OrbitShellSeries = OSGB4.b4Series
 b4SeriesVerdict : OSSC.OrbitShellSeriesVerdict
 b4SeriesVerdict =
   B4C.B4ShellComparisonReport.seriesVerdict B4C.report
+
+shiftFiniteGradedShellSeries : MFGSS.FiniteGradedShellSeries
+shiftFiniteGradedShellSeries = MFGSSS.shiftFiniteGradedShellSeries
+
+b4FiniteGradedShellSeries : MFGSS.FiniteGradedShellSeries
+b4FiniteGradedShellSeries = MFGSSB4.b4FiniteGradedShellSeries
+
+shiftIdentityTwinedTrace : MFTST.FiniteTwinedShellTrace
+shiftIdentityTwinedTrace = MFTSTS.shiftIdentityTwinedTrace
+
+shiftNontrivialTwinedTrace : MFTST.FiniteTwinedShellTrace
+shiftNontrivialTwinedTrace = MFTSTS.shiftNontrivialTwinedTrace
+
+b4IdentityTwinedTrace : MFTST.FiniteTwinedShellTrace
+b4IdentityTwinedTrace = MFTSTB4.b4IdentityTwinedTrace
+
+b4NontrivialTwinedTrace : MFTST.FiniteTwinedShellTrace
+b4NontrivialTwinedTrace = MFTSTB4.b4NontrivialTwinedTrace
+
+finiteTwinedDetailedReport : MFTDR.FiniteTwinedTraceDetailedReport
+finiteTwinedDetailedReport = MFTDR.finiteTwinedTraceDetailedReport
+
+shiftWaveGradedShellPrototype : MWGSM.WaveGradedShellModule
+shiftWaveGradedShellPrototype = MWGSTP.shiftWaveGradedShellModulePrototype
+
+shiftWaveGradedShellPrototypeSummary :
+  MWGSPS.WaveGradedShellPrototypeSummary
+shiftWaveGradedShellPrototypeSummary =
+  MWGSPS.shiftWaveGradedShellPrototypeSummary
+
+canonicalTwinedComparisonSummary : MTCS.TwinedComparisonSummary
+canonicalTwinedComparisonSummary = MTCS.canonicalTwinedComparisonSummary
