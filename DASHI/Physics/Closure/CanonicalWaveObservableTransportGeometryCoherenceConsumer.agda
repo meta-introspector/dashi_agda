@@ -10,7 +10,7 @@ record WaveObservableTransportGeometryCoherenceConsumerFromMinimal
          (cl : MCPC.MinimalCrediblePhysicsClosure) : Setω where
   constructor waveObservableTransportGeometryCoherenceConsumer
   field
-    waveObservableTransportGeometryConsumer :
+    transportGeometryConsumer :
       CWOTGC.WaveObservableTransportGeometryConsumerFromMinimal cl
     recoveredWaveObservableTransportGeometryCoherence :
       KLRWOTGC.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem

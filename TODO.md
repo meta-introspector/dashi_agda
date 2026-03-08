@@ -329,3 +329,6 @@ Results (n=156 steps, dim=3):
 Interpretation: Case A achieved in cone layer — exact G-self-adjoint
 projection, vanishing cross-term, Pythagorean quadratic split holds to machine
 precision.
+- Current landed closure widening: wave-observable-transport-geometry regime now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime coherence now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime completeness now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.

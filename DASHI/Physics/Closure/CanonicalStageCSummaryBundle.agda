@@ -22,6 +22,10 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservablesTheorem as 
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportTheorem as KLRWOT
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem as KLRWOTG
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeTheorem as KLRWOTGR
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheorem as KLRWOTGRC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheorem as KLRWOTGRS
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheorem as KLRWOTGRC
 open import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
 open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
 open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC
@@ -33,6 +37,10 @@ open import DASHI.Physics.Closure.CanonicalWaveObservableConsumer as CWOC
 open import DASHI.Physics.Closure.CanonicalWaveObservableTransportConsumer as CWOTC
 open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryConsumer as CWOTGC
 open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryCoherenceConsumer as CWOTGCC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryRegimeConsumer as CWOTGRC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryRegimeCoherenceConsumer as CWOTGRCC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryRegimeStabilityConsumer as CWOTGRSC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryRegimeCompletenessConsumer as CWOTGRCC
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
 
 record CanonicalStageCSummaryBundle : Setω where
@@ -65,6 +73,14 @@ record CanonicalStageCSummaryBundle : Setω where
       KLRWOTG.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem
     recoveredWaveObservableTransportGeometryCoherence :
       KLRWOTGC.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
+    recoveredWaveObservableTransportGeometryRegime :
+      KLRWOTGR.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeTheorem
+    recoveredWaveObservableTransportGeometryRegimeCoherence :
+      KLRWOTGRC.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheorem
+    recoveredWaveObservableTransportGeometryRegimeStability :
+      KLRWOTGRS.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheorem
+    recoveredWaveObservableTransportGeometryRegimeCompleteness :
+      KLRWOTGRC.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheorem
     geometryConsumer : CGC.GeometryConsumerFromMinimal CSC.canonicalClosure
     observableConsumer : COC.ObservableConsumerFromMinimal CSC.canonicalClosure
     regimeConsumer : CRC.RegimeConsumerFromMinimal CSC.canonicalClosure
@@ -80,10 +96,22 @@ record CanonicalStageCSummaryBundle : Setω where
       CWOC.WaveObservableConsumerFromMinimal CSC.canonicalClosure
     waveObservableTransportConsumerSummary :
       CWOTC.WaveObservableTransportConsumerFromMinimal CSC.canonicalClosure
-    waveObservableTransportGeometryConsumer :
+    waveObservableTransportGeometryConsumerSummary :
       CWOTGC.WaveObservableTransportGeometryConsumerFromMinimal CSC.canonicalClosure
-    waveObservableTransportGeometryCoherenceConsumer :
+    waveObservableTransportGeometryCoherenceConsumerSummary :
       CWOTGCC.WaveObservableTransportGeometryCoherenceConsumerFromMinimal
+        CSC.canonicalClosure
+    waveObservableTransportGeometryRegimeConsumerSummary :
+      CWOTGRC.WaveObservableTransportGeometryRegimeConsumerFromMinimal
+        CSC.canonicalClosure
+    waveObservableTransportGeometryRegimeCoherenceConsumerSummary :
+      CWOTGRCC.WaveObservableTransportGeometryRegimeCoherenceConsumerFromMinimal
+        CSC.canonicalClosure
+    waveObservableTransportGeometryRegimeStabilityConsumerSummary :
+      CWOTGRSC.WaveObservableTransportGeometryRegimeStabilityConsumerFromMinimal
+        CSC.canonicalClosure
+    waveObservableTransportGeometryRegimeCompletenessConsumerSummary :
+      CWOTGRCC.WaveObservableTransportGeometryRegimeCompletenessConsumerFromMinimal
         CSC.canonicalClosure
     selfVerdict : RPR.RigidityVerdict
     admissibleVerdict : RPR.RigidityVerdict
@@ -120,6 +148,14 @@ canonicalStageCSummaryBundle =
         CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryTheorem
     ; recoveredWaveObservableTransportGeometryCoherence =
         CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
+    ; recoveredWaveObservableTransportGeometryRegime =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeTheorem
+    ; recoveredWaveObservableTransportGeometryRegimeCoherence =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheorem
+    ; recoveredWaveObservableTransportGeometryRegimeStability =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheorem
+    ; recoveredWaveObservableTransportGeometryRegimeCompleteness =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheorem
     ; geometryConsumer = CSC.canonicalGeometryConsumer
     ; observableConsumer = CSC.canonicalObservableConsumer
     ; regimeConsumer = CSC.canonicalRegimeConsumer
@@ -130,10 +166,18 @@ canonicalStageCSummaryBundle =
     ; waveObservableConsumer = CSC.canonicalWaveObservableConsumer
     ; waveObservableTransportConsumerSummary =
         CSC.canonicalWaveObservableTransportConsumer
-    ; waveObservableTransportGeometryConsumer =
+    ; waveObservableTransportGeometryConsumerSummary =
         CSC.canonicalWaveObservableTransportGeometryConsumer
-    ; waveObservableTransportGeometryCoherenceConsumer =
+    ; waveObservableTransportGeometryCoherenceConsumerSummary =
         CSC.canonicalWaveObservableTransportGeometryCoherenceConsumer
+    ; waveObservableTransportGeometryRegimeConsumerSummary =
+        CSC.canonicalWaveObservableTransportGeometryRegimeConsumer
+    ; waveObservableTransportGeometryRegimeCoherenceConsumerSummary =
+        CSC.canonicalWaveObservableTransportGeometryRegimeCoherenceConsumer
+    ; waveObservableTransportGeometryRegimeStabilityConsumerSummary =
+        CSC.canonicalWaveObservableTransportGeometryRegimeStabilityConsumer
+    ; waveObservableTransportGeometryRegimeCompletenessConsumerSummary =
+        CSC.canonicalWaveObservableTransportGeometryRegimeCompletenessConsumer
     ; selfVerdict = CSC.canonicalSelfVerdict
     ; admissibleVerdict = CSC.canonicalAdmissibleVerdict
     ; negativeControlVerdict = CSC.canonicalNegativeControlVerdict

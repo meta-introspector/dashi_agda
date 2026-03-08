@@ -21,6 +21,11 @@ open import DASHI.Physics.Closure.ParametricAlgebraicRegimeCoherenceTheorem as P
 open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportTheorem as PAWOT
 open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableGeometryTheorem as PAWOG
 open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem as PAWOTGC
+open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryRegimeTheorem as PAWOTGR
+open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceTheorem as PAWOTGRC
+open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheorem as PAWOTGRS
+open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheorem as PAWOTGRC
+open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryRegimeSoundnessTheorem as PAWOTGRSO
 open import DASHI.Physics.Closure.SecondaryConstraintGaugeInstance as SCGI
 open import DASHI.Physics.Closure.KnownLimitsLocalRecoveryTheorem as KLRT
 open import DASHI.Physics.Closure.KnownLimitsEffectiveGeometryTheorem as KLET
@@ -42,6 +47,11 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportThe
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableGeometryTheorem as KLRWOG
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem as KLRWOTG
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeTheorem as KLRWOTGR
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheorem as KLRWOTGRC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheorem as KLRWOTGRS
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheorem as KLRWOTGRC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeSoundnessTheorem as KLRWOTGRSO
 open import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
 
 record CanonicalStageCTheoremBundle : Setω where
@@ -140,6 +150,30 @@ record CanonicalStageCTheoremBundle : Setω where
     secondaryParametricAlgebraicWaveObservableTransportGeometryCoherenceSummary :
       PAWOTGC.ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem
         SCGI.secondaryConstraintGaugePackage
+    canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeSummary :
+      PAWOTGR.ParametricAlgebraicWaveObservableTransportGeometryRegimeTheorem
+        CSC.canonicalConstraintGaugePackage
+    secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeSummary :
+      PAWOTGR.ParametricAlgebraicWaveObservableTransportGeometryRegimeTheorem
+        SCGI.secondaryConstraintGaugePackage
+    canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceSummary :
+      PAWOTGRC.ParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceTheorem
+        CSC.canonicalConstraintGaugePackage
+    secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceSummary :
+      PAWOTGRC.ParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceTheorem
+        SCGI.secondaryConstraintGaugePackage
+    canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeStabilitySummary :
+      PAWOTGRS.ParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheorem
+        CSC.canonicalConstraintGaugePackage
+    secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeStabilitySummary :
+      PAWOTGRS.ParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheorem
+        SCGI.secondaryConstraintGaugePackage
+    canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessSummary :
+      PAWOTGRC.ParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheorem
+        CSC.canonicalConstraintGaugePackage
+    secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessSummary :
+      PAWOTGRC.ParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheorem
+        SCGI.secondaryConstraintGaugePackage
     localRecoverySummary : KLRT.KnownLimitsLocalRecoveryTheorem
     effectiveGeometrySummary : KLET.KnownLimitsEffectiveGeometryTheorem
     causalPropagationSummary : KLCPT.KnownLimitsCausalPropagationTheorem
@@ -170,6 +204,14 @@ record CanonicalStageCTheoremBundle : Setω where
       KLRWOTG.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem
     recoveredWaveObservableTransportGeometryCoherenceSummary :
       KLRWOTGC.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
+    recoveredWaveObservableTransportGeometryRegimeSummary :
+      KLRWOTGR.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeTheorem
+    recoveredWaveObservableTransportGeometryRegimeCoherenceSummary :
+      KLRWOTGRC.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheorem
+    recoveredWaveObservableTransportGeometryRegimeStabilitySummary :
+      KLRWOTGRS.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheorem
+    recoveredWaveObservableTransportGeometryRegimeCompletenessSummary :
+      KLRWOTGRC.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheorem
     spinBridgeSummary : SLLB.SpinLocalLorentzBridge CSC.canonicalClosure
 
 canonicalStageCTheoremBundle : CanonicalStageCTheoremBundle
@@ -239,6 +281,22 @@ canonicalStageCTheoremBundle =
         CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem
     ; secondaryParametricAlgebraicWaveObservableTransportGeometryCoherenceSummary =
         CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem
+    ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeSummary =
+        CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeTheorem
+    ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeSummary =
+        CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeTheorem
+    ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceSummary =
+        CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceTheorem
+    ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceSummary =
+        CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceTheorem
+    ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeStabilitySummary =
+        CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheorem
+    ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeStabilitySummary =
+        CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheorem
+    ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessSummary =
+        CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheorem
+    ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessSummary =
+        CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheorem
     ; localRecoverySummary = CSC.canonicalKnownLimitsLocalRecoveryTheorem
     ; effectiveGeometrySummary = CSC.canonicalKnownLimitsEffectiveGeometryTheorem
     ; causalPropagationSummary = CSC.canonicalKnownLimitsCausalPropagationTheorem
@@ -275,5 +333,13 @@ canonicalStageCTheoremBundle =
         CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryTheorem
     ; recoveredWaveObservableTransportGeometryCoherenceSummary =
         CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
+    ; recoveredWaveObservableTransportGeometryRegimeSummary =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeTheorem
+    ; recoveredWaveObservableTransportGeometryRegimeCoherenceSummary =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheorem
+    ; recoveredWaveObservableTransportGeometryRegimeStabilitySummary =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheorem
+    ; recoveredWaveObservableTransportGeometryRegimeCompletenessSummary =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheorem
     ; spinBridgeSummary = CSC.canonicalSpinLocalLorentzBridge
     }
