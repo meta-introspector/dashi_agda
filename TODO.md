@@ -260,12 +260,12 @@ Priority bucket: `P0` first, then `P1`
   one geometry-facing downstream consumer on the canonical ladder,
   and one richer moonshine comparison bundle.
 - Current next physics-first cycle:
-  one stronger recovered-observable-geometry theorem above the current
-  recovered-observables slice,
-  one stronger algebraic persistence theorem above the current
-  admissibility-transport slice,
-  one regime-facing downstream consumer on the canonical ladder,
-  and one richer moonshine orbit-trace summary.
+  one stronger recovered-wave-geometry theorem above the current
+  recovered-wavefront slice,
+  one stronger algebraic regime-invariance theorem above the current
+  transport-invariance slice,
+  one wave-geometry-facing downstream consumer on the canonical ladder,
+  and one richer moonshine twined-wave family summary.
 - After the full parametric theorem lands, the next milestone is:
   a second Lorentz-family realization search.
 - Add a finite orbit-shell generating series layer:

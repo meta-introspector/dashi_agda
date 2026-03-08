@@ -134,12 +134,13 @@ Immediate next step after this snapshot:
   one geometry-facing downstream consumer on the widened canonical ladder,
   and one richer moonshine comparison bundle on the prototype track.
 - Current next physics-first cycle:
-  one stronger recovered-observable-geometry theorem above the current
-  recovered-observables slice,
-  one stronger algebraic persistence theorem above the current
-  admissibility-transport slice,
-  one regime-facing downstream consumer on the widened canonical ladder,
-  and one richer moonshine orbit-trace summary on the prototype track.
+  one stronger recovered-wave-geometry theorem above the current
+  recovered-wavefront slice,
+  one stronger algebraic regime-invariance theorem above the current
+  transport-invariance slice,
+  one wave-geometry-facing downstream consumer on the widened canonical
+  ladder,
+  and one richer moonshine twined-wave family summary on the prototype track.
 
 ## P1 — Runnable Forward Benchmarks
 

@@ -132,6 +132,14 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   ladder,
 --   and a richer moonshine orbit-trace summary is now exported on the
 --   parallel finite graded/twined track.
+-- Current newest cycle widening status:
+--   a stronger parametric algebraic gauge-sector persistence theorem is now
+--   exported above the current algebraic persistence layer,
+--   a recovered-transport-consistency theorem is now exported above the
+--   current recovered-observable-geometry layer,
+--   a recovery-transport consumer is now exported on the canonical ladder,
+--   and a moonshine wave-trace consistency summary is now exported on the
+--   parallel finite graded/twined track.
 
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF public
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI public
@@ -248,6 +256,8 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; secondaryParametricAlgebraicAdmissibilityTransportTheoremSummary
     ; canonicalParametricAlgebraicPersistenceTheoremSummary
     ; secondaryParametricAlgebraicPersistenceTheoremSummary
+    ; canonicalParametricAlgebraicGaugeSectorPersistenceTheoremSummary
+    ; secondaryParametricAlgebraicGaugeSectorPersistenceTheoremSummary
     ; canonicalKnownLimitsRecoveryPackageSummary
     ; canonicalKnownLimitsCausalPropagationTheoremSummary
     ; canonicalKnownLimitsGeometryTransportTheoremSummary
@@ -259,15 +269,18 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalKnownLimitsRecoveredDynamicsTheoremSummary
     ; canonicalKnownLimitsRecoveredObservablesTheoremSummary
     ; canonicalKnownLimitsRecoveredObservableGeometryTheoremSummary
+    ; canonicalKnownLimitsRecoveredTransportConsistencyTheoremSummary
     ; canonicalKnownLimitsPropagationSpinTheoremSummary
     ; canonicalPropagationConsumerSummary
     ; canonicalGeometryConsumerSummary
     ; canonicalObservableConsumerSummary
     ; canonicalRegimeConsumerSummary
+    ; canonicalRecoveryTransportConsumerSummary
     ; canonicalTheoremBundleSummary
     ; canonicalSummaryBundle
     ; shiftWaveGradedShellPrototypeSummary
     ; canonicalTwinedComparisonSummary
     ; canonicalMoonshinePrototypeComparisonBundleSummary
     ; canonicalMoonshineTraceFamilySummary
+    ; canonicalMoonshineWaveTraceConsistencySummary
     )

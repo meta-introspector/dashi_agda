@@ -117,6 +117,8 @@ open import DASHI.Physics.Closure.ParametricAlgebraicAdmissibilityTransportTheor
   using (ParametricAlgebraicAdmissibilityTransportTheorem)
 open import DASHI.Physics.Closure.ParametricAlgebraicPersistenceTheorem as PACTP public
   using (ParametricAlgebraicPersistenceTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicGaugeSectorPersistenceTheorem as PAGSP public
+  using (ParametricAlgebraicGaugeSectorPersistenceTheorem)
 open import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI public
   using (CanonicalGaugeConstraintRealizedInstances)
 open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
@@ -169,6 +171,8 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem as KLRO
   using (KnownLimitsRecoveredObservablesTheorem)
 open import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem as KLROG public
   using (KnownLimitsRecoveredObservableGeometryTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredTransportConsistencyTheorem as KLRTC public
+  using (KnownLimitsRecoveredTransportConsistencyTheorem)
 open import DASHI.Physics.Closure.CanonicalStageCTheoremBundle as CSTB public
   using (CanonicalStageCTheoremBundle)
 open import DASHI.Physics.Closure.CanonicalStageCSummaryBundle as CSSB public
@@ -179,6 +183,8 @@ open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC public
   using (ObservableConsumerFromMinimal)
 open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC public
   using (RegimeConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalRecoveryTransportConsumer as CRTC public
+  using (RecoveryTransportConsumerFromMinimal)
 open import DASHI.Physics.Moonshine.FiniteTwinedTraceDetailedReport as MFTDR public
   using (FiniteTwinedTraceDetailedReport)
 open import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary as MWGSPS public
@@ -189,6 +195,8 @@ open import DASHI.Physics.Moonshine.MoonshinePrototypeComparisonBundle as MPCB p
   using (MoonshinePrototypeComparisonBundle)
 open import DASHI.Physics.Moonshine.MoonshineTraceFamilySummary as MTFS public
   using (MoonshineTraceFamilySummary)
+open import DASHI.Physics.Moonshine.MoonshineWaveTraceConsistencySummary as MWTCS public
+  using (MoonshineWaveTraceConsistencySummary)
 
 validationBundle : MCPCV.MinimalCrediblePhysicsClosureValidation
 validationBundle = MCPCVS.minimumCredibleClosureValidationShift
@@ -339,6 +347,18 @@ secondaryParametricAlgebraicPersistenceTheoremSummary :
 secondaryParametricAlgebraicPersistenceTheoremSummary =
   CSC.secondaryParametricAlgebraicPersistenceTheorem
 
+canonicalParametricAlgebraicGaugeSectorPersistenceTheoremSummary :
+  PAGSP.ParametricAlgebraicGaugeSectorPersistenceTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicGaugeSectorPersistenceTheoremSummary =
+  CSC.canonicalParametricAlgebraicGaugeSectorPersistenceTheorem
+
+secondaryParametricAlgebraicGaugeSectorPersistenceTheoremSummary :
+  PAGSP.ParametricAlgebraicGaugeSectorPersistenceTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicGaugeSectorPersistenceTheoremSummary =
+  CSC.secondaryParametricAlgebraicGaugeSectorPersistenceTheorem
+
 canonicalKnownLimitsStatusSummary : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatusSummary = CSC.canonicalKnownLimitsStatus
 
@@ -415,6 +435,11 @@ canonicalKnownLimitsRecoveredObservableGeometryTheoremSummary :
 canonicalKnownLimitsRecoveredObservableGeometryTheoremSummary =
   CSC.canonicalKnownLimitsRecoveredObservableGeometryTheorem
 
+canonicalKnownLimitsRecoveredTransportConsistencyTheoremSummary :
+  KLRTC.KnownLimitsRecoveredTransportConsistencyTheorem
+canonicalKnownLimitsRecoveredTransportConsistencyTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredTransportConsistencyTheorem
+
 canonicalSpinLocalLorentzBridgeSummary :
   SLLB.SpinLocalLorentzBridge CSC.canonicalClosure
 canonicalSpinLocalLorentzBridgeSummary =
@@ -445,6 +470,11 @@ canonicalRegimeConsumerSummary :
   CRC.RegimeConsumerFromMinimal CSC.canonicalClosure
 canonicalRegimeConsumerSummary = CSC.canonicalRegimeConsumer
 
+canonicalRecoveryTransportConsumerSummary :
+  CRTC.RecoveryTransportConsumerFromMinimal CSC.canonicalClosure
+canonicalRecoveryTransportConsumerSummary =
+  CSC.canonicalRecoveryTransportConsumer
+
 canonicalTheoremBundleSummary : CSTB.CanonicalStageCTheoremBundle
 canonicalTheoremBundleSummary = CSTB.canonicalStageCTheoremBundle
 
@@ -460,6 +490,11 @@ canonicalMoonshineTraceFamilySummary :
   MTFS.MoonshineTraceFamilySummary
 canonicalMoonshineTraceFamilySummary =
   MTFS.canonicalMoonshineTraceFamilySummary
+
+canonicalMoonshineWaveTraceConsistencySummary :
+  MWTCS.MoonshineWaveTraceConsistencySummary
+canonicalMoonshineWaveTraceConsistencySummary =
+  MWTCS.canonicalMoonshineWaveTraceConsistencySummary
 
 selfSnapshotVerdict : RPR.RigidityVerdict
 selfSnapshotVerdict = MCPCV.selfVerdict validationBundle

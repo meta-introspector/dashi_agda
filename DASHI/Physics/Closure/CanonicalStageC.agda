@@ -20,6 +20,9 @@ import DASHI.Physics.Closure.ParametricAlgebraicClosureBundleTheorem as PACTB
 import DASHI.Physics.Closure.ParametricAlgebraicConsistencyTheorem as PACTX
 import DASHI.Physics.Closure.ParametricAlgebraicAdmissibilityTransportTheorem as PACTAT
 import DASHI.Physics.Closure.ParametricAlgebraicPersistenceTheorem as PACTP
+import DASHI.Physics.Closure.ParametricAlgebraicGaugeSectorPersistenceTheorem as PAGSP
+import DASHI.Physics.Closure.ParametricAlgebraicTransportInvarianceTheorem as PATI
+import DASHI.Physics.Closure.ParametricAlgebraicRegimeInvarianceTheorem as PARI
 import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI
 import DASHI.Algebra.GaugeGroupContract as GGC
 import DASHI.Physics.Constraints.ConcreteInstance as CI
@@ -39,6 +42,9 @@ import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem as KLCLR
 import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem as KLRDT
 import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem as KLROT
 import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem as KLROG
+import DASHI.Physics.Closure.KnownLimitsRecoveredTransportConsistencyTheorem as KLRTC
+import DASHI.Physics.Closure.KnownLimitsRecoveredWavefrontTheorem as KLRWF
+import DASHI.Physics.Closure.KnownLimitsRecoveredWaveGeometryTheorem as KLRWG
 import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
 import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem as KLPST
 import DASHI.Physics.Closure.KnownLimitsCausalPropagationTheorem as KLCPT
@@ -46,6 +52,9 @@ import DASHI.Physics.Closure.CanonicalPropagationConsumer as CPC
 import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
 import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
 import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC
+import DASHI.Physics.Closure.CanonicalRecoveryTransportConsumer as CRTC
+import DASHI.Physics.Closure.CanonicalWavefrontConsumer as CWFC
+import DASHI.Physics.Closure.CanonicalWaveGeometryConsumer as CWGC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureShiftInstance as MCCSI
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation as MCPCV
@@ -195,6 +204,48 @@ secondaryParametricAlgebraicPersistenceTheorem :
 secondaryParametricAlgebraicPersistenceTheorem =
   PACTP.parametricAlgebraicPersistenceTheorem secondaryConstraintGaugePackage
 
+canonicalParametricAlgebraicGaugeSectorPersistenceTheorem :
+  PAGSP.ParametricAlgebraicGaugeSectorPersistenceTheorem
+    canonicalConstraintGaugePackage
+canonicalParametricAlgebraicGaugeSectorPersistenceTheorem =
+  PAGSP.parametricAlgebraicGaugeSectorPersistenceTheorem
+    canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicGaugeSectorPersistenceTheorem :
+  PAGSP.ParametricAlgebraicGaugeSectorPersistenceTheorem
+    secondaryConstraintGaugePackage
+secondaryParametricAlgebraicGaugeSectorPersistenceTheorem =
+  PAGSP.parametricAlgebraicGaugeSectorPersistenceTheorem
+    secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicTransportInvarianceTheorem :
+  PATI.ParametricAlgebraicTransportInvarianceTheorem
+    canonicalConstraintGaugePackage
+canonicalParametricAlgebraicTransportInvarianceTheorem =
+  PATI.parametricAlgebraicTransportInvarianceTheorem
+    canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicTransportInvarianceTheorem :
+  PATI.ParametricAlgebraicTransportInvarianceTheorem
+    secondaryConstraintGaugePackage
+secondaryParametricAlgebraicTransportInvarianceTheorem =
+  PATI.parametricAlgebraicTransportInvarianceTheorem
+    secondaryConstraintGaugePackage
+
+canonicalParametricAlgebraicRegimeInvarianceTheorem :
+  PARI.ParametricAlgebraicRegimeInvarianceTheorem
+    canonicalConstraintGaugePackage
+canonicalParametricAlgebraicRegimeInvarianceTheorem =
+  PARI.parametricAlgebraicRegimeInvarianceTheorem
+    canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicRegimeInvarianceTheorem :
+  PARI.ParametricAlgebraicRegimeInvarianceTheorem
+    secondaryConstraintGaugePackage
+secondaryParametricAlgebraicRegimeInvarianceTheorem =
+  PARI.parametricAlgebraicRegimeInvarianceTheorem
+    secondaryConstraintGaugePackage
+
 canonicalKnownLimitsStatus : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatus = KLS.canonicalKnownLimitsStatus
 
@@ -269,6 +320,21 @@ canonicalKnownLimitsRecoveredObservableGeometryTheorem :
 canonicalKnownLimitsRecoveredObservableGeometryTheorem =
   KLROG.canonicalKnownLimitsRecoveredObservableGeometryTheorem
 
+canonicalKnownLimitsRecoveredTransportConsistencyTheorem :
+  KLRTC.KnownLimitsRecoveredTransportConsistencyTheorem
+canonicalKnownLimitsRecoveredTransportConsistencyTheorem =
+  KLRTC.canonicalKnownLimitsRecoveredTransportConsistencyTheorem
+
+canonicalKnownLimitsRecoveredWavefrontTheorem :
+  KLRWF.KnownLimitsRecoveredWavefrontTheorem
+canonicalKnownLimitsRecoveredWavefrontTheorem =
+  KLRWF.canonicalKnownLimitsRecoveredWavefrontTheorem
+
+canonicalKnownLimitsRecoveredWaveGeometryTheorem :
+  KLRWG.KnownLimitsRecoveredWaveGeometryTheorem
+canonicalKnownLimitsRecoveredWaveGeometryTheorem =
+  KLRWG.canonicalKnownLimitsRecoveredWaveGeometryTheorem
+
 canonicalSpinLocalLorentzBridge :
   SLLB.SpinLocalLorentzBridge canonicalClosure
 canonicalSpinLocalLorentzBridge = SLLB.canonicalSpinLocalLorentzBridge
@@ -298,6 +364,18 @@ canonicalObservableConsumer = COC.canonicalObservableConsumer
 canonicalRegimeConsumer :
   CRC.RegimeConsumerFromMinimal canonicalClosure
 canonicalRegimeConsumer = CRC.canonicalRegimeConsumer
+
+canonicalRecoveryTransportConsumer :
+  CRTC.RecoveryTransportConsumerFromMinimal canonicalClosure
+canonicalRecoveryTransportConsumer = CRTC.canonicalRecoveryTransportConsumer
+
+canonicalWavefrontConsumer :
+  CWFC.WavefrontConsumerFromMinimal canonicalClosure
+canonicalWavefrontConsumer = CWFC.canonicalWavefrontConsumer
+
+canonicalWaveGeometryConsumer :
+  CWGC.WaveGeometryConsumerFromMinimal canonicalClosure
+canonicalWaveGeometryConsumer = CWGC.canonicalWaveGeometryConsumer
 
 canonicalClosureStatus : CSS.ClosureSurfaceStatus
 canonicalClosureStatus = CSS.canonicalProved

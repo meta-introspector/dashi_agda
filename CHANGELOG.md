@@ -11,6 +11,33 @@
   propagation, and geometry consumers,
 - added `MoonshineTraceFamilySummary` as a richer finite graded/twined summary
   on the parallel pre-moonshine track,
+- added `ParametricAlgebraicPersistenceTheorem` as the next algebraic
+  widening above the current admissibility-transport layer,
+- added `KnownLimitsRecoveredObservableGeometryTheorem` as the next local
+  recovery widening above the current recovered-observables slice,
+- added `CanonicalRegimeConsumer` so the widened canonical Stage C ladder now
+  has a regime-facing downstream consumer in addition to the spin,
+  propagation, geometry, and observable consumers,
+- added `MoonshineOrbitTraceSummary` as a richer finite graded/twined
+  orbit-trace summary on the parallel pre-moonshine track,
+- added `ParametricAlgebraicGaugeSectorPersistenceTheorem` as the next
+  algebraic widening above the current algebraic persistence layer,
+- added `KnownLimitsRecoveredTransportConsistencyTheorem` as the next local
+  recovery widening above the current recovered-observable-geometry slice,
+- added `CanonicalRecoveryTransportConsumer` so the widened canonical Stage C
+  ladder now has a recovery-transport-facing downstream consumer in addition
+  to the spin, propagation, geometry, observable, and regime consumers,
+- added `MoonshineWaveTraceConsistencySummary` as a richer finite
+  graded/twined wave-consistency summary on the parallel pre-moonshine track,
+- added `ParametricAlgebraicTransportInvarianceTheorem` as the next algebraic
+  widening above the current gauge-sector persistence layer,
+- added `KnownLimitsRecoveredWavefrontTheorem` as the next local recovery
+  widening above the current recovered-transport-consistency slice,
+- added `CanonicalWavefrontConsumer` so the widened canonical Stage C ladder
+  now has a wavefront-facing downstream consumer in addition to the spin,
+  propagation, geometry, observable, regime, and recovery-transport consumers,
+- added `MoonshineTwinedWaveBundleSummary` as a richer finite graded/twined
+  wave-bundle summary on the parallel pre-moonshine track,
 - threaded those new slices through `CanonicalStageC`,
   `CanonicalStageCTheoremBundle`, `CanonicalStageCSummaryBundle`,
   `PhysicsClosureValidationSummary`, `PhysicsClosureSummary`, and

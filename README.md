@@ -95,12 +95,13 @@ Current theorem status:
   one geometry-facing downstream consumer on the widened canonical ladder,
   and one richer moonshine comparison bundle on the prototype track.
 - Current next physics-first cycle:
-  one stronger recovered-observable-geometry theorem above the current
-  recovered-observables slice,
-  one stronger algebraic persistence theorem above the current
-  admissibility-transport slice,
-  one regime-facing downstream consumer on the widened canonical ladder,
-  and one richer moonshine orbit-trace summary on the prototype track.
+  one stronger recovered-wave-geometry theorem above the current
+  recovered-wavefront slice,
+  one stronger algebraic regime-invariance theorem above the current
+  transport-invariance slice,
+  one wave-geometry-facing downstream consumer on the widened canonical
+  ladder,
+  and one richer moonshine twined-wave family summary on the prototype track.
 - Next algebraic milestone:
   add a finite orbit-shell generating series for the current shift profile,
   then use it for standalone `B₄` comparison and a prototype wave lift.

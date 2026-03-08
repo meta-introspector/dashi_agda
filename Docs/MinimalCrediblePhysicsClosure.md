@@ -226,14 +226,13 @@ Current admissible candidate:
   ladder,
   and keep moonshine hardening secondary through a richer comparison bundle.
 - Current next physics-first cycle:
-  add one stronger recovered-observable-geometry theorem above the current
-  recovered-observables slice,
-  add one stronger algebraic persistence theorem above the current
-  admissibility-transport slice,
-  attach one regime-facing downstream consumer to the widened canonical
+  one stronger recovered-wave-geometry theorem above the current
+  recovered-wavefront slice,
+  one stronger algebraic regime-invariance theorem above the current
+  transport-invariance slice,
+  one wave-geometry-facing downstream consumer on the widened canonical
   ladder,
-  and keep moonshine hardening secondary through a richer orbit-trace
-  summary.
+  and one richer moonshine twined-wave family summary on the prototype track.
 
 ## Next Mathematical Realization Target
 

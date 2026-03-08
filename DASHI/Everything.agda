@@ -231,6 +231,8 @@ import DASHI.Physics.Moonshine.FiniteTwinedTraceDetailedReport
 import DASHI.Physics.Moonshine.MoonshinePrototypeComparisonBundle
 import DASHI.Physics.Moonshine.MoonshineTraceFamilySummary
 import DASHI.Physics.Moonshine.MoonshineOrbitTraceSummary
+import DASHI.Physics.Moonshine.MoonshineWaveTraceConsistencySummary
+import DASHI.Physics.Moonshine.MoonshineTwinedWaveBundleSummary
 import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary
 import DASHI.Physics.Moonshine.TwinedComparisonSummary
 import DASHI.Physics.Moonshine.WaveGradedShellModule
@@ -262,6 +264,8 @@ import DASHI.Physics.Closure.ParametricAlgebraicClosureBundleTheorem
 import DASHI.Physics.Closure.ParametricAlgebraicConsistencyTheorem
 import DASHI.Physics.Closure.ParametricAlgebraicAdmissibilityTransportTheorem
 import DASHI.Physics.Closure.ParametricAlgebraicPersistenceTheorem
+import DASHI.Physics.Closure.ParametricAlgebraicGaugeSectorPersistenceTheorem
+import DASHI.Physics.Closure.ParametricAlgebraicTransportInvarianceTheorem
 import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances
 import DASHI.Physics.Closure.KnownLimitsEffectiveGeometryTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveryPackage
@@ -276,11 +280,15 @@ import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem
+import DASHI.Physics.Closure.KnownLimitsRecoveredTransportConsistencyTheorem
+import DASHI.Physics.Closure.KnownLimitsRecoveredWavefrontTheorem
 import DASHI.Physics.Closure.KnownLimitsLocalRecoveryTheorem
 import DASHI.Physics.Closure.CanonicalPropagationConsumer
 import DASHI.Physics.Closure.CanonicalGeometryConsumer
 import DASHI.Physics.Closure.CanonicalObservableConsumer
 import DASHI.Physics.Closure.CanonicalRegimeConsumer
+import DASHI.Physics.Closure.CanonicalRecoveryTransportConsumer
+import DASHI.Physics.Closure.CanonicalWavefrontConsumer
 import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveryWitness
 import DASHI.Physics.Closure.ParametricGaugeConstraintTheorem
