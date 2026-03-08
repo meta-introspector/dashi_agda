@@ -90,6 +90,10 @@ What remains open beyond Stage B:
 - remove dependence on the current finite realization framework itself,
 - derive the shell-orbit structure from more intrinsic abstract hypotheses,
 - generalize beyond the current ternary 4D signed-permutation model.
+- immediate theorem order:
+  bounded one-minus family theorem on `m = 2..8`
+  -> parametric `m` family theorem
+  -> second Lorentz-family realization.
 
 ## Stage C — Minimal Credible Physics Closure
 
@@ -142,6 +146,10 @@ Current leading forward claims:
 - Fejér-over-χ² monotonicity,
 - observable-space collapse,
 - snap-threshold transition laws,
+
+Current note for the orbit-shell side of this program:
+
+- `Docs/OrbitShellProfilesAndLorentzSignature.md`
 - witness-policy robustness,
 - cone-split persistence.
 
@@ -156,9 +164,20 @@ Stage C must not be described as proved by the current repo state.
 Any Monster/Moonshine interpretation remains explicitly downstream and
 speculative unless supported by separate theorem-level bridges.
 
+Immediate mathematical milestone before another Lorentz-family realization
+search:
+
+- canonical shell-neighborhood classification,
+- bounded one-minus shell-family theorem on `m = 2..8`,
+- parametric `m` shell-1 theorem,
+- then a second Lorentz-family realization search.
+
 Immediate next phase inside Stage C:
 
 - closure hardening on the minimum-credible path,
+- remove the trivial empirical full-adapter closure shim so the canonical path
+  and the empirical full adapter both reuse the concrete constraint instance,
+- keep the canonical Stage C entrypoint explicit in code,
 - a typed profile-rigidity validation harness,
 - one reference benchmark using the signed-permutation shift realization,
 - one alternate realization slot,

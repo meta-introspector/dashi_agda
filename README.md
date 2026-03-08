@@ -13,6 +13,41 @@ Current theorem status:
   distinguish what is already proved from what is only a forward prediction
   claim. The next concrete benchmark is profile rigidity across new 4D
   realizations.
+- Current validation snapshot:
+  reference signed-permutation self-check = `exactMatch`,
+  Bool inversion admissible candidate = `signatureOnlyMatch`,
+  tail-permutation negative control = `mismatch`.
+- Preferred next realization target:
+  a Coxeter / Weyl-style 4D shell-orbit realization, beginning with an
+  independent `B₄` shell/profile report and later promoted into the admissible
+  harness only if its shell class becomes Lorentz-compatible and
+  orientation/signature are justified.
+- Next algebraic milestone:
+  add a finite orbit-shell generating series for the current shift profile,
+  then use it for standalone `B₄` comparison and a prototype wave lift.
+- Next theorem milestone:
+  the bounded one-minus shell family is now the base layer and the parametric
+  shell-1 theorem is now in place; the next theorem milestone is a second
+  Lorentz-family realization and stronger shell-2 / orientation follow-through.
+- Current closure hardening target:
+  keep the canonical Stage C path, the empirical full adapter, and the legacy
+  assumed closure surface on the same concrete constraint-closure witness, and
+  keep the canonical Stage C entrypoint explicit in code rather than only in
+  summary prose.
+- Next runnable benchmark:
+  Fejér-over-χ² monotonicity, starting from a typed shift reference harness
+  with theorem-backed Fejér / closest-point / MDL witnesses and an explicit
+  χ² falsifier-status boundary.
+- Newly landed benchmark surface:
+  observable-space collapse is now exposed as a typed shift benchmark backed
+  by the observable fixed-point and uniqueness witnesses in the real closure
+  kit.
+- Current Fejér benchmark snapshot:
+  positive side established and carried directly by the benchmark harness,
+  χ² side now has a concrete shift-side boundary witness,
+  that witness now sits inside a small explicit shift-side boundary library,
+  and the standalone snap-threshold benchmark is now exposed as its own typed
+  validation surface.
 
 The repo does **not** currently claim full physics closure or “solved
 physics”.
@@ -20,6 +55,8 @@ physics”.
 For the current forward-claim shortlist and falsifiability criteria, see
 `Docs/MinimalCrediblePhysicsClosure.md`.
 For the current milestone order, see `Docs/PhysicsClosurePriorities.md`.
+For the current orbit-shell / Lorentz-signature framing, see
+`Docs/OrbitShellProfilesAndLorentzSignature.md`.
 
 # I. State Space 
 

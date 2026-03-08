@@ -29,13 +29,14 @@ open import DASHI.Physics.QuadraticPolarizationCoreInstance as QPCI
 open import DASHI.Physics.Closure.PolarizationZLift as PZL
 open import DASHI.Physics.RealClosureKit as RK
 open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
+open import DASHI.Physics.Constraints.ConcreteInstance as CI
 
--- Adapter: embeds empirical closure seams into the full closure package
--- while leaving the quadratic/signature/constraint layers as explicit stubs.
+-- Adapter: embeds empirical closure seams into the full closure package.
 --
 -- Note: PhysicsClosureFull.mdlLyap is a generic Set-valued field. We keep it
 -- as a compatibility fallback here. The authoritative Stage C witness is
--- carried by `dynamics`.
+-- carried by `dynamics`. Constraint closure on the canonical path now reuses
+-- the same concrete witness as PhysicsClosureFullInstance.
 
 mdlLyapShiftWitness :
   ∀ {m k : Nat} →
@@ -65,17 +66,9 @@ empiricalToFull emp =
     ; polarizationZ = λ {m} → PZL.polarizationZLift {m}
     ; orthogonalityZ = λ {m} → OZ.orthogonalityZLift {m}
     ; signature31 = S31OP.signature31
-    ; CS = record
-        { Constraint = ⊤
-        ; actsOn = λ X → X
-        ; apply = λ {S} _ x → x
-        }
-    ; L = record
-        { _[_,]_ = λ _ _ → DU.tt
-        ; antisym = ⊤
-        ; jacobi = ⊤
-        }
-    ; constraintClosure = record { closes = λ _ _ → (DU.tt , refl) }
+    ; CS = CI.CS
+    ; L = CI.L
+    ; constraintClosure = CI.closure
     ; mdlLyap = λ {S} T → mdlLyapTrivial T
     ; mdlFejer = MDLFA.mdlFejerShift
     ; dynamics = DCSI.shiftDynamics

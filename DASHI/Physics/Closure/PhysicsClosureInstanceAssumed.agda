@@ -13,6 +13,7 @@ import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
 open import DASHI.Physics.Constraints.Generators as CG
 open import DASHI.Physics.Constraints.Bracket as CB
 open import DASHI.Physics.Constraints.Closure as CC
+open import DASHI.Physics.Constraints.ConcreteInstance as CI
 open import Data.Nat using (zero; z≤n)
 open import MDL as OldMDL
 open import DASHI.Physics.UniversalityTheorem as UTH
@@ -25,8 +26,9 @@ mdlLyapTrivial T =
     ; descent = λ _ → z≤n
     }
 
--- Concrete instance: wires the Bool closure stack into PhysicsClosure,
--- using the concrete shift-orbit theorem path.
+-- Legacy assumed closure instance. Signature still comes from the concrete
+-- shift-orbit theorem path; constraint closure now reuses the same concrete
+-- witness as the canonical full-closure path.
 physicsClosureAssumed : PC.PhysicsClosure
 physicsClosureAssumed =
   record
@@ -40,17 +42,9 @@ physicsClosureAssumed =
         }
     ; orthogonalityZ = λ {m} → OZ.orthogonalityZLift {m}
     ; signature31 = S31OP.signature31-theorem
-    ; CS = record
-        { Constraint = ⊤
-        ; actsOn = λ X → X
-        ; apply = λ {S} _ x → x
-        }
-    ; L = record
-        { _[_,]_ = λ _ _ → tt
-        ; antisym = ⊤
-        ; jacobi = ⊤
-        }
-    ; constraintClosure = record { closes = λ _ _ → (tt , refl) }
+    ; CS = CI.CS
+    ; L = CI.L
+    ; constraintClosure = CI.closure
     ; mdlLyap = λ {S} T → mdlLyapTrivial T
     ; universality = UTH.canonicalUniversality (RK.RealClosureKit.C MRI.myKit)
     }

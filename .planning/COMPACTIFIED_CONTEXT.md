@@ -40,6 +40,50 @@
   - added a closure-facing validation adapter on top of
     `MinimalCrediblePhysicsClosure`, so the Stage C entrypoint can expose
     current rigidity verdicts directly.
+  - started the Fejér-over-χ² benchmark as a typed shift reference harness.
+  - upgraded the χ² side from a flat `pending` status to an intermediate
+    `interfaceWired` state, because the snap stack already carries a
+    `chi2Spike` boundary even though a standalone χ² falsifier theorem is not
+    yet formalized.
+  - tightened the Fejér benchmark internals so the positive side now carries
+    the actual theorem witnesses directly rather than placeholder booleans.
+  - documented the next mathematically serious alternate realization as a
+    Coxeter / Weyl-group one rather than another ad hoc dynamics.
+  - replaced the vocabulary-only `B₄` scaffold with an independent shell-orbit
+    computation built from explicit root-shell points and a Weyl-style action:
+    `RootSystemB4Carrier`, `RootSystemB4WeylAction`,
+    `OrbitProfileComputedRootSystemB4`.
+  - added a standalone `B₄` shell comparison report and exposed its verdict
+    through the repo-facing validation summary without routing it through the
+    admissible rigidity harness.
+  - added `Docs/OrbitShellProfilesAndLorentzSignature.md` as the canonical
+    repo-facing note for the current orbit-shell / Lorentz-signature framing.
+  - added a typed `B₄` promotion-status surface with current status
+    `standaloneOnly`.
+  - refined the `B₄` comparison so it now classifies shell-neighborhood status;
+    the current independent `B₄` realization lands in the definite shell class
+    `[8] / [24]`, so the blocker to admissible Lorentz promotion is structural,
+    not just pending orientation/signature plumbing.
+  - next algebraic step selected:
+    add a finite orbit-shell generating series from orientation plus shell-1 /
+    shell-2 multiplicities, use it for the theorem-backed shift witness and a
+    standalone `B₄` comparison, and add only a prototype wave lift at grade 0.
+  - next theorem step selected:
+    promote shell-neighborhood class to a first-class API, add a bounded
+    one-minus shell-family theorem for `m = 2..8`, then push to a parametric
+    `m` family layer, then a full parametric theorem, before resuming the
+    search for another Lorentz-family realization.
+  - current closure hardening target:
+    keep the canonical Stage C path and the empirical full adapter on the same
+    concrete constraint-closure witness, instead of leaving the empirical full
+    adapter on a trivial compatibility shim.
+  - current closure-hardening gain:
+    `DASHI.Physics.Closure.CanonicalStageC` now makes the authoritative
+    minimum-credible closure path explicit in code, while legacy/prototype
+    surfaces remain non-canonical.
+  - next theorem-backed validation gain:
+    observable-space collapse can now be surfaced from the existing
+    `RealClosureKitFiber.obsFixed` / `obsUnique` shift witnesses.
   - refactored the intrinsic shell/orbit theorem boundary so theorem-critical
     records no longer mention finite realization fields; the finite
     enumeration bridge remains on the shift-instance side.
@@ -268,3 +312,15 @@ Added:
 - Added arrow-separated delta cone skeleton: `DASHI/Physics/Cone/ArrowSeparatedDeltaCone.agda`.
 - Added concrete shift instantiation for arrow-separated delta cone: `DASHI/Physics/Cone/ArrowSeparatedDeltaConeShift.agda`.
 - Added witness set policy contract: `DASHI/Physics/WitnessSetPolicy.agda` (min forward/backward + quota-preserving snap).
+
+## 2026-03-08 (Parametric theorem + χ²/snap validation)
+- Landed a real parametric shell-1 theorem in
+  `DASHI/Physics/OneMinusShellFamilyParametric.agda`.
+- Added a concrete shift-side χ²-boundary witness in
+  `DASHI/Physics/Closure/Validation/Chi2BoundaryShiftWitness.agda`.
+- Expanded that witness into a small typed library in
+  `DASHI/Physics/Closure/Validation/Chi2BoundaryShiftLibrary.agda`.
+- Added a typed snap-threshold benchmark surface:
+  `DASHI/Physics/Closure/Validation/SnapThresholdLaw*.agda`.
+- Exposed the parametric theorem and snap-threshold verdict through
+  `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`.

@@ -53,3 +53,86 @@
   the 4D Bool inversion candidate on the `(3,1)` mask.
 - refined rigidity verdict semantics so `signatureOnlyMatch` now means:
   signature agrees while profile rigidity fails.
+- added a repo-facing closure validation summary surface that re-exports the
+  current Stage C rigidity verdicts from the minimum-credible validation
+  adapter,
+- recorded the current validation snapshot explicitly in the docs and README:
+  signed-permutation self-check `exactMatch`,
+  Bool inversion admissible case `signatureOnlyMatch`,
+  tail-permutation negative control `mismatch`.
+- started the Fejér-over-χ² benchmark as a typed shift reference harness with
+  theorem-backed Fejér / closest-point / MDL witnesses,
+- made the χ² side explicit as a falsifier-status boundary instead of
+  overstating it as a completed Agda proof.
+- upgraded the χ² benchmark status from flat `pending` to an intermediate
+  `interfaceWired` state when the snap / `chi2Spike` boundary is present,
+- exposed the Fejér benchmark snapshot through the repo-facing closure
+  validation summary:
+  positive side established,
+  χ² side interface-wired,
+  standalone falsifier still not formalized.
+- tightened the Fejér benchmark report so the positive side now carries the
+  actual shift seam and MDL/Fejér witnesses directly instead of placeholder
+  booleans.
+- documented the Coxeter / Weyl-group direction as the preferred next
+  mathematically serious alternate realization after Bool inversion,
+- replaced the vocabulary-only `B₄` scaffold with an independent
+  root-shell/Weyl-action shell-orbit computation,
+- added a standalone `B₄` shell comparison report and exposed it through the
+  validation summary without promoting it into the admissible rigidity harness,
+- kept orientation/signature promotion for the `B₄` realization explicitly
+  deferred until it is justified.
+- added a repo-facing note documenting the orbit-shell / Lorentz-signature
+  framing and the current validation ladder,
+- added a typed `B₄` promotion status surface so the summary can say
+  `standaloneOnly` explicitly instead of relying on prose alone.
+- refined the standalone `B₄` comparison report so it now classifies the
+  computed shell data by candidate shell neighborhood; the current `B₄`
+  realization lands in the definite shell class `[8] / [24]`, clarifying that
+  Lorentz-harness promotion is blocked structurally rather than by missing
+  wiring alone.
+- added a finite orbit-shell generating series layer built from orientation
+  plus shell-1 / shell-2 orbit-size multiplicities.
+- added theorem-backed shift-series and standalone `B₄` series modules, then
+  exposed a standalone `B₄` series comparison through the closure-validation
+  summary.
+- added a concrete grade-0 wave-series prototype from the shift series while
+  keeping it outside the theorem-critical closure path and any moonshine-level
+  claim surface.
+- promoted shell-neighborhood class to a first-class API shared by the shift
+  reference and the standalone `B₄` comparison surface.
+- added a bounded one-minus shell-family module proving the current shell-1
+  family pattern for `m = 2..8`.
+- refactored the standalone `B₄` report to use the canonical neighborhood type
+  instead of a `B₄`-specific enum.
+- updated the roadmap and TODOs so the next theorem milestone after the bounded
+  family is an explicit parametric-`m` generalization.
+- generalized the shell-neighborhood classifier so the one-minus family is
+  recognized structurally from shell-1 triples rather than only by the bounded
+  lookup cases.
+- added a parametric `m` one-minus family layer that exposes the general family
+  formula and its shell-neighborhood classification, while keeping the bounded
+  `m = 2..8` module as the theorem-backed witness layer.
+- exposed the parametric family layer through the closure validation/summary
+  surface for the current shift reference.
+- hardened `PhysicsClosureEmpiricalToFull` so it now reuses the same concrete
+  constraint system, Lie structure, and closure witness as the canonical full
+  closure instance instead of a trivial compatibility shim.
+- hardened `PhysicsClosureInstanceAssumed` in the same way, so the legacy
+  assumed closure surface now also reuses the concrete constraint witness
+  rather than a trivial closure shim.
+- added an explicit canonical Stage C entrypoint and status surface so the
+  minimum-credible closure path is authoritative in code, while compatibility
+  wrappers and prototype branches remain explicitly non-canonical.
+- added a typed observable-collapse benchmark surface for the shift reference,
+  backed by the `RealClosureKitFiber` observable fixed-point and uniqueness
+  witnesses and ready for repo-facing validation summary export.
+- tightened the one-minus shell story from a parametric family layer into a
+  real parametric shell-1 theorem exported through the validation summary.
+- added a concrete shift-side χ²-boundary witness from the severity/snap
+  layer and promoted the Fejér-over-χ² shift reference off the old
+  `interfaceWired` status.
+- added a standalone typed snap-threshold benchmark for the shift reference
+  and exposed it through the repo-facing validation summary.
+- expanded the single χ² boundary witness into a small typed shift-side
+  boundary library and surfaced its size through the validation summary.

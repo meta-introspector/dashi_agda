@@ -28,6 +28,45 @@ Exit criteria:
 - the result is recorded as exact match, signature-only match, or mismatch,
 - the closure path still compiles through the minimum-credible adapter.
 
+Current snapshot:
+
+- reference signed-permutation self-check: `exactMatch`
+- Bool inversion admissible candidate: `signatureOnlyMatch`
+- tail-permutation negative control: `mismatch`
+
+Immediate next step after this snapshot:
+
+- surface the same three outcomes through a repo-facing closure summary
+  entrypoint so they are easy to cite without walking the validation modules
+  directly.
+- start the Fejér-over-χ² benchmark as a typed reference harness with:
+  theorem-backed Fejér / closest-point / MDL witnesses,
+  and an explicit χ² falsifier-status field.
+- make the next mathematically serious alternate realization a Coxeter/Weyl
+  one:
+  first an independent `B₄` shell/profile report,
+  then orientation/signature refinement,
+  then harness promotion.
+- next algebraic handle:
+  add a finite orbit-shell generating series for the theorem-backed shift
+  profile, then compare `B₄` at the series level before attempting any
+  admissible promotion.
+- current theorem object:
+  use the bounded one-minus shell family plus the landed parametric `m`
+  shell-1 theorem as the baseline shell-neighborhood story, then move to
+  shell-2 / orientation follow-through or a second Lorentz-family
+  realization.
+- immediate theorem/benchmark sub-goals:
+  finish the arithmetic lemma layer for the full parametric shell-1 theorem,
+  formalize the χ²-boundary witness on the shift reference,
+  and add a typed snap-threshold benchmark from the concrete severity policy.
+- current closure hardening object:
+  keep the canonical Stage C path on concrete constraint closure and real shift
+  dynamics, and remove the remaining trivial closure shim from the empirical
+  full adapter, while exposing an explicit canonical Stage C entrypoint/status
+  surface in code so repo-facing consumers stop drifting back to compatibility
+  modules.
+
 ## P1 — Runnable Forward Benchmarks
 
 Once P0 is complete, the next priority is turning the other forward claims into
@@ -46,6 +85,43 @@ Each benchmark should expose:
 - a reference harness or dataset,
 - an explicit distinction between proved outputs and measured outcomes.
 
+Immediate first implementation:
+
+- the shift realization acts as the reference harness,
+- the positive side is theorem-backed already and should be carried directly by
+  the benchmark report,
+- the χ² side is allowed to progress through intermediate states:
+  pending,
+  interface-wired,
+  formalized.
+- observable-space collapse is the next benchmark that can be made fully
+  theorem-backed from existing shift witnesses, because the real closure kit
+  already carries `obsFixed` and `obsUnique`.
+- the next benchmark hardening step is:
+  use the landed concrete χ²-boundary witness and standalone snap-threshold
+  report as the new baseline, then decide whether to promote the χ² side into
+  a broader falsifier theorem or explicit counterexample library.
+- immediate next validation refinement:
+  grow the single shift χ²-boundary witness into an explicit small witness
+  library so the Fejér benchmark has a real counterexample surface rather
+  than one privileged state.
+
+Current second-realization preference:
+
+- Bool inversion remains the first admissible alternate realization,
+- the next mathematically preferred one is Coxeter/Weyl-based rather than
+  another bespoke contraction flow.
+- that Coxeter/Weyl path should enter in two steps:
+  independent shell/profile report first, admissible harness later.
+- but it is no longer the immediate next theorem milestone.
+  First priority is:
+  shell-neighborhood class -> parametric one-minus family theorem ->
+  second Lorentz-family realization.
+
+Canonical note for this framing:
+
+- `Docs/OrbitShellProfilesAndLorentzSignature.md`
+
 ## P2 — Stronger Dynamics and Physics Closure
 
 Only after P0 and P1 should the repo push further into broader physics-closure
@@ -59,6 +135,12 @@ Priority tasks:
   closure boundary,
 - start scoped known-limits recovery work,
 - expand prediction work beyond internal closure observables.
+
+Immediate precondition:
+
+- finish the current closure burn-down so the canonical Stage C path is free of
+  trivial closure shims, while legacy assumption-backed modules remain clearly
+  marked as compatibility surfaces.
 
 This remains well short of any “solved physics” claim.
 

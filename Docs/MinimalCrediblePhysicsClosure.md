@@ -50,6 +50,8 @@ This track upgrades the current closure from "signature + wiring" to
 Current priorities:
 
 - remove trivial placeholders from the minimum closure path,
+- keep the canonical closure path and empirical full adapter on the same
+  concrete constraint-closure witness,
 - bundle the real shift Lyapunov and seam certificates as a dynamics package,
 - feed full-closure instances from the intrinsic signature theorem,
 - make downstream closure consumers depend on that package.
@@ -74,6 +76,10 @@ Current priorities:
     observable-space collapse,
     snap-threshold transition laws,
 - state a falsifiability/deviation boundary for the framework.
+- immediate validation hardening:
+  move the Fejér-over-χ² reference from `interfaceWired` to a concrete
+  shift-side χ²-boundary witness, and add a standalone snap-threshold law
+  benchmark sourced from the same severity/snap policy layer.
 
 ## Forward Prediction Table
 
@@ -160,5 +166,158 @@ Current admissible candidate:
 - the next closure-facing step is to make the rigidity suite part of the
   minimum-credible adapter surface, not just a sibling validation module.
 
+## Next Mathematical Realization Target
+
+After the Bool inversion admissible check, the preferred next alternate
+realization is:
+
+- a **Coxeter / Weyl-group realization** of the same 4D shell-orbit data,
+  starting in `B₄` / hyperoctahedral language and only later refining to a
+  more independent root-system or signed-lattice model.
+
+Why this is the preferred next realization:
+
+- it is mathematically more compelling than another ad hoc dynamics,
+- it has a known orbit-stratification story,
+- it makes the shell/profile result easier to discuss with geometers,
+- it directly tests whether the current profile lock is a signed-orbit
+  invariant rather than just a shift artifact.
+
+For the present repo state, the honest next implementation step is:
+
+- add an **independent `B₄` shell-orbit report** built from explicit
+  root-shell points and a Weyl-style action,
+- keep that report out of the admissible rigidity harness until its shell class
+  is shown to be Lorentz-compatible and orientation/signature are justified,
+- only then promote it to a full admissible alternate realization.
+
+Current status of that report:
+
+- the independent `B₄` shell data land in the **definite shell class**
+  `[8] / [24]`,
+- so the current blocker is structural mismatch with the Lorentz shell class,
+  not just missing orientation wiring.
+
+## Shell-Family Milestone
+
+The next mathematical milestone is now:
+
+- make **shell-neighborhood class** first-class,
+- formalize the bounded one-minus shell family for the dimensions already
+  encoded in the repo,
+- and only then push for a second Lorentz-family realization.
+
+Current intended bounded family:
+
+- `m = 2 -> [2,2]`
+- `m = 3 -> [8,4,2]`
+- `m >= 4 -> [4(m-1)(m-2), 2(m-1), 2]`
+
+Roadmap after that:
+
+- bounded family theorem on `m = 2..8`,
+- then a parametric `m` shell-1 theorem,
+- then a second realization that lands in the same shell neighborhood.
+
+Current closure-burn-down target:
+
+- the canonical Stage C path already uses the concrete shift dynamics package
+  and concrete constraint instance,
+- the next hardening step is to remove the last trivial constraint shim from
+  the empirical full adapter so the recommended closure surfaces all agree on
+  the same closure witness,
+- and keep the canonical Stage C entrypoint explicit in code so that
+  compatibility and prototype surfaces are no longer mistaken for the
+  authoritative closure path.
+
+## Orbit-Shell Series Next Step
+
+The next algebraic object to add is a finite orbit-shell generating series
+built from:
+
+- orientation tag,
+- shell-1 orbit-size multiplicities,
+- shell-2 orbit-size multiplicities.
+
+Immediate targets:
+
+- shift series witness from the current theorem-backed profile data,
+- standalone `B₄` series comparison,
+- prototype wave-graded lift using the finite series as the grade-0 seed.
+
+This series work is intended to strengthen comparison and future grading
+questions. It does **not** by itself upgrade the repo to a theorem-backed
+theta-series or moonshine claim.
+
+## Current Validation Snapshot
+
+The current Stage C validation surface now exposes one explicit rigidity suite
+through the minimum-credible closure adapter:
+
+- reference self-check:
+  `exactMatch`,
+- first admissible alternate realization:
+  Bool inversion on the 4D `(3,1)` mask, currently classified as
+  `signatureOnlyMatch`,
+- negative control:
+  tail permutations, classified as `mismatch`.
+
+This means the current closure stack is already stronger at the
+**signature-rigidity** level than at the **exact shell-profile-rigidity**
+level. The next validation work should preserve this distinction explicitly.
+
+## Next Runnable Benchmark
+
+The next runnable benchmark after the rigidity snapshot is:
+
+- **Fejér-over-χ² monotonicity**
+
+For the current repo state, the first honest implementation target is:
+
+- a typed reference harness for the shift realization,
+- theorem-backed positive-side witnesses:
+  Fejér monotonicity, closest-point behavior, and MDL descent,
+- an explicit χ² falsifier-status slot.
+
+This means the first Fejér benchmark report should distinguish:
+
+- what is already theorem-backed on the MDL / closest-point side,
+- whether the χ² side is carried by a concrete shift-side boundary witness,
+  and whether that witness remains only a boundary proxy or has been upgraded
+  to a broader falsifier theorem.
+
+It should not pretend that the χ²-side counterexample is already encoded if
+the repo still only documents that part empirically.
+
+Current Fejér benchmark snapshot:
+
+- positive side:
+## Observable-Collapse Benchmark
+
+The next benchmark that can be made fully theorem-backed from the current
+shift stack is:
+
+- **observable-space collapse**
+
+Reason:
+
+- `RealClosureKitFiber` already carries a distinguished observable endpoint
+  `obs0`,
+- together with `obsFixed` and `obsUnique`,
+- and the shift instance already instantiates that structure concretely.
+
+So this benchmark should be treated as stronger than a mere forward claim for
+the current shift realization: it is a typed theorem-backed collapse witness on
+the present Stage C path.
+  theorem-backed, established, and carried directly by the benchmark harness,
+- χ² side:
+  now carried by a concrete shift-side boundary witness from the
+  snap/`chi2Spike` severity layer,
+  with the standalone snap-threshold benchmark exposed separately as its own
+  typed report.
+
 For the current `P0/P1/P2` execution order, see
 `Docs/PhysicsClosurePriorities.md`.
+
+For the current mathematical framing of the orbit-shell result, see
+`Docs/OrbitShellProfilesAndLorentzSignature.md`.
