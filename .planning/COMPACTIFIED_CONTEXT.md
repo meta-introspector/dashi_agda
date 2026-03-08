@@ -324,3 +324,16 @@ Added:
   `DASHI/Physics/Closure/Validation/SnapThresholdLaw*.agda`.
 - Exposed the parametric theorem and snap-threshold verdict through
   `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`.
+- Added an independent synthetic one-minus shell-side realization and
+  standalone comparison surface:
+  `DASHI/Physics/SyntheticOneMinusShellRealization.agda` and
+  `DASHI/Physics/Closure/Validation/SyntheticOneMinusShellComparison.agda`.
+- Extended that synthetic one-minus candidate to carry matching shell-1 and
+  shell-2 profiles while keeping it outside the admissible harness until
+  orientation/signature are justified independently.
+- Added a prototype-only Lorentz-neighborhood dynamic candidate scaffold:
+  `DASHI/Physics/LorentzNeighborhoodDynamicCandidate.agda`.
+- Next strengthening step selected:
+  add a typed synthetic-promotion bridge so the exact orientation/signature
+  blocker is explicit in code, and add a structured status surface to the
+  canonical shift dynamics package.

@@ -210,6 +210,7 @@ import DASHI.Physics.OrbitProfileComputedRootSystemB4
 import DASHI.Physics.ShellNeighborhoodClass
 import DASHI.Physics.OneMinusShellFamily
 import DASHI.Physics.OneMinusShellFamilyParametric
+import DASHI.Physics.LorentzNeighborhoodDynamicCandidate
 import DASHI.Physics.OrbitShellGeneratingSeries
 import DASHI.Physics.OrbitShellGeneratingSeriesShift
 import DASHI.Physics.OrbitShellGeneratingSeriesRootSystemB4
@@ -218,6 +219,7 @@ import DASHI.Physics.Closure.BetaSeamCertificates
 import DASHI.Physics.Closure.BetaSeamCertificatesInstance
 import DASHI.Physics.Closure.BetaSeamCSVEvidence
 import DASHI.Physics.Closure.DynamicalClosure
+import DASHI.Physics.Closure.DynamicalClosureStatus
 import DASHI.Physics.Closure.DynamicalClosureShiftInstance
 import DASHI.Physics.ClosureBuilder
 import DASHI.Physics.Closure.ClosestPointAxiomsShift
@@ -248,6 +250,8 @@ import DASHI.Physics.Closure.Validation.ObservableCollapse
 import DASHI.Physics.Closure.Validation.ObservableCollapseReport
 import DASHI.Physics.Closure.Validation.ObservableCollapseShift
 import DASHI.Physics.Closure.Validation.RootSystemB4ShellComparison
+import DASHI.Physics.Closure.Validation.SyntheticOneMinusShellComparison
+import DASHI.Physics.Closure.Validation.SyntheticOneMinusPromotionBridge
 import DASHI.Physics.Closure.Validation.OrbitShellSeriesComparison
 import DASHI.Physics.Closure.Validation.RealizationProfileRigidityReport
 import DASHI.Physics.Closure.Validation.RealizationProfileRigidityShift

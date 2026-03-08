@@ -136,3 +136,20 @@
   and exposed it through the repo-facing validation summary.
 - expanded the single χ² boundary witness into a small typed shift-side
   boundary library and surfaced its size through the validation summary.
+- added an independent synthetic one-minus shell-side realization in the
+  Lorentz neighborhood and surfaced its standalone comparison status through
+  the validation summary.
+- extended the synthetic Lorentz-neighborhood candidate from shell-1-only to a
+  profile-aware shell candidate with matching shell-1 and shell-2 data, while
+  keeping it outside the admissible harness until orientation/signature are
+  justified independently.
+- added a prototype-only Lorentz-neighborhood dynamic candidate scaffold so
+  the realization search now has an explicit dynamics-side placeholder without
+  overstating admissible status.
+- added a typed synthetic-promotion bridge so the exact blocker between the
+  profile-aware synthetic candidate and admissible-harness promotion is now
+  explicit in code: orientation/signature remain independently unjustified.
+- strengthened the canonical shift dynamics package with an explicit status
+  surface for propagation, causal admissibility, monotone quantity, and
+  effective geometry, and threaded that status through the validation/closure
+  summary surfaces.

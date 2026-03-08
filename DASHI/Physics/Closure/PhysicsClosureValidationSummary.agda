@@ -10,13 +10,16 @@ module DASHI.Physics.Closure.PhysicsClosureValidationSummary where
 -- implementation modules directly.
 
 open import Agda.Builtin.Nat using (Nat; suc)
+open import Agda.Builtin.Bool using (Bool)
 open import Relation.Binary.PropositionalEquality using (_≡_)
 
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation as MCPCV public
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidationShiftInstance as MCPCVS public
+open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.CanonicalStageCStatus as CSS public
   using (ClosureSurfaceStatus)
 open import DASHI.Physics.Closure.CanonicalStageC as CSC
+open import DASHI.Physics.Closure.DynamicalClosure as DC
 open import DASHI.Physics.Closure.Validation.FejerOverChiSquared as FCS public
   using (Chi2FalsifierStatus; FejerBenchmarkVerdict)
 open import DASHI.Physics.Closure.Validation.FejerOverChiSquaredReport as FCSR
@@ -30,6 +33,14 @@ open import DASHI.Physics.Closure.Validation.SnapThresholdLaw as STL public
   using (SnapThresholdVerdict)
 open import DASHI.Physics.Closure.Validation.SnapThresholdLawReport as STLR
 open import DASHI.Physics.Closure.Validation.SnapThresholdLawShift as STLS
+open import DASHI.Physics.Closure.Validation.SyntheticOneMinusShellComparison as SOSC public
+  using (SyntheticPromotionStatus)
+open import DASHI.Physics.Closure.Validation.SyntheticOneMinusPromotionBridge as SOPB public
+  using
+    ( SyntheticOrientationStatus
+    ; SyntheticSignatureStatus
+    ; SyntheticPromotionBridgeStatus
+    )
 open import DASHI.Physics.Closure.Validation.RootSystemB4ShellComparison as B4C public
   using (B4ShellComparisonVerdict; B4PromotionStatus)
 open import DASHI.Physics.Closure.Validation.OrbitShellSeriesComparison as OSSC public
@@ -45,6 +56,16 @@ open import DASHI.Physics.OrbitShellGeneratingSeriesRootSystemB4 as OSGB4
 open import DASHI.Physics.ShellNeighborhoodClass as SNC public
   using (ShellNeighborhoodClass)
 open import DASHI.Physics.OneMinusShellFamilyParametric as OMSFP
+open import DASHI.Physics.LorentzNeighborhoodDynamicCandidate as LNDC public
+  using (DynamicCandidateStatus)
+open import DASHI.Physics.Closure.DynamicalClosureStatus as DCS public
+  using
+    ( DynamicalClosureStatus
+    ; PropagationStatus
+    ; CausalAdmissibilityStatus
+    ; MonotoneQuantityStatus
+    ; EffectiveGeometryStatus
+    )
 open import DASHI.Physics.OrbitProfileData as OPD
 
 validationBundle : MCPCV.MinimalCrediblePhysicsClosureValidation
@@ -65,6 +86,12 @@ negativeControlSnapshotVerdict = MCPCV.negativeControlVerdict validationBundle
 fejerShiftVerdict : FCS.FejerBenchmarkVerdict
 fejerShiftVerdict = FCSS.shiftVerdict
 
+canonicalDynamicsStatus : DCS.DynamicalClosureStatus
+canonicalDynamicsStatus =
+  DC.DynamicalClosure.status
+    (MCPC.authoritativeDynamics
+      (MCPCV.MinimalCrediblePhysicsClosureValidation.closure validationBundle))
+
 fejerShiftChi2Status : FCS.Chi2FalsifierStatus
 fejerShiftChi2Status =
   FCS.FejerOverChi2Harness.chi2FalsifierStatus
@@ -80,6 +107,34 @@ observableCollapseShiftVerdict =
 snapThresholdShiftVerdict : STL.SnapThresholdVerdict
 snapThresholdShiftVerdict =
   STLR.SnapThresholdReport.verdict STLS.shiftReport
+
+syntheticOneMinusShellMatch : Bool
+syntheticOneMinusShellMatch =
+  SOSC.SyntheticShellComparisonReport.shell1Matches SOSC.report
+
+syntheticOneMinusProfileMatch : Bool
+syntheticOneMinusProfileMatch =
+  SOSC.SyntheticShellComparisonReport.shell2Matches SOSC.report
+
+syntheticOneMinusPromotionStatus : SOSC.SyntheticPromotionStatus
+syntheticOneMinusPromotionStatus =
+  SOSC.SyntheticShellComparisonReport.promotionStatus SOSC.report
+
+syntheticOneMinusOrientationStatus : SOPB.SyntheticOrientationStatus
+syntheticOneMinusOrientationStatus =
+  SOPB.SyntheticPromotionBridge.orientationStatus SOPB.bridge
+
+syntheticOneMinusSignatureStatus : SOPB.SyntheticSignatureStatus
+syntheticOneMinusSignatureStatus =
+  SOPB.SyntheticPromotionBridge.signatureStatus SOPB.bridge
+
+syntheticOneMinusBridgeStatus : SOPB.SyntheticPromotionBridgeStatus
+syntheticOneMinusBridgeStatus =
+  SOPB.SyntheticPromotionBridge.promotionStatus SOPB.bridge
+
+lorentzDynamicCandidateStatus : LNDC.DynamicCandidateStatus
+lorentzDynamicCandidateStatus =
+  LNDC.LorentzNeighborhoodDynamicCandidate.status LNDC.prototype
 
 b4ShellComparisonVerdict : B4C.B4ShellComparisonVerdict
 b4ShellComparisonVerdict =

@@ -13,6 +13,11 @@ Priority bucket: `P0`
   data, not only type-level metric availability.
 - Extend the dynamics package beyond Fejer/closest-point/MDL if a concrete
   causal propagation or effective-geometry witness becomes available.
+- Add a typed dynamics-status surface to the canonical shift package:
+  propagation,
+  causal admissibility,
+  monotone quantity,
+  effective geometry.
 - Keep legacy assumption-backed modules outside the canonical Stage C story.
   Current explicit legacy surfaces:
   `PhysicsClosureInstanceAssumed`,
@@ -149,6 +154,22 @@ Priority bucket: `P0` first, then `P1`
 - Follow-on theorem task:
   decide whether the next theorem step is shell-2 / orientation follow-through
   or a second Lorentz-family realization.
+- Immediate realization-search step:
+  add an independent shell-side one-minus-family candidate for the 4D Lorentz
+  neighborhood, classify it explicitly, and keep it non-admissible until the
+  missing shell-2/orientation/signature pieces are justified.
+- Current status on that search:
+  synthetic one-minus candidate now carries shell-1 and shell-2 profiles and
+  remains outside the admissible harness until orientation/signature are
+  justified independently.
+- Next realization-search implementation:
+  grow the prototype Lorentz-neighborhood dynamic candidate scaffold into a
+  genuinely independent dynamics-side realization, then decide whether it can
+  move beyond prototype-only status.
+- Immediate promotion-side implementation:
+  add a typed synthetic-promotion bridge that records the current orientation
+  and signature blocker explicitly, and only allow admissible-harness
+  promotion when both become independently justified.
 - Keep the canonical Stage C entrypoint authoritative in code:
   `DASHI.Physics.Closure.CanonicalStageC` is the recommended import surface,
   while legacy assumed/prototype modules remain compatibility-only.

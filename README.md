@@ -22,6 +22,22 @@ Current theorem status:
   independent `B₄` shell/profile report and later promoted into the admissible
   harness only if its shell class becomes Lorentz-compatible and
   orientation/signature are justified.
+- New Lorentz-neighborhood shell-side comparison:
+  an independent synthetic one-minus-family candidate now matches the shift
+  shell-1 and shell-2 profiles exactly, but remains outside the admissible
+  harness because orientation and signature are not yet justified
+  independently.
+- New Lorentz-neighborhood dynamic search surface:
+  a prototype-only dynamic candidate scaffold now exists so the search for a
+  second Lorentz-family realization is no longer shell-only.
+- New synthetic-promotion status surface:
+  the repo now records the exact blocker between the synthetic profile-aware
+  candidate and admissible-harness promotion, instead of leaving that gap
+  implicit.
+- Stronger dynamics baseline:
+  the canonical shift dynamics package now carries an explicit status object
+  for propagation, causal admissibility, monotone quantity, and effective
+  geometry.
 - Next algebraic milestone:
   add a finite orbit-shell generating series for the current shift profile,
   then use it for standalone `B₄` comparison and a prototype wave lift.

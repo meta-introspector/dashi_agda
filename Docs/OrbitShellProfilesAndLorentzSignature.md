@@ -170,6 +170,14 @@ The current repo-facing validation summary is:
 - Bool inversion admissible alternate realization: `signatureOnlyMatch`
 - tail-permutation negative control: `mismatch`
 
+The current synthetic Lorentz-neighborhood search surface is:
+
+- shell-1 exact match to the shift reference,
+- shell-2 exact match to the shift reference,
+- explicit promotion-bridge status saying orientation/signature are still not
+  independently justified,
+- prototype-only dynamic candidate scaffold present.
+
 This already shows:
 
 - the signature-level result is stronger than exact shell-profile rigidity
@@ -257,6 +265,8 @@ Current closure-side hardening target alongside that theorem work:
 
 - keep the recommended Stage C path on the concrete shift dynamics package and
   the intrinsic `(3,1)` theorem,
-- and remove the last trivial constraint shim from the empirical full adapter
+- and remove the last trivial constraint shim from the empirical full adapter,
+- while exposing the synthetic-promotion blocker and strengthened dynamics
+  status directly through the validation/closure summaries.
   so the closure-facing full adapters share the same concrete constraint
   witness.

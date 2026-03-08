@@ -31,6 +31,18 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   not yet promoted into the admissible rigidity harness.
 -- Current shift shell neighborhood:
 --   oneMinusShellNeighborhood.
+-- Current independent Lorentz-neighborhood shell candidate:
+--   synthetic one-minus shell family present,
+--   shell-1 exact match against the shift reference,
+--   shell-2 exact match against the shift reference,
+--   promotion status = standaloneProfileOnly,
+--   promotion bridge = blockedOnOrientationAndSignature.
+-- Current Lorentz-neighborhood dynamic candidate search:
+--   prototype scaffold now present,
+--   shell neighborhood fixed to oneMinusShellNeighborhood,
+--   shell-2 structure present,
+--   orientation/signature/dynamics still not independently justified,
+--   status = prototypeScaffoldOnly.
 -- Current one-minus family theorem status:
 --   bounded family complete for `m = 2..8`,
 --   parametric shell-1 theorem now exported on the shift reference path.
@@ -53,6 +65,7 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 -- Current canonical Stage C status surface:
 --   `CanonicalStageC` is the authoritative closure entrypoint,
 --   canonical path status = canonicalProved,
+--   canonical dynamics status now exported explicitly,
 --   legacy wrappers are compatibility-only,
 --   wave-series / unification surfaces remain prototype-only.
 
@@ -70,5 +83,6 @@ open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP public
 open import DASHI.Physics.Signature31ShiftProfileWitness as SPW public
 open import DASHI.Physics.Signature31OrbitActionAgreement as OAA public
 open import DASHI.Physics.OneMinusShellFamilyParametric as OMSFP public
+open import DASHI.Physics.LorentzNeighborhoodDynamicCandidate as LNDC public
 open import DASHI.Physics.Closure.SpinDiracGateFromClosure as SDGC public
 open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public

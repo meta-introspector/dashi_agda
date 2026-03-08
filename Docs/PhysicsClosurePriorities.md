@@ -66,6 +66,10 @@ Immediate next step after this snapshot:
   full adapter, while exposing an explicit canonical Stage C entrypoint/status
   surface in code so repo-facing consumers stop drifting back to compatibility
   modules.
+- next dynamics-hardening object:
+  make the canonical shift dynamics package expose a structured status surface
+  for propagation, causal admissibility, monotone quantity, and effective
+  geometry.
 
 ## P1 — Runnable Forward Benchmarks
 
@@ -105,6 +109,18 @@ Immediate first implementation:
   grow the single shift χ²-boundary witness into an explicit small witness
   library so the Fejér benchmark has a real counterexample surface rather
   than one privileged state.
+- immediate next realization-search step:
+  add an independent shell-side one-minus-family candidate in the Lorentz
+  neighborhood, but keep it outside the admissible harness until shell-2,
+  orientation, and signature are justified independently.
+- current realization-search refinement:
+  the synthetic one-minus candidate is now profile-aware on shell-1 and
+  shell-2, and the next search-side artifact is a prototype-only dynamic
+  candidate scaffold rather than premature admissible-harness promotion.
+- immediate promotion-side task:
+  add a typed synthetic-promotion bridge that records whether orientation and
+  signature are independently justified, then only promote to the admissible
+  harness if both become available.
 
 Current second-realization preference:
 

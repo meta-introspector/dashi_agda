@@ -53,6 +53,8 @@ Current priorities:
 - keep the canonical closure path and empirical full adapter on the same
   concrete constraint-closure witness,
 - bundle the real shift Lyapunov and seam certificates as a dynamics package,
+- expose an explicit dynamics-status surface for propagation, causal
+  admissibility, monotone quantity, and effective geometry,
 - feed full-closure instances from the intrinsic signature theorem,
 - make downstream closure consumers depend on that package.
 
@@ -165,6 +167,9 @@ Current admissible candidate:
   same signature/orientation class, different shell-profile class.
 - the next closure-facing step is to make the rigidity suite part of the
   minimum-credible adapter surface, not just a sibling validation module.
+- the next synthetic-promotion step is now explicit in code:
+  orientation/signature remain blocked until independently justified, even
+  though shell-1 and shell-2 already match.
 
 ## Next Mathematical Realization Target
 

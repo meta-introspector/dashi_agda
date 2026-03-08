@@ -8,6 +8,7 @@ open import DASHI.MDL.MDLDescentTradeoff as MDL using (MDLParts)
 open import DASHI.Physics.RealTernaryCarrier as RTC
 open import DASHI.Physics.Closure.MDLTradeoffShiftInstance as MSI
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
+open import DASHI.Physics.Closure.DynamicalClosureStatus as DCS
 open import DASHI.Physics.Closure.ShiftSeamCertificates as SSC
 
 -- Shift-level dynamics package for the minimum credible closure path.
@@ -21,5 +22,6 @@ record DynamicalClosure : Setω where
         {S = RTC.Carrier (m + k)}
         (MDLParts.T (MSI.MDLPartsShift {m} {k}))
     mdlFejerWitness : MDLFA.MDLFejerAxiomsShift
+    status : DCS.DynamicalClosureStatus
 
 open DynamicalClosure public

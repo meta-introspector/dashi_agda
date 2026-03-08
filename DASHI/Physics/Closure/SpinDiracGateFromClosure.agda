@@ -5,6 +5,7 @@ open import Agda.Primitive using (Level; _⊔_; lsuc)
 open import DASHI.Geometry.CliffordGate using (RingLike)
 open import DASHI.Geometry.QuadraticForm as QF
 open import DASHI.Physics.Closure.DynamicalClosure as DC
+open import DASHI.Physics.Closure.DynamicalClosureStatus as DCS
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.SpinDiracGateFromMetric
@@ -31,6 +32,10 @@ requiredDynamics :
   (C : PCF.PhysicsClosureFull) → DC.DynamicalClosure
 requiredDynamics C = PCF.PhysicsClosureFull.dynamics C
 
+requiredDynamicsStatus :
+  (C : PCF.PhysicsClosureFull) → DCS.DynamicalClosureStatus
+requiredDynamicsStatus C = DC.DynamicalClosure.status (requiredDynamics C)
+
 SpinDiracGateTypeFromMinimal :
   (C : MCPC.MinimalCrediblePhysicsClosure) →
   ∀ {m ℓψ ℓa ℓg} (Ψ : Set ℓψ)
@@ -42,3 +47,8 @@ SpinDiracGateTypeFromMinimal C {m} {ℓψ} {ℓa} {ℓg} Ψ R =
 requiredDynamicsFromMinimal :
   (C : MCPC.MinimalCrediblePhysicsClosure) → DC.DynamicalClosure
 requiredDynamicsFromMinimal = MCPC.authoritativeDynamics
+
+requiredDynamicsStatusFromMinimal :
+  (C : MCPC.MinimalCrediblePhysicsClosure) → DCS.DynamicalClosureStatus
+requiredDynamicsStatusFromMinimal C =
+  DC.DynamicalClosure.status (requiredDynamicsFromMinimal C)

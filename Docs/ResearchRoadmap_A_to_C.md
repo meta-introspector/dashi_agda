@@ -178,6 +178,7 @@ Immediate next phase inside Stage C:
 - remove the trivial empirical full-adapter closure shim so the canonical path
   and the empirical full adapter both reuse the concrete constraint instance,
 - keep the canonical Stage C entrypoint explicit in code,
+- add an explicit dynamics-status layer on the canonical shift path,
 - a typed profile-rigidity validation harness,
 - one reference benchmark using the signed-permutation shift realization,
 - one alternate realization slot,
@@ -190,6 +191,9 @@ Current benchmark decision:
 - the existing tail-permutation surface is treated as a negative control,
   because it is useful for structured mismatch detection but is not the right
   closure-compatible comparison target.
+- the synthetic one-minus candidate is now profile-aware, and its missing
+  orientation/signature proof boundary is tracked explicitly through a
+  promotion-bridge status surface instead of only prose.
 
 ## Milestones and Exit Criteria
 
