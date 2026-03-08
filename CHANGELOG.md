@@ -347,3 +347,5 @@
 - Exported the wave-observable-transport-geometry regime slice through the canonical summary surfaces and top-level import tree.
 - Exported the wave-observable-transport-geometry regime coherence slice through the canonical summary surfaces and top-level import tree.
 - Exported the wave-observable-transport-geometry regime completeness slice through the canonical summary surfaces and top-level import tree.
+- Exported the wave-observable-transport-geometry regime soundness slice through the canonical summary surfaces and top-level import tree.
+- Exported the wave-observable-transport-geometry regime consistency slice through the canonical summary surfaces and top-level import tree.

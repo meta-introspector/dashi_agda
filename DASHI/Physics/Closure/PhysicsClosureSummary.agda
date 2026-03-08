@@ -306,8 +306,12 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceTheoremSummary
   ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheoremSummary
   ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheoremSummary
+  ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeSoundnessTheoremSummary
+  ; canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeConsistencyTheoremSummary
   ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheoremSummary
   ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheoremSummary
+  ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeSoundnessTheoremSummary
+  ; secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeConsistencyTheoremSummary
     ; canonicalKnownLimitsRecoveryPackageSummary
     ; canonicalKnownLimitsCausalPropagationTheoremSummary
     ; canonicalKnownLimitsGeometryTransportTheoremSummary
@@ -332,6 +336,8 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheoremSummary
   ; canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheoremSummary
   ; canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheoremSummary
+  ; canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeSoundnessTheoremSummary
+  ; canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeConsistencyTheoremSummary
     ; canonicalKnownLimitsPropagationSpinTheoremSummary
     ; canonicalPropagationConsumerSummary
     ; canonicalGeometryConsumerSummary
@@ -350,6 +356,8 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalWaveObservableTransportGeometryRegimeCoherenceConsumerSummary
   ; canonicalWaveObservableTransportGeometryRegimeStabilityConsumerSummary
   ; canonicalWaveObservableTransportGeometryRegimeCompletenessConsumerSummary
+  ; canonicalWaveObservableTransportGeometryRegimeSoundnessConsumerSummary
+  ; canonicalWaveObservableTransportGeometryRegimeConsistencyConsumerSummary
     ; canonicalTheoremBundleSummary
     ; canonicalSummaryBundle
     ; shiftWaveGradedShellPrototypeSummary
@@ -367,4 +375,6 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeCoherenceSummary
   ; canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeStabilitySummary
   ; canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeCompletenessSummary
+  ; canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeSoundnessSummary
+  ; canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeConsistencySummary
   )
