@@ -1,6 +1,7 @@
 module DASHI.Physics.Closure.ParametricAlgebraicWaveObservableGeometryTheorem where
 
 open import Agda.Primitive using (Setω)
+open import Agda.Builtin.Bool using (true)
 open import Relation.Binary.PropositionalEquality using (_≡_)
 
 open import DASHI.Physics.Closure.CanonicalConstraintGaugePackage as CCGP

@@ -342,3 +342,5 @@
 - widened the pre-moonshine comparison layer with additional labeled twiner
   cases for shift and `B₄`, plus a richer detailed graded/twined comparison
   report.
+- exported the wave-observable-transport-geometry coherence slice through the
+  canonical summary surfaces and top-level import tree.

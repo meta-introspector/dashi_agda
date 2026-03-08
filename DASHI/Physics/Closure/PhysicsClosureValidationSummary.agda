@@ -129,6 +129,10 @@ open import DASHI.Physics.Closure.ParametricAlgebraicRegimeCoherenceTheorem as P
   using (ParametricAlgebraicRegimeCoherenceTheorem)
 open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportTheorem as PAWOT public
   using (ParametricAlgebraicWaveObservableTransportTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableGeometryTheorem as PAWOG public
+  using (ParametricAlgebraicWaveObservableGeometryTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem as PAWOTGC public
+  using (ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem)
 open import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI public
   using (CanonicalGaugeConstraintRealizedInstances)
 open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
@@ -193,6 +197,12 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservablesTheorem as 
   using (KnownLimitsRecoveredWaveObservablesTheorem)
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportTheorem as KLRWOT public
   using (KnownLimitsRecoveredWaveObservableTransportTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableGeometryTheorem as KLRWOG public
+  using (KnownLimitsRecoveredWaveObservableGeometryTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem as KLRWOTG public
+  using (KnownLimitsRecoveredWaveObservableTransportGeometryTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC public
+  using (KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem)
 open import DASHI.Physics.Closure.CanonicalStageCTheoremBundle as CSTB public
   using (CanonicalStageCTheoremBundle)
 open import DASHI.Physics.Closure.CanonicalStageCSummaryBundle as CSSB public
@@ -215,6 +225,12 @@ open import DASHI.Physics.Closure.CanonicalWaveObservableConsumer as CWOC public
   using (WaveObservableConsumerFromMinimal)
 open import DASHI.Physics.Closure.CanonicalWaveObservableTransportConsumer as CWOTC public
   using (WaveObservableTransportConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalWaveObservableGeometryConsumer as CWOGC public
+  using (WaveObservableGeometryConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryConsumer as CWOTGC public
+  using (WaveObservableTransportGeometryConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryCoherenceConsumer as CWOTGCC public
+  using (WaveObservableTransportGeometryCoherenceConsumerFromMinimal)
 open import DASHI.Physics.Moonshine.FiniteTwinedTraceDetailedReport as MFTDR public
   using (FiniteTwinedTraceDetailedReport)
 open import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary as MWGSPS public
@@ -235,6 +251,10 @@ open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableSummary as MTWO
   using (MoonshineTwinedWaveObservableSummary)
 open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportSummary as MTWOTS public
   using (MoonshineTwinedWaveObservableTransportSummary)
+open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometrySummary as MTWOTGS public
+  using (MoonshineTwinedWaveObservableTransportGeometrySummary)
+open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometryCoherenceSummary as MTWOTGCS public
+  using (MoonshineTwinedWaveObservableTransportGeometryCoherenceSummary)
 
 validationBundle : MCPCV.MinimalCrediblePhysicsClosureValidation
 validationBundle = MCPCVS.minimumCredibleClosureValidationShift
@@ -445,6 +465,36 @@ canonicalParametricAlgebraicWaveObservableTransportTheoremSummary :
 canonicalParametricAlgebraicWaveObservableTransportTheoremSummary =
   CSC.canonicalParametricAlgebraicWaveObservableTransportTheorem
 
+secondaryParametricAlgebraicWaveObservableTransportTheoremSummary :
+  PAWOT.ParametricAlgebraicWaveObservableTransportTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportTheorem
+
+canonicalParametricAlgebraicWaveObservableGeometryTheoremSummary :
+  PAWOG.ParametricAlgebraicWaveObservableGeometryTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableGeometryTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableGeometryTheorem
+
+secondaryParametricAlgebraicWaveObservableGeometryTheoremSummary :
+  PAWOG.ParametricAlgebraicWaveObservableGeometryTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableGeometryTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableGeometryTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryCoherenceTheoremSummary :
+  PAWOTGC.ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryCoherenceTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryCoherenceTheoremSummary :
+  PAWOTGC.ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryCoherenceTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem
+
 secondaryParametricAlgebraicRegimeCoherenceTheoremSummary :
   PARC.ParametricAlgebraicRegimeCoherenceTheorem
     CSC.secondaryConstraintGaugePackage
@@ -557,6 +607,21 @@ canonicalKnownLimitsRecoveredWaveObservableTransportTheoremSummary :
 canonicalKnownLimitsRecoveredWaveObservableTransportTheoremSummary =
   CSC.canonicalKnownLimitsRecoveredWaveObservableTransportTheorem
 
+canonicalKnownLimitsRecoveredWaveObservableGeometryTheoremSummary :
+  KLRWOG.KnownLimitsRecoveredWaveObservableGeometryTheorem
+canonicalKnownLimitsRecoveredWaveObservableGeometryTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableGeometryTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryTheoremSummary :
+  KLRWOTG.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheoremSummary :
+  KLRWOTGC.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
+
 canonicalSpinLocalLorentzBridgeSummary :
   SLLB.SpinLocalLorentzBridge CSC.canonicalClosure
 canonicalSpinLocalLorentzBridgeSummary =
@@ -617,6 +682,23 @@ canonicalWaveObservableTransportConsumerSummary :
 canonicalWaveObservableTransportConsumerSummary =
   CSC.canonicalWaveObservableTransportConsumer
 
+canonicalWaveObservableGeometryConsumerSummary :
+  CWOGC.WaveObservableGeometryConsumerFromMinimal CSC.canonicalClosure
+canonicalWaveObservableGeometryConsumerSummary =
+  CSC.canonicalWaveObservableGeometryConsumer
+
+canonicalWaveObservableTransportGeometryConsumerSummary :
+  CWOTGC.WaveObservableTransportGeometryConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryConsumer
+
+canonicalWaveObservableTransportGeometryCoherenceConsumerSummary :
+  CWOTGCC.WaveObservableTransportGeometryCoherenceConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryCoherenceConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryCoherenceConsumer
+
 canonicalTheoremBundleSummary : CSTB.CanonicalStageCTheoremBundle
 canonicalTheoremBundleSummary = CSTB.canonicalStageCTheoremBundle
 
@@ -657,6 +739,16 @@ canonicalMoonshineTwinedWaveObservableTransportSummary :
   MTWOTS.MoonshineTwinedWaveObservableTransportSummary
 canonicalMoonshineTwinedWaveObservableTransportSummary =
   MTWOTS.canonicalMoonshineTwinedWaveObservableTransportSummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometrySummary :
+  MTWOTGS.MoonshineTwinedWaveObservableTransportGeometrySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometrySummary =
+  MTWOTGS.canonicalMoonshineTwinedWaveObservableTransportGeometrySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryCoherenceSummary :
+  MTWOTGCS.MoonshineTwinedWaveObservableTransportGeometryCoherenceSummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryCoherenceSummary =
+  MTWOTGCS.canonicalMoonshineTwinedWaveObservableTransportGeometryCoherenceSummary
 
 selfSnapshotVerdict : RPR.RigidityVerdict
 selfSnapshotVerdict = MCPCV.selfVerdict validationBundle

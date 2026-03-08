@@ -20,6 +20,8 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveGeometryTheorem as KLR
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveRegimeTheorem as KLRWR
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservablesTheorem as KLRWO
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportTheorem as KLRWOT
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem as KLRWOTG
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC
 open import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
 open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
 open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC
@@ -29,6 +31,8 @@ open import DASHI.Physics.Closure.CanonicalWaveGeometryConsumer as CWGC
 open import DASHI.Physics.Closure.CanonicalWaveRegimeConsumer as CWRC
 open import DASHI.Physics.Closure.CanonicalWaveObservableConsumer as CWOC
 open import DASHI.Physics.Closure.CanonicalWaveObservableTransportConsumer as CWOTC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryConsumer as CWOTGC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryCoherenceConsumer as CWOTGCC
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
 
 record CanonicalStageCSummaryBundle : Setω where
@@ -57,6 +61,10 @@ record CanonicalStageCSummaryBundle : Setω where
       KLRWO.KnownLimitsRecoveredWaveObservablesTheorem
     recoveredWaveObservableTransport :
       KLRWOT.KnownLimitsRecoveredWaveObservableTransportTheorem
+    recoveredWaveObservableTransportGeometry :
+      KLRWOTG.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem
+    recoveredWaveObservableTransportGeometryCoherence :
+      KLRWOTGC.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
     geometryConsumer : CGC.GeometryConsumerFromMinimal CSC.canonicalClosure
     observableConsumer : COC.ObservableConsumerFromMinimal CSC.canonicalClosure
     regimeConsumer : CRC.RegimeConsumerFromMinimal CSC.canonicalClosure
@@ -72,6 +80,11 @@ record CanonicalStageCSummaryBundle : Setω where
       CWOC.WaveObservableConsumerFromMinimal CSC.canonicalClosure
     waveObservableTransportConsumerSummary :
       CWOTC.WaveObservableTransportConsumerFromMinimal CSC.canonicalClosure
+    waveObservableTransportGeometryConsumer :
+      CWOTGC.WaveObservableTransportGeometryConsumerFromMinimal CSC.canonicalClosure
+    waveObservableTransportGeometryCoherenceConsumer :
+      CWOTGCC.WaveObservableTransportGeometryCoherenceConsumerFromMinimal
+        CSC.canonicalClosure
     selfVerdict : RPR.RigidityVerdict
     admissibleVerdict : RPR.RigidityVerdict
     negativeControlVerdict : RPR.RigidityVerdict
@@ -103,6 +116,10 @@ canonicalStageCSummaryBundle =
         CSC.canonicalKnownLimitsRecoveredWaveObservablesTheorem
     ; recoveredWaveObservableTransport =
         CSC.canonicalKnownLimitsRecoveredWaveObservableTransportTheorem
+    ; recoveredWaveObservableTransportGeometry =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryTheorem
+    ; recoveredWaveObservableTransportGeometryCoherence =
+        CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem
     ; geometryConsumer = CSC.canonicalGeometryConsumer
     ; observableConsumer = CSC.canonicalObservableConsumer
     ; regimeConsumer = CSC.canonicalRegimeConsumer
@@ -113,6 +130,10 @@ canonicalStageCSummaryBundle =
     ; waveObservableConsumer = CSC.canonicalWaveObservableConsumer
     ; waveObservableTransportConsumerSummary =
         CSC.canonicalWaveObservableTransportConsumer
+    ; waveObservableTransportGeometryConsumer =
+        CSC.canonicalWaveObservableTransportGeometryConsumer
+    ; waveObservableTransportGeometryCoherenceConsumer =
+        CSC.canonicalWaveObservableTransportGeometryCoherenceConsumer
     ; selfVerdict = CSC.canonicalSelfVerdict
     ; admissibleVerdict = CSC.canonicalAdmissibleVerdict
     ; negativeControlVerdict = CSC.canonicalNegativeControlVerdict
