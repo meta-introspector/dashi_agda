@@ -6,6 +6,7 @@ open import DASHI.Geometry.CliffordGate using (RingLike)
 open import DASHI.Geometry.QuadraticForm as QF
 open import DASHI.Physics.Closure.DynamicalClosure as DC
 open import DASHI.Physics.Closure.DynamicalClosureStatus as DCS
+open import DASHI.Physics.Closure.DynamicalClosureWitness as DCW
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.SpinDiracGateFromMetric
@@ -47,6 +48,10 @@ SpinDiracGateTypeFromMinimal C {m} {ℓψ} {ℓa} {ℓg} Ψ R =
 requiredDynamicsFromMinimal :
   (C : MCPC.MinimalCrediblePhysicsClosure) → DC.DynamicalClosure
 requiredDynamicsFromMinimal = MCPC.authoritativeDynamics
+
+requiredDynamicsWitnessFromMinimal :
+  (C : MCPC.MinimalCrediblePhysicsClosure) → DCW.DynamicalClosureWitness
+requiredDynamicsWitnessFromMinimal = MCPC.authoritativeDynamicsWitness
 
 requiredDynamicsStatusFromMinimal :
   (C : MCPC.MinimalCrediblePhysicsClosure) → DCS.DynamicalClosureStatus

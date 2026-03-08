@@ -17,7 +17,8 @@ Concrete tasks:
 - keep the tail-permutation case as a negative control,
 - add one genuinely closure-compatible second realization,
 - surface the first admissible result explicitly:
-  Bool inversion on the 4D `(3,1)` mask is expected to be a
+  the synthetic one-minus candidate now lands as `exactMatch`,
+  while Bool inversion remains a secondary admissible
   `signatureOnlyMatch`,
 - run the profile-rigidity harness and classify the outcome,
 - keep downstream closure consumers attached to the real dynamics package.
@@ -31,7 +32,8 @@ Exit criteria:
 Current snapshot:
 
 - reference signed-permutation self-check: `exactMatch`
-- Bool inversion admissible candidate: `signatureOnlyMatch`
+- synthetic one-minus admissible candidate: `exactMatch`
+- Bool inversion secondary admissible candidate: `signatureOnlyMatch`
 - tail-permutation negative control: `mismatch`
 
 Immediate next step after this snapshot:
@@ -70,6 +72,35 @@ Immediate next step after this snapshot:
   make the canonical shift dynamics package expose a structured status surface
   for propagation, causal admissibility, monotone quantity, and effective
   geometry.
+- immediate runway-hardening object:
+  add a semantics-bearing dynamics witness companion plus canonical
+  constraint-closure and known-limits status surfaces so downstream closure
+  consumers have a stronger baseline than status tags alone.
+- immediate downstream / limits object:
+  keep the witness-bearing canonical spin/Dirac consumer and the first scoped
+  known-limits recovery witness on the authoritative Stage C path, then move
+  the next runway target to stronger local propagation / local-Lorentz
+  follow-through rather than broad GR/QFT claims.
+- immediate algebraic / limits hardening object:
+  add a concrete minimal constraint-closure witness and a stronger known-limits
+  recovery witness carrying actual propagation/effective-geometry data, then
+  use those as the baseline for the next scoped recovery theorem.
+- immediate theorem object after that:
+  keep the canonical path on a minimal algebraic-closure theorem and a scoped
+  local-recovery theorem, plus a scoped effective-geometry theorem for the
+  same regime, then only afterward widen the runway toward richer
+  gauge/known-limits claims.
+- next scoped runway order:
+  gauge-contract theorem first,
+  then spin/local-Lorentz bridge theorem,
+  then only afterward widen toward broader gauge or known-limits claims.
+- current state:
+  both scoped runway theorems now sit on the canonical Stage C path; the next
+  widening step is beyond these scoped slices.
+- current widened target:
+  the next widening step is now:
+  a carrier-parametric gauge/constraint theorem,
+  and a local causal-effective propagation theorem.
 
 ## P1 — Runnable Forward Benchmarks
 
@@ -115,16 +146,22 @@ Immediate first implementation:
   orientation, and signature are justified independently.
 - current realization-search refinement:
   the synthetic one-minus candidate is now profile-aware on shell-1 and
-  shell-2, and the next search-side artifact is a prototype-only dynamic
-  candidate scaffold rather than premature admissible-harness promotion.
+  shell-2, and the dynamics-side search artifact has been tightened into a
+  minimal admissible-dynamics witness for the current synthetic path.
 - immediate promotion-side task:
   add a typed synthetic-promotion bridge that records whether orientation and
   signature are independently justified, then only promote to the admissible
   harness if both become available.
+- current promotion-side status:
+  orientation/signature are bridged on the synthetic path, a minimal
+  independent-dynamics witness is present, and the candidate now enters the
+  admissible rigidity harness.
 
 Current second-realization preference:
 
-- Bool inversion remains the first admissible alternate realization,
+- the synthetic one-minus candidate is now the canonical admissible alternate
+  realization,
+- Bool inversion remains a useful secondary admissible comparison,
 - the next mathematically preferred one is Coxeter/Weyl-based rather than
   another bespoke contraction flow.
 - that Coxeter/Weyl path should enter in two steps:

@@ -2,8 +2,35 @@
 
 ## 2026-03-08
 
+- clarified the safe symmetry-interpretation order for the orbit-shell story:
+  Weyl/root-system/theta-like first,
+  Niemeier/umbral-style only after a genuine root-lattice shell realization,
+  and Monster/Moonshine only after a graded-module / trace bridge,
+- added a compactified context note capturing that archived-thread decision so
+  the repo-facing wording does not drift away from the canonical context,
+- added a standing context-fetch note:
+  when docs feel light, check the local chat archive first via
+  `robust-context-fetch`, ask the user for likely online chat IDs/titles if
+  needed, and always record title/IDs/source/main topics for referenced chats,
 - documented Stage C as the open "minimal credible physics closure" target
   rather than a vague full-closure slogan,
+- added `CanonicalGaugeConstraintBridgeTheorem` on the canonical Stage C path,
+  tying the concrete closure theorem and the gauge-contract theorem together on
+  the same concrete constraint carrier,
+- added `KnownLimitsPropagationSpinTheorem` on the canonical Stage C path,
+  widening the local known-limits story from local recovery/effective geometry
+  to a propagation-bearing spin theorem slice,
+- added `CanonicalConstraintGaugePackage` and
+  `ParametricGaugeConstraintTheorem`, making the current gauge/constraint
+  widening abstract over carrier while keeping the current concrete carrier as
+  the first realized instance,
+- added `KnownLimitsRecoveryPackage` and
+  `KnownLimitsCausalPropagationTheorem`, widening the current known-limits
+  story beyond the local propagation/spin bridge into a local causal/effective
+  propagation theorem slice,
+- rewired `SpinLocalLorentzBridgeTheorem` to depend on the stronger local
+  causal-propagation theorem rather than directly on the older local/effective
+  geometry pair,
 - added a dedicated design note for the minimum acceptable physics-closure
   boundary,
 - reorganized `TODO.md` into theorem/dynamics, observable/prediction, shared
@@ -153,3 +180,42 @@
   surface for propagation, causal admissibility, monotone quantity, and
   effective geometry, and threaded that status through the validation/closure
   summary surfaces.
+- tightened the synthetic promotion path again by adding an explicit
+  orientation/signature bridge from the current synthetic full-profile match;
+  the remaining blocker to admissible-harness promotion is now independent
+  dynamics.
+- replaced the naked theorem-critical placeholder uses on the shift signature
+  path with real local witness lemmas for cone nontriviality, cone/Q
+  preservation, and finite-action compatibility, while keeping the public
+  interface stable.
+- promoted the synthetic one-minus candidate into the admissible rigidity
+  harness by adding a minimal independent-dynamics witness and a concrete
+  admissible realization module.
+- switched the canonical admissible Stage C comparison from Bool inversion to
+  the synthetic one-minus candidate; Bool inversion remains available as a
+  secondary admissible `signatureOnlyMatch` comparison.
+- added a typed synthetic dynamics witness module and wired the Lorentz
+  neighborhood dynamic candidate through it instead of relying only on a
+  descriptive scaffold record.
+- added a semantics-bearing canonical dynamics witness companion, plus
+  canonical constraint-closure and known-limits status surfaces, and exposed
+  them through the canonical Stage C / validation summary path.
+- re-exported the first scoped known-limits recovery witness and the
+  witness-bearing canonical spin/Dirac consumer directly from Canonical
+  Stage C, so downstream users can stay on the authoritative closure
+  entrypoint instead of reconstructing those runway surfaces manually.
+- added a concrete minimal canonical constraint-closure witness and a stronger
+  known-limits recovery witness carrying actual propagation/effective-geometry
+  data, then exposed both through the canonical Stage C / validation summary
+  path.
+- added a minimal algebraic-closure theorem on top of the canonical concrete
+  constraint witness, and a scoped known-limits local-recovery theorem on top
+  of the stronger propagation/effective-geometry recovery witness.
+- added a scoped effective-geometry theorem on top of the local known-limits
+  recovery theorem, so the canonical path now carries a first theorem-bearing
+  local geometry slice instead of only status/witness surfaces.
+- documented the next scoped runway theorem order explicitly:
+  gauge-contract theorem first, then spin/local-Lorentz bridge theorem.
+- added a scoped canonical gauge-contract theorem on top of the concrete
+  closure baseline, and a scoped spin/local-Lorentz bridge theorem on top of
+  the local recovery/effective-geometry baseline.

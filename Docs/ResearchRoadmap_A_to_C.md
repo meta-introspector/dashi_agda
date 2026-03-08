@@ -117,6 +117,9 @@ This track is responsible for:
 
 - theorem-backed dynamics rather than type-only wiring,
 - causal propagation and closure laws tied to the current shift stack,
+- a semantics-bearing canonical dynamics witness companion,
+- a concrete canonical constraint-closure status surface,
+- a known-limits status surface for the broader physics runway,
 - real Lyapunov / Fejer / closest-point witnesses on the minimum closure path,
 - nontrivial closure consumers downstream of the signature theorem.
 
@@ -164,6 +167,23 @@ Stage C must not be described as proved by the current repo state.
 Any Monster/Moonshine interpretation remains explicitly downstream and
 speculative unless supported by separate theorem-level bridges.
 
+Immediate runway theorem order after the current local effective-geometry
+slice:
+
+- scoped gauge-contract theorem on the canonical closure baseline,
+- scoped spin/local-Lorentz bridge theorem on the canonical spin-facing
+  consumer,
+- only then broader gauge/known-limits widening.
+
+Current state:
+
+- the scoped gauge-contract theorem is now on the canonical Stage C path,
+- the scoped spin/local-Lorentz bridge theorem is now on the canonical Stage C
+  path,
+- and the next broader widening is now:
+  a carrier-parametric gauge/constraint theorem,
+  plus a local causal-effective propagation theorem.
+
 Immediate mathematical milestone before another Lorentz-family realization
 search:
 
@@ -192,8 +212,10 @@ Current benchmark decision:
   because it is useful for structured mismatch detection but is not the right
   closure-compatible comparison target.
 - the synthetic one-minus candidate is now profile-aware, and its missing
-  orientation/signature proof boundary is tracked explicitly through a
-  promotion-bridge status surface instead of only prose.
+  orientation/signature proof boundary is now bridged explicitly through a
+  promotion module, and a minimal independent-dynamics witness is now present,
+  so the candidate enters the admissible rigidity harness on the canonical
+  Stage C path.
 
 ## Milestones and Exit Criteria
 

@@ -18,6 +18,48 @@ Priority bucket: `P0`
   causal admissibility,
   monotone quantity,
   effective geometry.
+- Add a semantics-bearing dynamics witness companion to the canonical shift
+  package and thread it through canonical Stage C and spin/Dirac consumers.
+- Add a canonical constraint-closure status surface and a known-limits status
+  surface so the broader physics runway is explicit without overstating
+  recovery.
+- Land the first scoped known-limits recovery witness on the canonical path
+  and keep the next recovery target narrow:
+  stronger local propagation / local-Lorentz follow-through before any GR/QFT
+  claim.
+- Keep the witness-bearing canonical spin/Dirac consumer on the authoritative
+  Stage C path and treat broader matter/gauge recovery as the next runway
+  layer, not as already solved closure.
+- Add a concrete canonical constraint-closure witness on the authoritative
+  Stage C path and use it as the baseline for the next minimal algebraic
+  closure theorem beyond pure status tracking.
+- Add a stronger known-limits recovery witness that carries actual propagation
+  and effective-geometry witnesses, then target the next scoped theorem at
+  stronger local propagation / local-Lorentz follow-through.
+- Keep the canonical path on:
+  a minimal algebraic-closure theorem for the concrete three-generator system,
+  and a scoped known-limits local-recovery theorem for the current local
+  Lorentz + propagation slice,
+  plus a scoped effective-geometry theorem for that same regime,
+  before widening toward richer gauge or GR/QFT claims.
+- Land the next two scoped runway theorems in this order:
+  a canonical gauge-contract theorem on top of the concrete closure baseline,
+  then a canonical spin/local-Lorentz bridge theorem on top of the local
+  recovery/effective-geometry baseline.
+- Both scoped runway theorems are now on the canonical Stage C path.
+  Next widening step:
+  move beyond these scoped slices to a less toy gauge theorem or a broader
+  known-limits recovery theorem.
+- Next widening step:
+  add a carrier-parametric gauge/constraint theorem with the current concrete
+  carrier as its first instance,
+  and add a local causal-effective propagation theorem beyond the current
+  local propagation/spin bridge.
+- After that:
+  add a less toy second carrier instance for the parametric gauge theorem if
+  it can be done honestly,
+  and widen known-limits beyond the current local causal/effective propagation
+  regime.
 - Keep legacy assumption-backed modules outside the canonical Stage C story.
   Current explicit legacy surfaces:
   `PhysicsClosureInstanceAssumed`,
@@ -73,9 +115,12 @@ Priority bucket: `P0` first, then `P1`
 - Next validation task after the negative control:
   add one genuinely closure-compatible alternate realization that exposes the
   full orientation/profile/signature surface.
-- First admissible alternate realization:
+- First canonical admissible alternate realization:
+  the synthetic one-minus realization on the 4D Lorentz-family profile path.
+- Secondary admissible comparison:
   the 4D Bool inversion realization on the `(3,1)` mask.
-- Next mathematically serious alternate realization after Bool inversion:
+- Next mathematically serious alternate realization after the current
+  synthetic/bool-inversion pair:
   a Coxeter / Weyl-group realization of the same 4D shell-orbit data.
 - First implementation step for that realization:
   add an independent `B₄` / hyperoctahedral shell/profile computation from
@@ -85,11 +130,13 @@ Priority bucket: `P0` first, then `P1`
   orientation/signature promotion is even plausible.
 - Add an explicit admissible-realization interface so future comparison
   candidates cannot silently omit orientation/signature data.
-- Record whether the Bool inversion candidate lands as
-  `signatureOnlyMatch` or `mismatch`.
+- Keep the synthetic one-minus admissible result recorded as `exactMatch`.
+- Keep the Bool inversion admissible result recorded as
+  `signatureOnlyMatch`.
 - Add one aggregate validation/report object that exposes:
   self exact match,
-  Bool inversion admissible result,
+  synthetic one-minus admissible result,
+  Bool inversion secondary admissible result,
   tail-permutation negative control.
 - Lift that aggregate rigidity report into a closure-facing adapter so the
   minimum-credible Stage C entrypoint exposes both:
@@ -159,9 +206,9 @@ Priority bucket: `P0` first, then `P1`
   neighborhood, classify it explicitly, and keep it non-admissible until the
   missing shell-2/orientation/signature pieces are justified.
 - Current status on that search:
-  synthetic one-minus candidate now carries shell-1 and shell-2 profiles and
-  remains outside the admissible harness until orientation/signature are
-  justified independently.
+  synthetic one-minus candidate now carries shell-1 and shell-2 profiles,
+  orientation/signature are bridged, and a minimal independent-dynamics
+  witness is present; it now enters the admissible harness.
 - Next realization-search implementation:
   grow the prototype Lorentz-neighborhood dynamic candidate scaffold into a
   genuinely independent dynamics-side realization, then decide whether it can
@@ -170,6 +217,8 @@ Priority bucket: `P0` first, then `P1`
   add a typed synthetic-promotion bridge that records the current orientation
   and signature blocker explicitly, and only allow admissible-harness
   promotion when both become independently justified.
+- Current promotion-side status:
+  synthetic promotion bridge is now admissible-ready on the current path.
 - Keep the canonical Stage C entrypoint authoritative in code:
   `DASHI.Physics.Closure.CanonicalStageC` is the recommended import surface,
   while legacy assumed/prototype modules remain compatibility-only.
@@ -183,6 +232,13 @@ Priority bucket: `P0` first, then `P1`
 - Add a concrete prototype wave-series module that lifts the finite shift
   series into a grade-0 wave-facing object while staying outside the
   theorem-critical closure path.
+- If the series/wave path keeps looking symmetry-rich, keep the interpretation
+  order explicit:
+  Weyl/root-system/theta-like first,
+  then Niemeier/umbral-style only if a genuine root-lattice shell model
+  appears,
+  and only then Monster/Moonshine once graded-module or trace-level structure
+  exists.
 
 ## Deferred Beyond Minimum
 
@@ -190,7 +246,10 @@ Priority bucket: `P2`
 
 - Full realization-independent generalization beyond the current 4D framework.
 - Full GR / QFT recovery.
-- Monster / Moonshine or broader symmetry closure.
+- Niemeier / umbral-style modular organization, but only after a genuine
+  root-lattice shell realization exists.
+- Monster / Moonshine or broader symmetry closure, but only after a
+  graded-module / trace bridge exists.
 
 ## Existing Empirical Gate
 

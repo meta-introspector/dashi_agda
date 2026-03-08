@@ -10,7 +10,7 @@ import Data.Integer.Properties as IntP
 open import Data.Vec using (Vec; []; _∷_)
 import Data.List as List
 open import Relation.Binary.PropositionalEquality using (_≡_; refl; cong; cong₂; sym; trans; subst)
-open import DASHI.Algebra.Trit using (Trit)
+open import DASHI.Algebra.Trit using (Trit; neg; zer; pos)
 
 open import DASHI.Geometry.ConeTimeIsotropy as CTI
 open import DASHI.Geometry.Signature31FromConeArrowIsotropy as S31
@@ -49,6 +49,13 @@ toCounts' t s = record { tau = t ; sigma = s }
 
 toCounts : Vec ℤ (suc (suc (suc (suc 0)))) → HFZ.CausalCountsZ 3
 toCounts (t ∷ s) = toCounts' t s
+
+zero4 : Vec ℤ (suc (suc (suc (suc 0))))
+zero4 = (+ 0) ∷ (+ 0) ∷ (+ 0) ∷ (+ 0) ∷ []
+
+coneNontrivialWitness :
+  HFZ.ConeBound (+ 1) (toCounts zero4)
+coneNontrivialWitness = IntP.≤-refl
 
 tau-toCounts :
   ∀ t s →
@@ -94,6 +101,43 @@ actIso4 : SP.SignedPerm4 → Vec ℤ (suc (suc (suc (suc 0)))) → Vec ℤ (suc 
 actIso4 sp (t ∷ s1 ∷ s2 ∷ s3 ∷ []) =
   flipTritℤ (SP.SignedPerm4.flipT sp) t ∷
   flipBy (SP.SignedPerm4.flipS sp) (SP.permute3 (SP.SignedPerm4.perm sp) (s1 ∷ s2 ∷ s3 ∷ []))
+
+intOfTrit-flipTrit :
+  ∀ b t → QP.intOfTrit (OPCSP.flipTrit b t) ≡ flipVal b (QP.intOfTrit t)
+intOfTrit-flipTrit true t = refl
+intOfTrit-flipTrit false neg = refl
+intOfTrit-flipTrit false zer = refl
+intOfTrit-flipTrit false pos = refl
+
+intOfTrit-flipTritT :
+  ∀ b t → QP.intOfTrit (OPCSP.flipTrit b t) ≡ flipTritℤ b (QP.intOfTrit t)
+intOfTrit-flipTritT true t = refl
+intOfTrit-flipTritT false neg = refl
+intOfTrit-flipTritT false zer = refl
+intOfTrit-flipTritT false pos = refl
+
+vecℤ-flipBy3 :
+  ∀ (fs : Vec Bool 3) (s : Vec Trit 3) →
+  QP.vecℤ (OPCSP.flipBy3 fs s) ≡ flipBy fs (QP.vecℤ s)
+vecℤ-flipBy3 (f1 ∷ f2 ∷ f3 ∷ []) (a ∷ b ∷ c ∷ []) =
+  cong₂ _∷_
+    (intOfTrit-flipTrit f1 a)
+    (cong₂ _∷_
+      (intOfTrit-flipTrit f2 b)
+      (cong₂ _∷_
+        (intOfTrit-flipTrit f3 c)
+        refl))
+
+vecℤ-permute3 :
+  ∀ (p : SP.Perm3) (s : Vec Trit 3) →
+  QP.vecℤ (SP.permute3 p s) ≡ SP.permute3 p (QP.vecℤ s)
+vecℤ-permute3 p (a ∷ b ∷ c ∷ []) with p
+... | SP.p012 = refl
+... | SP.p021 = refl
+... | SP.p102 = refl
+... | SP.p120 = refl
+... | SP.p201 = refl
+... | SP.p210 = refl
 
 tau-actIso :
   ∀ sp t s1 s2 s3 →
@@ -220,6 +264,19 @@ qcore-pres4 sp x =
       (sumSq-actIso4 sp x)
       (sym (qcore-sumSq x)))
 
+actFiniteCompat :
+  ∀ (g : SP.SignedPerm4) (x : Vec Trit 4) →
+  QP.vecℤ (OAA.actIso4Trit g x) ≡ actIso4 g (QP.vecℤ x)
+actFiniteCompat
+  (record { perm = p ; flipT = ft ; flipS = fs })
+  (t ∷ s1 ∷ s2 ∷ s3 ∷ [])
+  =
+  cong₂ _∷_
+    (intOfTrit-flipTritT ft t)
+    (trans
+      (vecℤ-flipBy3 fs (SP.permute3 p (s1 ∷ s2 ∷ s3 ∷ [])))
+      (cong (flipBy fs) (vecℤ-permute3 p (s1 ∷ s2 ∷ s3 ∷ []))))
+
 shell1-pres :
   ∀ (sp : SP.SignedPerm4) (x : Vec ℤ (suc (suc (suc (suc 0))))) →
   QP.Q̂core x ≡ (+ 1) →
@@ -272,6 +329,19 @@ cone-pres (record { perm = p ; flip = f1 ∷ f2 ∷ f3 ∷ [] }) (t ∷ s1 ∷ s
 ... | p201 = cone-pres-go p201 f1 f2 f3 t s1 s2 s3 h
 ... | p210 = cone-pres-go p210 f1 f2 f3 t s1 s2 s3 h
 
+cone-pres4 :
+  ∀ (sp : SP.SignedPerm4) (x : Vec ℤ (suc (suc (suc (suc 0))))) →
+  HFZ.ConeBound (+ 1) (toCounts x) → HFZ.ConeBound (+ 1) (toCounts (actIso4 sp x))
+cone-pres4
+  (record { perm = p ; flipT = ft ; flipS = fs })
+  (t ∷ s1 ∷ s2 ∷ s3 ∷ [])
+  h
+  rewrite
+    sumSq-flipBy fs (SP.permute3 p (s1 ∷ s2 ∷ s3 ∷ []))
+  | sumSq-perm p (s1 ∷ s2 ∷ s3 ∷ [])
+  | sq-flipTritℤ ft t
+  = h
+
 
 sigAxioms : S31.SignatureAxioms (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ QF
 sigAxioms =
@@ -279,7 +349,7 @@ sigAxioms =
     { ConeS =
         record
           { Cone = λ x → HFZ.ConeBound (+ 1) (toCounts x)
-          ; ConeNontrivial = tt
+          ; ConeNontrivial = let _ = coneNontrivialWitness in tt
           }
     ; Arrow =
         record
@@ -291,8 +361,8 @@ sigAxioms =
         record
           { G = SP.SignedPerm4
           ; _•_ = actIso4
-          ; PresCone = λ _ _ → tt
-          ; PresQ = λ g x → tt
+          ; PresCone = λ g x → let _ = cone-pres4 g x in tt
+          ; PresQ = λ g x → let _ = qcore-pres4 g x in tt
           }
     ; ShellS =
         record
@@ -322,7 +392,7 @@ sigAxioms =
           { GroupPoint = SP.SignedPerm4
           ; groupPoints = OPCSP.allSignedPerm4
           ; actFinite = OAA.actIso4Trit
-          ; actCompat = λ _ _ → tt
+          ; actCompat = λ g x → let _ = actFiniteCompat g x in tt
           }
     ; Timelike↔Cone = λ _ → tt
     }

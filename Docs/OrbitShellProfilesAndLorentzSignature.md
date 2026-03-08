@@ -103,6 +103,39 @@ story is:
 That is why the next serious alternate realization is being tested in that
 language.
 
+## Moonshine Ordering
+
+The current safe downstream ordering is:
+
+1. Weyl/root-system/signed-lattice shell data,
+2. theta-series-like or weight-enumerator-like repackaging,
+3. only then any Niemeier/umbral-style question if a root-lattice shell model
+   actually appears,
+4. and only after a genuine grading/trace bridge any Monster-style question.
+
+This ordering matters.
+
+For the current repo state, the shell/profile story is closest to
+Weyl/root-system/theta-like combinatorics.
+
+If a future realization packages the same orbit-shell data as a shell
+enumerator on a root-lattice object, then it becomes reasonable to ask whether
+the invariant lives near the same lattice/modular ecosystem as
+Niemeier/umbral moonshine.
+
+That is still a neighborhood comparison, not a theorem claim.
+
+For Monster/Moonshine, the bar is much higher:
+
+- a graded module or comparably structured wave-lifted object,
+- trace-like or graded-series data,
+- and a theorem-level bridge from the current finite orbit-shell invariant to
+  that graded structure.
+
+Without those pieces, the current repo should be described as
+**pre-moonshine**: orbit enumerators, shell polynomials, and
+Weyl/root-system combinatorics, not a graded-trace theorem.
+
 ## Orbit-Shell Generating Series
 
 The next algebraic handle on the current theorem stack is a finite
@@ -167,16 +200,17 @@ The next implementation target after the bounded theorem is therefore:
 The current repo-facing validation summary is:
 
 - signed-permutation reference: `exactMatch`
-- Bool inversion admissible alternate realization: `signatureOnlyMatch`
+- synthetic one-minus admissible alternate realization: `exactMatch`
+- Bool inversion secondary admissible alternate realization: `signatureOnlyMatch`
 - tail-permutation negative control: `mismatch`
 
 The current synthetic Lorentz-neighborhood search surface is:
 
 - shell-1 exact match to the shift reference,
 - shell-2 exact match to the shift reference,
-- explicit promotion-bridge status saying orientation/signature are still not
-  independently justified,
-- prototype-only dynamic candidate scaffold present.
+- explicit promotion-bridge status now saying the current synthetic path is
+  admissible-ready,
+- a minimal independent-dynamics witness is now present on that path.
 
 This already shows:
 

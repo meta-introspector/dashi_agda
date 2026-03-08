@@ -15,7 +15,8 @@ Current theorem status:
   realizations.
 - Current validation snapshot:
   reference signed-permutation self-check = `exactMatch`,
-  Bool inversion admissible candidate = `signatureOnlyMatch`,
+  synthetic one-minus admissible candidate = `exactMatch`,
+  Bool inversion secondary admissible candidate = `signatureOnlyMatch`,
   tail-permutation negative control = `mismatch`.
 - Preferred next realization target:
   a Coxeter / Weyl-style 4D shell-orbit realization, beginning with an
@@ -24,23 +25,63 @@ Current theorem status:
   orientation/signature are justified.
 - New Lorentz-neighborhood shell-side comparison:
   an independent synthetic one-minus-family candidate now matches the shift
-  shell-1 and shell-2 profiles exactly, but remains outside the admissible
-  harness because orientation and signature are not yet justified
-  independently.
+  shell-1 and shell-2 profiles exactly and now serves as the canonical
+  admissible alternate realization on the current Stage C path.
 - New Lorentz-neighborhood dynamic search surface:
-  a prototype-only dynamic candidate scaffold now exists so the search for a
-  second Lorentz-family realization is no longer shell-only.
+  a typed synthetic dynamics witness and a minimal independent-dynamics
+  candidate now exist so the search for a second Lorentz-family realization
+  is no longer shell-only.
 - New synthetic-promotion status surface:
   the repo now records the exact blocker between the synthetic profile-aware
   candidate and admissible-harness promotion, instead of leaving that gap
   implicit.
+- Synthetic promotion status is now complete on the current path:
+  orientation and signature are bridged, a minimal independent-dynamics
+  witness is present, and the synthetic one-minus candidate now enters the
+  admissible rigidity harness.
 - Stronger dynamics baseline:
   the canonical shift dynamics package now carries an explicit status object
   for propagation, causal admissibility, monotone quantity, and effective
-  geometry.
+  geometry, plus a semantics-bearing dynamics witness companion exported on
+  the canonical path.
+- New closure runway status surfaces:
+  the canonical Stage C path now exports a concrete minimal
+  constraint-closure status and a known-limits status surface so broader
+  physics work can be staged without overstating recovery.
+- New closure runway witnesses:
+  the canonical Stage C path now also exports a first known-limits recovery
+  witness and a witness-bearing spin/Dirac consumer surface.
+- New closure runway theorem surfaces:
+  the canonical Stage C path now also exports a concrete minimal
+  constraint-closure witness and a stronger known-limits recovery witness that
+  carries actual propagation and effective-geometry witnesses, not only status
+  tags.
+- New closure runway theorem slices:
+  the canonical Stage C path now also exports:
+  a minimal algebraic-closure theorem for the concrete three-generator system,
+  a scoped known-limits local-recovery theorem for the current local
+  Lorentz + propagation slice,
+  and a scoped effective-geometry theorem for the same local recovery regime.
+- Next canonical runway theorem slices:
+  a scoped gauge-contract theorem on top of the canonical concrete closure
+  baseline,
+  and a scoped spin/local-Lorentz bridge theorem on top of the local recovery
+  and effective-geometry baseline.
+- Those two scoped runway theorems now live on the canonical Stage C path.
+- The next widening beyond those scoped slices is now:
+  a carrier-parametric gauge/constraint theorem with the current concrete
+  carrier as its first instance,
+  and a local causal-effective propagation theorem on the current recovery
+  baseline.
 - Next algebraic milestone:
   add a finite orbit-shell generating series for the current shift profile,
   then use it for standalone `B₄` comparison and a prototype wave lift.
+- Safe symmetry-interpretation order:
+  treat the current orbit profile as living first in a
+  Weyl/root-system/theta-like neighborhood;
+  only ask Niemeier/umbral-style questions if a genuine root-lattice shell
+  realization appears;
+  reserve Monster/Moonshine language for a future graded-module / trace bridge.
 - Next theorem milestone:
   the bounded one-minus shell family is now the base layer and the parametric
   shell-1 theorem is now in place; the next theorem milestone is a second

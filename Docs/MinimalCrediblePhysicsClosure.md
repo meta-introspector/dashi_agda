@@ -55,6 +55,10 @@ Current priorities:
 - bundle the real shift Lyapunov and seam certificates as a dynamics package,
 - expose an explicit dynamics-status surface for propagation, causal
   admissibility, monotone quantity, and effective geometry,
+- add a semantics-bearing dynamics witness companion for the canonical shift
+  path,
+- export a concrete canonical constraint-closure status surface,
+- export a known-limits status surface for the broader physics runway,
 - feed full-closure instances from the intrinsic signature theorem,
 - make downstream closure consumers depend on that package.
 
@@ -161,15 +165,41 @@ Current benchmark decision:
 
 Current admissible candidate:
 
-- Bool inversion on the same 4D `(3,1)` mask is the first closure-compatible
-  alternate realization,
-- the current expectation is `signatureOnlyMatch`:
-  same signature/orientation class, different shell-profile class.
+- the synthetic one-minus candidate is now the canonical admissible alternate
+  realization on the current Stage C path,
+- it currently lands as `exactMatch` against the signed-permutation reference,
+- Bool inversion remains a secondary admissible comparison and lands as
+  `signatureOnlyMatch`.
 - the next closure-facing step is to make the rigidity suite part of the
   minimum-credible adapter surface, not just a sibling validation module.
-- the next synthetic-promotion step is now explicit in code:
-  orientation/signature remain blocked until independently justified, even
-  though shell-1 and shell-2 already match.
+- the synthetic promotion bridge is now closed on the current path:
+  shell-1, shell-2, orientation, signature, and a minimal independent-dynamics
+  witness are all present, so the candidate now enters the admissible harness.
+- the canonical Stage C surface now also exports:
+  a dynamics witness companion,
+  a concrete canonical constraint-closure status,
+  a known-limits status surface,
+  a first scoped known-limits recovery witness,
+  and a witness-bearing spin/Dirac consumer.
+- the canonical Stage C surface now also exports:
+  a concrete minimal constraint-closure witness,
+  and a stronger known-limits recovery witness carrying actual propagation and
+  effective-geometry witnesses on the canonical shift path.
+- the canonical Stage C surface now also exports:
+  a minimal algebraic-closure theorem for the concrete constraint system,
+  a scoped local-recovery theorem for the current local Lorentz +
+  propagation slice,
+  and a scoped effective-geometry theorem for that same local recovery regime.
+- the next runway theorem slices are now explicitly:
+  a scoped gauge-contract theorem for the canonical closure baseline,
+  and a scoped spin/local-Lorentz bridge theorem for the canonical
+  spin-facing consumer.
+- both of those scoped runway theorems now live on the canonical Stage C path.
+- the next widening beyond those scoped slices is now:
+  a carrier-parametric gauge/constraint theorem with the current canonical
+  concrete carrier as its first realized instance,
+  and a local causal-effective propagation theorem that sits above the current
+  local recovery/effective-geometry slice.
 
 ## Next Mathematical Realization Target
 

@@ -9,6 +9,7 @@ open import DASHI.Physics.OrbitProfileComputedTailPerm as OCTP
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureShiftInstance as MCCSI
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidityReport as RPRR
+open import DASHI.Physics.Closure.Validation.SyntheticOneMinusAdmissible as SOA
 
 referenceLabel : String
 referenceLabel = "signed-permutation-shift"
@@ -74,6 +75,6 @@ rigiditySuite : RPRR.RealizationProfileRigiditySuite
 rigiditySuite =
   record
     { selfReport = referenceSelfReport
-    ; admissibleReport = boolInvReport
+    ; admissibleReport = SOA.syntheticAdmissibleReport
     ; negativeControlReport = tailPermReport
     }

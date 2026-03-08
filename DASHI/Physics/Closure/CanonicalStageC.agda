@@ -4,10 +4,30 @@ module DASHI.Physics.Closure.CanonicalStageC where
 -- This surface is the authoritative repo-facing closure boundary.
 
 open import DASHI.Physics.Closure.CanonicalStageCStatus as CSS
+open import DASHI.Physics.Closure.CanonicalConstraintClosureStatus as CCCS
+import DASHI.Physics.Closure.CanonicalConstraintClosureWitness as CCCW
+import DASHI.Physics.Closure.CanonicalConstraintClosureTheorem as CCCT
+import DASHI.Physics.Closure.CanonicalGaugeContractTheorem as CGCT
+import DASHI.Physics.Closure.CanonicalGaugeConstraintBridgeTheorem as CGCBT
+import DASHI.Physics.Closure.CanonicalConstraintGaugePackage as CCGP
+import DASHI.Physics.Closure.ParametricGaugeConstraintTheorem as PGCT
+import DASHI.Algebra.GaugeGroupContract as GGC
+import DASHI.Physics.Constraints.ConcreteInstance as CI
+import DASHI.Physics.Closure.CanonicalSpinDiracConsumer as CSDC
+open import DASHI.Physics.Closure.DynamicalClosureWitness as DCW
+import DASHI.Physics.Closure.KnownLimitsRecovery as KLR
+import DASHI.Physics.Closure.KnownLimitsEffectiveGeometryTheorem as KLET
+import DASHI.Physics.Closure.KnownLimitsLocalRecoveryTheorem as KLRT
+import DASHI.Physics.Closure.KnownLimitsRecoveryPackage as KLRP
+import DASHI.Physics.Closure.KnownLimitsRecoveryWitness as KLRW
+import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
+import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem as KLPST
+import DASHI.Physics.Closure.KnownLimitsCausalPropagationTheorem as KLCPT
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureShiftInstance as MCCSI
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation as MCPCV
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidationShiftInstance as MCPCVS
+import DASHI.Physics.Closure.KnownLimitsStatus as KLS
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
 
@@ -19,6 +39,79 @@ canonicalValidation = MCPCVS.minimumCredibleClosureValidationShift
 
 canonicalFullClosure : PCF.PhysicsClosureFull
 canonicalFullClosure = MCPC.MinimalCrediblePhysicsClosure.full canonicalClosure
+
+canonicalDynamicsWitness : DCW.DynamicalClosureWitness
+canonicalDynamicsWitness =
+  MCPC.authoritativeDynamicsWitness canonicalClosure
+
+canonicalConstraintStatus : CCCS.CanonicalConstraintClosureStatus
+canonicalConstraintStatus = CCCS.canonicalConstraintClosureStatus
+
+canonicalConstraintWitness : CCCW.CanonicalConstraintClosureWitness
+canonicalConstraintWitness = CCCW.canonicalConstraintClosureWitness
+
+canonicalConstraintTheorem : CCCT.CanonicalConstraintClosureTheorem
+canonicalConstraintTheorem = CCCT.canonicalConstraintClosureTheorem
+
+canonicalGaugeContractTheorem : GGC.UniquenessClaim CI.C
+canonicalGaugeContractTheorem = CGCT.canonicalGaugeContractTheorem
+
+canonicalGaugeConstraintBridgeTheorem :
+  CGCBT.CanonicalGaugeConstraintBridgeTheorem
+canonicalGaugeConstraintBridgeTheorem =
+  CGCBT.canonicalGaugeConstraintBridgeTheorem
+
+canonicalConstraintGaugePackage :
+  CCGP.CanonicalConstraintGaugePackage
+canonicalConstraintGaugePackage = PGCT.canonicalConstraintGaugePackage
+
+canonicalParametricGaugeConstraintTheorem :
+  PGCT.ParametricGaugeConstraintTheorem canonicalConstraintGaugePackage
+canonicalParametricGaugeConstraintTheorem =
+  PGCT.canonicalParametricGaugeConstraintTheorem
+
+canonicalKnownLimitsStatus : KLS.KnownLimitsStatus
+canonicalKnownLimitsStatus = KLS.canonicalKnownLimitsStatus
+
+canonicalKnownLimitsRecovery : KLR.KnownLimitsRecoveryWitness
+canonicalKnownLimitsRecovery = KLR.canonicalKnownLimitsRecovery
+
+canonicalKnownLimitsRecoveryWitness : KLRW.KnownLimitsRecoveryWitnessPlus
+canonicalKnownLimitsRecoveryWitness = KLRW.canonicalKnownLimitsRecoveryWitness
+
+canonicalKnownLimitsLocalRecoveryTheorem :
+  KLRT.KnownLimitsLocalRecoveryTheorem
+canonicalKnownLimitsLocalRecoveryTheorem =
+  KLRT.canonicalKnownLimitsLocalRecoveryTheorem
+
+canonicalKnownLimitsEffectiveGeometryTheorem :
+  KLET.KnownLimitsEffectiveGeometryTheorem
+canonicalKnownLimitsEffectiveGeometryTheorem =
+  KLET.canonicalKnownLimitsEffectiveGeometryTheorem
+
+canonicalKnownLimitsRecoveryPackage :
+  KLRP.KnownLimitsRecoveryPackage
+canonicalKnownLimitsRecoveryPackage =
+  KLCPT.canonicalKnownLimitsRecoveryPackage
+
+canonicalKnownLimitsCausalPropagationTheorem :
+  KLCPT.KnownLimitsCausalPropagationTheorem
+canonicalKnownLimitsCausalPropagationTheorem =
+  KLCPT.canonicalKnownLimitsCausalPropagationTheorem
+
+canonicalSpinLocalLorentzBridge :
+  SLLB.SpinLocalLorentzBridge canonicalClosure
+canonicalSpinLocalLorentzBridge = SLLB.canonicalSpinLocalLorentzBridge
+
+canonicalKnownLimitsPropagationSpinTheorem :
+  KLPST.KnownLimitsPropagationSpinTheorem
+canonicalKnownLimitsPropagationSpinTheorem =
+  KLPST.canonicalKnownLimitsPropagationSpinTheorem
+
+canonicalSpinDiracConsumer :
+  CSDC.SpinDiracConsumerFromMinimal canonicalClosure
+canonicalSpinDiracConsumer =
+  CSDC.spinDiracConsumerFromMinimal canonicalClosure
 
 canonicalClosureStatus : CSS.ClosureSurfaceStatus
 canonicalClosureStatus = CSS.canonicalProved

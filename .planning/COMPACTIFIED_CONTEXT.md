@@ -329,11 +329,40 @@ Added:
   `DASHI/Physics/SyntheticOneMinusShellRealization.agda` and
   `DASHI/Physics/Closure/Validation/SyntheticOneMinusShellComparison.agda`.
 - Extended that synthetic one-minus candidate to carry matching shell-1 and
-  shell-2 profiles while keeping it outside the admissible harness until
-  orientation/signature are justified independently.
+  shell-2 profiles, then bridged orientation/signature and added a minimal
+  independent-dynamics witness so it can enter the admissible harness.
 - Added a prototype-only Lorentz-neighborhood dynamic candidate scaffold:
   `DASHI/Physics/LorentzNeighborhoodDynamicCandidate.agda`.
 - Next strengthening step selected:
   add a typed synthetic-promotion bridge so the exact orientation/signature
   blocker is explicit in code, and add a structured status surface to the
   canonical shift dynamics package.
+- Synthetic promotion status has now landed:
+  orientation/signature are bridged on the current synthetic profile path,
+  a minimal independent-dynamics witness is present, and the synthetic
+  one-minus candidate now serves as the canonical admissible alternate
+  realization with `exactMatch`.
+- Canonical Stage C now also exports:
+  a semantics-bearing dynamics witness companion,
+  a concrete canonical constraint-closure status surface,
+  a known-limits status surface for the broader physics runway,
+  the first scoped known-limits recovery witness,
+  and the witness-bearing canonical spin/Dirac consumer surface.
+- Canonical Stage C now also exports:
+  a concrete minimal constraint-closure witness,
+  and a stronger known-limits recovery witness carrying actual propagation and
+  effective-geometry witnesses on the canonical shift path.
+- Canonical Stage C now also exports:
+  a minimal algebraic-closure theorem for the concrete three-generator system,
+  a scoped local-recovery theorem for the current local Lorentz +
+  propagation slice,
+  and a scoped effective-geometry theorem for that same regime.
+- Next runway theorem order:
+  scoped gauge-contract theorem first,
+  then scoped spin/local-Lorentz bridge theorem.
+- Both scoped runway theorems are now landed on the canonical Stage C path.
+- The next widening beyond those scoped slices is now:
+  a carrier-parametric gauge/constraint theorem with the current concrete
+  closure carrier as its first instance,
+  and a local causal-effective propagation theorem on the current recovery
+  baseline.

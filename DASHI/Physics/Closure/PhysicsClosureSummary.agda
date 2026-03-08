@@ -21,7 +21,8 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   SpinDiracGateFromClosure.
 -- Current validation snapshot:
 --   self exact match,
---   Bool inversion signature-only match,
+--   synthetic one-minus admissible case exact match,
+--   Bool inversion secondary admissible case signature-only match,
 --   tail-permutation negative-control mismatch.
 -- Current standalone B₄ report:
 --   independent shell-orbit computation present,
@@ -35,14 +36,15 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   synthetic one-minus shell family present,
 --   shell-1 exact match against the shift reference,
 --   shell-2 exact match against the shift reference,
---   promotion status = standaloneProfileOnly,
---   promotion bridge = blockedOnOrientationAndSignature.
+--   shell comparison status = standaloneProfileOnly,
+--   orientation/signature bridge now present,
+--   promotion bridge = admissiblePromotionReady.
 -- Current Lorentz-neighborhood dynamic candidate search:
---   prototype scaffold now present,
+--   synthetic admissible dynamics witness now present,
 --   shell neighborhood fixed to oneMinusShellNeighborhood,
 --   shell-2 structure present,
---   orientation/signature/dynamics still not independently justified,
---   status = prototypeScaffoldOnly.
+--   orientation/signature carried on the promoted synthetic path,
+--   status = admissibleDynamicReady.
 -- Current one-minus family theorem status:
 --   bounded family complete for `m = 2..8`,
 --   parametric shell-1 theorem now exported on the shift reference path.
@@ -66,6 +68,19 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   `CanonicalStageC` is the authoritative closure entrypoint,
 --   canonical path status = canonicalProved,
 --   canonical dynamics status now exported explicitly,
+--   canonical dynamics witness now exported explicitly,
+--   canonical constraint-closure status now exported explicitly,
+--   canonical known-limits status now exported explicitly,
+--   canonical known-limits recovery witness now exported explicitly,
+--   canonical gauge/constraint bridge theorem now exported explicitly,
+--   canonical constraint/gauge package now exported explicitly,
+--   canonical parametric gauge/constraint theorem now exported explicitly,
+--   canonical propagation/spin theorem now exported explicitly,
+--   canonical known-limits recovery package now exported explicitly,
+--   canonical local causal/effective propagation theorem now exported
+--   explicitly,
+--   canonical spin/Dirac consumer now depends on the stronger witness-bearing
+--   Stage C surface rather than only the forced metric seam,
 --   legacy wrappers are compatibility-only,
 --   wave-series / unification surfaces remain prototype-only.
 
@@ -74,6 +89,43 @@ open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI public
 open import DASHI.Physics.Closure.PhysicsClosureInstanceAssumed as PCA public
 open import DASHI.Physics.Closure.CanonicalStageC as CSC public
 open import DASHI.Physics.Closure.CanonicalStageCStatus as CSS public
+open import DASHI.Physics.Closure.CanonicalConstraintClosureStatus as CCCS public
+open import DASHI.Physics.Closure.CanonicalConstraintClosureWitness as CCCW public
+open import DASHI.Physics.Closure.CanonicalConstraintClosureTheorem as CCCT public
+open import DASHI.Physics.Closure.CanonicalGaugeContractTheorem as CGCT public
+  using (canonicalGaugeAdmissible; canonicalGaugeEmergence)
+open import DASHI.Physics.Closure.CanonicalGaugeConstraintBridgeTheorem as CGCBT public
+  using (CanonicalGaugeConstraintBridgeTheorem)
+open import DASHI.Physics.Closure.CanonicalConstraintGaugePackage as CCGP public
+  using (CanonicalConstraintGaugePackage)
+open import DASHI.Physics.Closure.ParametricGaugeConstraintTheorem as PGCT public
+  using (ParametricGaugeConstraintTheorem)
+open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
+  using
+    ( KnownLimitsStatus
+    ; LocalLorentzStatus
+    ; PropagationLimitStatus
+    ; GRLikeStatus
+    ; QFTLikeStatus
+    )
+open import DASHI.Physics.Closure.KnownLimitsRecovery as KLR public
+  using (KnownLimitsRecoveryWitness)
+open import DASHI.Physics.Closure.KnownLimitsEffectiveGeometryTheorem as KLET public
+  using (KnownLimitsEffectiveGeometryTheorem)
+open import DASHI.Physics.Closure.KnownLimitsLocalRecoveryTheorem as KLRT public
+  using (KnownLimitsLocalRecoveryTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveryWitness as KLRW public
+  using (KnownLimitsRecoveryWitnessPlus)
+open import DASHI.Physics.Closure.CanonicalSpinDiracConsumer as CSDC public
+open import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB public
+  using (SpinLocalLorentzBridge)
+open import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem as KLPST public
+  using (KnownLimitsPropagationSpinTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveryPackage as KLRP public
+  using (KnownLimitsRecoveryPackage)
+open import DASHI.Physics.Closure.KnownLimitsCausalPropagationTheorem as KLCPT public
+  using (KnownLimitsCausalPropagationTheorem)
+open import DASHI.Physics.Closure.DynamicalClosureWitness as DCW public
 
 open import DASHI.Physics.SignatureUniquenessOrbitLock as SUL public
 open import DASHI.Physics.SignatureUniquenessOrbitLockInstance as SULI public
@@ -84,5 +136,43 @@ open import DASHI.Physics.Signature31ShiftProfileWitness as SPW public
 open import DASHI.Physics.Signature31OrbitActionAgreement as OAA public
 open import DASHI.Physics.OneMinusShellFamilyParametric as OMSFP public
 open import DASHI.Physics.LorentzNeighborhoodDynamicCandidate as LNDC public
+open import DASHI.Physics.Closure.Validation.SyntheticOneMinusOrientationSignatureBridge as SOSB public
+open import DASHI.Physics.Closure.Validation.SyntheticOneMinusDynamicsWitness as SODW public
 open import DASHI.Physics.Closure.SpinDiracGateFromClosure as SDGC public
 open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
+  using
+    ( selfSnapshotVerdict
+    ; admissibleSnapshotVerdict
+    ; boolInvSnapshotVerdict
+    ; negativeControlSnapshotVerdict
+    ; fejerShiftVerdict
+    ; fejerShiftChi2Status
+    ; chi2BoundaryCaseCount
+    ; observableCollapseShiftVerdict
+    ; snapThresholdShiftVerdict
+    ; syntheticOneMinusShellMatch
+    ; syntheticOneMinusProfileMatch
+    ; syntheticOneMinusPromotionStatus
+    ; syntheticOneMinusOrientationStatus
+    ; syntheticOneMinusSignatureStatus
+    ; syntheticOneMinusBridgeStatus
+    ; syntheticOneMinusBridgedOrientationTag
+    ; syntheticOneMinusBridgedSignature
+    ; lorentzDynamicCandidateStatus
+    ; syntheticAdmissibleVerdict
+    ; b4ShellComparisonVerdict
+    ; b4PromotionStatus
+    ; shiftShellNeighborhood
+    ; shiftMatchesParametricOneMinus
+    ; parametricOneMinusFamilyTheorem
+    ; b4ShellNeighborhood
+    ; shiftOrbitShellSeries
+    ; b4OrbitShellSeries
+    ; b4SeriesVerdict
+    ; canonicalGaugeConstraintBridgeTheoremSummary
+    ; canonicalConstraintGaugePackageSummary
+    ; canonicalParametricGaugeConstraintTheoremSummary
+    ; canonicalKnownLimitsRecoveryPackageSummary
+    ; canonicalKnownLimitsCausalPropagationTheoremSummary
+    ; canonicalKnownLimitsPropagationSpinTheoremSummary
+    )

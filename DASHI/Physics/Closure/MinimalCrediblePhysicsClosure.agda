@@ -5,6 +5,8 @@ open import Relation.Binary.PropositionalEquality using (_≡_)
 
 open import DASHI.Geometry.ConeTimeIsotropy as CTI
 open import DASHI.Physics.Closure.DynamicalClosure as DC
+open import DASHI.Physics.Closure.DynamicalClosureWitness as DCW
+open import DASHI.Physics.Closure.DynamicalClosureShiftWitnessInstance as DCWI
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.Closure.ObservablePredictionPackage as OPP
 
@@ -22,3 +24,9 @@ open MinimalCrediblePhysicsClosure public
 authoritativeDynamics :
   MinimalCrediblePhysicsClosure → DC.DynamicalClosure
 authoritativeDynamics C = PCF.PhysicsClosureFull.dynamics (full C)
+
+-- Current canonical Stage C path is shift-backed, so the authoritative
+-- dynamics witness companion is the shift witness surface.
+authoritativeDynamicsWitness :
+  MinimalCrediblePhysicsClosure → DCW.DynamicalClosureWitness
+authoritativeDynamicsWitness _ = DCWI.shiftDynamicsWitness
