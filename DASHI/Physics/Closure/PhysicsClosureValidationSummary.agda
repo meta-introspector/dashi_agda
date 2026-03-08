@@ -125,6 +125,8 @@ open import DASHI.Physics.Closure.ParametricAlgebraicRegimeInvarianceTheorem as 
   using (ParametricAlgebraicRegimeInvarianceTheorem)
 open import DASHI.Physics.Closure.ParametricAlgebraicRegimePersistenceTheorem as PARP public
   using (ParametricAlgebraicRegimePersistenceTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicRegimeCoherenceTheorem as PARC public
+  using (ParametricAlgebraicRegimeCoherenceTheorem)
 open import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI public
   using (CanonicalGaugeConstraintRealizedInstances)
 open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
@@ -185,6 +187,8 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveGeometryTheorem as KLR
   using (KnownLimitsRecoveredWaveGeometryTheorem)
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveRegimeTheorem as KLRWR public
   using (KnownLimitsRecoveredWaveRegimeTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservablesTheorem as KLRWO public
+  using (KnownLimitsRecoveredWaveObservablesTheorem)
 open import DASHI.Physics.Closure.CanonicalStageCTheoremBundle as CSTB public
   using (CanonicalStageCTheoremBundle)
 open import DASHI.Physics.Closure.CanonicalStageCSummaryBundle as CSSB public
@@ -203,6 +207,8 @@ open import DASHI.Physics.Closure.CanonicalWaveGeometryConsumer as CWGC public
   using (WaveGeometryConsumerFromMinimal)
 open import DASHI.Physics.Closure.CanonicalWaveRegimeConsumer as CWRC public
   using (WaveRegimeConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalWaveObservableConsumer as CWOC public
+  using (WaveObservableConsumerFromMinimal)
 open import DASHI.Physics.Moonshine.FiniteTwinedTraceDetailedReport as MFTDR public
   using (FiniteTwinedTraceDetailedReport)
 open import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary as MWGSPS public
@@ -219,6 +225,8 @@ open import DASHI.Physics.Moonshine.MoonshineTwinedWaveBundleSummary as MTWBS pu
   using (MoonshineTwinedWaveBundleSummary)
 open import DASHI.Physics.Moonshine.MoonshineTwinedWaveRegimeSummary as MTWRS public
   using (MoonshineTwinedWaveRegimeSummary)
+open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableSummary as MTWOS public
+  using (MoonshineTwinedWaveObservableSummary)
 
 validationBundle : MCPCV.MinimalCrediblePhysicsClosureValidation
 validationBundle = MCPCVS.minimumCredibleClosureValidationShift
@@ -417,6 +425,18 @@ secondaryParametricAlgebraicRegimePersistenceTheoremSummary :
 secondaryParametricAlgebraicRegimePersistenceTheoremSummary =
   CSC.secondaryParametricAlgebraicRegimePersistenceTheorem
 
+canonicalParametricAlgebraicRegimeCoherenceTheoremSummary :
+  PARC.ParametricAlgebraicRegimeCoherenceTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicRegimeCoherenceTheoremSummary =
+  CSC.canonicalParametricAlgebraicRegimeCoherenceTheorem
+
+secondaryParametricAlgebraicRegimeCoherenceTheoremSummary :
+  PARC.ParametricAlgebraicRegimeCoherenceTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicRegimeCoherenceTheoremSummary =
+  CSC.secondaryParametricAlgebraicRegimeCoherenceTheorem
+
 canonicalKnownLimitsStatusSummary : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatusSummary = CSC.canonicalKnownLimitsStatus
 
@@ -513,6 +533,11 @@ canonicalKnownLimitsRecoveredWaveRegimeTheoremSummary :
 canonicalKnownLimitsRecoveredWaveRegimeTheoremSummary =
   CSC.canonicalKnownLimitsRecoveredWaveRegimeTheorem
 
+canonicalKnownLimitsRecoveredWaveObservablesTheoremSummary :
+  KLRWO.KnownLimitsRecoveredWaveObservablesTheorem
+canonicalKnownLimitsRecoveredWaveObservablesTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservablesTheorem
+
 canonicalSpinLocalLorentzBridgeSummary :
   SLLB.SpinLocalLorentzBridge CSC.canonicalClosure
 canonicalSpinLocalLorentzBridgeSummary =
@@ -563,6 +588,11 @@ canonicalWaveRegimeConsumerSummary :
 canonicalWaveRegimeConsumerSummary =
   CSC.canonicalWaveRegimeConsumer
 
+canonicalWaveObservableConsumerSummary :
+  CWOC.WaveObservableConsumerFromMinimal CSC.canonicalClosure
+canonicalWaveObservableConsumerSummary =
+  CSC.canonicalWaveObservableConsumer
+
 canonicalTheoremBundleSummary : CSTB.CanonicalStageCTheoremBundle
 canonicalTheoremBundleSummary = CSTB.canonicalStageCTheoremBundle
 
@@ -593,6 +623,11 @@ canonicalMoonshineTwinedWaveRegimeSummary :
   MTWRS.MoonshineTwinedWaveRegimeSummary
 canonicalMoonshineTwinedWaveRegimeSummary =
   MTWRS.canonicalMoonshineTwinedWaveRegimeSummary
+
+canonicalMoonshineTwinedWaveObservableSummary :
+  MTWOS.MoonshineTwinedWaveObservableSummary
+canonicalMoonshineTwinedWaveObservableSummary =
+  MTWOS.canonicalMoonshineTwinedWaveObservableSummary
 
 selfSnapshotVerdict : RPR.RigidityVerdict
 selfSnapshotVerdict = MCPCV.selfVerdict validationBundle

@@ -24,6 +24,7 @@ import DASHI.Physics.Closure.ParametricAlgebraicGaugeSectorPersistenceTheorem as
 import DASHI.Physics.Closure.ParametricAlgebraicTransportInvarianceTheorem as PATI
 import DASHI.Physics.Closure.ParametricAlgebraicRegimeInvarianceTheorem as PARI
 import DASHI.Physics.Closure.ParametricAlgebraicRegimePersistenceTheorem as PARP
+import DASHI.Physics.Closure.ParametricAlgebraicRegimeCoherenceTheorem as PARC
 import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI
 import DASHI.Algebra.GaugeGroupContract as GGC
 import DASHI.Physics.Constraints.ConcreteInstance as CI
@@ -47,6 +48,7 @@ import DASHI.Physics.Closure.KnownLimitsRecoveredTransportConsistencyTheorem as 
 import DASHI.Physics.Closure.KnownLimitsRecoveredWavefrontTheorem as KLRWF
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveGeometryTheorem as KLRWG
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveRegimeTheorem as KLRWR
+import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservablesTheorem as KLRWO
 import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
 import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem as KLPST
 import DASHI.Physics.Closure.KnownLimitsCausalPropagationTheorem as KLCPT
@@ -58,6 +60,7 @@ import DASHI.Physics.Closure.CanonicalRecoveryTransportConsumer as CRTC
 import DASHI.Physics.Closure.CanonicalWavefrontConsumer as CWFC
 import DASHI.Physics.Closure.CanonicalWaveGeometryConsumer as CWGC
 import DASHI.Physics.Closure.CanonicalWaveRegimeConsumer as CWRC
+import DASHI.Physics.Closure.CanonicalWaveObservableConsumer as CWOC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureShiftInstance as MCCSI
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation as MCPCV
@@ -263,6 +266,20 @@ secondaryParametricAlgebraicRegimePersistenceTheorem =
   PARP.parametricAlgebraicRegimePersistenceTheorem
     secondaryConstraintGaugePackage
 
+canonicalParametricAlgebraicRegimeCoherenceTheorem :
+  PARC.ParametricAlgebraicRegimeCoherenceTheorem
+    canonicalConstraintGaugePackage
+canonicalParametricAlgebraicRegimeCoherenceTheorem =
+  PARC.parametricAlgebraicRegimeCoherenceTheorem
+    canonicalConstraintGaugePackage
+
+secondaryParametricAlgebraicRegimeCoherenceTheorem :
+  PARC.ParametricAlgebraicRegimeCoherenceTheorem
+    secondaryConstraintGaugePackage
+secondaryParametricAlgebraicRegimeCoherenceTheorem =
+  PARC.parametricAlgebraicRegimeCoherenceTheorem
+    secondaryConstraintGaugePackage
+
 canonicalKnownLimitsStatus : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatus = KLS.canonicalKnownLimitsStatus
 
@@ -357,6 +374,11 @@ canonicalKnownLimitsRecoveredWaveRegimeTheorem :
 canonicalKnownLimitsRecoveredWaveRegimeTheorem =
   KLRWR.canonicalKnownLimitsRecoveredWaveRegimeTheorem
 
+canonicalKnownLimitsRecoveredWaveObservablesTheorem :
+  KLRWO.KnownLimitsRecoveredWaveObservablesTheorem
+canonicalKnownLimitsRecoveredWaveObservablesTheorem =
+  KLRWO.canonicalKnownLimitsRecoveredWaveObservablesTheorem
+
 canonicalSpinLocalLorentzBridge :
   SLLB.SpinLocalLorentzBridge canonicalClosure
 canonicalSpinLocalLorentzBridge = SLLB.canonicalSpinLocalLorentzBridge
@@ -402,6 +424,10 @@ canonicalWaveGeometryConsumer = CWGC.canonicalWaveGeometryConsumer
 canonicalWaveRegimeConsumer :
   CWRC.WaveRegimeConsumerFromMinimal canonicalClosure
 canonicalWaveRegimeConsumer = CWRC.canonicalWaveRegimeConsumer
+
+canonicalWaveObservableConsumer :
+  CWOC.WaveObservableConsumerFromMinimal canonicalClosure
+canonicalWaveObservableConsumer = CWOC.canonicalWaveObservableConsumer
 
 canonicalClosureStatus : CSS.ClosureSurfaceStatus
 canonicalClosureStatus = CSS.canonicalProved

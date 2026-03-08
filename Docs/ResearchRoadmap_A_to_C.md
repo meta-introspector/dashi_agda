@@ -220,6 +220,13 @@ Current state:
   current regime-invariance slice,
   plus one new wave-regime-facing downstream consumer on the canonical
   ladder.
+- Current latest broader widening cycle is now landed:
+  one stronger recovered-wave-observables theorem above the current
+  recovered-wave-regime slice,
+  followed by one stronger algebraic regime-coherence theorem above the
+  current regime-persistence slice,
+  plus one new wave-observable-facing downstream consumer on the canonical
+  ladder.
 
 Immediate mathematical milestone before another Lorentz-family realization
 search:

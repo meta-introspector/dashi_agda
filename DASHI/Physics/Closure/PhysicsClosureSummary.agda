@@ -45,6 +45,11 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   shell-2 structure present,
 --   orientation/signature carried on the promoted synthetic path,
 --   status = admissibleDynamicReady.
+-- Current newest cycle widening status:
+--   stronger parametric algebraic regime-coherence theorem,
+--   recovered-wave-observables theorem,
+--   wave-observable-facing downstream consumer,
+--   and moonshine twined-wave-observable summary.
 -- Current one-minus family theorem status:
 --   bounded family complete for `m = 2..8`,
 --   parametric shell-1 theorem now exported on the shift reference path.
@@ -282,6 +287,8 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; secondaryParametricAlgebraicRegimeInvarianceTheoremSummary
     ; canonicalParametricAlgebraicRegimePersistenceTheoremSummary
     ; secondaryParametricAlgebraicRegimePersistenceTheoremSummary
+    ; canonicalParametricAlgebraicRegimeCoherenceTheoremSummary
+    ; secondaryParametricAlgebraicRegimeCoherenceTheoremSummary
     ; canonicalKnownLimitsRecoveryPackageSummary
     ; canonicalKnownLimitsCausalPropagationTheoremSummary
     ; canonicalKnownLimitsGeometryTransportTheoremSummary
@@ -297,6 +304,7 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalKnownLimitsRecoveredWavefrontTheoremSummary
     ; canonicalKnownLimitsRecoveredWaveGeometryTheoremSummary
     ; canonicalKnownLimitsRecoveredWaveRegimeTheoremSummary
+    ; canonicalKnownLimitsRecoveredWaveObservablesTheoremSummary
     ; canonicalKnownLimitsPropagationSpinTheoremSummary
     ; canonicalPropagationConsumerSummary
     ; canonicalGeometryConsumerSummary
@@ -306,6 +314,7 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalWavefrontConsumerSummary
     ; canonicalWaveGeometryConsumerSummary
     ; canonicalWaveRegimeConsumerSummary
+    ; canonicalWaveObservableConsumerSummary
     ; canonicalTheoremBundleSummary
     ; canonicalSummaryBundle
     ; shiftWaveGradedShellPrototypeSummary
@@ -315,4 +324,5 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalMoonshineWaveTraceConsistencySummary
     ; canonicalMoonshineTwinedWaveBundleSummary
     ; canonicalMoonshineTwinedWaveRegimeSummary
+    ; canonicalMoonshineTwinedWaveObservableSummary
     )

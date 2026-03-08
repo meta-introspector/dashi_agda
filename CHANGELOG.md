@@ -54,6 +54,14 @@
   now has a wave-regime-facing downstream consumer,
 - added `MoonshineTwinedWaveRegimeSummary` as a richer finite graded/twined
   wave-regime summary on the prototype track,
+- added `ParametricAlgebraicRegimeCoherenceTheorem` as the next algebraic
+  widening above the current regime-persistence slice,
+- added `KnownLimitsRecoveredWaveObservablesTheorem` as the next local
+  recovery widening above the current recovered-wave-regime slice,
+- added `CanonicalWaveObservableConsumer` so the widened canonical Stage C
+  ladder now has a wave-observable-facing downstream consumer,
+- added `MoonshineTwinedWaveObservableSummary` as a richer finite
+  graded/twined wave-observable summary on the prototype track,
 - threaded those new slices through `CanonicalStageC`,
   `CanonicalStageCTheoremBundle`, `CanonicalStageCSummaryBundle`,
   `PhysicsClosureValidationSummary`, `PhysicsClosureSummary`, and

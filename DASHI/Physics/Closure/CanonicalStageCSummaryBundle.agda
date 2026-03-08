@@ -18,6 +18,7 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredTransportConsistencyTheore
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWavefrontTheorem as KLRWF
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveGeometryTheorem as KLRWG
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveRegimeTheorem as KLRWR
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservablesTheorem as KLRWO
 open import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
 open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
 open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC
@@ -25,6 +26,7 @@ open import DASHI.Physics.Closure.CanonicalRecoveryTransportConsumer as CRTC
 open import DASHI.Physics.Closure.CanonicalWavefrontConsumer as CWFC
 open import DASHI.Physics.Closure.CanonicalWaveGeometryConsumer as CWGC
 open import DASHI.Physics.Closure.CanonicalWaveRegimeConsumer as CWRC
+open import DASHI.Physics.Closure.CanonicalWaveObservableConsumer as CWOC
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
 
 record CanonicalStageCSummaryBundle : Setω where
@@ -49,6 +51,8 @@ record CanonicalStageCSummaryBundle : Setω where
       KLRWG.KnownLimitsRecoveredWaveGeometryTheorem
     recoveredWaveRegime :
       KLRWR.KnownLimitsRecoveredWaveRegimeTheorem
+    recoveredWaveObservables :
+      KLRWO.KnownLimitsRecoveredWaveObservablesTheorem
     geometryConsumer : CGC.GeometryConsumerFromMinimal CSC.canonicalClosure
     observableConsumer : COC.ObservableConsumerFromMinimal CSC.canonicalClosure
     regimeConsumer : CRC.RegimeConsumerFromMinimal CSC.canonicalClosure
@@ -60,6 +64,8 @@ record CanonicalStageCSummaryBundle : Setω where
       CWGC.WaveGeometryConsumerFromMinimal CSC.canonicalClosure
     waveRegimeConsumer :
       CWRC.WaveRegimeConsumerFromMinimal CSC.canonicalClosure
+    waveObservableConsumer :
+      CWOC.WaveObservableConsumerFromMinimal CSC.canonicalClosure
     selfVerdict : RPR.RigidityVerdict
     admissibleVerdict : RPR.RigidityVerdict
     negativeControlVerdict : RPR.RigidityVerdict
@@ -87,6 +93,8 @@ canonicalStageCSummaryBundle =
         CSC.canonicalKnownLimitsRecoveredWaveGeometryTheorem
     ; recoveredWaveRegime =
         CSC.canonicalKnownLimitsRecoveredWaveRegimeTheorem
+    ; recoveredWaveObservables =
+        CSC.canonicalKnownLimitsRecoveredWaveObservablesTheorem
     ; geometryConsumer = CSC.canonicalGeometryConsumer
     ; observableConsumer = CSC.canonicalObservableConsumer
     ; regimeConsumer = CSC.canonicalRegimeConsumer
@@ -94,6 +102,7 @@ canonicalStageCSummaryBundle =
     ; wavefrontConsumer = CSC.canonicalWavefrontConsumer
     ; waveGeometryConsumer = CSC.canonicalWaveGeometryConsumer
     ; waveRegimeConsumer = CSC.canonicalWaveRegimeConsumer
+    ; waveObservableConsumer = CSC.canonicalWaveObservableConsumer
     ; selfVerdict = CSC.canonicalSelfVerdict
     ; admissibleVerdict = CSC.canonicalAdmissibleVerdict
     ; negativeControlVerdict = CSC.canonicalNegativeControlVerdict

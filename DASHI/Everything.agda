@@ -234,6 +234,7 @@ import DASHI.Physics.Moonshine.MoonshineOrbitTraceSummary
 import DASHI.Physics.Moonshine.MoonshineWaveTraceConsistencySummary
 import DASHI.Physics.Moonshine.MoonshineTwinedWaveBundleSummary
 import DASHI.Physics.Moonshine.MoonshineTwinedWaveRegimeSummary
+import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableSummary
 import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary
 import DASHI.Physics.Moonshine.TwinedComparisonSummary
 import DASHI.Physics.Moonshine.WaveGradedShellModule

@@ -110,6 +110,14 @@
   one wave-regime-facing downstream consumer on the canonical ladder,
   and one richer moonshine twined-wave-regime summary on the prototype
   track.
+- current latest physics-first cycle is now landed:
+  one stronger recovered-wave-observables theorem above the current
+  recovered-wave-regime slice,
+  one stronger algebraic regime-coherence theorem above the current
+  regime-persistence slice,
+  one wave-observable-facing downstream consumer on the canonical ladder,
+  and one richer moonshine twined-wave-observable summary on the prototype
+  track.
   - current closure-hardening gain:
     `DASHI.Physics.Closure.CanonicalStageC` now makes the authoritative
     minimum-credible closure path explicit in code, while legacy/prototype

@@ -273,6 +273,13 @@ Priority bucket: `P0` first, then `P1`
   regime-invariance slice,
   one wave-regime-facing downstream consumer on the canonical ladder,
   and one richer moonshine twined-wave-regime summary.
+- Current latest physics-first cycle is now landed:
+  one stronger recovered-wave-observables theorem above the current
+  recovered-wave-regime slice,
+  one stronger algebraic regime-coherence theorem above the current
+  regime-persistence slice,
+  one wave-observable-facing downstream consumer on the canonical ladder,
+  and one richer moonshine twined-wave-observable summary.
 - After the full parametric theorem lands, the next milestone is:
   a second Lorentz-family realization search.
 - Add a finite orbit-shell generating series layer:
