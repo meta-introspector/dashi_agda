@@ -38,6 +38,22 @@
   propagation, geometry, observable, regime, and recovery-transport consumers,
 - added `MoonshineTwinedWaveBundleSummary` as a richer finite graded/twined
   wave-bundle summary on the parallel pre-moonshine track,
+- added `ParametricAlgebraicRegimeInvarianceTheorem` as the next algebraic
+  widening above the current transport-invariance slice,
+- added `KnownLimitsRecoveredWaveGeometryTheorem` as the next local recovery
+  widening above the current recovered-wavefront slice,
+- added `CanonicalWaveGeometryConsumer` so the widened canonical Stage C
+  ladder now has a wave-geometry-facing downstream consumer,
+- added `MoonshineTwinedWaveFamilySummary` as a richer finite graded/twined
+  wave-family summary on the prototype track,
+- added `ParametricAlgebraicRegimePersistenceTheorem` as the next algebraic
+  widening above the current regime-invariance slice,
+- added `KnownLimitsRecoveredWaveRegimeTheorem` as the next local recovery
+  widening above the current recovered-wave-geometry slice,
+- added `CanonicalWaveRegimeConsumer` so the widened canonical Stage C ladder
+  now has a wave-regime-facing downstream consumer,
+- added `MoonshineTwinedWaveRegimeSummary` as a richer finite graded/twined
+  wave-regime summary on the prototype track,
 - threaded those new slices through `CanonicalStageC`,
   `CanonicalStageCTheoremBundle`, `CanonicalStageCSummaryBundle`,
   `PhysicsClosureValidationSummary`, `PhysicsClosureSummary`, and

@@ -17,12 +17,14 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem 
 open import DASHI.Physics.Closure.KnownLimitsRecoveredTransportConsistencyTheorem as KLRTC
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWavefrontTheorem as KLRWF
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveGeometryTheorem as KLRWG
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveRegimeTheorem as KLRWR
 open import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
 open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
 open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC
 open import DASHI.Physics.Closure.CanonicalRecoveryTransportConsumer as CRTC
 open import DASHI.Physics.Closure.CanonicalWavefrontConsumer as CWFC
 open import DASHI.Physics.Closure.CanonicalWaveGeometryConsumer as CWGC
+open import DASHI.Physics.Closure.CanonicalWaveRegimeConsumer as CWRC
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
 
 record CanonicalStageCSummaryBundle : Setω where
@@ -45,6 +47,8 @@ record CanonicalStageCSummaryBundle : Setω where
       KLRWF.KnownLimitsRecoveredWavefrontTheorem
     recoveredWaveGeometry :
       KLRWG.KnownLimitsRecoveredWaveGeometryTheorem
+    recoveredWaveRegime :
+      KLRWR.KnownLimitsRecoveredWaveRegimeTheorem
     geometryConsumer : CGC.GeometryConsumerFromMinimal CSC.canonicalClosure
     observableConsumer : COC.ObservableConsumerFromMinimal CSC.canonicalClosure
     regimeConsumer : CRC.RegimeConsumerFromMinimal CSC.canonicalClosure
@@ -54,6 +58,8 @@ record CanonicalStageCSummaryBundle : Setω where
       CWFC.WavefrontConsumerFromMinimal CSC.canonicalClosure
     waveGeometryConsumer :
       CWGC.WaveGeometryConsumerFromMinimal CSC.canonicalClosure
+    waveRegimeConsumer :
+      CWRC.WaveRegimeConsumerFromMinimal CSC.canonicalClosure
     selfVerdict : RPR.RigidityVerdict
     admissibleVerdict : RPR.RigidityVerdict
     negativeControlVerdict : RPR.RigidityVerdict
@@ -79,12 +85,15 @@ canonicalStageCSummaryBundle =
         CSC.canonicalKnownLimitsRecoveredWavefrontTheorem
     ; recoveredWaveGeometry =
         CSC.canonicalKnownLimitsRecoveredWaveGeometryTheorem
+    ; recoveredWaveRegime =
+        CSC.canonicalKnownLimitsRecoveredWaveRegimeTheorem
     ; geometryConsumer = CSC.canonicalGeometryConsumer
     ; observableConsumer = CSC.canonicalObservableConsumer
     ; regimeConsumer = CSC.canonicalRegimeConsumer
     ; recoveryTransportConsumer = CSC.canonicalRecoveryTransportConsumer
     ; wavefrontConsumer = CSC.canonicalWavefrontConsumer
     ; waveGeometryConsumer = CSC.canonicalWaveGeometryConsumer
+    ; waveRegimeConsumer = CSC.canonicalWaveRegimeConsumer
     ; selfVerdict = CSC.canonicalSelfVerdict
     ; admissibleVerdict = CSC.canonicalAdmissibleVerdict
     ; negativeControlVerdict = CSC.canonicalNegativeControlVerdict

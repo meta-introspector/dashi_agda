@@ -94,13 +94,21 @@
   algebraic-bundle/stability slice,
   one geometry-facing downstream consumer on the canonical ladder,
   and one richer moonshine comparison bundle on the prototype track.
-- current next physics-first cycle:
+- current next physics-first cycle is now landed:
   one stronger recovered-wave-geometry theorem above the current
   recovered-wavefront slice,
   one stronger algebraic regime-invariance theorem above the current
   transport-invariance slice,
   one wave-geometry-facing downstream consumer on the canonical ladder,
   and one richer moonshine twined-wave family summary on the prototype
+  track.
+- current newest physics-first cycle is now landed:
+  one stronger recovered-wave-regime theorem above the current
+  recovered-wave-geometry slice,
+  one stronger algebraic regime-persistence theorem above the current
+  regime-invariance slice,
+  one wave-regime-facing downstream consumer on the canonical ladder,
+  and one richer moonshine twined-wave-regime summary on the prototype
   track.
   - current closure-hardening gain:
     `DASHI.Physics.Closure.CanonicalStageC` now makes the authoritative

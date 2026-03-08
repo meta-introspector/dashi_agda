@@ -119,6 +119,12 @@ open import DASHI.Physics.Closure.ParametricAlgebraicPersistenceTheorem as PACTP
   using (ParametricAlgebraicPersistenceTheorem)
 open import DASHI.Physics.Closure.ParametricAlgebraicGaugeSectorPersistenceTheorem as PAGSP public
   using (ParametricAlgebraicGaugeSectorPersistenceTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicTransportInvarianceTheorem as PATI public
+  using (ParametricAlgebraicTransportInvarianceTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicRegimeInvarianceTheorem as PARI public
+  using (ParametricAlgebraicRegimeInvarianceTheorem)
+open import DASHI.Physics.Closure.ParametricAlgebraicRegimePersistenceTheorem as PARP public
+  using (ParametricAlgebraicRegimePersistenceTheorem)
 open import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI public
   using (CanonicalGaugeConstraintRealizedInstances)
 open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
@@ -173,6 +179,12 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem 
   using (KnownLimitsRecoveredObservableGeometryTheorem)
 open import DASHI.Physics.Closure.KnownLimitsRecoveredTransportConsistencyTheorem as KLRTC public
   using (KnownLimitsRecoveredTransportConsistencyTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWavefrontTheorem as KLRWF public
+  using (KnownLimitsRecoveredWavefrontTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveGeometryTheorem as KLRWG public
+  using (KnownLimitsRecoveredWaveGeometryTheorem)
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveRegimeTheorem as KLRWR public
+  using (KnownLimitsRecoveredWaveRegimeTheorem)
 open import DASHI.Physics.Closure.CanonicalStageCTheoremBundle as CSTB public
   using (CanonicalStageCTheoremBundle)
 open import DASHI.Physics.Closure.CanonicalStageCSummaryBundle as CSSB public
@@ -185,6 +197,12 @@ open import DASHI.Physics.Closure.CanonicalRegimeConsumer as CRC public
   using (RegimeConsumerFromMinimal)
 open import DASHI.Physics.Closure.CanonicalRecoveryTransportConsumer as CRTC public
   using (RecoveryTransportConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalWavefrontConsumer as CWFC public
+  using (WavefrontConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalWaveGeometryConsumer as CWGC public
+  using (WaveGeometryConsumerFromMinimal)
+open import DASHI.Physics.Closure.CanonicalWaveRegimeConsumer as CWRC public
+  using (WaveRegimeConsumerFromMinimal)
 open import DASHI.Physics.Moonshine.FiniteTwinedTraceDetailedReport as MFTDR public
   using (FiniteTwinedTraceDetailedReport)
 open import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary as MWGSPS public
@@ -197,6 +215,10 @@ open import DASHI.Physics.Moonshine.MoonshineTraceFamilySummary as MTFS public
   using (MoonshineTraceFamilySummary)
 open import DASHI.Physics.Moonshine.MoonshineWaveTraceConsistencySummary as MWTCS public
   using (MoonshineWaveTraceConsistencySummary)
+open import DASHI.Physics.Moonshine.MoonshineTwinedWaveBundleSummary as MTWBS public
+  using (MoonshineTwinedWaveBundleSummary)
+open import DASHI.Physics.Moonshine.MoonshineTwinedWaveRegimeSummary as MTWRS public
+  using (MoonshineTwinedWaveRegimeSummary)
 
 validationBundle : MCPCV.MinimalCrediblePhysicsClosureValidation
 validationBundle = MCPCVS.minimumCredibleClosureValidationShift
@@ -359,6 +381,42 @@ secondaryParametricAlgebraicGaugeSectorPersistenceTheoremSummary :
 secondaryParametricAlgebraicGaugeSectorPersistenceTheoremSummary =
   CSC.secondaryParametricAlgebraicGaugeSectorPersistenceTheorem
 
+canonicalParametricAlgebraicTransportInvarianceTheoremSummary :
+  PATI.ParametricAlgebraicTransportInvarianceTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicTransportInvarianceTheoremSummary =
+  CSC.canonicalParametricAlgebraicTransportInvarianceTheorem
+
+secondaryParametricAlgebraicTransportInvarianceTheoremSummary :
+  PATI.ParametricAlgebraicTransportInvarianceTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicTransportInvarianceTheoremSummary =
+  CSC.secondaryParametricAlgebraicTransportInvarianceTheorem
+
+canonicalParametricAlgebraicRegimeInvarianceTheoremSummary :
+  PARI.ParametricAlgebraicRegimeInvarianceTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicRegimeInvarianceTheoremSummary =
+  CSC.canonicalParametricAlgebraicRegimeInvarianceTheorem
+
+secondaryParametricAlgebraicRegimeInvarianceTheoremSummary :
+  PARI.ParametricAlgebraicRegimeInvarianceTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicRegimeInvarianceTheoremSummary =
+  CSC.secondaryParametricAlgebraicRegimeInvarianceTheorem
+
+canonicalParametricAlgebraicRegimePersistenceTheoremSummary :
+  PARP.ParametricAlgebraicRegimePersistenceTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicRegimePersistenceTheoremSummary =
+  CSC.canonicalParametricAlgebraicRegimePersistenceTheorem
+
+secondaryParametricAlgebraicRegimePersistenceTheoremSummary :
+  PARP.ParametricAlgebraicRegimePersistenceTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicRegimePersistenceTheoremSummary =
+  CSC.secondaryParametricAlgebraicRegimePersistenceTheorem
+
 canonicalKnownLimitsStatusSummary : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatusSummary = CSC.canonicalKnownLimitsStatus
 
@@ -440,6 +498,21 @@ canonicalKnownLimitsRecoveredTransportConsistencyTheoremSummary :
 canonicalKnownLimitsRecoveredTransportConsistencyTheoremSummary =
   CSC.canonicalKnownLimitsRecoveredTransportConsistencyTheorem
 
+canonicalKnownLimitsRecoveredWavefrontTheoremSummary :
+  KLRWF.KnownLimitsRecoveredWavefrontTheorem
+canonicalKnownLimitsRecoveredWavefrontTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWavefrontTheorem
+
+canonicalKnownLimitsRecoveredWaveGeometryTheoremSummary :
+  KLRWG.KnownLimitsRecoveredWaveGeometryTheorem
+canonicalKnownLimitsRecoveredWaveGeometryTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveGeometryTheorem
+
+canonicalKnownLimitsRecoveredWaveRegimeTheoremSummary :
+  KLRWR.KnownLimitsRecoveredWaveRegimeTheorem
+canonicalKnownLimitsRecoveredWaveRegimeTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveRegimeTheorem
+
 canonicalSpinLocalLorentzBridgeSummary :
   SLLB.SpinLocalLorentzBridge CSC.canonicalClosure
 canonicalSpinLocalLorentzBridgeSummary =
@@ -475,6 +548,21 @@ canonicalRecoveryTransportConsumerSummary :
 canonicalRecoveryTransportConsumerSummary =
   CSC.canonicalRecoveryTransportConsumer
 
+canonicalWavefrontConsumerSummary :
+  CWFC.WavefrontConsumerFromMinimal CSC.canonicalClosure
+canonicalWavefrontConsumerSummary =
+  CSC.canonicalWavefrontConsumer
+
+canonicalWaveGeometryConsumerSummary :
+  CWGC.WaveGeometryConsumerFromMinimal CSC.canonicalClosure
+canonicalWaveGeometryConsumerSummary =
+  CSC.canonicalWaveGeometryConsumer
+
+canonicalWaveRegimeConsumerSummary :
+  CWRC.WaveRegimeConsumerFromMinimal CSC.canonicalClosure
+canonicalWaveRegimeConsumerSummary =
+  CSC.canonicalWaveRegimeConsumer
+
 canonicalTheoremBundleSummary : CSTB.CanonicalStageCTheoremBundle
 canonicalTheoremBundleSummary = CSTB.canonicalStageCTheoremBundle
 
@@ -495,6 +583,16 @@ canonicalMoonshineWaveTraceConsistencySummary :
   MWTCS.MoonshineWaveTraceConsistencySummary
 canonicalMoonshineWaveTraceConsistencySummary =
   MWTCS.canonicalMoonshineWaveTraceConsistencySummary
+
+canonicalMoonshineTwinedWaveBundleSummary :
+  MTWBS.MoonshineTwinedWaveBundleSummary
+canonicalMoonshineTwinedWaveBundleSummary =
+  MTWBS.canonicalMoonshineTwinedWaveBundleSummary
+
+canonicalMoonshineTwinedWaveRegimeSummary :
+  MTWRS.MoonshineTwinedWaveRegimeSummary
+canonicalMoonshineTwinedWaveRegimeSummary =
+  MTWRS.canonicalMoonshineTwinedWaveRegimeSummary
 
 selfSnapshotVerdict : RPR.RigidityVerdict
 selfSnapshotVerdict = MCPCV.selfVerdict validationBundle

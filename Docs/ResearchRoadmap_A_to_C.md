@@ -206,12 +206,19 @@ Current state:
   followed by one stronger algebraic-consistency theorem above the current
   algebraic-bundle/stability slice,
   plus one new geometry-facing downstream consumer on the canonical ladder.
-- Current next broader widening cycle:
+- Current next broader widening cycle is now landed:
   one stronger recovered-wave-geometry theorem above the current
   recovered-wavefront slice,
   followed by one stronger algebraic regime-invariance theorem above the
   current transport-invariance slice,
   plus one new wave-geometry-facing downstream consumer on the canonical
+  ladder.
+- Current newest broader widening cycle is now landed:
+  one stronger recovered-wave-regime theorem above the current
+  recovered-wave-geometry slice,
+  followed by one stronger algebraic regime-persistence theorem above the
+  current regime-invariance slice,
+  plus one new wave-regime-facing downstream consumer on the canonical
   ladder.
 
 Immediate mathematical milestone before another Lorentz-family realization

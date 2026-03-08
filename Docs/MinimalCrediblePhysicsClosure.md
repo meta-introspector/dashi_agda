@@ -225,7 +225,7 @@ Current admissible candidate:
   attach one geometry-facing downstream consumer to the widened canonical
   ladder,
   and keep moonshine hardening secondary through a richer comparison bundle.
-- Current next physics-first cycle:
+- Current next physics-first cycle is now landed:
   one stronger recovered-wave-geometry theorem above the current
   recovered-wavefront slice,
   one stronger algebraic regime-invariance theorem above the current
@@ -233,6 +233,14 @@ Current admissible candidate:
   one wave-geometry-facing downstream consumer on the widened canonical
   ladder,
   and one richer moonshine twined-wave family summary on the prototype track.
+- Current newest physics-first cycle is now landed:
+  one stronger recovered-wave-regime theorem above the current
+  recovered-wave-geometry slice,
+  one stronger algebraic regime-persistence theorem above the current
+  regime-invariance slice,
+  one wave-regime-facing downstream consumer on the widened canonical
+  ladder,
+  and one richer moonshine twined-wave-regime summary on the prototype track.
 
 ## Next Mathematical Realization Target
 

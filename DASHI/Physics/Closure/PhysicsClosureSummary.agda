@@ -140,6 +140,24 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   a recovery-transport consumer is now exported on the canonical ladder,
 --   and a moonshine wave-trace consistency summary is now exported on the
 --   parallel finite graded/twined track.
+-- Current next-cycle widening status:
+--   a stronger parametric algebraic regime-invariance theorem is now
+--   exported above the current transport-invariance layer,
+--   a recovered-wave-geometry theorem is now exported above the current
+--   recovered-wavefront layer,
+--   a wave-geometry-facing downstream consumer is now exported on the
+--   canonical ladder,
+--   and a moonshine twined-wave family summary is now exported on the
+--   parallel finite graded/twined track.
+-- Current newest cycle widening status:
+--   a stronger parametric algebraic regime-persistence theorem is now
+--   exported above the current regime-invariance layer,
+--   a recovered-wave-regime theorem is now exported above the current
+--   recovered-wave-geometry layer,
+--   a wave-regime-facing downstream consumer is now exported on the
+--   canonical ladder,
+--   and a moonshine twined-wave-regime summary is now exported on the
+--   parallel finite graded/twined track.
 
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF public
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI public
@@ -258,6 +276,12 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; secondaryParametricAlgebraicPersistenceTheoremSummary
     ; canonicalParametricAlgebraicGaugeSectorPersistenceTheoremSummary
     ; secondaryParametricAlgebraicGaugeSectorPersistenceTheoremSummary
+    ; canonicalParametricAlgebraicTransportInvarianceTheoremSummary
+    ; secondaryParametricAlgebraicTransportInvarianceTheoremSummary
+    ; canonicalParametricAlgebraicRegimeInvarianceTheoremSummary
+    ; secondaryParametricAlgebraicRegimeInvarianceTheoremSummary
+    ; canonicalParametricAlgebraicRegimePersistenceTheoremSummary
+    ; secondaryParametricAlgebraicRegimePersistenceTheoremSummary
     ; canonicalKnownLimitsRecoveryPackageSummary
     ; canonicalKnownLimitsCausalPropagationTheoremSummary
     ; canonicalKnownLimitsGeometryTransportTheoremSummary
@@ -270,12 +294,18 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalKnownLimitsRecoveredObservablesTheoremSummary
     ; canonicalKnownLimitsRecoveredObservableGeometryTheoremSummary
     ; canonicalKnownLimitsRecoveredTransportConsistencyTheoremSummary
+    ; canonicalKnownLimitsRecoveredWavefrontTheoremSummary
+    ; canonicalKnownLimitsRecoveredWaveGeometryTheoremSummary
+    ; canonicalKnownLimitsRecoveredWaveRegimeTheoremSummary
     ; canonicalKnownLimitsPropagationSpinTheoremSummary
     ; canonicalPropagationConsumerSummary
     ; canonicalGeometryConsumerSummary
     ; canonicalObservableConsumerSummary
     ; canonicalRegimeConsumerSummary
     ; canonicalRecoveryTransportConsumerSummary
+    ; canonicalWavefrontConsumerSummary
+    ; canonicalWaveGeometryConsumerSummary
+    ; canonicalWaveRegimeConsumerSummary
     ; canonicalTheoremBundleSummary
     ; canonicalSummaryBundle
     ; shiftWaveGradedShellPrototypeSummary
@@ -283,4 +313,6 @@ open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS public
     ; canonicalMoonshinePrototypeComparisonBundleSummary
     ; canonicalMoonshineTraceFamilySummary
     ; canonicalMoonshineWaveTraceConsistencySummary
+    ; canonicalMoonshineTwinedWaveBundleSummary
+    ; canonicalMoonshineTwinedWaveRegimeSummary
     )

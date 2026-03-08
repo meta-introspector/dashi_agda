@@ -94,7 +94,7 @@ Current theorem status:
   algebraic-bundle/stability slice,
   one geometry-facing downstream consumer on the widened canonical ladder,
   and one richer moonshine comparison bundle on the prototype track.
-- Current next physics-first cycle:
+- Current next physics-first cycle is now landed:
   one stronger recovered-wave-geometry theorem above the current
   recovered-wavefront slice,
   one stronger algebraic regime-invariance theorem above the current
@@ -102,6 +102,14 @@ Current theorem status:
   one wave-geometry-facing downstream consumer on the widened canonical
   ladder,
   and one richer moonshine twined-wave family summary on the prototype track.
+- Current newest physics-first cycle is now landed:
+  one stronger recovered-wave-regime theorem above the current
+  recovered-wave-geometry slice,
+  one stronger algebraic regime-persistence theorem above the current
+  regime-invariance slice,
+  one wave-regime-facing downstream consumer on the widened canonical
+  ladder,
+  and one richer moonshine twined-wave-regime summary on the prototype track.
 - Next algebraic milestone:
   add a finite orbit-shell generating series for the current shift profile,
   then use it for standalone `B₄` comparison and a prototype wave lift.
