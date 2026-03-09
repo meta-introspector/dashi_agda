@@ -1,0 +1,25 @@
+module DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.AdaptabilityConsumer where
+
+open import Agda.Primitive using (Setω)
+
+open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ExtensibilityConsumer as CWOTGREXTC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.AdaptabilityTheorem as KLRWOTGRADAPT
+
+record WaveObservableTransportGeometryRegimeAdaptabilityConsumerFromMinimal
+         (cl : MCPC.MinimalCrediblePhysicsClosure) : Setω where
+  constructor waveObservableTransportGeometryRegimeAdaptabilityConsumer
+  field
+    transportGeometryRegimeExtensibilityConsumer :
+      CWOTGREXTC.WaveObservableTransportGeometryRegimeExtensibilityConsumerFromMinimal cl
+    recoveredWaveObservableTransportGeometryRegimeAdaptability :
+      KLRWOTGRADAPT.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeAdaptabilityTheorem
+
+canonicalWaveObservableTransportGeometryRegimeAdaptabilityConsumer :
+  {cl : MCPC.MinimalCrediblePhysicsClosure} →
+  CWOTGREXTC.WaveObservableTransportGeometryRegimeExtensibilityConsumerFromMinimal cl →
+  WaveObservableTransportGeometryRegimeAdaptabilityConsumerFromMinimal cl
+canonicalWaveObservableTransportGeometryRegimeAdaptabilityConsumer waveObsTransportGeometryRegimeExtensibility =
+  waveObservableTransportGeometryRegimeAdaptabilityConsumer
+    waveObsTransportGeometryRegimeExtensibility
+    KLRWOTGRADAPT.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeAdaptabilityTheorem

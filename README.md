@@ -187,10 +187,11 @@ For the math-prof outreach framing and archive crosswalk, see
 `Docs/MathProfOutreachSummary.md`.
 
 Cleanup note:
-- the next maintenance turn organizes the closure ladder behind shorter
-  hierarchical wrapper modules and ladder maps are now in place for the
-  current hotspot, so widening can continue on the cleaned structure
-  cycles.
+- the current maintenance turn freezes new local wave-regime rungs,
+  treats the grouped ladder modules as the authoritative internal API,
+  and keeps the old per-rung modules only as compatibility surfaces.
+- widening resumes only after canonical Stage C and the repo-facing summaries
+  depend on the grouped surfaces rather than direct per-rung imports.
 For the current milestone order, see `Docs/PhysicsClosurePriorities.md`.
 For the current orbit-shell / Lorentz-signature framing, see
 `Docs/OrbitShellProfilesAndLorentzSignature.md`.
@@ -544,3 +545,7 @@ You now have:
 * Deterministic classification
 * Explicit overflow rule
 * No metaphors required
+Current refactor status:
+- the local Stage C wave-regime ladder is frozen for now
+- grouped ladder modules are the authoritative internal import path
+- widening resumes only after canonical code is routed through those grouped surfaces

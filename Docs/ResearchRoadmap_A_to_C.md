@@ -185,7 +185,7 @@ Current maintenance decision:
 - grouped ladder modules are now the target internal API,
 - per-rung wave-regime modules remain compatibility wrappers,
 - widening resumes after canonical Stage C and repo-facing summaries depend on
-  the grouped surfaces.
+  the grouped surfaces rather than direct per-rung imports.
 
 Immediate runway theorem order after the current local effective-geometry
 slice:
@@ -351,3 +351,7 @@ Cleanup milestone:
 - the wave-regime family now has short-path wrapper modules,
 - old long names remain as compatibility surfaces,
 - the `1/2/3/4` widening loop can now resume on the cleaner layout.
+Immediate maintenance milestone:
+- freeze the local wave-regime ladder
+- consolidate it behind grouped `WaveRegime` and `Canonical/Ladder` surfaces
+- resume broader-than-local widening only after the grouped path is canonical

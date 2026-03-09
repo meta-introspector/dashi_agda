@@ -384,3 +384,25 @@ Cleanup
   next cycle continues with one more algebra rung, one more recovered-local
   rung, one more canonical consumer, and one more pre-moonshine summary on the
   cleaned wave-regime structure.
+## Cleanup / Consolidation
+- [x] Add a canonical `LocalProgramBundle` for the frozen local ladder.
+- [x] Point `Closure/Canonical/Ladder` at grouped ladder surfaces rather than mirroring `CanonicalStageC`.
+- [x] Rewire `PhysicsClosureValidationSummary` to grouped wave-regime imports only.
+- [ ] Rewire remaining canonical modules away from direct per-rung wave-regime imports.
+- [x] Add the `Traceability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Auditability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Reliability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Verifiability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Repeatability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Reproducibility` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Portability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Interoperability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Composability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Maintainability` rung across algebra, recovery, consumer, and moonshine grouped summary surfaces.
+- [x] Add the `Extensibility` rung across algebra, recovery, consumer, and moonshine grouped summary surfaces.
+- [x] Add the `Scalability` rung across algebra, recovery, consumer, and moonshine grouped summary surfaces.
+- [x] Add the `Durability` rung across algebra, recovery, consumer, and moonshine grouped summary surfaces.
+- [x] Add the `Usability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Add the `Operability` rung across algebra, recovery, consumer, and moonshine summary surfaces.
+- [x] Split `Compatibility` / `Composability` aliases on the canonical Stage C import surface so grouped ladder compiles stop depending on import-order collisions.
+ - Landed `Sustainability` rung across algebra, recovery, consumer, and moonshine grouped wave-regime ladders.

@@ -21,6 +21,18 @@ So the priority stays physics-first:
 - broaden gauge/constraint beyond the current local algebra packages,
 - keep moonshine/Weyl as a parallel prototype track, not the main line.
 
+## Current Cleanup Turn
+
+This turn is consolidation-only.
+
+Rules:
+
+- no new local wave-regime theorem rungs,
+- grouped ladder modules are the authoritative internal API,
+- per-rung wave-regime modules remain compatibility wrappers,
+- widening resumes only after the canonical summaries depend on grouped
+  imports rather than direct per-rung imports.
+
 ## P0 — Validation and Closure Hardening
 
 This is the current highest-priority phase.
@@ -290,3 +302,7 @@ Cleanup status:
 - Active widening mode:
   continue the `1/2/3/4` loop on the cleaned structure, keeping physics first
   and the pre-moonshine track strictly parallel and prototype-only.
+Current refactor priority:
+- cleanup/consolidation only for the local wave-regime ladder
+- no new local rungs in this pass
+- use grouped ladder modules and canonical ladder maps as the internal API

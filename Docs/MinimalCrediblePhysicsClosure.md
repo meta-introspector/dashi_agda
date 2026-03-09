@@ -168,7 +168,9 @@ Cleanup note:
   theorem rungs,
 - grouped ladder modules are the authoritative internal path for the current
   hotspot,
-- old per-rung modules remain available as compatibility surfaces.
+- old per-rung modules remain available as compatibility surfaces,
+- widening resumes only after the canonical summaries import the grouped
+  ladder surfaces instead of direct per-rung modules.
 
 Initial benchmark boundary:
 
@@ -455,3 +457,7 @@ Cleanup turn:
 - old long module names still remain for compatibility,
 - shorter hierarchy modules and ladder maps are now in place for the current
   wave-regime hotspot.
+Current note:
+- this turn is a cleanup/consolidation turn
+- no new local theorem rungs are being added
+- the local canonical program is treated as complete enough to freeze while the repo is reorganized

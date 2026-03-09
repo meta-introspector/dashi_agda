@@ -1,0 +1,25 @@
+module DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ReproducibilityConsumer where
+
+open import Agda.Primitive using (Setω)
+
+open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.RepeatabilityConsumer as CWOTGRREPC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ReproducibilityTheorem as KLRWOTGRREPR
+
+record WaveObservableTransportGeometryRegimeReproducibilityConsumerFromMinimal
+         (cl : MCPC.MinimalCrediblePhysicsClosure) : Setω where
+  constructor waveObservableTransportGeometryRegimeReproducibilityConsumer
+  field
+    transportGeometryRegimeRepeatabilityConsumer :
+      CWOTGRREPC.WaveObservableTransportGeometryRegimeRepeatabilityConsumerFromMinimal cl
+    recoveredWaveObservableTransportGeometryRegimeReproducibility :
+      KLRWOTGRREPR.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeReproducibilityTheorem
+
+canonicalWaveObservableTransportGeometryRegimeReproducibilityConsumer :
+  {cl : MCPC.MinimalCrediblePhysicsClosure} →
+  CWOTGRREPC.WaveObservableTransportGeometryRegimeRepeatabilityConsumerFromMinimal cl →
+  WaveObservableTransportGeometryRegimeReproducibilityConsumerFromMinimal cl
+canonicalWaveObservableTransportGeometryRegimeReproducibilityConsumer waveObsTransportGeometryRegimeRepeatability =
+  waveObservableTransportGeometryRegimeReproducibilityConsumer
+    waveObsTransportGeometryRegimeRepeatability
+    KLRWOTGRREPR.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeReproducibilityTheorem

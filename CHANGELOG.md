@@ -443,3 +443,25 @@
 - Added the short-path `Legibility` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
 
 - Tightened `Closure/Canonical/Ladder` so it no longer publicly re-exports both grouped wave-regime ladders and `CanonicalStageC`, eliminating the duplicate-export collision on the cleaned canonical summary path.
+- Added `DASHI/Physics/Closure/Canonical/LocalProgramBundle.agda` as the grouped local-program entrypoint.
+- Updated `DASHI/Physics/Closure/Canonical/Ladder.agda` to use the local-program bundle and grouped ladder surfaces rather than mirroring `CanonicalStageC` directly.
+- Marked the current turn as a cleanup/consolidation pass in the repo docs/TODO/context; no new theorem rungs added in this pass.
+- Rewired `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda` to grouped wave-regime imports with internal compatibility aliases, eliminating the last direct per-rung dependency on the validation summary path.
+- Verified the grouped-import migration by typechecking `PhysicsClosureValidationSummary.agda` and top-level `Everything.agda`.
+- Added the `Traceability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Auditability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Reliability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Verifiability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Repeatability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Reproducibility` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Portability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Interoperability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Composability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Maintainability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Extensibility` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Scalability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, and moonshine summary.
+- Added the `Durability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, and moonshine summary.
+- Added the `Usability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Added the `Operability` rung across the cleaned wave-regime cycle: algebra theorem, recovered theorem, canonical consumer, moonshine summary, and canonical/validation exports.
+- Fixed canonical Stage C alias collisions between `Compatibility` and `Composability` on the algebra, recovery, and consumer ladders; `CanonicalStageC.agda` now uses distinct aliases and the grouped summary path compiles cleanly again.
+- Added `Sustainability` wave-regime rung across algebra, recovery, canonical consumer, and moonshine summary grouped surfaces.

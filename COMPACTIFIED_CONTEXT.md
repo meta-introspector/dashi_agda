@@ -81,3 +81,8 @@
   explicit continuum-limit theorem,
   realization-independent proof,
   and full gauge/matter recovery as theorem.
+Cleanup state:
+- local wave-regime ladder is frozen
+- grouped ladder modules are now the intended internal API
+- `Canonical.LocalProgramBundle` is the new grouped local entrypoint
+- broader-than-local widening resumes after remaining summary import cleanup

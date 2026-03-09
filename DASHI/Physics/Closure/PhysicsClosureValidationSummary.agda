@@ -133,70 +133,53 @@ open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableGeometryTheor
   using (ParametricAlgebraicWaveObservableGeometryTheorem)
 open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem as PAWOTGC public
   using (ParametricAlgebraicWaveObservableTransportGeometryCoherenceTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.Theorem as PAWOTGR public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.CoherenceTheorem as PAWOTGRC public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeCoherenceTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.StabilityTheorem as PAWOTGRS public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeStabilityTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.CompletenessTheorem as PAWOTGRC public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeCompletenessTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.SoundnessTheorem as PAWOTGRSO public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeSoundnessTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.ConsistencyTheorem as PAWOTGRCONS public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeConsistencyTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.InvarianceTheorem as PAWOTGRINV public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeInvarianceTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.RobustnessTheorem as PAWOTGRROB public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeRobustnessTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.IntegrityTheorem as PAWOTGRINT public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeIntegrityTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.HarmonyTheorem as PAWOTGRHAR public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeHarmonyTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.BalanceTheorem as PAWOTGRBAL public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeBalanceTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.SymmetryTheorem as PAWOTGRSYM public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeSymmetryTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.ContinuityTheorem as PAWOTGRCONT public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeContinuityTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.CompatibilityTheorem as PAWOTGRCOMP public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.ConcordanceTheorem as PAWOTGRCONC public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeConcordanceTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.CohesionTheorem as PAWOTGRCOH public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeCohesionTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.EquilibriumTheorem as PAWOTGREQ public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeEquilibriumTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.ConvergenceTheorem as PAWOTGRCONV public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeConvergenceTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.FidelityTheorem as PAWOTGRFID public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeFidelityTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.LegibilityTheorem as PAWOTGRLEG public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeLegibilityTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.TransparencyTheorem as PAWOTGRTRN public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeTransparencyTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.ClarityTheorem as PAWOTGRCLR public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeClarityTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.AlignmentTheorem as PAWOTGRALIGN public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeAlignmentTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.PrecisionTheorem as PAWOTGRPREC public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimePrecisionTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.ResolutionTheorem as PAWOTGRRSL public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeResolutionTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.CalibrationTheorem as PAWOTGRCAL public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeCalibrationTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.NormalizationTheorem as PAWOTGRNORM public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeNormalizationTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.RefinementTheorem as PAWOTGRREF public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeRefinementTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.IntegrationTheorem as PAWOTGRINTG public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeIntegrationTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.SynthesisTheorem as PAWOTGRSYN public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeSynthesisTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.FusionTheorem as PAWOTGRFUS public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeFusionTheorem)
-open import DASHI.Physics.Closure.ParametricAlgebraicWaveObservableTransportGeometry.Regime.ResilienceTheorem as PAWOTGRRES public
-  using (ParametricAlgebraicWaveObservableTransportGeometryRegimeResilienceTheorem)
+import DASHI.Physics.Closure.Algebra.WaveRegime as AWR
+module PAWOTGR = AWR
+module PAWOTGRC = AWR
+module PAWOTGRS = AWR
+module PAWOTGRSO = AWR
+module PAWOTGRCONS = AWR
+module PAWOTGRINV = AWR
+module PAWOTGRROB = AWR
+module PAWOTGRINT = AWR
+module PAWOTGRTRC = AWR
+module PAWOTGRAT = AWR
+module PAWOTGRVT = AWR
+module PAWOTGRREL = AWR
+module PAWOTGRUSA = AWR
+module PAWOTGROPER = AWR
+module PAWOTGRDUR = AWR
+module PAWOTGRMGT = AWR
+module PAWOTGRREP = AWR
+module PAWOTGRREPR = AWR
+module PAWOTGRPORT = AWR
+module PAWOTGRINTER = AWR
+module PAWOTGRCOMPOS = AWR
+module PAWOTGRMAIN = AWR
+module PAWOTGREXT = AWR
+module PAWOTGRHAR = AWR
+module PAWOTGRBAL = AWR
+module PAWOTGRSYM = AWR
+module PAWOTGRCONT = AWR
+module PAWOTGRCOMPAT = AWR
+module PAWOTGRCONC = AWR
+module PAWOTGRCOH = AWR
+module PAWOTGREQ = AWR
+module PAWOTGRCONV = AWR
+module PAWOTGRFID = AWR
+module PAWOTGRLEG = AWR
+module PAWOTGRTRN = AWR
+module PAWOTGRCLR = AWR
+module PAWOTGRALIGN = AWR
+module PAWOTGRPREC = AWR
+module PAWOTGRRSL = AWR
+module PAWOTGRCAL = AWR
+module PAWOTGRNORM = AWR
+module PAWOTGRREF = AWR
+module PAWOTGRINTG = AWR
+module PAWOTGRSYN = AWR
+module PAWOTGRFUS = AWR
+module PAWOTGRRES = AWR
 open import DASHI.Physics.Closure.CanonicalGaugeConstraintRealizedInstances as CGCRI public
   using (CanonicalGaugeConstraintRealizedInstances)
 open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
@@ -267,70 +250,53 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeo
   using (KnownLimitsRecoveredWaveObservableTransportGeometryTheorem)
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC public
   using (KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.Theorem as KLRWOTGR public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.CoherenceTheorem as KLRWOTGRC public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCoherenceTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.StabilityTheorem as KLRWOTGRS public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeStabilityTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.CompletenessTheorem as KLRWOTGRC public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompletenessTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.SoundnessTheorem as KLRWOTGRSO public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeSoundnessTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ConsistencyTheorem as KLRWOTGRCONS public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeConsistencyTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.InvarianceTheorem as KLRWOTGRINV public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeInvarianceTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.RobustnessTheorem as KLRWOTGRROB public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeRobustnessTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.IntegrityTheorem as KLRWOTGRINT public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeIntegrityTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.HarmonyTheorem as KLRWOTGRHAR public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeHarmonyTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.BalanceTheorem as KLRWOTGRBAL public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeBalanceTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.SymmetryTheorem as KLRWOTGRSYM public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeSymmetryTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ContinuityTheorem as KLRWOTGRCONT public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeContinuityTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.CompatibilityTheorem as KLRWOTGRCOMP public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompatibilityTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ConcordanceTheorem as KLRWOTGRCONC public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeConcordanceTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.CohesionTheorem as KLRWOTGRCOH public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCohesionTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.EquilibriumTheorem as KLRWOTGREQ public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeEquilibriumTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ConvergenceTheorem as KLRWOTGRCONV public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeConvergenceTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.FidelityTheorem as KLRWOTGRFID public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeFidelityTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.LegibilityTheorem as KLRWOTGRLEG public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeLegibilityTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.TransparencyTheorem as KLRWOTGRTRN public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeTransparencyTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ClarityTheorem as KLRWOTGRCLR public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeClarityTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.AlignmentTheorem as KLRWOTGRALIGN public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeAlignmentTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.PrecisionTheorem as KLRWOTGRPREC public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimePrecisionTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ResolutionTheorem as KLRWOTGRRSL public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeResolutionTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.CalibrationTheorem as KLRWOTGRCAL public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCalibrationTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.NormalizationTheorem as KLRWOTGRNORM public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeNormalizationTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.RefinementTheorem as KLRWOTGRREF public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeRefinementTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.IntegrationTheorem as KLRWOTGRINTG public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeIntegrationTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.SynthesisTheorem as KLRWOTGRSYN public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeSynthesisTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.FusionTheorem as KLRWOTGRFUS public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeFusionTheorem)
-open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.ResilienceTheorem as KLRWOTGRRES public
-  using (KnownLimitsRecoveredWaveObservableTransportGeometryRegimeResilienceTheorem)
+import DASHI.Physics.Closure.Recovery.WaveRegime as RWR
+module KLRWOTGR = RWR
+module KLRWOTGRC = RWR
+module KLRWOTGRS = RWR
+module KLRWOTGRSO = RWR
+module KLRWOTGRCONS = RWR
+module KLRWOTGRINV = RWR
+module KLRWOTGRROB = RWR
+module KLRWOTGRINT = RWR
+module KLRWOTGRTRC = RWR
+module KLRWOTGRAT = RWR
+module KLRWOTGRVT = RWR
+module KLRWOTGRREL = RWR
+module KLRWOTGRUSA = RWR
+module KLRWOTGROPER = RWR
+module KLRWOTGRDUR = RWR
+module KLRWOTGRMGT = RWR
+module KLRWOTGRREP = RWR
+module KLRWOTGRREPR = RWR
+module KLRWOTGRPORT = RWR
+module KLRWOTGRINTER = RWR
+module KLRWOTGRCOMPOS = RWR
+module KLRWOTGRMAIN = RWR
+module KLRWOTGREXT = RWR
+module KLRWOTGRHAR = RWR
+module KLRWOTGRBAL = RWR
+module KLRWOTGRSYM = RWR
+module KLRWOTGRCONT = RWR
+module KLRWOTGRCOMPAT = RWR
+module KLRWOTGRCONC = RWR
+module KLRWOTGRCOH = RWR
+module KLRWOTGREQ = RWR
+module KLRWOTGRCONV = RWR
+module KLRWOTGRFID = RWR
+module KLRWOTGRLEG = RWR
+module KLRWOTGRTRN = RWR
+module KLRWOTGRCLR = RWR
+module KLRWOTGRALIGN = RWR
+module KLRWOTGRPREC = RWR
+module KLRWOTGRRSL = RWR
+module KLRWOTGRCAL = RWR
+module KLRWOTGRNORM = RWR
+module KLRWOTGRREF = RWR
+module KLRWOTGRINTG = RWR
+module KLRWOTGRSYN = RWR
+module KLRWOTGRFUS = RWR
+module KLRWOTGRRES = RWR
 open import DASHI.Physics.Closure.CanonicalStageCTheoremBundle as CSTB public
   using (CanonicalStageCTheoremBundle)
 open import DASHI.Physics.Closure.CanonicalStageCSummaryBundle as CSSB public
@@ -359,70 +325,53 @@ open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryConsum
   using (WaveObservableTransportGeometryConsumerFromMinimal)
 open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryCoherenceConsumer as CWOTGCC public
   using (WaveObservableTransportGeometryCoherenceConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.Consumer as CWOTGRC public
-  using (WaveObservableTransportGeometryRegimeConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.CoherenceConsumer as CWOTGRCC public
-  using (WaveObservableTransportGeometryRegimeCoherenceConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.StabilityConsumer as CWOTGRSC public
-  using (WaveObservableTransportGeometryRegimeStabilityConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.CompletenessConsumer as CWOTGRCC public
-  using (WaveObservableTransportGeometryRegimeCompletenessConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.SoundnessConsumer as CWOTGRSOC public
-  using (WaveObservableTransportGeometryRegimeSoundnessConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ConsistencyConsumer as CWOTGRCONSC public
-  using (WaveObservableTransportGeometryRegimeConsistencyConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.InvarianceConsumer as CWOTGRINVC public
-  using (WaveObservableTransportGeometryRegimeInvarianceConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.RobustnessConsumer as CWOTGRROBC public
-  using (WaveObservableTransportGeometryRegimeRobustnessConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.IntegrityConsumer as CWOTGRINTC public
-  using (WaveObservableTransportGeometryRegimeIntegrityConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.HarmonyConsumer as CWOTGRHARC public
-  using (WaveObservableTransportGeometryRegimeHarmonyConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.BalanceConsumer as CWOTGRBALC public
-  using (WaveObservableTransportGeometryRegimeBalanceConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.SymmetryConsumer as CWOTGRSYMC public
-  using (WaveObservableTransportGeometryRegimeSymmetryConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ContinuityConsumer as CWOTGRCONTC public
-  using (WaveObservableTransportGeometryRegimeContinuityConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.CompatibilityConsumer as CWOTGRCOMPC public
-  using (WaveObservableTransportGeometryRegimeCompatibilityConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ConcordanceConsumer as CWOTGRCONCC public
-  using (WaveObservableTransportGeometryRegimeConcordanceConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.CohesionConsumer as CWOTGRCOHC public
-  using (WaveObservableTransportGeometryRegimeCohesionConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.EquilibriumConsumer as CWOTGREQC public
-  using (WaveObservableTransportGeometryRegimeEquilibriumConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ConvergenceConsumer as CWOTGRCONVC public
-  using (WaveObservableTransportGeometryRegimeConvergenceConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.FidelityConsumer as CWOTGRFIDC public
-  using (WaveObservableTransportGeometryRegimeFidelityConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.LegibilityConsumer as CWOTGRLEGC public
-  using (WaveObservableTransportGeometryRegimeLegibilityConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.TransparencyConsumer as CWOTGRTRNC public
-  using (WaveObservableTransportGeometryRegimeTransparencyConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ClarityConsumer as CWOTGRCLRC public
-  using (WaveObservableTransportGeometryRegimeClarityConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.AlignmentConsumer as CWOTGRALIGNC public
-  using (WaveObservableTransportGeometryRegimeAlignmentConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.PrecisionConsumer as CWOTGRPRECC public
-  using (WaveObservableTransportGeometryRegimePrecisionConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ResolutionConsumer as CWOTGRRSLC public
-  using (WaveObservableTransportGeometryRegimeResolutionConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.CalibrationConsumer as CWOTGRCALC public
-  using (WaveObservableTransportGeometryRegimeCalibrationConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.NormalizationConsumer as CWOTGRNORMC public
-  using (WaveObservableTransportGeometryRegimeNormalizationConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.RefinementConsumer as CWOTGRREFC public
-  using (WaveObservableTransportGeometryRegimeRefinementConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.IntegrationConsumer as CWOTGRINTGC public
-  using (WaveObservableTransportGeometryRegimeIntegrationConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.SynthesisConsumer as CWOTGRSYNC public
-  using (WaveObservableTransportGeometryRegimeSynthesisConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.FusionConsumer as CWOTGRFUSC public
-  using (WaveObservableTransportGeometryRegimeFusionConsumerFromMinimal)
-open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.ResilienceConsumer as CWOTGRRESC public
-  using (WaveObservableTransportGeometryRegimeResilienceConsumerFromMinimal)
+import DASHI.Physics.Closure.Consumers.WaveRegime as CWR
+module CWOTGRC = CWR
+module CWOTGRCC = CWR
+module CWOTGRSC = CWR
+module CWOTGRSOC = CWR
+module CWOTGRCONSC = CWR
+module CWOTGRINVC = CWR
+module CWOTGRROBC = CWR
+module CWOTGRINTC = CWR
+module CWOTGRTRCC = CWR
+module CWOTGRATC = CWR
+module CWOTGRVTC = CWR
+module CWOTGRRELC = CWR
+module CWOTGRUSAC = CWR
+module CWOTGROPERC = CWR
+module CWOTGRDURC = CWR
+module CWOTGRMGTC = CWR
+module CWOTGRREPC = CWR
+module CWOTGRREPRC = CWR
+module CWOTGRPORTC = CWR
+module CWOTGRINTERC = CWR
+module CWOTGRCOMPOSC = CWR
+module CWOTGRMAINC = CWR
+module CWOTGREXTC = CWR
+module CWOTGRHARC = CWR
+module CWOTGRBALC = CWR
+module CWOTGRSYMC = CWR
+module CWOTGRCONTC = CWR
+module CWOTGRCOMPATC = CWR
+module CWOTGRCONCC = CWR
+module CWOTGRCOHC = CWR
+module CWOTGREQC = CWR
+module CWOTGRCONVC = CWR
+module CWOTGRFIDC = CWR
+module CWOTGRLEGC = CWR
+module CWOTGRTRNC = CWR
+module CWOTGRCLRC = CWR
+module CWOTGRALIGNC = CWR
+module CWOTGRPRECC = CWR
+module CWOTGRRSLC = CWR
+module CWOTGRCALC = CWR
+module CWOTGRNORMC = CWR
+module CWOTGRREFC = CWR
+module CWOTGRINTGC = CWR
+module CWOTGRSYNC = CWR
+module CWOTGRFUSC = CWR
+module CWOTGRRESC = CWR
 open import DASHI.Physics.Moonshine.FiniteTwinedTraceDetailedReport as MFTDR public
   using (FiniteTwinedTraceDetailedReport)
 open import DASHI.Physics.Moonshine.WaveGradedShellPrototypeSummary as MWGSPS public
@@ -447,66 +396,52 @@ open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeomet
   using (MoonshineTwinedWaveObservableTransportGeometrySummary)
 open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometryCoherenceSummary as MTWOTGCS public
   using (MoonshineTwinedWaveObservableTransportGeometryCoherenceSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.Summary as MTWOTGRS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.CoherenceSummary as MTWOTGRCS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeCoherenceSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.StabilitySummary as MTWOTGRSS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeStabilitySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.CompletenessSummary as MTWOTGRCMS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeCompletenessSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.SoundnessSummary as MTWOTGRSOS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeSoundnessSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.ConsistencySummary as MTWOTGRCONSS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeConsistencySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.InvarianceSummary as MTWOTGRINVS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeInvarianceSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.RobustnessSummary as MTWOTGRROBS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeRobustnessSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.IntegritySummary as MTWOTGRINTS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeIntegritySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.HarmonySummary as MTWOTGRHARS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeHarmonySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.BalanceSummary as MTWOTGRBALS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeBalanceSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.SymmetrySummary as MTWOTGRSYMS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeSymmetrySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.ContinuitySummary as MTWOTGRCONTS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeContinuitySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.CompatibilitySummary as MTWOTGRCOMPS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeCompatibilitySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.ConcordanceSummary as MTWOTGRCONCS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeConcordanceSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.CohesionSummary as MTWOTGRCOHS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeCohesionSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.EquilibriumSummary as MTWOTGREQS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeEquilibriumSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.ConvergenceSummary as MTWOTGRCONVS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeConvergenceSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.FidelitySummary as MTWOTGRFIDS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeFidelitySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.LegibilitySummary as MTWOTGRLEGS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeLegibilitySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.TransparencySummary as MTWOTGRTRNS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeTransparencySummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.AlignmentSummary as MTWOTGRALIGNS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeAlignmentSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.PrecisionSummary as MTWOTGRPRECS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimePrecisionSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.ResolutionSummary as MTWOTGRRSLS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeResolutionSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.CalibrationSummary as MTWOTGRCALS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeCalibrationSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.NormalizationSummary as MTWOTGRNORMS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeNormalizationSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.SynthesisSummary as MTWOTGRSYNS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeSynthesisSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.FusionSummary as MTWOTGRFUSS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeFusionSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.RefinementSummary as MTWOTGRREFS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeRefinementSummary)
-open import DASHI.Physics.Moonshine.MoonshineTwinedWaveObservableTransportGeometry.Regime.ResilienceSummary as MTWOTGRRESS public
-  using (MoonshineTwinedWaveObservableTransportGeometryRegimeResilienceSummary)
+import DASHI.Physics.Moonshine.Reports.WaveRegime as MWR
+module MTWOTGRS = MWR
+module MTWOTGRCS = MWR
+module MTWOTGRSS = MWR
+module MTWOTGRCMS = MWR
+module MTWOTGRSOS = MWR
+module MTWOTGRCONSS = MWR
+module MTWOTGRINVS = MWR
+module MTWOTGRROBS = MWR
+module MTWOTGRINTS = MWR
+module MTWOTGRTRCS = MWR
+module MTWOTGRATS = MWR
+module MTWOTGRVTS = MWR
+module MTWOTGRRELS = MWR
+module MTWOTGRUSAS = MWR
+module MTWOTGROPERS = MWR
+module MTWOTGRDURS = MWR
+module MTWOTGRMGTS = MWR
+module MTWOTGRREPS = MWR
+module MTWOTGRREPRS = MWR
+module MTWOTGRPORTS = MWR
+module MTWOTGRINTERS = MWR
+module MTWOTGRCOMPOSS = MWR
+module MTWOTGRMAINS = MWR
+module MTWOTGREXTS = MWR
+module MTWOTGRHARS = MWR
+module MTWOTGRBALS = MWR
+module MTWOTGRSYMS = MWR
+module MTWOTGRCONTS = MWR
+module MTWOTGRCOMPATS = MWR
+module MTWOTGRCONCS = MWR
+module MTWOTGRCOHS = MWR
+module MTWOTGREQS = MWR
+module MTWOTGRCONVS = MWR
+module MTWOTGRFIDS = MWR
+module MTWOTGRLEGS = MWR
+module MTWOTGRTRNS = MWR
+module MTWOTGRALIGNS = MWR
+module MTWOTGRPRECS = MWR
+module MTWOTGRRSLS = MWR
+module MTWOTGRCALS = MWR
+module MTWOTGRNORMS = MWR
+module MTWOTGRSYNS = MWR
+module MTWOTGRFUSS = MWR
+module MTWOTGRREFS = MWR
+module MTWOTGRRESS = MWR
 
 validationBundle : MCPCV.MinimalCrediblePhysicsClosureValidation
 validationBundle = MCPCVS.minimumCredibleClosureValidationShift
@@ -855,6 +790,186 @@ secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeIntegrityTheore
 secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeIntegrityTheoremSummary =
   CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeIntegrityTheorem
 
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheoremSummary :
+  PAWOTGRTRC.ParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheoremSummary :
+  PAWOTGRTRC.ParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeTraceabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheoremSummary :
+  PAWOTGRAT.ParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheoremSummary :
+  PAWOTGRAT.ParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeAuditabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheoremSummary :
+  PAWOTGRVT.ParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheoremSummary :
+  PAWOTGRVT.ParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeVerifiabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheoremSummary :
+  PAWOTGRREL.ParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheoremSummary :
+  PAWOTGRUSA.ParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheoremSummary :
+  PAWOTGROPER.ParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheoremSummary :
+  PAWOTGRDUR.ParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheoremSummary :
+  PAWOTGRMGT.ParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheorem
+    canonicalConstraintGaugePackageSummary
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheoremSummary :
+  PAWOTGRREL.ParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeReliabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheoremSummary :
+  PAWOTGRUSA.ParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeUsabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheoremSummary :
+  PAWOTGROPER.ParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeOperabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheoremSummary :
+  PAWOTGRDUR.ParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeDurabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheoremSummary :
+  PAWOTGRMGT.ParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheorem
+    secondaryConstraintGaugePackageSummary
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeManageabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheoremSummary :
+  PAWOTGRREP.ParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheoremSummary :
+  PAWOTGRREP.ParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeRepeatabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheoremSummary :
+  PAWOTGRREPR.ParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheoremSummary :
+  PAWOTGRREPR.ParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeReproducibilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheoremSummary :
+  PAWOTGRPORT.ParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheoremSummary :
+  PAWOTGRPORT.ParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimePortabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheoremSummary :
+  PAWOTGRINTER.ParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheoremSummary :
+  PAWOTGRINTER.ParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeInteroperabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheoremSummary :
+  PAWOTGRCOMPOS.ParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheoremSummary :
+  PAWOTGRMAIN.ParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheoremSummary :
+  PAWOTGRMAIN.ParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeMaintainabilityTheorem
+
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheoremSummary :
+  PAWOTGREXT.ParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheorem
+    CSC.canonicalConstraintGaugePackage
+canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheoremSummary =
+  CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheoremSummary :
+  PAWOTGREXT.ParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeExtensibilityTheorem
+
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheoremSummary :
+  PAWOTGRCOMPOS.ParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheorem
+    CSC.secondaryConstraintGaugePackage
+secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheoremSummary =
+  CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeComposabilityTheorem
+
 canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeHarmonyTheoremSummary :
   PAWOTGRHAR.ParametricAlgebraicWaveObservableTransportGeometryRegimeHarmonyTheorem
     CSC.canonicalConstraintGaugePackage
@@ -904,13 +1019,13 @@ secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeContinuityTheor
   CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeContinuityTheorem
 
 canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheoremSummary :
-  PAWOTGRCOMP.ParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheorem
+  PAWOTGRCOMPAT.ParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheorem
     CSC.canonicalConstraintGaugePackage
 canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheoremSummary =
   CSC.canonicalParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheorem
 
 secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheoremSummary :
-  PAWOTGRCOMP.ParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheorem
+  PAWOTGRCOMPAT.ParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheorem
     CSC.secondaryConstraintGaugePackage
 secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheoremSummary =
   CSC.secondaryParametricAlgebraicWaveObservableTransportGeometryRegimeCompatibilityTheorem
@@ -1255,6 +1370,81 @@ canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeIntegrityTheor
 canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeIntegrityTheoremSummary =
   CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeIntegrityTheorem
 
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeTraceabilityTheoremSummary :
+  KLRWOTGRTRC.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeTraceabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeTraceabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeTraceabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeAuditabilityTheoremSummary :
+  KLRWOTGRAT.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeAuditabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeAuditabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeAuditabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeVerifiabilityTheoremSummary :
+  KLRWOTGRVT.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeVerifiabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeVerifiabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeVerifiabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeReliabilityTheoremSummary :
+  KLRWOTGRREL.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeReliabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeReliabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeReliabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeUsabilityTheoremSummary :
+  KLRWOTGRUSA.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeUsabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeUsabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeUsabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeOperabilityTheoremSummary :
+  KLRWOTGROPER.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeOperabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeOperabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeOperabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeDurabilityTheoremSummary :
+  KLRWOTGRDUR.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeDurabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeDurabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeDurabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeManageabilityTheoremSummary :
+  KLRWOTGRMGT.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeManageabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeManageabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeManageabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeRepeatabilityTheoremSummary :
+  KLRWOTGRREP.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeRepeatabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeRepeatabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeRepeatabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeReproducibilityTheoremSummary :
+  KLRWOTGRREPR.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeReproducibilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeReproducibilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeReproducibilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimePortabilityTheoremSummary :
+  KLRWOTGRPORT.KnownLimitsRecoveredWaveObservableTransportGeometryRegimePortabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimePortabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimePortabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeInteroperabilityTheoremSummary :
+  KLRWOTGRINTER.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeInteroperabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeInteroperabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeInteroperabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeComposabilityTheoremSummary :
+  KLRWOTGRCOMPOS.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeComposabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeComposabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeComposabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeMaintainabilityTheoremSummary :
+  KLRWOTGRMAIN.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeMaintainabilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeMaintainabilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeMaintainabilityTheorem
+
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeExtensibilityTheoremSummary :
+  KLRWOTGREXT.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeExtensibilityTheorem
+canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeExtensibilityTheoremSummary =
+  CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeExtensibilityTheorem
+
 canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeHarmonyTheoremSummary :
   KLRWOTGRHAR.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeHarmonyTheorem
 canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeHarmonyTheoremSummary =
@@ -1276,7 +1466,7 @@ canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeContinuityTheo
   CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeContinuityTheorem
 
 canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompatibilityTheoremSummary :
-  KLRWOTGRCOMP.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompatibilityTheorem
+  KLRWOTGRCOMPAT.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompatibilityTheorem
 canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompatibilityTheoremSummary =
   CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeCompatibilityTheorem
 
@@ -1481,6 +1671,96 @@ canonicalWaveObservableTransportGeometryRegimeIntegrityConsumerSummary :
 canonicalWaveObservableTransportGeometryRegimeIntegrityConsumerSummary =
   CSC.canonicalWaveObservableTransportGeometryRegimeIntegrityConsumer
 
+canonicalWaveObservableTransportGeometryRegimeTraceabilityConsumerSummary :
+  CWOTGRTRCC.WaveObservableTransportGeometryRegimeTraceabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeTraceabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeTraceabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeAuditabilityConsumerSummary :
+  CWOTGRATC.WaveObservableTransportGeometryRegimeAuditabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeAuditabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeAuditabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeVerifiabilityConsumerSummary :
+  CWOTGRVTC.WaveObservableTransportGeometryRegimeVerifiabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeVerifiabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeVerifiabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeReliabilityConsumerSummary :
+  CWOTGRRELC.WaveObservableTransportGeometryRegimeReliabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeReliabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeReliabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeUsabilityConsumerSummary :
+  CWOTGRUSAC.WaveObservableTransportGeometryRegimeUsabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeUsabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeUsabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeOperabilityConsumerSummary :
+  CWOTGROPERC.WaveObservableTransportGeometryRegimeOperabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeOperabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeOperabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeDurabilityConsumerSummary :
+  CWOTGRDURC.WaveObservableTransportGeometryRegimeDurabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeDurabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeDurabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeManageabilityConsumerSummary :
+  CWOTGRMGTC.WaveObservableTransportGeometryRegimeManageabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeManageabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeManageabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeRepeatabilityConsumerSummary :
+  CWOTGRREPC.WaveObservableTransportGeometryRegimeRepeatabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeRepeatabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeRepeatabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeReproducibilityConsumerSummary :
+  CWOTGRREPRC.WaveObservableTransportGeometryRegimeReproducibilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeReproducibilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeReproducibilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimePortabilityConsumerSummary :
+  CWOTGRPORTC.WaveObservableTransportGeometryRegimePortabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimePortabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimePortabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeInteroperabilityConsumerSummary :
+  CWOTGRINTERC.WaveObservableTransportGeometryRegimeInteroperabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeInteroperabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeInteroperabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeComposabilityConsumerSummary :
+  CWOTGRCOMPOSC.WaveObservableTransportGeometryRegimeComposabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeComposabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeComposabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeMaintainabilityConsumerSummary :
+  CWOTGRMAINC.WaveObservableTransportGeometryRegimeMaintainabilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeMaintainabilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeMaintainabilityConsumer
+
+canonicalWaveObservableTransportGeometryRegimeExtensibilityConsumerSummary :
+  CWOTGREXTC.WaveObservableTransportGeometryRegimeExtensibilityConsumerFromMinimal
+    CSC.canonicalClosure
+canonicalWaveObservableTransportGeometryRegimeExtensibilityConsumerSummary =
+  CSC.canonicalWaveObservableTransportGeometryRegimeExtensibilityConsumer
+
 canonicalWaveObservableTransportGeometryRegimeHarmonyConsumerSummary :
   CWOTGRHARC.WaveObservableTransportGeometryRegimeHarmonyConsumerFromMinimal
     CSC.canonicalClosure
@@ -1506,7 +1786,7 @@ canonicalWaveObservableTransportGeometryRegimeContinuityConsumerSummary =
   CSC.canonicalWaveObservableTransportGeometryRegimeContinuityConsumer
 
 canonicalWaveObservableTransportGeometryRegimeCompatibilityConsumerSummary :
-  CWOTGRCOMPC.WaveObservableTransportGeometryRegimeCompatibilityConsumerFromMinimal
+  CWOTGRCOMPATC.WaveObservableTransportGeometryRegimeCompatibilityConsumerFromMinimal
     CSC.canonicalClosure
 canonicalWaveObservableTransportGeometryRegimeCompatibilityConsumerSummary =
   CSC.canonicalWaveObservableTransportGeometryRegimeCompatibilityConsumer
@@ -1691,6 +1971,81 @@ canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeIntegritySummary :
 canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeIntegritySummary =
   MTWOTGRINTS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeIntegritySummary
 
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeTraceabilitySummary :
+  MTWOTGRTRCS.MoonshineTwinedWaveObservableTransportGeometryRegimeTraceabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeTraceabilitySummary =
+  MTWOTGRTRCS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeTraceabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeAuditabilitySummary :
+  MTWOTGRATS.MoonshineTwinedWaveObservableTransportGeometryRegimeAuditabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeAuditabilitySummary =
+  MTWOTGRATS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeAuditabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeVerifiabilitySummary :
+  MTWOTGRVTS.MoonshineTwinedWaveObservableTransportGeometryRegimeVerifiabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeVerifiabilitySummary =
+  MTWOTGRVTS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeVerifiabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeReliabilitySummary :
+  MTWOTGRRELS.MoonshineTwinedWaveObservableTransportGeometryRegimeReliabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeReliabilitySummary =
+  MTWOTGRRELS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeReliabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeUsabilitySummary :
+  MTWOTGRUSAS.MoonshineTwinedWaveObservableTransportGeometryRegimeUsabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeUsabilitySummary =
+  MTWOTGRUSAS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeUsabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeOperabilitySummary :
+  MTWOTGROPERS.MoonshineTwinedWaveObservableTransportGeometryRegimeOperabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeOperabilitySummary =
+  MTWOTGROPERS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeOperabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeDurabilitySummary :
+  MTWOTGRDURS.MoonshineTwinedWaveObservableTransportGeometryRegimeDurabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeDurabilitySummary =
+  MTWOTGRDURS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeDurabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeManageabilitySummary :
+  MTWOTGRMGTS.MoonshineTwinedWaveObservableTransportGeometryRegimeManageabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeManageabilitySummary =
+  MTWOTGRMGTS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeManageabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeRepeatabilitySummary :
+  MTWOTGRREPS.MoonshineTwinedWaveObservableTransportGeometryRegimeRepeatabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeRepeatabilitySummary =
+  MTWOTGRREPS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeRepeatabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeReproducibilitySummary :
+  MTWOTGRREPRS.MoonshineTwinedWaveObservableTransportGeometryRegimeReproducibilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeReproducibilitySummary =
+  MTWOTGRREPRS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeReproducibilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimePortabilitySummary :
+  MTWOTGRPORTS.MoonshineTwinedWaveObservableTransportGeometryRegimePortabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimePortabilitySummary =
+  MTWOTGRPORTS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimePortabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeInteroperabilitySummary :
+  MTWOTGRINTERS.MoonshineTwinedWaveObservableTransportGeometryRegimeInteroperabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeInteroperabilitySummary =
+  MTWOTGRINTERS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeInteroperabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeComposabilitySummary :
+  MTWOTGRCOMPOSS.MoonshineTwinedWaveObservableTransportGeometryRegimeComposabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeComposabilitySummary =
+  MTWOTGRCOMPOSS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeComposabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeMaintainabilitySummary :
+  MTWOTGRMAINS.MoonshineTwinedWaveObservableTransportGeometryRegimeMaintainabilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeMaintainabilitySummary =
+  MTWOTGRMAINS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeMaintainabilitySummary
+
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeExtensibilitySummary :
+  MTWOTGREXTS.MoonshineTwinedWaveObservableTransportGeometryRegimeExtensibilitySummary
+canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeExtensibilitySummary =
+  MTWOTGREXTS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeExtensibilitySummary
+
 canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeHarmonySummary :
   MTWOTGRHARS.MoonshineTwinedWaveObservableTransportGeometryRegimeHarmonySummary
 canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeHarmonySummary =
@@ -1712,9 +2067,9 @@ canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeContinuitySummary =
   MTWOTGRCONTS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeContinuitySummary
 
 canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeCompatibilitySummary :
-  MTWOTGRCOMPS.MoonshineTwinedWaveObservableTransportGeometryRegimeCompatibilitySummary
+  MTWOTGRCOMPATS.MoonshineTwinedWaveObservableTransportGeometryRegimeCompatibilitySummary
 canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeCompatibilitySummary =
-  MTWOTGRCOMPS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeCompatibilitySummary
+  MTWOTGRCOMPATS.canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeCompatibilitySummary
 
 canonicalMoonshineTwinedWaveObservableTransportGeometryRegimeConcordanceSummary :
   MTWOTGRCONCS.MoonshineTwinedWaveObservableTransportGeometryRegimeConcordanceSummary
