@@ -51,6 +51,15 @@
   canonical Stage C path.
 - Post-cleanup widening is active again; the current wave-regime ladder has
   resumed from the cleaned canonical summary surface.
+- A follow-up consolidation turn is now active:
+  grouped ladder modules are being made authoritative for canonical imports,
+  while per-rung wave-regime modules remain compatibility surfaces.
+- The current resumed widening loop now includes the short-path
+  `Clarity` rung for the wave-observable-transport-geometry regime on:
+  the parametric algebra side,
+  the recovered known-limits side,
+  the canonical consumer side,
+  and the parallel moonshine summary side.
 - Math-prof outreach docs should now cite canonical Agda module paths first,
   then repo-facing summary/export surfaces, and only use `all_code44.txt` as a
   corroborating bundled index.

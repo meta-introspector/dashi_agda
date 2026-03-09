@@ -1,17 +1,16 @@
-- Current landed closure widening: wave-observable-transport-geometry regime integration now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 # TODO
 
-- Current landed closure widening: wave-observable-transport-geometry regime alignment now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+## Cleanup / Consolidation
 
-- Current landed closure widening: wave-observable-transport-geometry regime equilibrium now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
-
-- Current landed closure widening: wave-observable-transport-geometry regime cohesion now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
-
-- Current landed closure widening: wave-observable-transport-geometry regime concordance now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
-
-- Current landed closure widening: wave-observable-transport-geometry regime compatibility now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
-
-- Current landed closure widening: wave-observable-transport-geometry regime continuity now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Make grouped wave-regime ladder modules authoritative for new imports:
+  - `Closure/Algebra/WaveRegime.agda`
+  - `Closure/Recovery/WaveRegime.agda`
+  - `Closure/Consumers/WaveRegime.agda`
+  - `Moonshine/Reports/WaveRegime.agda`
+- Rewire canonical Stage C bundles and repo-facing summaries to use grouped
+  ladder modules instead of direct per-rung imports where practical.
+- Keep per-rung modules as compatibility wrappers only.
+- Keep top-level compile green while doing the refactor.
 
 ## Track T — Dynamical / Theorem Closure
 
@@ -359,7 +358,12 @@ precision.
 - Current landed closure widening: wave-observable-transport-geometry regime symmetry now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 - Current landed closure widening: wave-observable-transport-geometry regime convergence now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 - Current landed closure widening: wave-observable-transport-geometry regime fidelity now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime legibility now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 - Current landed closure widening: wave-observable-transport-geometry regime transparency now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime refinement now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime resolution now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime calibration now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime calibration now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 Cleanup
 - [x] replace stale giant summary exports with ladder-based summary exports
 - [x] introduce short-path wrapper modules for closure wave-regime families

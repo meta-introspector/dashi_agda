@@ -1,5 +1,21 @@
 ## Repository Status
 
+Cleanup/refactor note:
+
+- The current turn is a consolidation pass, not a widening pass.
+- No new `1/2/3/4` theorem rungs are being added here.
+- The grouped ladder modules are now the intended internal API for the
+  wave-regime hotspot:
+  - `DASHI/Physics/Closure/Algebra/WaveRegime.agda`
+  - `DASHI/Physics/Closure/Recovery/WaveRegime.agda`
+  - `DASHI/Physics/Closure/Consumers/WaveRegime.agda`
+  - `DASHI/Physics/Closure/Canonical/Ladder.agda`
+  - `DASHI/Physics/Moonshine/Reports/WaveRegime.agda`
+  - `DASHI/Physics/Moonshine/Ladder.agda`
+- Existing per-rung modules remain in place as compatibility surfaces.
+- After this cleanup, widening should resume through the grouped ladder
+  surfaces rather than direct per-rung imports.
+
 Current theorem status:
 
 - Stage A is complete: the orbit-profile discriminant selects Lorentz signature

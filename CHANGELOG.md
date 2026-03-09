@@ -409,3 +409,11 @@
     compatibility with the old long module names
 - Restored the legacy `MDL.Core.Core` import path as a compatibility wrapper so the widened closure/dynamics ladder continues to compile against older module references.
 - Restored the legacy `Monster.TraceCounts` import path as a compatibility wrapper so the top-level legacy Monster path continues to compile.
+- Added the short-path `Clarity` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
+- Added the short-path `Refinement` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
+- Added the short-path `Resolution` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
+- Added the short-path `Calibration` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
+- Added the short-path `Synthesis` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
+- Added the short-path `Fusion` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
+- Added the short-path `Calibration` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.
+- Added the short-path `Legibility` rung for the wave-observable-transport-geometry regime on both the algebra and known-limits ladders, plus its canonical consumer and moonshine summary surface.

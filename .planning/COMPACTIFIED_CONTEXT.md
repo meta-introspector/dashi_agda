@@ -425,6 +425,26 @@ Added:
   landed; next hardening is broader twiner coverage and a richer comparison
   summary, then a stronger wave-grading summary, still without any modularity
   or umbral claim.
+- The resumed widening loop now also includes the short-path `Refinement`
+  rung for the wave-observable-transport-geometry regime on the parametric
+  algebra side, the recovered known-limits side, the canonical consumer side,
+  and the parallel moonshine summary side.
+- The resumed widening loop now also includes the short-path `Resolution`
+  rung for the wave-observable-transport-geometry regime on the parametric
+  algebra side, the recovered known-limits side, the canonical consumer side,
+  and the parallel moonshine summary side.
+- The resumed widening loop now also includes the short-path `Calibration`
+  rung for the wave-observable-transport-geometry regime on the parametric
+  algebra side, the recovered known-limits side, the canonical consumer side,
+  and the parallel moonshine summary side.
+- The resumed widening loop now also includes the short-path `Synthesis`
+  rung for the wave-observable-transport-geometry regime on the parametric
+  algebra side, the recovered known-limits side, the canonical consumer side,
+  and the parallel moonshine summary side.
+- The resumed widening loop now also includes the short-path `Fusion`
+  rung for the wave-observable-transport-geometry regime on the parametric
+  algebra side, the recovered known-limits side, the canonical consumer side,
+  and the parallel moonshine summary side.
 Cleanup turn status:
 - widening is paused for one turn in favor of repo organization,
 - the main cleanup target is the wave-observable-transport-geometry-regime

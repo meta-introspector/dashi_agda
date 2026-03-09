@@ -139,6 +139,14 @@ The next implementation phase is intentionally narrow:
 - use **profile rigidity across new 4D realizations** as the flagship
   benchmark.
 
+Cleanup note:
+
+- one consolidation pass now takes precedence over adding more local wave-regime
+  theorem rungs,
+- grouped ladder modules are the authoritative internal path for the current
+  hotspot,
+- old per-rung modules remain available as compatibility surfaces.
+
 Initial benchmark boundary:
 
 - reference realization:

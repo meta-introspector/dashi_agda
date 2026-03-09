@@ -167,6 +167,14 @@ Stage C must not be described as proved by the current repo state.
 Any Monster/Moonshine interpretation remains explicitly downstream and
 speculative unless supported by separate theorem-level bridges.
 
+Current maintenance decision:
+
+- local widening is paused for one cleanup/refactor turn,
+- grouped ladder modules are now the target internal API,
+- per-rung wave-regime modules remain compatibility wrappers,
+- widening resumes after canonical Stage C and repo-facing summaries depend on
+  the grouped surfaces.
+
 Immediate runway theorem order after the current local effective-geometry
 slice:
 

@@ -1,5 +1,15 @@
 # Physics Closure Priorities
 
+## Cleanup Freeze
+
+This turn is a consolidation turn.
+
+- No new wave-regime theorem rungs should be added.
+- Grouped ladder modules are now the authoritative internal API.
+- Per-rung files remain for compatibility only.
+- The next widening cycle resumes only after the canonical summaries and
+  bundles depend on grouped ladder surfaces.
+
 ## P0 — Validation and Closure Hardening
 
 This is the current highest-priority phase.
