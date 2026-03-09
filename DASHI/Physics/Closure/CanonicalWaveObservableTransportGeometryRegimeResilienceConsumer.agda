@@ -1,0 +1,25 @@
+module DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryRegimeResilienceConsumer where
+
+open import Agda.Primitive using (Setω)
+
+open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
+open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryRegimeRobustnessConsumer as CWOTGRROBC
+open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeResilienceTheorem as KLRWOTGRRES
+
+record WaveObservableTransportGeometryRegimeResilienceConsumerFromMinimal
+         (cl : MCPC.MinimalCrediblePhysicsClosure) : Setω where
+  constructor waveObservableTransportGeometryRegimeResilienceConsumer
+  field
+    transportGeometryRegimeRobustnessConsumer :
+      CWOTGRROBC.WaveObservableTransportGeometryRegimeRobustnessConsumerFromMinimal cl
+    recoveredWaveObservableTransportGeometryRegimeResilience :
+      KLRWOTGRRES.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeResilienceTheorem
+
+canonicalWaveObservableTransportGeometryRegimeResilienceConsumer :
+  {cl : MCPC.MinimalCrediblePhysicsClosure} →
+  CWOTGRROBC.WaveObservableTransportGeometryRegimeRobustnessConsumerFromMinimal cl →
+  WaveObservableTransportGeometryRegimeResilienceConsumerFromMinimal cl
+canonicalWaveObservableTransportGeometryRegimeResilienceConsumer waveObsTransportGeometryRegimeRobustness =
+  waveObservableTransportGeometryRegimeResilienceConsumer
+    waveObsTransportGeometryRegimeRobustness
+    KLRWOTGRRES.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeResilienceTheorem

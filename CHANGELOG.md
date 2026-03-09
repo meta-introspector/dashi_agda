@@ -1,6 +1,19 @@
 # Changelog
 
 ## 2026-03-08
+- added the wave-observable-transport-geometry regime integration rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+
+- added the wave-observable-transport-geometry regime alignment rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+
+- added the wave-observable-transport-geometry regime equilibrium rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+
+- added the wave-observable-transport-geometry regime cohesion rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+
+- added the wave-observable-transport-geometry regime concordance rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+
+- added the wave-observable-transport-geometry regime compatibility rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+
+- added the wave-observable-transport-geometry regime continuity rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 
 - added `ParametricAlgebraicAdmissibilityTransportTheorem` as the next
   algebraic widening above the current algebraic-consistency layer,
@@ -349,3 +362,9 @@
 - Exported the wave-observable-transport-geometry regime completeness slice through the canonical summary surfaces and top-level import tree.
 - Exported the wave-observable-transport-geometry regime soundness slice through the canonical summary surfaces and top-level import tree.
 - Exported the wave-observable-transport-geometry regime consistency slice through the canonical summary surfaces and top-level import tree.
+- Exported the wave-observable-transport-geometry regime invariance slice through the canonical summary surfaces and top-level import tree.
+- Exported the wave-observable-transport-geometry regime robustness slice through the canonical summary surfaces and top-level import tree.
+- Exported the wave-observable-transport-geometry regime resilience slice through the canonical summary surfaces and top-level import tree.
+- Added the wave-observable-transport-geometry regime harmony rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+- Added the wave-observable-transport-geometry regime balance rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+- Added the wave-observable-transport-geometry regime symmetry rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.

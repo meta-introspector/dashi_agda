@@ -1,4 +1,17 @@
+- Current landed closure widening: wave-observable-transport-geometry regime integration now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 # TODO
+
+- Current landed closure widening: wave-observable-transport-geometry regime alignment now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+
+- Current landed closure widening: wave-observable-transport-geometry regime equilibrium now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+
+- Current landed closure widening: wave-observable-transport-geometry regime cohesion now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+
+- Current landed closure widening: wave-observable-transport-geometry regime concordance now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+
+- Current landed closure widening: wave-observable-transport-geometry regime compatibility now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+
+- Current landed closure widening: wave-observable-transport-geometry regime continuity now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 
 ## Track T — Dynamical / Theorem Closure
 
@@ -334,3 +347,9 @@ precision.
 - Current landed closure widening: wave-observable-transport-geometry regime completeness now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
 - Current landed closure widening: wave-observable-transport-geometry regime soundness now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
 - Current landed closure widening: wave-observable-transport-geometry regime consistency now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime invariance now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime robustness now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime resilience now has theorem surfaces, a canonical consumer, and summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime harmony now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime balance now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime symmetry now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
