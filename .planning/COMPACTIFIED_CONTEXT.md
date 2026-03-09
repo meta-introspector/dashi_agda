@@ -425,3 +425,9 @@ Added:
   landed; next hardening is broader twiner coverage and a richer comparison
   summary, then a stronger wave-grading summary, still without any modularity
   or umbral claim.
+Cleanup turn status:
+- widening is paused for one turn in favor of repo organization,
+- the main cleanup target is the wave-observable-transport-geometry-regime
+  naming hotspot,
+- short-path ladder/wrapper modules are being introduced while long names stay
+  available as compatibility surfaces.

@@ -1,6 +1,17 @@
 # Changelog
 
 ## 2026-03-08
+
+- cleanup/refactor turn landed:
+  - removed the stale giant summary-export tail in
+    `PhysicsClosureSummary.agda`
+  - cleaned the duplicate export collision against
+    `PhysicsClosureValidationSummary`
+  - confirmed the top-level compile is green again
+  - the wave-regime widening loop can now resume on the cleaned summary/export
+    surface
+
+- added the wave-observable-transport-geometry regime convergence rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 - added the wave-observable-transport-geometry regime integration rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 
 - added the wave-observable-transport-geometry regime alignment rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
@@ -12,6 +23,7 @@
 - added the wave-observable-transport-geometry regime concordance rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 
 - added the wave-observable-transport-geometry regime compatibility rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+- added the wave-observable-transport-geometry regime fidelity rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 
 - added the wave-observable-transport-geometry regime continuity rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 
@@ -368,3 +380,10 @@
 - Added the wave-observable-transport-geometry regime harmony rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 - Added the wave-observable-transport-geometry regime balance rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
 - Added the wave-observable-transport-geometry regime symmetry rung across algebra, known-limits, canonical consumer, and pre-moonshine summary surfaces, then re-exported it through the canonical summaries and top-level tree.
+- cleanup pass:
+  - simplified `PhysicsClosureSummary` export behavior to stop the stale warning
+    flood from the giant selective `using` surface
+  - added short-path ladder/wrapper modules for the closure and moonshine
+    wave-regime hotspots
+  - rewired `Everything.agda` to cover the new ladder modules while preserving
+    compatibility with the old long module names

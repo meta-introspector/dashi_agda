@@ -326,3 +326,8 @@ The intended reading discipline is:
 - A is proved,
 - B is solved for the current finite 4D realization,
 - C is the open physics-closure program.
+Cleanup milestone:
+- closure/moonshine ladder maps are now present,
+- the wave-regime family now has short-path wrapper modules,
+- old long names remain as compatibility surfaces,
+- the `1/2/3/4` widening loop can now resume on the cleaner layout.

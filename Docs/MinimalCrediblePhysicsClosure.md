@@ -418,3 +418,9 @@ For the current `P0/P1/P2` execution order, see
 
 For the current mathematical framing of the orbit-shell result, see
 `Docs/OrbitShellProfilesAndLorentzSignature.md`.
+Cleanup turn:
+- the organizational cleanup pass is now landed,
+- canonical Stage C remains authoritative,
+- old long module names still remain for compatibility,
+- shorter hierarchy modules and ladder maps are now in place for the current
+  wave-regime hotspot.

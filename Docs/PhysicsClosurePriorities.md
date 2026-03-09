@@ -262,3 +262,10 @@ For the shell-action theorem seam, the implementation target is:
   realization records,
 - those finite realization artifacts may remain on the shift-instance discharge
   side as validation support only.
+Cleanup status:
+- short-path ladder modules and export-surface cleanup are now landed for the
+  current wave-regime hotspot, so the canonical Stage C path is readable
+  enough to resume the widening loop.
+- Active widening mode:
+  continue the `1/2/3/4` loop on the cleaned structure, keeping physics first
+  and the pre-moonshine track strictly parallel and prototype-only.

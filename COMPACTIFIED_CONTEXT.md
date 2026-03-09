@@ -39,3 +39,13 @@
   and the main topics pulled from that thread.
 - Prefer the local DB as canonical context when it has an exact match; only use
   web fallback when the DB is missing the needed thread or appears stale.
+
+## 2026-03-09
+
+- Cleanup/refactor turn is landed.
+- Short-path ladder modules and ladder-map modules now exist for the current
+  closure/moonshine wave-regime hotspot.
+- The stale summary export surface was cleaned, and top-level compile is green
+  again.
+- The repo can now safely resume the `1/2/3/4` widening loop from the cleaned
+  canonical Stage C path.

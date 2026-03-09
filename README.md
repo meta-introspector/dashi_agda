@@ -165,6 +165,12 @@ physics”.
 
 For the current forward-claim shortlist and falsifiability criteria, see
 `Docs/MinimalCrediblePhysicsClosure.md`.
+
+Cleanup note:
+- the next maintenance turn organizes the closure ladder behind shorter
+  hierarchical wrapper modules and ladder maps are now in place for the
+  current hotspot, so widening can continue on the cleaned structure
+  cycles.
 For the current milestone order, see `Docs/PhysicsClosurePriorities.md`.
 For the current orbit-shell / Lorentz-signature framing, see
 `Docs/OrbitShellProfilesAndLorentzSignature.md`.

@@ -353,3 +353,15 @@ precision.
 - Current landed closure widening: wave-observable-transport-geometry regime harmony now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 - Current landed closure widening: wave-observable-transport-geometry regime balance now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
 - Current landed closure widening: wave-observable-transport-geometry regime symmetry now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime convergence now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+- Current landed closure widening: wave-observable-transport-geometry regime fidelity now has theorem surfaces, a canonical consumer, and moonshine summary exports on the authoritative Stage C path.
+Cleanup
+- [x] replace stale giant summary exports with ladder-based summary exports
+- [x] introduce short-path wrapper modules for closure wave-regime families
+- [x] introduce short-path wrapper modules for moonshine wave-regime reports
+- [x] add canonical closure and moonshine ladder map modules
+- [x] resume `1/2/3/4` widening only after the cleanup compiles cleanly
+- Active widening loop:
+  next cycle continues with one more algebra rung, one more recovered-local
+  rung, one more canonical consumer, and one more pre-moonshine summary on the
+  cleaned wave-regime structure.
