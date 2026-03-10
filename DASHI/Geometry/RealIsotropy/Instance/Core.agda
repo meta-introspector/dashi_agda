@@ -10,7 +10,7 @@ open import DASHI.Physics.RealTernaryCarrier as RTC
 open import DASHI.Physics.RealOperators as RO
 open import DASHI.Metric.FineAgreementUltrametric as FAM
 open import Ultrametric as UMetric
-open import Relation.Binary.PropositionalEquality using (sym)
+open import Relation.Binary.PropositionalEquality using (sym; trans; cong)
 
 -- Two-element group acting by invVec.
 boolGroup : Iso.Group Bool
@@ -38,7 +38,14 @@ commutesWithT :
   ∀ {n} → (g : Bool) → (x : RTC.Carrier n) →
   RO.Cᵣ (RO.Pᵣ (RO.Rᵣ (act g x))) ≡ act g (RO.Cᵣ (RO.Pᵣ (RO.Rᵣ x)))
 commutesWithT {n} false x = refl
-commutesWithT {n} true x = sym (RO.invVec-Pᵣ x)
+commutesWithT {n} true x =
+  -- Cᵣ := Pᵣ, Rᵣ := id. We need: Pᵣ (Pᵣ (invVec x)) = invVec (Pᵣ (Pᵣ x)).
+  -- Use commutation of invVec with Pᵣ twice.
+  trans
+    (cong RO.Pᵣ (sym (RO.invVec-Pᵣ x)))
+    (trans
+      (sym (RO.invVec-Pᵣ (RO.Pᵣ x)))
+      refl)
 
 realIsotropyInstance :
   ∀ {n} →
