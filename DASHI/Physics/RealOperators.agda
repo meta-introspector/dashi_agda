@@ -26,9 +26,11 @@ Pᵣ : ∀ {n : Nat} → RTC.Carrier n → RTC.Carrier n
 Pᵣ {zero} [] = []
 Pᵣ {suc n} x = reverse (setHead (reverse x))
 
--- Canonicalization / renormalization (currently identity).
+-- Canonicalization / renormalization.
+-- Minimal nontrivial instance: canonicalize by projecting away the last digit.
+-- This keeps the change localized while staying nonexpansive under FAM.
 Cᵣ : ∀ {n : Nat} → RTC.Carrier n → RTC.Carrier n
-Cᵣ x = x
+Cᵣ = Pᵣ
 
 Rᵣ : ∀ {n : Nat} → RTC.Carrier n → RTC.Carrier n
 Rᵣ x = x
@@ -91,7 +93,7 @@ nonexpPᵣ {n} =
     }
 
 nonexpCᵣ : ∀ {n : Nat} → SCC.NonExpansive (FAM.ultrametricVec {n = n}) (Cᵣ {n})
-nonexpCᵣ {n} = record { nonexp = λ _ _ → NatP.≤-refl }
+nonexpCᵣ {n} = nonexpPᵣ {n}
 
 nonexpRᵣ : ∀ {n : Nat} → SCC.NonExpansive (FAM.ultrametricVec {n = n}) (Rᵣ {n})
 nonexpRᵣ {n} = record { nonexp = λ _ _ → NatP.≤-refl }
