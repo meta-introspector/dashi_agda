@@ -2,6 +2,9 @@
 
 module DASHI.Physics.UnificationClosure where
 
+-- NOTE: We intentionally avoid depending on the theorem-critical Signature31 seam
+-- here, because this module is marked --safe and the seam module is not (yet).
+
 open import Level using (Level; suc)
 open import Data.Product using (_×_; Σ; _,_)
 open import Relation.Binary.PropositionalEquality using (_≡_; refl)
