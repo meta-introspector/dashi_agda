@@ -105,6 +105,8 @@ import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableGeometryTheorem a
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem as KLRWOTG
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.Theorem as KLRWOTGR
+import DASHI.Physics.Closure.KnownLimitsGRBridgeTheorem as KLBGT
+import DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem as KLBQFT
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.CoherenceTheorem as KLRWOTGRC
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.StabilityTheorem as KLRWOTGRS
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometry.Regime.CompletenessTheorem as KLRWOTGRC
@@ -1107,6 +1109,12 @@ secondaryParametricAlgebraicRegimeTransportConsistencyTheorem =
 
 canonicalKnownLimitsStatus : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatus = KLS.canonicalKnownLimitsStatus
+
+canonicalKnownLimitsGRBridgeTheorem : KLBGT.KnownLimitsGRBridgeTheorem
+canonicalKnownLimitsGRBridgeTheorem = KLBGT.canonicalKnownLimitsGRBridgeTheorem
+
+canonicalKnownLimitsQFTBridgeTheorem : KLBQFT.KnownLimitsQFTBridgeTheorem
+canonicalKnownLimitsQFTBridgeTheorem = KLBQFT.canonicalKnownLimitsQFTBridgeTheorem
 
 canonicalKnownLimitsRecovery : KLR.KnownLimitsRecoveryWitness
 canonicalKnownLimitsRecovery = KLR.canonicalKnownLimitsRecovery

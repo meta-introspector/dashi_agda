@@ -192,6 +192,10 @@ open import DASHI.Physics.Closure.KnownLimitsStatus as KLS public
     )
 open import DASHI.Physics.Closure.KnownLimitsRecovery as KLR public
   using (KnownLimitsRecoveryWitness)
+open import DASHI.Physics.Closure.KnownLimitsGRBridgeTheorem as KLBGT public
+  using (KnownLimitsGRBridgeTheorem)
+open import DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem as KLBQFT public
+  using (KnownLimitsQFTBridgeTheorem)
 open import DASHI.Physics.Closure.KnownLimitsEffectiveGeometryTheorem as KLET public
   using (KnownLimitsEffectiveGeometryTheorem)
 open import DASHI.Physics.Closure.KnownLimitsLocalRecoveryTheorem as KLRT public
@@ -1206,6 +1210,16 @@ secondaryParametricAlgebraicRegimeCoherenceTheoremSummary =
 
 canonicalKnownLimitsStatusSummary : KLS.KnownLimitsStatus
 canonicalKnownLimitsStatusSummary = CSC.canonicalKnownLimitsStatus
+
+canonicalKnownLimitsGRBridgeTheoremSummary :
+  KLBGT.KnownLimitsGRBridgeTheorem
+canonicalKnownLimitsGRBridgeTheoremSummary =
+  CSC.canonicalKnownLimitsGRBridgeTheorem
+
+canonicalKnownLimitsQFTBridgeTheoremSummary :
+  KLBQFT.KnownLimitsQFTBridgeTheorem
+canonicalKnownLimitsQFTBridgeTheoremSummary =
+  CSC.canonicalKnownLimitsQFTBridgeTheorem
 
 canonicalKnownLimitsRecoverySummary : KLR.KnownLimitsRecoveryWitness
 canonicalKnownLimitsRecoverySummary = CSC.canonicalKnownLimitsRecovery

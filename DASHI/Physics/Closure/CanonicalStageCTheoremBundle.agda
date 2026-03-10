@@ -45,6 +45,8 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeo
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC
 open import DASHI.Physics.Closure.Recovery.WaveRegime as RWR
 open import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
+open import DASHI.Physics.Closure.KnownLimitsGRBridgeTheorem as KLBGT
+open import DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem as KLBQFT
 
 record CanonicalStageCTheoremBundle : Setω where
   field
@@ -253,6 +255,10 @@ record CanonicalStageCTheoremBundle : Setω where
     recoveredWaveObservableTransportGeometryRegimeIntegritySummary :
       RWR.KnownLimitsRecoveredWaveObservableTransportGeometryRegimeIntegrityTheorem
     spinBridgeSummary : SLLB.SpinLocalLorentzBridge CSC.canonicalClosure
+    knownLimitsGRBridgeSummary :
+      KLBGT.KnownLimitsGRBridgeTheorem
+    knownLimitsQFTBridgeSummary :
+      KLBQFT.KnownLimitsQFTBridgeTheorem
 
 canonicalStageCTheoremBundle : CanonicalStageCTheoremBundle
 canonicalStageCTheoremBundle =
@@ -418,4 +424,6 @@ canonicalStageCTheoremBundle =
     ; recoveredWaveObservableTransportGeometryRegimeIntegritySummary =
         CSC.canonicalKnownLimitsRecoveredWaveObservableTransportGeometryRegimeIntegrityTheorem
     ; spinBridgeSummary = CSC.canonicalSpinLocalLorentzBridge
+    ; knownLimitsGRBridgeSummary = CSC.canonicalKnownLimitsGRBridgeTheorem
+    ; knownLimitsQFTBridgeSummary = CSC.canonicalKnownLimitsQFTBridgeTheorem
     }

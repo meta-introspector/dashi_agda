@@ -9,10 +9,12 @@ data PropagationLimitStatus : Set where
   propagationLimitPending : PropagationLimitStatus
 
 data GRLikeStatus : Set where
+  grLikeTheoremBacked : GRLikeStatus
   grLikePrototypeOnly : GRLikeStatus
   grLikePending : GRLikeStatus
 
 data QFTLikeStatus : Set where
+  qftLikeTheoremBacked : QFTLikeStatus
   qftLikePrototypeOnly : QFTLikeStatus
   qftLikePending : QFTLikeStatus
 
@@ -28,6 +30,6 @@ canonicalKnownLimitsStatus =
   record
     { localLorentz = localLorentzTheoremBacked
     ; propagationLimit = propagationLimitSeamBacked
-    ; grLike = grLikePrototypeOnly
-    ; qftLike = qftLikePrototypeOnly
+    ; grLike = grLikeTheoremBacked
+    ; qftLike = qftLikeTheoremBacked
     }

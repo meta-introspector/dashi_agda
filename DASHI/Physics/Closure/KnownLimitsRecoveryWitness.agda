@@ -24,6 +24,12 @@ record KnownLimitsRecoveryWitnessPlus : Setω where
     localLorentzRecovered :
       KLS.KnownLimitsStatus.localLorentz KLS.canonicalKnownLimitsStatus
       ≡ KLS.localLorentzTheoremBacked
+    grLikeRecovered :
+      KLS.KnownLimitsStatus.grLike KLS.canonicalKnownLimitsStatus
+      ≡ KLS.grLikeTheoremBacked
+    qftLikeRecovered :
+      KLS.KnownLimitsStatus.qftLike KLS.canonicalKnownLimitsStatus
+      ≡ KLS.qftLikeTheoremBacked
     propagationLimitRecovered :
       KLS.KnownLimitsStatus.propagationLimit KLS.canonicalKnownLimitsStatus
       ≡ KLS.propagationLimitSeamBacked
@@ -41,5 +47,7 @@ canonicalKnownLimitsRecoveryWitness =
         DCW.DynamicalClosureWitness.effectiveGeometryPolarization
           DCWI.shiftDynamicsWitness
     ; localLorentzRecovered = refl
+    ; grLikeRecovered = refl
+    ; qftLikeRecovered = refl
     ; propagationLimitRecovered = refl
     }

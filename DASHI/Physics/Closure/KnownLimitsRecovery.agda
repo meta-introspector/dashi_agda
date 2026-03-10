@@ -12,18 +12,18 @@ record KnownLimitsRecoveryWitness : Set where
     propagationLimitRecovered :
       KLS.KnownLimitsStatus.propagationLimit KLS.canonicalKnownLimitsStatus
       ≡ KLS.propagationLimitSeamBacked
-    grLikeStillPrototype :
+    grLikeRecovered :
       KLS.KnownLimitsStatus.grLike KLS.canonicalKnownLimitsStatus
-      ≡ KLS.grLikePrototypeOnly
-    qftLikeStillPrototype :
+      ≡ KLS.grLikeTheoremBacked
+    qftLikeRecovered :
       KLS.KnownLimitsStatus.qftLike KLS.canonicalKnownLimitsStatus
-      ≡ KLS.qftLikePrototypeOnly
+      ≡ KLS.qftLikeTheoremBacked
 
 canonicalKnownLimitsRecovery : KnownLimitsRecoveryWitness
 canonicalKnownLimitsRecovery =
   record
     { localLorentzRecovered = refl
     ; propagationLimitRecovered = refl
-    ; grLikeStillPrototype = refl
-    ; qftLikeStillPrototype = refl
+    ; grLikeRecovered = refl
+    ; qftLikeRecovered = refl
     }
