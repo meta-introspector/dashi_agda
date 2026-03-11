@@ -7,15 +7,12 @@ Archive-backed status update:
 - The wave / psi / graded-series bridge is no longer only aspirational:
   archive material and sibling-repo scaffolding now make it a strong formal
   direction, though still not a closure theorem.
-- The gauge / matter / internal-algebra direction is stronger than before:
-  there is now a clearer derivation scheme and quotient/contractive/operator
-  stack program, but not a finished recovery theorem.
-- The main open physics-side gaps remain:
-  a natural physical dynamics law,
-  a conserved physical quantity with clear interpretation,
-  an explicit continuum-limit theorem,
-  realization-independent proof,
-  and full gauge/matter recovery as theorem rather than program.
+- The five-pillar closure interface exists, but currently acts as a packaging
+  surface over earlier modules, not yet as the final bottleneck proof.
+- Current mathematical bottleneck remains:
+  prove the invariant quadratic + uniqueness-up-to-scale seams from the
+  contraction/projection machinery and then derive the downstream
+  signature/Clifford/gauge chain from that theorem.
 
 Current theorem status:
 
@@ -175,8 +172,20 @@ Current theorem status:
   positive side established and carried directly by the benchmark harness,
   χ² side now has a concrete shift-side boundary witness,
   that witness now sits inside a small explicit shift-side boundary library,
-  and the standalone snap-threshold benchmark now includes a secondary
-  shift-side boundary case beyond the reference witness.
+  and the standalone snap-threshold benchmark now includes secondary and
+  tertiary shift-side boundary cases beyond the reference witness.
+- Non-shift snap-threshold coverage now includes:
+  a synthetic one-minus harness with a non-shift policy derived from its
+  witness state type, plus a Bool inversion harness that still reuses the
+  shift snap witness (pending a Bool inversion-specific witness).
+- Prioritized next steps (condensed):
+  1) cross-realization validation package (B₄ harness + Bool inversion-specific
+     snap witness),
+  2) contraction ⇒ quadratic theorem,
+  3) quadratic ⇒ signature theorem,
+  4) concrete constraint-closure theorem,
+  5) local recovery / effective-geometry theorem,
+  6) signature ⇒ Clifford/spin bridge.
 
 The repo does **not** currently claim full physics closure or “solved
 physics”.

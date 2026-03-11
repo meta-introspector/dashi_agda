@@ -134,3 +134,32 @@ Cleanup state:
   for each claim.
 - added an observable prediction evidence bundle that packages signature-lock
   and beta-seam CSV evidence alongside the observable prediction package.
+- expanded the χ² boundary library with a third witness and wired a tertiary
+  snap-threshold verdict into the validation summary.
+- resolved a duplicate-definition collision in `CanonicalStageC` by switching
+  the wave-regime recovery import to a non-open form while keeping explicit
+  aliases.
+- added a condensed priority roadmap for remaining closure work and clarified
+  that the next snap-threshold step requires a non-shift severity/snap witness
+  before a second-realization harness can be built.
+- added a synthetic-bool severity guard and snap-threshold harness as a
+  provisional non-shift placeholder while waiting on a closure-compatible
+  realization.
+- replaced that provisional synthetic-bool snap-threshold placeholder with a
+  synthetic one-minus labeled harness (`SnapThresholdLawSyntheticOneMinus`)
+  that still uses the synthetic severity policy as a proxy, and rewired the
+  validation summary and top-level import surface to consume it.
+- added a non-shift snap policy derived from the synthetic one-minus witness
+  state type plus a Bool inversion snap-threshold harness (still reusing the
+  shift snap witness), and reset the next extension to a Bool inversion-specific
+  witness and the B₄ harness.
+- the Stage C five-pillar closure target is now explicitly captured by
+  `DASHI/Physics/Closure/PhysicsClosureFivePillarsTheorem.agda` and exported
+  through canonical Stage C theorem + summary + validation surfaces.
+- audit correction: that five-pillar theorem is packaging-level; the
+  bottleneck proof remains open. New active bottleneck modules:
+  `DASHI/Geometry/ProjectionDefectToParallelogram.agda` and
+  `DASHI/Physics/Closure/ContractionForcesQuadraticStrong.agda`.
+- `ContractionForcesQuadraticStrong` now carries a concrete invariant witness
+  field and a first canonical identity-dynamics witness constructor, while
+  uniqueness-up-to-scale remains the explicit open seam.

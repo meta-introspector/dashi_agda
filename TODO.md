@@ -24,6 +24,10 @@ Open physics-side requirements that remain genuinely unresolved:
 - realization-independent proof
 - full gauge/matter recovery as theorem rather than program
 
+Current focus:
+`DASHI/Geometry/ProjectionDefectToParallelogram.agda` and
+`DASHI/Physics/Closure/ContractionForcesQuadraticStrong.agda`
+
 - Replace trivial closure fallbacks on the minimum credible path.
   Current priority:
   `PhysicsClosureFullInstance` and `PhysicsClosureEmpiricalToFull` should use
@@ -141,9 +145,20 @@ Priority bucket: `P0` first, then `P1`
   `obsUnique`, then expose its verdict through the repo-facing validation
   summary.
 - Snap-threshold benchmark:
-  now includes the shift reference plus a secondary boundary case from the
-  χ²-boundary library; next decide whether the right step is a richer
-  falsifier surface or additional realization coverage.
+  now includes the shift reference plus secondary and tertiary boundary cases
+  from the χ²-boundary library; next step is additional realization coverage.
+- [x] Next snap-threshold prerequisite:
+  define a severity/snap policy plus witness state for a non-shift realization
+  (synthetic placeholder), then add its harness to the benchmark.
+- [x] Next snap-threshold task:
+  replace the synthetic placeholder harness with a synthetic one-minus harness.
+- [x] Next snap-threshold task:
+  add a closure-compatible non-shift severity/snap policy for the synthetic
+  one-minus harness.
+- [x] Next snap-threshold extension:
+  add a second non-shift realization harness (Bool inversion).
+- Next snap-threshold extension:
+  add a Bool inversion-specific snap witness and the B₄ harness.
 - [x] Build the profile-rigidity harness first.
   Concrete sub-tasks:
   define the benchmark interface,

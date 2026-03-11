@@ -1,12 +1,18 @@
 # Status
 
-- Phase: validation wiring and aggregation
+- Phase: bottleneck theorem path in progress
 - Milestones:
-  - Falsifiability/deviation boundary interface: done
-  - Observable-space collapse harness: done
-  - Snap-threshold benchmark extension: done (secondary shift-side boundary case)
-  - Broader snap-threshold falsifier surface: done (tertiary shift-side boundary case)
-  - Forward-claim validation table: done (preferred harness/dataset column)
-  - Observable CSV evidence bridge: done (observable prediction evidence bundle)
-- Tests: targeted Agda checks passed for `Chi2BoundaryShiftLibrary` and `SnapThresholdLawShiftTertiary`; full summary check remains blocked by an existing duplicate-definition issue in `CanonicalStageC`.
-- Next action: add second-realization coverage for the snap-threshold benchmark.
+  - projection/defect → parallelogram package: done
+  - strengthened contraction→quadratic module with explicit seams: done
+  - first concrete invariant witness (identity dynamics): done
+  - uniqueness-up-to-scale seam: open
+  - downstream signature/Clifford/gauge closure from those seams: open
+- Tests: Agda typecheck passes for
+  `ProjectionDefectToParallelogram`,
+  `ContractionForcesQuadraticStrong`,
+  `CanonicalStageC`,
+  `CanonicalStageCTheoremBundle`,
+  and `CanonicalStageCSummaryBundle`.
+- Next action: discharge `invariantQuadraticSeam` and
+  `uniqueUpToScaleSeam` in the strengthened contraction module and then
+  thread that theorem into signature/Clifford modules.

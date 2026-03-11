@@ -103,7 +103,7 @@ Immediate next step after this snapshot:
   finish the arithmetic lemma layer for the full parametric shell-1 theorem,
   formalize the χ²-boundary witness on the shift reference,
   and extend the typed snap-threshold benchmark beyond the reference shift
-  witness with a second boundary case from the concrete severity policy.
+  witness with second and third boundary cases from the concrete severity policy.
 - current closure hardening object:
   keep the canonical Stage C path on concrete constraint closure and real shift
   dynamics, and remove the remaining trivial closure shim from the empirical
@@ -235,6 +235,24 @@ Immediate first implementation:
   add an independent shell-side one-minus-family candidate in the Lorentz
   neighborhood, but keep it outside the admissible harness until shell-2,
   orientation, and signature are justified independently.
+
+## Condensed Priority Roadmap
+
+The current TODO can be collapsed into a small dependency-ordered roadmap:
+
+1. Cross-realization validation package (closure-compatible non-shift snap
+   policy + second realization).
+2. Contraction ⇒ quadratic theorem.
+3. Quadratic ⇒ signature theorem.
+4. Concrete constraint-closure theorem (current three-generator system).
+5. Local recovery / effective-geometry theorem (scoped local Lorentz slice).
+6. Signature ⇒ Clifford/spin bridge (downstream of the signature theorem).
+
+Note: the snap-threshold report surface now includes a synthetic one-minus
+non-shift harness with a non-shift policy derived from its witness state type,
+plus a Bool inversion harness that still reuses the shift snap witness.
+Next extension tasks: add a Bool inversion-specific snap witness and the B₄
+harness.
 - current realization-search refinement:
   the synthetic one-minus candidate is now profile-aware on shell-1 and
   shell-2, and the dynamics-side search artifact has been tightened into a

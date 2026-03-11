@@ -1,5 +1,14 @@
 # Dashboard Plan
 
+## Stage C Bottleneck Focus (Active 2026-03-10)
+
+1. Build a direct projection/defect → parallelogram theorem package.
+2. Build a strengthened contraction→quadratic module that exposes
+   invariant/uniqueness seams as explicit pending proof obligations.
+3. Land a first concrete invariant witness in the strengthened module.
+4. Re-route status/docs so closure is not marked complete before those seams
+   are discharged.
+
 ## Current Milestones
 
 1. **Falsifiability/deviation boundary interface** – add a typed boundary
@@ -34,5 +43,11 @@
 
 ## Next Priorities
 
-1. Build second-realization coverage for the snap-threshold law so the benchmark
-   no longer depends only on shift-side witnesses.
+1. Cross-realization validation package: in progress (synthetic one-minus
+   non-shift policy + Bool inversion harness landed; next add Bool
+   inversion-specific snap witness and the B₄ harness).
+2. Contraction ⇒ quadratic theorem.
+3. Quadratic ⇒ signature theorem.
+4. Concrete constraint-closure theorem (current three-generator system).
+5. Local recovery / effective-geometry theorem.
+6. Signature ⇒ Clifford/spin bridge.

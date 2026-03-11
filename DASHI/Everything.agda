@@ -136,6 +136,7 @@ import DASHI.Geometry.Polarization
 import DASHI.Geometry.ProjectionContractionOrthogonalityTests
 import DASHI.Geometry.ProjectionContractiveConstant
 import DASHI.Geometry.ProjectionDefect
+import DASHI.Geometry.ProjectionDefectToParallelogram
 import DASHI.Geometry.QuadraticEmergence
 import DASHI.Geometry.QuadraticForm
 import DASHI.Geometry.QuadraticFormEmergence
@@ -286,6 +287,7 @@ import DASHI.Physics.Closure.KnownLimitsExtendedLocalRecoveryTheorem
 import DASHI.Physics.Closure.KnownLimitsLocalPhysicsCoherenceTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveredLocalRegimeTheorem
 import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem
+import DASHI.Physics.Closure.PhysicsClosureFivePillarsTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem
 import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem
@@ -323,6 +325,7 @@ import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometryCoherenceCo
 import DASHI.Physics.Closure.Consumers.WaveRegime
 import DASHI.Physics.Closure.Canonical.Ladder
 import DASHI.Physics.Closure.CanonicalSpinDiracConsumer
+import DASHI.Physics.Closure.ContractionForcesQuadraticStrong
 import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem
 import DASHI.Physics.Closure.KnownLimitsStatus
 import DASHI.Physics.Closure.DefectCollapseShiftInstance
@@ -344,6 +347,7 @@ import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation
 import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidationShiftInstance
 import DASHI.Physics.Closure.ObservablePredictionPackage
 import DASHI.Physics.Closure.ObservablePredictionEvidence
+import DASHI.Physics.SeverityGuard.Synthetic.Concrete
 import DASHI.Physics.Closure.Validation.RealizationProfileRigidity
 import DASHI.Physics.Closure.Validation.FalsifiabilityBoundary
 import DASHI.Physics.Closure.Validation.FalsifiabilityBoundaryReport
@@ -363,6 +367,14 @@ import DASHI.Physics.Closure.Validation.RealizationProfileRigidityReport
 import DASHI.Physics.Closure.Validation.RealizationProfileRigidityShift
 import DASHI.Physics.Closure.Validation.SyntheticOneMinusAdmissible
 import DASHI.Physics.Closure.Validation.SyntheticOneMinusDynamicsWitness
+import DASHI.Physics.Closure.Validation.SnapThresholdLaw
+import DASHI.Physics.Closure.Validation.SnapThresholdLawReport
+import DASHI.Physics.Closure.Validation.SnapThresholdLawShift
+import DASHI.Physics.Closure.Validation.SnapThresholdLawShiftSecondary
+import DASHI.Physics.Closure.Validation.SnapThresholdLawShiftTertiary
+import DASHI.Physics.Closure.Validation.SnapThresholdLawSyntheticOneMinus
+import DASHI.Physics.Closure.Validation.SnapThresholdLawBoolInversion
+import DASHI.Physics.SeverityGuard.SyntheticOneMinus.Concrete
 import DASHI.Physics.ClosureOnAssumption
 import DASHI.Physics.Closure.PhysicsClosure
 import DASHI.Physics.Closure.PhysicsClosureEmpirical

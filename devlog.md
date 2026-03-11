@@ -1,5 +1,28 @@
 # Devlog
 
+- 2026-03-11: Strengthened `ContractionForcesQuadraticStrong` with a concrete
+  invariant witness field (`invariantQuadraticWitness`) and added
+  `canonicalIdentityInvariantStrong` as the first non-placeholder witness
+  instance while keeping `uniqueUpToScaleSeam` explicitly open.
+- 2026-03-10: Re-baselined Stage-C status after audit: downgraded the previous
+  "five-pillar complete" wording to "packaging complete, bottleneck proof
+  still open". Added two bottleneck modules:
+  `ProjectionDefectToParallelogram` and
+  `ContractionForcesQuadraticStrong`, where the remaining
+  invariant/uniqueness obligations are explicit seams.
+- 2026-03-10: Added `PhysicsClosureFivePillarsTheorem` and threaded it through
+  canonical Stage C exports (`CanonicalStageC`, `CanonicalStageCTheoremBundle`,
+  `CanonicalStageCSummaryBundle`, and `PhysicsClosureValidationSummary`) so the
+  five target milestones are represented as one explicit theorem package:
+  natural dynamics law, conserved quantity, continuum limit,
+  realization-independent proof, and full gauge/matter recovery theorem.
+- 2026-03-10: Replaced the provisional non-shift synthetic-bool snap-threshold harness with a synthetic one-minus labeled harness (`SnapThresholdLawSyntheticOneMinus`, proxy policy), rewired `PhysicsClosureValidationSummary` and `Everything` to consume it, and updated plan/TODO/status/docs to track the cross-realization validation package as in progress.
+- 2026-03-10: Added a synthetic one-minus non-shift snap policy derived from the witness state type and a Bool inversion snap-threshold harness (still reusing the shift snap witness), updated validation exports, and retargeted the next snap-threshold step to the Bool inversion witness + B₄ harness.
+- 2026-03-10: Bug-hunter cycle: reproduced `PhysicsClosureValidationSummary` failure (exit 42), fixed exported alias collisions in wave-regime consumers (`KLRWOTGRC`, `KLRWOTGRCOMP`) by making them private, then fixed a `rigidityAggregate` multiple-definition collision in `PhysicsClosureValidationSummary` by switching `RealizationProfileRigidityShift` to a qualified import; targeted scope-check now passes, while full typechecks were cut short by runtime limits in this environment.
+- 2026-03-10: Added a synthetic-bool severity guard and snap-threshold harness as a provisional non-shift validation placeholder.
+- 2026-03-10: Documented the condensed priority roadmap and the non-shift snap-threshold prerequisite so the next validation step is explicit.
+- 2026-03-10: Fixed a duplicate-definition collision in `CanonicalStageC` by switching the wave-regime recovery import to a non-open import and keeping explicit aliases; kicked off a recheck of the module.
+- 2026-03-10: Expanded the χ² boundary library with a third witness and added a tertiary snap-threshold harness wired into the validation summary.
 - 2026-03-10: Added an observable prediction evidence bundle that packages signature-lock and beta-seam CSV evidence alongside the observable prediction package.
 - 2026-03-10: Added preferred harness/dataset column to the forward prediction validation table and marked the TODO item complete.
 - 2026-03-10: Extended the snap-threshold benchmark beyond the shift reference with a secondary shift-side boundary case, wired the verdict into the validation summary, and refreshed docs/plan/TODO/status/changelog.

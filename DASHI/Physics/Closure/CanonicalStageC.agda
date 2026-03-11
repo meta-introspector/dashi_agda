@@ -90,6 +90,7 @@ import DASHI.Physics.Closure.KnownLimitsLocalCausalEffectivePropagationTheorem a
 import DASHI.Physics.Closure.KnownLimitsLocalCausalGeometryCoherenceTheorem as KLCGCT
 import DASHI.Physics.Closure.KnownLimitsMatterGaugeTheorem as KLMGT
 import DASHI.Physics.Closure.KnownLimitsFullMatterGaugeTheorem as KLMGFT
+import DASHI.Physics.Closure.PhysicsClosureFivePillarsTheorem as PCFPT
 import DASHI.Physics.Closure.KnownLimitsGeometryTransportTheorem as KLGT
 import DASHI.Physics.Closure.KnownLimitsLocalCoherenceTheorem as KLLCT
 import DASHI.Physics.Closure.KnownLimitsExtendedLocalRecoveryTheorem as KLER
@@ -109,7 +110,7 @@ import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportTheorem 
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableGeometryTheorem as KLRWOG
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem as KLRWOTG
 import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC
-open import DASHI.Physics.Closure.Recovery.WaveRegime as RWR
+import DASHI.Physics.Closure.Recovery.WaveRegime as RWR
 module KLRWOTGR = RWR
 module KLRWOTGRC = RWR
 module KLRWOTGRS = RWR
@@ -1200,6 +1201,11 @@ canonicalKnownLimitsCompleteLocalRegimeTheorem =
 canonicalDynamicsLawTheorem :
   CDLT.CanonicalDynamicsLawTheorem
 canonicalDynamicsLawTheorem = CDLT.canonicalDynamicsLawTheorem
+
+canonicalPhysicsClosureFivePillarsTheorem :
+  PCFPT.PhysicsClosureFivePillarsTheorem
+canonicalPhysicsClosureFivePillarsTheorem =
+  PCFPT.canonicalPhysicsClosureFivePillarsTheorem
 
 canonicalContractionForcesQuadraticTheorem :
   CFQT.ContractionForcesQuadraticTheorem

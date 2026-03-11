@@ -2,6 +2,13 @@
 
 ## 2026-03-10
 
+- replaced the provisional non-shift synthetic-bool snap-threshold harness
+  with `SnapThresholdLawSyntheticOneMinus` (proxy policy) and rewired the
+  validation summary and top-level import tree to use the synthetic one-minus
+  realization label.
+- added a non-shift snap policy derived from the synthetic one-minus witness
+  state type and a Bool inversion snap-threshold harness (reusing the shift
+  snap witness pending a Bool inversion-specific witness).
 - added a typed falsifiability/deviation boundary harness + report that bundles
   mirror-signature exclusion with competing 4D profile failures, and wired the
   shift instance verdict into the validation summary and top-level imports.
@@ -12,6 +19,14 @@
   for each claim.
 - added an observable prediction evidence bundle that packages signature-lock
   and beta-seam CSV evidence alongside the observable prediction package.
+- expanded the χ² boundary library with a third case and exposed a tertiary
+  snap-threshold verdict in the validation summary.
+- resolved a duplicate-definition collision in `CanonicalStageC` by using a
+  non-open wave-regime recovery import and keeping explicit aliases.
+- added a condensed priority roadmap for remaining closure work and clarified
+  the non-shift snap-threshold prerequisite in the docs/TODO.
+- added a synthetic-bool severity guard and snap-threshold harness as a
+  provisional non-shift validation placeholder.
 
 ## 2026-03-09
 

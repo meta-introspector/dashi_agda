@@ -2,7 +2,7 @@ module DASHI.Physics.Closure.Validation.Chi2BoundaryShiftTheorem where
 
 open import Agda.Builtin.Nat using (Nat)
 
-open import DASHI.Physics.Closure.Validation.Chi2BoundaryShiftLibrary as LIB
+import DASHI.Physics.Closure.Validation.Chi2BoundaryShiftLibrary as LIB
 
 record Chi2BoundaryShiftTheorem : Set where
   field

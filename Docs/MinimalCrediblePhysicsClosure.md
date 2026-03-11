@@ -122,7 +122,7 @@ or regimes.
 | Profile rigidity across new realizations | `Signature31FromShiftOrbitProfile`, `ConeArrowIsotropyShiftOrbitEnumeration` | High | A new 4D realization preserving the same cone/arrow/isotropy structure produces a different shell-profile class or fails to select `(3,1)`. | `RealizationProfileRigidityShift` harness with admissible realizations (synthetic one-minus, Bool inversion, and future `B₄`). |
 | Fejér-over-χ² monotonicity | `ShiftSeamCertificates`, `EnergyClosestPointShiftInstance`, `MDLFejerAxiomsShift` | High | A compatible shift-like regime shows persistent χ²-style improvement while Fejér/MDL observables lose monotonicity or closest-point behavior. | `FejerOverChiSquaredShift` harness plus χ² boundary library cases. |
 | Observable-space collapse | `RealClosureKitFiber`, `DynamicalClosureShiftInstance` | High | Distinct microstates in the same observable quotient fail to converge to the same observable endpoint in the closure-compatible regime. | `ObservableCollapseShift` harness from `RealClosureKitFiber.obsFixed`/`obsUnique`. |
-| Snap-threshold transition law | `SnapSignatureShiftInstance`, `RealConeMonotoneExceptSnapsShift`, `SeverityGuard*` modules, `SnapThresholdLawShift`, `SnapThresholdLawShiftSecondary` | Medium | Regime changes occur diffusely rather than clustering at snap/severity threshold events. | `SnapThresholdLawShift` + `SnapThresholdLawShiftSecondary` harnesses. |
+| Snap-threshold transition law | `SnapSignatureShiftInstance`, `RealConeMonotoneExceptSnapsShift`, `SeverityGuard*` modules, `SnapThresholdLawShift`, `SnapThresholdLawShiftSecondary`, `SnapThresholdLawShiftTertiary`, `SnapThresholdLawSyntheticOneMinus`, `SnapThresholdLawBoolInversion` (proxy witness) | Medium | Regime changes occur diffusely rather than clustering at snap/severity threshold events. | `SnapThresholdLawShift` + `SnapThresholdLawShiftSecondary` + `SnapThresholdLawShiftTertiary` + `SnapThresholdLawSyntheticOneMinus` + `SnapThresholdLawBoolInversion` harnesses. |
 | Witness-policy robustness | `WitnessSetPolicy`, `EmpiricalClosureWithWitnessPolicy`, `EmpiricalClosureWithSignatureLock` | Medium | Admissible witness-policy changes alter the final signature/closure classification rather than only efficiency or convergence behavior. | Witness-policy perturbation harness (pending) on `EmpiricalClosureWithWitnessPolicy`. |
 | Cone-split persistence | `PhysicsClosureEmpiricalWithConeSplit`, `ArrowSeparatedDeltaConeSplit*`, `MaskedOrthogonalSplit` | Medium | New compatible datasets fail to preserve near-zero cross terms or stable quadratic split structure. | `MaskedOrthogonalSplit` empirical gate + cone-split CSV evidence runs. |
 | Beta-seam universality | `BetaSeamCertificates*`, `BetaSeamCSVEvidence`, `PhysicsClosureEmpiricalBetaInstance` | Medium | Two seam bundles satisfying the same certificate interface lead to incompatible closure observables. | `BetaSeamCSVEvidence` dataset / certificate replay. |
@@ -139,6 +139,23 @@ Recommended order for checking the forward claims:
 4. snap-threshold transition law,
 5. witness-policy robustness,
 6. cone-split persistence.
+
+## Condensed Priority Roadmap
+
+The current TODO list can be collapsed to a small dependency-ordered roadmap:
+
+1. Cross-realization validation package (closure-compatible non-shift snap
+   policy + second realization).
+2. Contraction ⇒ quadratic theorem.
+3. Quadratic ⇒ signature theorem.
+4. Concrete constraint-closure theorem.
+5. Local recovery / effective-geometry theorem.
+6. Signature ⇒ Clifford/spin bridge.
+
+Note: the synthetic one-minus harness now uses a non-shift policy derived from
+its witness state type. The Bool inversion harness is present but still reuses
+the shift snap witness; next extensions are a Bool inversion-specific witness
+and the B₄ harness.
 
 ## Current Status
 
@@ -449,7 +466,9 @@ the present Stage C path.
   now carried by a concrete shift-side boundary witness from the
   snap/`chi2Spike` severity layer,
   with the standalone snap-threshold benchmark exposed separately as its own
-  typed report that now includes a secondary shift-side boundary case.
+  typed report that now includes secondary and tertiary shift-side boundary cases,
+  plus synthetic one-minus and Bool inversion non-shift harnesses (Bool
+  inversion still reuses the shift snap witness).
 
 For the current `P0/P1/P2` execution order, see
 `Docs/PhysicsClosurePriorities.md`.

@@ -47,6 +47,8 @@ open import DASHI.Physics.Closure.Validation.SnapThresholdLawReport as STLR
 open import DASHI.Physics.Closure.Validation.SnapThresholdLawShift as STLS
 open import DASHI.Physics.Closure.Validation.SnapThresholdLawShiftSecondary as STLSS
 open import DASHI.Physics.Closure.Validation.SnapThresholdLawShiftTertiary as STLST
+open import DASHI.Physics.Closure.Validation.SnapThresholdLawSyntheticOneMinus as STLSOM
+open import DASHI.Physics.Closure.Validation.SnapThresholdLawBoolInversion as STLBIV
 open import DASHI.Physics.Closure.Validation.SyntheticOneMinusShellComparison as SOSC public
   using (SyntheticPromotionStatus)
 open import DASHI.Physics.Closure.Validation.SyntheticOneMinusPromotionBridge as SOPB public
@@ -62,7 +64,7 @@ open import DASHI.Physics.Closure.Validation.OrbitShellSeriesComparison as OSSC 
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR public
   using (RigidityVerdict)
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidityReport as RPRR
-open import DASHI.Physics.Closure.Validation.RealizationProfileRigidityShift as RPRS
+import DASHI.Physics.Closure.Validation.RealizationProfileRigidityShift as RPRS
 import DASHI.Physics.Closure.Validation.SyntheticOneMinusAdmissible as SOA
 open import DASHI.Physics.OrbitShellGeneratingSeries as OSG public
   using (OrbitShellSeries; SizeMultiplicity)
@@ -250,6 +252,8 @@ open import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem as KLCLR
   using (KnownLimitsCompleteLocalRegimeTheorem)
 open import DASHI.Physics.Closure.CanonicalDynamicsLawTheorem as CDLT public
   using (CanonicalDynamicsLawTheorem)
+open import DASHI.Physics.Closure.PhysicsClosureFivePillarsTheorem as PCFPT public
+  using (PhysicsClosureFivePillarsTheorem)
 open import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem as KLRDT public
   using (KnownLimitsRecoveredDynamicsTheorem)
 open import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem as KLROT public
@@ -1329,6 +1333,11 @@ canonicalDynamicsLawTheoremSummary :
 canonicalDynamicsLawTheoremSummary =
   CSC.canonicalDynamicsLawTheorem
 
+canonicalPhysicsClosureFivePillarsTheoremSummary :
+  PCFPT.PhysicsClosureFivePillarsTheorem
+canonicalPhysicsClosureFivePillarsTheoremSummary =
+  CSC.canonicalPhysicsClosureFivePillarsTheorem
+
 canonicalKnownLimitsRecoveredDynamicsTheoremSummary :
   KLRDT.KnownLimitsRecoveredDynamicsTheorem
 canonicalKnownLimitsRecoveredDynamicsTheoremSummary =
@@ -2259,6 +2268,14 @@ snapThresholdSecondaryVerdict =
 snapThresholdTertiaryVerdict : STL.SnapThresholdVerdict
 snapThresholdTertiaryVerdict =
   STLR.SnapThresholdReport.verdict STLST.tertiaryReport
+
+snapThresholdSyntheticVerdict : STL.SnapThresholdVerdict
+snapThresholdSyntheticVerdict =
+  STLR.SnapThresholdReport.verdict STLSOM.syntheticOneMinusReport
+
+snapThresholdBoolInvVerdict : STL.SnapThresholdVerdict
+snapThresholdBoolInvVerdict =
+  STLR.SnapThresholdReport.verdict STLBIV.boolInvReport
 
 syntheticOneMinusShellMatch : Bool
 syntheticOneMinusShellMatch =

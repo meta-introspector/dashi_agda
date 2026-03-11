@@ -5,7 +5,8 @@ open import Agda.Primitive using (Setω)
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.StabilityConsumer as CWOTGRSC
 open import DASHI.Physics.Closure.Recovery.WaveRegime as RWR
-module KLRWOTGRC = RWR
+private
+  module KLRWOTGRC = RWR
 
 record WaveObservableTransportGeometryRegimeCompletenessConsumerFromMinimal
          (cl : MCPC.MinimalCrediblePhysicsClosure) : Setω where

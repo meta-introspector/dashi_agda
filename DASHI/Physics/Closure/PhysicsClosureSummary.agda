@@ -61,10 +61,12 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 -- Current Fejér benchmark snapshot:
 --   positive side established,
 --   χ² side carried by a concrete shift-side boundary witness.
---   current χ² boundary library size = 2.
+--   current χ² boundary library size = 3.
 -- Current snap-threshold benchmark snapshot:
 --   theorem-backed shift witness exported through the validation summary,
---   plus a secondary shift-side boundary case beyond the reference witness.
+--   plus secondary and tertiary shift-side boundary cases beyond the
+--   reference witness, plus synthetic one-minus and Bool inversion non-shift
+--   harnesses (Bool inversion still reuses the shift snap witness).
 -- Current wave-series status:
 --   concrete grade-0 prototype only,
 --   not on the theorem-critical closure path.

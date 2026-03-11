@@ -36,6 +36,7 @@ open import DASHI.Physics.Closure.KnownLimitsCompleteLocalRegimeTheorem as KLCLR
 open import DASHI.Physics.Closure.CanonicalDynamicsLawTheorem as CDLT
 open import DASHI.Physics.Closure.KnownLimitsMatterGaugeTheorem as KLMGT
 open import DASHI.Physics.Closure.KnownLimitsFullMatterGaugeTheorem as KLMGFT
+open import DASHI.Physics.Closure.PhysicsClosureFivePillarsTheorem as PCFPT
 open import DASHI.Physics.Closure.KnownLimitsRecoveredDynamicsTheorem as KLRDT
 open import DASHI.Physics.Closure.KnownLimitsRecoveredObservablesTheorem as KLROT
 open import DASHI.Physics.Closure.KnownLimitsRecoveredObservableGeometryTheorem as KLROG
@@ -225,6 +226,8 @@ record CanonicalStageCTheoremBundle : Setω where
     recoveredLocalRegimeSummary : KLRLR.KnownLimitsRecoveredLocalRegimeTheorem
     completeLocalRegimeSummary : KLCLR.KnownLimitsCompleteLocalRegimeTheorem
     dynamicsLawSummary : CDLT.CanonicalDynamicsLawTheorem
+    physicsClosureFivePillarsSummary :
+      PCFPT.PhysicsClosureFivePillarsTheorem
     recoveredDynamicsSummary : KLRDT.KnownLimitsRecoveredDynamicsTheorem
     recoveredObservablesSummary : KLROT.KnownLimitsRecoveredObservablesTheorem
     recoveredObservableGeometrySummary :
@@ -403,6 +406,8 @@ canonicalStageCTheoremBundle =
     ; completeLocalRegimeSummary =
         CSC.canonicalKnownLimitsCompleteLocalRegimeTheorem
     ; dynamicsLawSummary = CSC.canonicalDynamicsLawTheorem
+    ; physicsClosureFivePillarsSummary =
+        CSC.canonicalPhysicsClosureFivePillarsTheorem
     ; recoveredDynamicsSummary =
         CSC.canonicalKnownLimitsRecoveredDynamicsTheorem
     ; recoveredObservablesSummary =

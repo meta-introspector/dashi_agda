@@ -11,11 +11,12 @@
   GR and QFT bridge theorems depending on it.
 
 ## Remaining architecture work
-1. Formalize the full gauge/matter recovery theorem so the bridge no longer rests
-   on prototype assumptions.
-2. Extend the GR and QFT bridge records with this strengthened recovery as a
-   prerequisite milestone.
-3. Document this path in `PhysicsClosureSummary.agda` and `PhysicsClosureValidationSummary.agda`.
+1. Land the bottleneck theorem path around projection/defect to quadratic:
+   `ProjectionDefectToParallelogram` then `ContractionForcesQuadraticStrong`.
+2. Discharge the remaining seams:
+   invariant quadratic under the contraction dynamics, and uniqueness up to scale.
+3. Only after (2), treat signature, Clifford, and full gauge/matter recovery
+   as mathematically closed rather than packaged.
 
 ## Signals to watch
 - `status.json` should flip `milestones_remaining` to 0 once the bridge and
