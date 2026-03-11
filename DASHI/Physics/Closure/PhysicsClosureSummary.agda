@@ -65,8 +65,8 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 -- Current snap-threshold benchmark snapshot:
 --   theorem-backed shift witness exported through the validation summary,
 --   plus secondary and tertiary shift-side boundary cases beyond the
---   reference witness, plus synthetic one-minus and Bool inversion non-shift
---   harnesses (Bool inversion still reuses the shift snap witness).
+--   reference witness, plus synthetic one-minus, Bool inversion-specific,
+--   and standalone `B₄` harnesses.
 -- Current wave-series status:
 --   concrete grade-0 prototype only,
 --   not on the theorem-critical closure path.

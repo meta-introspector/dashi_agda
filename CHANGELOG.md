@@ -1,5 +1,70 @@
 # Changelog
 
+## 2026-03-11
+
+- completed the pending cross-realization snap-threshold extension by:
+  - adding `Chi2BoundaryBoolInversionWitness` as a Bool inversion-specific
+    witness module on the shared closure carrier,
+  - rewiring `SnapThresholdLawBoolInversion` to that witness,
+  - adding `SnapThresholdLawRootSystemB4` as a standalone `B₄` harness,
+  - exporting `snapThresholdB4Verdict` through
+    `PhysicsClosureValidationSummary`,
+  - wiring the new harness module into `DASHI/Everything`.
+- added a Base369 normalization-hardening track in docs (`README.md`,
+  `architecture.md`, `plan.md`, `COMPACTIFIED_CONTEXT.md`) to keep
+  proof-soundness constraints explicit while reducing typecheck costs.
+- updated `TODO.md` with explicit Base369 closed-form migration tasks and an
+  `abstract`-barrier follow-up scoped to theorem-only consumers.
+- added closed-form cyclic companions in `Base369.agda`:
+  `fromTriIndex`, `fromHexIndex`, `fromNonaryIndex`,
+  `triXor-closed`, `hexXor-closed`, `nonaryXor-closed`.
+- added `triXor-spin-correct` to bridge the recursive triadic reference
+  implementation back to the canonical closed-form `triXor`.
+- added `hexXor-closed-correct` and `nonaryXor-closed-correct` so all Base369
+  closed-form cyclic companions now have explicit correctness bridges to the
+  existing recursive `spin` operators.
+- switched canonical Base369 exports (`triXor`, `hexXor`, `nonaryXor`) to the
+  closed-form definitions and kept recursive reference implementations as
+  `triXor-spin`, `hexXor-spin`, and `nonaryXor-spin`.
+- added a first conservative `abstract` rollout in
+  `PhysicsClosureValidationSummary`: theorem-bundle and moonshine-summary
+  aliases now route through opaque `*-abs` wrappers while preserving the
+  existing exported names.
+- extended the conservative `abstract` rollout to aggregate bundle values in
+  `CanonicalStageCTheoremBundle` and `CanonicalStageCSummaryBundle` by routing
+  each canonical bundle through an opaque `*-abs` wrapper while preserving
+  exported names.
+- continued the `PhysicsClosureValidationSummary` rollout with a first regime
+  alias batch (`RegimeSummary` through `RegimeRobustnessSummary`) routed
+  through opaque `*-abs` wrappers while preserving exported names.
+- completed the remaining moonshine/regime alias rollout in
+  `PhysicsClosureValidationSummary` (`RegimeIntegrity` through
+  `RegimeResilience`) using the same opaque `*-abs` wrapper pattern while
+  preserving exported names.
+- hardened `ContractionQuadraticToSignatureBridgeTheorem` by replacing the
+  fragile type-level seam equality (`Set`-valued alias + equality law) with a
+  direct value-level seam witness, removing the `Set` vs `⊤` mismatch path.
+- validated the implementation with a targeted typecheck:
+  `agda Base369.agda`.
+- validated the new bundle-level wrappers with targeted typechecks:
+  `agda DASHI/Physics/Closure/CanonicalStageCTheoremBundle.agda` and
+  `agda DASHI/Physics/Closure/CanonicalStageCSummaryBundle.agda`.
+- re-validated bundle-level modules after the first regime-alias batch:
+  `agda DASHI/Physics/Closure/CanonicalStageCTheoremBundle.agda` and
+  `agda DASHI/Physics/Closure/CanonicalStageCSummaryBundle.agda`.
+- re-validated bundle-level modules after completing the remaining regime
+  alias batch:
+  `agda DASHI/Physics/Closure/CanonicalStageCTheoremBundle.agda` and
+  `agda DASHI/Physics/Closure/CanonicalStageCSummaryBundle.agda`.
+- validated the bridge-seam patch with:
+  `agda DASHI/Physics/Closure/ContractionQuadraticToSignatureBridgeTheorem.agda`
+  and re-ran both bundle checks above.
+- attempted targeted validation of
+  `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`; blocked by an
+  existing upstream type error in
+  `DASHI/Physics/Closure/ContractionQuadraticToSignatureBridgeTheorem.agda`
+  (`Set !=< ⊤` around `uniqueUpToScaleSeam`), outside this scoped change.
+
 ## 2026-03-10
 
 - replaced the provisional non-shift synthetic-bool snap-threshold harness

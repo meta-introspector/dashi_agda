@@ -176,16 +176,14 @@ Current theorem status:
   tertiary shift-side boundary cases beyond the reference witness.
 - Non-shift snap-threshold coverage now includes:
   a synthetic one-minus harness with a non-shift policy derived from its
-  witness state type, plus a Bool inversion harness that still reuses the
-  shift snap witness (pending a Bool inversion-specific witness).
+  witness state type, a Bool inversion-specific harness with its own witness
+  selection, and a standalone `B₄` harness.
 - Prioritized next steps (condensed):
-  1) cross-realization validation package (B₄ harness + Bool inversion-specific
-     snap witness),
-  2) contraction ⇒ quadratic theorem,
-  3) quadratic ⇒ signature theorem,
-  4) concrete constraint-closure theorem,
-  5) local recovery / effective-geometry theorem,
-  6) signature ⇒ Clifford/spin bridge.
+  1) contraction ⇒ quadratic theorem,
+  2) quadratic ⇒ signature theorem,
+  3) concrete constraint-closure theorem,
+  4) local recovery / effective-geometry theorem,
+  5) signature ⇒ Clifford/spin bridge.
 
 The repo does **not** currently claim full physics closure or “solved
 physics”.
@@ -204,6 +202,23 @@ Cleanup note:
 For the current milestone order, see `Docs/PhysicsClosurePriorities.md`.
 For the current orbit-shell / Lorentz-signature framing, see
 `Docs/OrbitShellProfilesAndLorentzSignature.md`.
+
+## Typecheck Performance Policy (Current)
+
+- Keep theorem certainty unchanged: performance work must not replace proven
+  theorems with postulates.
+- Use `abstract` for heavy theorem terms when downstream modules only need the
+  theorem type, not internal definitional unfolding.
+- First rollout target: repo-facing closure summary aliases in
+  `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`.
+- Second rollout target: aggregate theorem/summary record values in
+  `DASHI/Physics/Closure/CanonicalStageCTheoremBundle.agda` and
+  `DASHI/Physics/Closure/CanonicalStageCSummaryBundle.agda`.
+- Third rollout target: remaining moonshine/regime summary aliases in
+  `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`.
+- Keep computational kernels transparent where reduction is part of behavior.
+- For cyclic Base369 operators, prefer closed-form index arithmetic companions
+  and explicit correctness bridges from recursive `spin` forms.
 
 # I. State Space 
 

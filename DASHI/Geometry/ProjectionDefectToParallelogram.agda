@@ -2,7 +2,7 @@ module DASHI.Geometry.ProjectionDefectToParallelogram where
 
 open import Level using (Level; _⊔_; suc)
 open import Agda.Builtin.Equality using (_≡_)
-open import Data.Product using (Σ; _,_)
+open import Data.Product using (Σ; _,_; proj₁; proj₂)
 open import Data.Unit using (⊤)
 
 open import DASHI.Geometry.ProjectionDefect as PD
@@ -68,3 +68,25 @@ quadraticFromProjectionDefect A F Pkg =
   QFE.QuadraticFormEmergence A F
     (ProjectionDefectParallelogramPackage.projection Pkg)
     (ProjectionDefectParallelogramPackage.emergenceAxioms Pkg)
+
+record ProjectionDefectQuadraticWitness
+  {ℓv ℓs : Level}
+  (A : PD.Additive ℓv)
+  (F : QF.ScalarField ℓs) : Set (suc (ℓv ⊔ ℓs)) where
+  field
+    package : ProjectionDefectParallelogramPackage A F
+    quadratic : QF.QuadraticForm A F
+    witnessToken : ⊤
+
+fromProjectionPackageWitness :
+  ∀ {ℓv ℓs}
+  (A : PD.Additive ℓv)
+  (F : QF.ScalarField ℓs)
+  (Pkg : ProjectionDefectParallelogramPackage A F) →
+  ProjectionDefectQuadraticWitness A F
+fromProjectionPackageWitness A F Pkg =
+  record
+    { package = Pkg
+    ; quadratic = proj₁ (quadraticFromProjectionDefect A F Pkg)
+    ; witnessToken = proj₂ (quadraticFromProjectionDefect A F Pkg)
+    }

@@ -326,6 +326,7 @@ import DASHI.Physics.Closure.Consumers.WaveRegime
 import DASHI.Physics.Closure.Canonical.Ladder
 import DASHI.Physics.Closure.CanonicalSpinDiracConsumer
 import DASHI.Physics.Closure.ContractionForcesQuadraticStrong
+import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem
 import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem
 import DASHI.Physics.Closure.KnownLimitsStatus
 import DASHI.Physics.Closure.DefectCollapseShiftInstance
@@ -374,6 +375,7 @@ import DASHI.Physics.Closure.Validation.SnapThresholdLawShiftSecondary
 import DASHI.Physics.Closure.Validation.SnapThresholdLawShiftTertiary
 import DASHI.Physics.Closure.Validation.SnapThresholdLawSyntheticOneMinus
 import DASHI.Physics.Closure.Validation.SnapThresholdLawBoolInversion
+import DASHI.Physics.Closure.Validation.SnapThresholdLawRootSystemB4
 import DASHI.Physics.SeverityGuard.SyntheticOneMinus.Concrete
 import DASHI.Physics.ClosureOnAssumption
 import DASHI.Physics.Closure.PhysicsClosure

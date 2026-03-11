@@ -1,0 +1,37 @@
+module DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem where
+
+open import Agda.Primitive using (Setω)
+open import Agda.Builtin.Equality using (_≡_)
+
+open import DASHI.Geometry.ConeTimeIsotropy as CTI
+open import DASHI.Geometry.ProjectionDefect as PD
+open import DASHI.Geometry.QuadraticForm as QF
+open import DASHI.Geometry.SignatureUniqueness31 as SU
+open import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
+open import DASHI.Physics.QuadraticPolarization as QP
+open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
+
+record ContractionQuadraticToSignatureBridgeTheorem : Setω where
+  field
+    strengthenedContraction : CFQS.ContractionForcesQuadraticStrong
+    signature31Theorem : SU.Signature31Theorem
+    signature31Value : CTI.Signature
+    normalizedQuadratic :
+      ∀ x →
+        QF.QuadraticForm.Q
+          (CFQS.ContractionForcesQuadraticStrong.derivedQuadratic
+            strengthenedContraction)
+          x
+        ≡ QP.Q̂core x
+
+canonicalContractionQuadraticToSignatureBridgeTheorem :
+  ContractionQuadraticToSignatureBridgeTheorem
+canonicalContractionQuadraticToSignatureBridgeTheorem =
+  record
+    { strengthenedContraction = CFQS.canonicalNontrivialInvariantStrong
+    ; signature31Theorem = S31OP.signature31-theorem
+    ; signature31Value = S31OP.signature31
+    ; normalizedQuadratic =
+        CFQS.ContractionForcesQuadraticStrong.uniqueUpToScaleWitness
+          CFQS.canonicalNontrivialInvariantStrong
+    }

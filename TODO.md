@@ -2,6 +2,9 @@
 
 ## Cleanup / Consolidation
 
+- Runtime policy:
+  do not run `PhysicsClosureValidationSummary.agda` in routine validation until
+  runtime bounds are acceptable (currently ~1.25 hours).
 - Make grouped wave-regime ladder modules authoritative for new imports:
   - `Closure/Algebra/WaveRegime.agda`
   - `Closure/Recovery/WaveRegime.agda`
@@ -11,6 +14,32 @@
   ladder modules instead of direct per-rung imports where practical.
 - Keep per-rung modules as compatibility wrappers only.
 - Keep top-level compile green while doing the refactor.
+
+## Base369 Normalization Hardening
+
+Priority bucket: `P1`
+
+- [x] Add closed-form cyclic constructors:
+  `fromTriIndex`, `fromHexIndex`, `fromNonaryIndex`.
+- [x] Add closed-form cyclic operators in `Base369.agda`:
+  `triXor-closed`, `hexXor-closed`, `nonaryXor-closed`.
+- [x] Prove triadic bridge first:
+  `triXor-spin-correct : triXor-spin a b ≡ triXor a b`.
+- [x] Keep existing recursive `spin`-based operators as compatibility
+  definitions until downstream imports switch.
+- [x] Follow-up: swap canonical exports to closed-form operators now that tri,
+  hex, and nonary correctness bridges are in place.
+- [x] Add first `abstract` barriers around heavy closure theorem-bundle
+  summary aliases in `PhysicsClosureValidationSummary`.
+- [x] Follow-up: extend `abstract` barriers to
+  `CanonicalStageCTheoremBundle` and `CanonicalStageCSummaryBundle`, then
+  re-measure targeted closure-summary typecheck time.
+- [x] Next follow-up: expand the same pattern to remaining heavy
+  moonshine/regime aliases in `PhysicsClosureValidationSummary` and re-check
+  targeted bundle modules.
+- [ ] Next follow-up: re-run direct
+  `PhysicsClosureValidationSummary.agda` timing/validation once the upstream
+  bridge-seam type error is cleared.
 
 ## Track T — Dynamical / Theorem Closure
 
@@ -27,6 +56,13 @@ Open physics-side requirements that remain genuinely unresolved:
 Current focus:
 `DASHI/Geometry/ProjectionDefectToParallelogram.agda` and
 `DASHI/Physics/Closure/ContractionForcesQuadraticStrong.agda`
+
+- Replace the raw `Set` seam in `ContractionForcesQuadraticStrong` with a
+  named uniqueness/compatibility seam record.
+- Replace the placeholder-style pending field in
+  `ContractionQuadraticToSignatureBridgeTheorem` with a named bridge seam
+  record that makes the remaining quadratic/signature compatibility gap
+  explicit.
 
 - Replace trivial closure fallbacks on the minimum credible path.
   Current priority:
@@ -157,8 +193,11 @@ Priority bucket: `P0` first, then `P1`
   one-minus harness.
 - [x] Next snap-threshold extension:
   add a second non-shift realization harness (Bool inversion).
-- Next snap-threshold extension:
+- [x] Next snap-threshold extension:
   add a Bool inversion-specific snap witness and the B₄ harness.
+- Next snap-threshold extension:
+  lift the standalone `B₄` harness from shell-only severity to an
+  orientation/signature-aware admissible witness surface.
 - [x] Build the profile-rigidity harness first.
   Concrete sub-tasks:
   define the benchmark interface,

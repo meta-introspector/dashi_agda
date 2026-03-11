@@ -28,6 +28,8 @@ open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportThe
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryTheorem as KLRWOTG
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservableTransportGeometryCoherenceTheorem as KLRWOTGC
 open import DASHI.Physics.Closure.ContractionForcesQuadraticTheorem as CFQT
+open import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
+open import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
 open import DASHI.Physics.Closure.Recovery.WaveRegime as RWR
 open import DASHI.Physics.Closure.CanonicalGeometryConsumer as CGC
 open import DASHI.Physics.Closure.CanonicalObservableConsumer as COC
@@ -61,6 +63,9 @@ record CanonicalStageCSummaryBundle : Setω where
     dynamicsLaw : CDLT.CanonicalDynamicsLawTheorem
     physicsClosureFivePillars : PCFPT.PhysicsClosureFivePillarsTheorem
     contractionForcing : CFQT.ContractionForcesQuadraticTheorem
+    contractionForcingStrong : CFQS.ContractionForcesQuadraticStrong
+    contractionQuadraticToSignatureBridge :
+      CQSB.ContractionQuadraticToSignatureBridgeTheorem
     recoveredDynamics : KLRDT.KnownLimitsRecoveredDynamicsTheorem
     recoveredObservables : KLROT.KnownLimitsRecoveredObservablesTheorem
     recoveredObservableGeometry :
@@ -155,9 +160,10 @@ record CanonicalStageCSummaryBundle : Setω where
     admissibleVerdict : RPR.RigidityVerdict
     negativeControlVerdict : RPR.RigidityVerdict
 
-canonicalStageCSummaryBundle : CanonicalStageCSummaryBundle
-canonicalStageCSummaryBundle =
-  record
+abstract
+  canonicalStageCSummaryBundle-abs : CanonicalStageCSummaryBundle
+  canonicalStageCSummaryBundle-abs =
+    record
     { closureStatus = CSC.canonicalClosureStatus
     ; theoremBundle = CSTB.canonicalStageCTheoremBundle
     ; realizedGaugeInstances = CGCRI.canonicalGaugeConstraintRealizedInstances
@@ -174,6 +180,9 @@ canonicalStageCSummaryBundle =
     ; dynamicsLaw = CSC.canonicalDynamicsLawTheorem
     ; physicsClosureFivePillars = CSC.canonicalPhysicsClosureFivePillarsTheorem
     ; contractionForcing = CSC.canonicalContractionForcesQuadraticTheorem
+    ; contractionForcingStrong = CSC.canonicalContractionForcesQuadraticStrong
+    ; contractionQuadraticToSignatureBridge =
+        CSC.canonicalContractionQuadraticToSignatureBridgeTheorem
     ; recoveredDynamics = CSC.canonicalKnownLimitsRecoveredDynamicsTheorem
     ; recoveredObservables = CSC.canonicalKnownLimitsRecoveredObservablesTheorem
     ; recoveredObservableGeometry =
@@ -252,3 +261,6 @@ canonicalStageCSummaryBundle =
     ; admissibleVerdict = CSC.canonicalAdmissibleVerdict
     ; negativeControlVerdict = CSC.canonicalNegativeControlVerdict
     }
+
+canonicalStageCSummaryBundle : CanonicalStageCSummaryBundle
+canonicalStageCSummaryBundle = canonicalStageCSummaryBundle-abs

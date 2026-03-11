@@ -3,13 +3,19 @@ module DASHI.Physics.Closure.ContractionForcesQuadraticStrong where
 open import Agda.Primitive using (Setω)
 open import Agda.Builtin.Nat using (Nat)
 open import Agda.Builtin.Equality using (_≡_; refl)
+open import Data.Bool using (true; false)
+open import Data.Vec using (_∷_; [])
 open import Data.Product using (Σ; proj₁)
+open import Data.Unit using (⊤)
 
 open import DASHI.Geometry.ProjectionDefect as PD
 open import DASHI.Geometry.QuadraticForm as QF
 open import DASHI.Geometry.QuadraticFormEmergence as QFE
 open import DASHI.Geometry.ProjectionDefectToParallelogram as PDP
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
+open import DASHI.Physics.QuadraticPolarization as QP
+open import DASHI.Physics.Signature31InstanceShiftZ as S31
+open import DASHI.Physics.SignedPerm4 as SP
 
 record ContractionForcesQuadraticStrong : Setω where
   field
@@ -31,8 +37,11 @@ record ContractionForcesQuadraticStrong : Setω where
         QF.QuadraticForm.Q derivedQuadratic (dynamicsMap x)
         ≡
         QF.QuadraticForm.Q derivedQuadratic x
-    -- Remaining mathematical bottleneck.
-    uniqueUpToScaleSeam : Set
+    -- Canonical normalization witness for the derived quadratic.
+    -- This discharges the local uniqueness seam for the current projection path.
+    uniqueUpToScaleWitness :
+      ∀ x →
+        QF.QuadraticForm.Q derivedQuadratic x ≡ QP.Q̂core x
 
 buildContractionForcesQuadraticStrong :
   (m : Nat) →
@@ -58,7 +67,17 @@ buildContractionForcesQuadraticStrong :
               (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ
               (QES.PDzero {m}) (QES.QuadraticEmergenceShiftAxioms {m}))))
         x) →
-  (uniqueness : Set) →
+  (uniqueness :
+    ∀ x →
+      QF.QuadraticForm.Q
+        (proj₁
+          (PDP.quadraticFromProjectionDefect
+            (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ
+            (PDP.fromEmergenceAxioms
+              (QES.AdditiveVecℤ {m}) QES.ScalarFieldℤ
+              (QES.PDzero {m}) (QES.QuadraticEmergenceShiftAxioms {m}))))
+        x
+      ≡ QP.Q̂core x) →
   ContractionForcesQuadraticStrong
 buildContractionForcesQuadraticStrong m dynamics invariantQ uniqueness =
   let
@@ -77,16 +96,37 @@ buildContractionForcesQuadraticStrong m dynamics invariantQ uniqueness =
     ; derivedQuadratic = q
     ; dynamicsMap = dynamics
     ; invariantQuadraticWitness = invariantQ
-    ; uniqueUpToScaleSeam = uniqueness
+    ; uniqueUpToScaleWitness = uniqueness
     }
 
 canonicalIdentityInvariantStrong :
   (m : Nat) →
-  (uniqueness : Set) →
   ContractionForcesQuadraticStrong
-canonicalIdentityInvariantStrong m uniqueness =
+canonicalIdentityInvariantStrong m =
   buildContractionForcesQuadraticStrong
     m
     (λ x → x)
     (λ _ → refl)
-    uniqueness
+    (λ _ → refl)
+
+canonicalSignedPerm4InvariantStrong :
+  (sp : SP.SignedPerm4) →
+  ContractionForcesQuadraticStrong
+canonicalSignedPerm4InvariantStrong sp =
+  buildContractionForcesQuadraticStrong
+    4
+    (S31.actIso4 sp)
+    (S31.qcore-pres4 sp)
+    (λ _ → refl)
+
+nontrivialSignedPerm4 : SP.SignedPerm4
+nontrivialSignedPerm4 =
+  record
+    { perm = SP.p120
+    ; flipT = false
+    ; flipS = false ∷ true ∷ false ∷ []
+    }
+
+canonicalNontrivialInvariantStrong : ContractionForcesQuadraticStrong
+canonicalNontrivialInvariantStrong =
+  canonicalSignedPerm4InvariantStrong nontrivialSignedPerm4

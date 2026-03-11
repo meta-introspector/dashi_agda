@@ -54,6 +54,8 @@ open import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
 open import DASHI.Physics.Closure.KnownLimitsGRBridgeTheorem as KLBGT
 open import DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem as KLBQFT
 open import DASHI.Physics.Closure.ContractionForcesQuadraticTheorem as CFQT
+open import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
+open import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
 
 record CanonicalStageCTheoremBundle : Setω where
   field
@@ -223,6 +225,10 @@ record CanonicalStageCTheoremBundle : Setω where
     localPhysicsCoherenceSummary : KLLPC.KnownLimitsLocalPhysicsCoherenceTheorem
     contractionForcingSummary :
       CFQT.ContractionForcesQuadraticTheorem
+    contractionForcingStrongSummary :
+      CFQS.ContractionForcesQuadraticStrong
+    contractionQuadraticToSignatureBridgeSummary :
+      CQSB.ContractionQuadraticToSignatureBridgeTheorem
     recoveredLocalRegimeSummary : KLRLR.KnownLimitsRecoveredLocalRegimeTheorem
     completeLocalRegimeSummary : KLCLR.KnownLimitsCompleteLocalRegimeTheorem
     dynamicsLawSummary : CDLT.CanonicalDynamicsLawTheorem
@@ -280,9 +286,10 @@ record CanonicalStageCTheoremBundle : Setω where
     knownLimitsQFTBridgeSummary :
       KLBQFT.KnownLimitsQFTBridgeTheorem
 
-canonicalStageCTheoremBundle : CanonicalStageCTheoremBundle
-canonicalStageCTheoremBundle =
-  record
+abstract
+  canonicalStageCTheoremBundle-abs : CanonicalStageCTheoremBundle
+  canonicalStageCTheoremBundle-abs =
+    record
     { constraintTheoremSummary = CSC.canonicalConstraintTheorem
     ; gaugeBridgeSummary = CSC.canonicalGaugeConstraintBridgeTheorem
     ; canonicalParametricGaugeSummary = CSC.canonicalParametricGaugeConstraintTheorem
@@ -401,6 +408,10 @@ canonicalStageCTheoremBundle =
         CSC.canonicalKnownLimitsLocalPhysicsCoherenceTheorem
     ; contractionForcingSummary =
         CSC.canonicalContractionForcesQuadraticTheorem
+    ; contractionForcingStrongSummary =
+        CSC.canonicalContractionForcesQuadraticStrong
+    ; contractionQuadraticToSignatureBridgeSummary =
+        CSC.canonicalContractionQuadraticToSignatureBridgeTheorem
     ; recoveredLocalRegimeSummary =
         CSC.canonicalKnownLimitsRecoveredLocalRegimeTheorem
     ; completeLocalRegimeSummary =
@@ -459,3 +470,6 @@ canonicalStageCTheoremBundle =
     ; knownLimitsGRBridgeSummary = CSC.canonicalKnownLimitsGRBridgeTheorem
     ; knownLimitsQFTBridgeSummary = CSC.canonicalKnownLimitsQFTBridgeTheorem
     }
+
+canonicalStageCTheoremBundle : CanonicalStageCTheoremBundle
+canonicalStageCTheoremBundle = canonicalStageCTheoremBundle-abs

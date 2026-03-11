@@ -160,6 +160,8 @@ module KLRWOTGRFUS = RWR
 import DASHI.Physics.Closure.KnownLimitsGRBridgeTheorem as KLBGT
 import DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem as KLBQFT
 import DASHI.Physics.Closure.ContractionForcesQuadraticTheorem as CFQT
+import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
+import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
 import DASHI.Physics.Closure.SpinLocalLorentzBridgeTheorem as SLLB
 import DASHI.Physics.Closure.KnownLimitsPropagationSpinTheorem as KLPST
 import DASHI.Physics.Closure.KnownLimitsCausalPropagationTheorem as KLCPT
@@ -1211,6 +1213,16 @@ canonicalContractionForcesQuadraticTheorem :
   CFQT.ContractionForcesQuadraticTheorem
 canonicalContractionForcesQuadraticTheorem =
   CFQT.canonicalContractionForcesQuadraticTheorem 4
+
+canonicalContractionForcesQuadraticStrong :
+  CFQS.ContractionForcesQuadraticStrong
+canonicalContractionForcesQuadraticStrong =
+  CFQS.canonicalNontrivialInvariantStrong
+
+canonicalContractionQuadraticToSignatureBridgeTheorem :
+  CQSB.ContractionQuadraticToSignatureBridgeTheorem
+canonicalContractionQuadraticToSignatureBridgeTheorem =
+  CQSB.canonicalContractionQuadraticToSignatureBridgeTheorem
 
 canonicalKnownLimitsRecoveredDynamicsTheorem :
   KLRDT.KnownLimitsRecoveredDynamicsTheorem

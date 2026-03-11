@@ -18,6 +18,17 @@
 3. Only after (2), treat signature, Clifford, and full gauge/matter recovery
    as mathematically closed rather than packaged.
 
+## Engineering hardening track (normalization cost)
+- Base369 cyclic operators are being split into:
+  - compatibility definitions that keep the existing `spin` semantics,
+  - closed-form definitions via index arithmetic (`fromIndex` / modulo carrier period).
+- Scope for this turn:
+  - land the triadic closed-form path with a correctness bridge,
+  - stage hex/nonary migration as follow-up TODO work.
+- Intent:
+  reduce recursive normalization pressure in small but frequently reused cyclic
+  operators without changing external behavior.
+
 ## Signals to watch
 - `status.json` should flip `milestones_remaining` to 0 once the bridge and
   dynamics pillars are recorded as canonical exports.

@@ -6,7 +6,10 @@
 2. Build a strengthened contraction→quadratic module that exposes
    invariant/uniqueness seams as explicit pending proof obligations.
 3. Land a first concrete invariant witness in the strengthened module.
-4. Re-route status/docs so closure is not marked complete before those seams
+4. Land a strengthened contraction→signature bridge from the new module.
+5. Replace raw seam placeholders with named seam records so the remaining
+   obstruction is explicit in both the contraction and signature bridge layers.
+6. Re-route status/docs so closure is not marked complete before those seams
    are discharged.
 
 ## Current Milestones
@@ -43,11 +46,16 @@
 
 ## Next Priorities
 
-1. Cross-realization validation package: in progress (synthetic one-minus
-   non-shift policy + Bool inversion harness landed; next add Bool
-   inversion-specific snap witness and the B₄ harness).
+0. Runtime guardrail: skip direct checks of
+   `PhysicsClosureValidationSummary.agda` until runtime bounds are acceptable
+   (currently ~1.25 hours).
+1. Cross-realization validation package: done (Bool inversion-specific snap
+   witness + standalone B₄ harness landed and exported through the validation
+   summary).
 2. Contraction ⇒ quadratic theorem.
 3. Quadratic ⇒ signature theorem.
 4. Concrete constraint-closure theorem (current three-generator system).
 5. Local recovery / effective-geometry theorem.
 6. Signature ⇒ Clifford/spin bridge.
+7. Base369 normalization hardening (tri first): add closed-form cyclic
+   operators and bridge lemmas from recursive `spin` forms.
