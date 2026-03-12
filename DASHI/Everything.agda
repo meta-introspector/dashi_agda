@@ -354,6 +354,11 @@ import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation
 import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidationShiftInstance
 import DASHI.Physics.Closure.ObservablePredictionPackage
 import DASHI.Physics.Closure.ObservablePredictionEvidence
+import DASHI.Physics.Closure.PhysicsClosureCoreWitness
+import DASHI.Physics.Closure.PhysicsClosureConstructorTheorem
+import DASHI.Physics.Closure.PhysicsClosureRealizationIndependenceTheorem
+import DASHI.Physics.Closure.PhysicsClosureTheoremLadder
+import DASHI.Physics.Closure.PhysicsClosureTheoremChecklist
 import DASHI.Physics.SeverityGuard.Synthetic.Concrete
 import DASHI.Physics.Closure.Validation.RealizationProfileRigidity
 import DASHI.Physics.Closure.Validation.FalsifiabilityBoundary

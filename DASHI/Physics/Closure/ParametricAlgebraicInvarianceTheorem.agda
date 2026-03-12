@@ -2,7 +2,7 @@ module DASHI.Physics.Closure.ParametricAlgebraicInvarianceTheorem where
 
 open import Agda.Primitive using (Setω)
 open import Agda.Builtin.Bool using (true)
-open import Agda.Builtin.Equality using (_≡_)
+open import Agda.Builtin.Equality using (_≡_; refl)
 
 open import DASHI.Physics.Closure.CanonicalConstraintGaugePackage as CCGP
 open import DASHI.Physics.Closure.ParametricAlgebraicPersistenceTheorem as PACTP
@@ -13,11 +13,11 @@ record ParametricAlgebraicInvarianceTheorem
     algebraicPersistence : PACTP.ParametricAlgebraicPersistenceTheorem P
     admissibleInvariant :
       ∀ c →
-      CCGP.admissible P c ≡ true →
+      (a : CCGP.admissible P c ≡ true) →
       PACTP.ParametricAlgebraicPersistenceTheorem.persistenceOnAdmissible
-        algebraicPersistence c
+        algebraicPersistence c a
       ≡
-      CCGP.admissible P c ≡ true
+      a
 
 parametricAlgebraicInvarianceTheorem :
   (P : CCGP.CanonicalConstraintGaugePackage) →

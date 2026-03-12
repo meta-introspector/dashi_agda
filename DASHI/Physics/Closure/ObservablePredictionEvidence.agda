@@ -1,5 +1,6 @@
 module DASHI.Physics.Closure.ObservablePredictionEvidence where
 
+open import Agda.Primitive using (Setω)
 open import Level using (_⊔_; suc)
 open import Agda.Builtin.Nat using (Nat)
 
@@ -26,7 +27,7 @@ record ObservablePredictionEvidence
   (Ecod : Set ℓe)
   (Parts : MDL.MDLParts X O)
   (Trade : MDL.TradeoffLemma Parts)
-  : Set (suc (ℓx ⊔ ℓs ⊔ ℓn ⊔ ℓe)) where
+  : Setω where
   field
     observables : OPP.ObservablePredictionPackage
     orbitProfile : SE.OrbitProfile V

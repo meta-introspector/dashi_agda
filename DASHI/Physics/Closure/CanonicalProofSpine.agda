@@ -21,6 +21,11 @@ open import DASHI.Physics.ConcreteClosureStack as CCS
 open import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
 open import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
 open import DASHI.Physics.Closure.QuadraticToCliffordBridgeTheorem as QTCB
+open import DASHI.Physics.Closure.CliffordToEvenWaveLiftBridgeTheorem as CEW
+open import DASHI.Physics.Closure.PhysicsClosureCoreWitness as PCCW
+open import DASHI.Physics.Closure.PhysicsClosureConstructorTheorem as PCCT
+open import DASHI.Physics.Closure.PhysicsClosureTheoremLadder as PCTL
+open import DASHI.Physics.Closure.PhysicsClosureTheoremChecklist as PCTC
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI
 
@@ -30,6 +35,11 @@ record CanonicalProofSpine : Setω where
     strongContractionQuadratic : CFQS.ContractionForcesQuadraticStrong
     canonicalContractionToSignature : CQSB.ContractionQuadraticToSignatureBridgeTheorem
     canonicalQuadraticToCliffordBridge : QTCB.QuadraticToCliffordBridgeTheorem
+    canonicalCliffordToEvenWaveLiftBridge : CEW.CliffordToEvenWaveLiftBridgeTheorem
+    canonicalCoreWitness : PCCW.PhysicsClosureCoreWitness
+    canonicalConstructorTheorem : PCCT.PhysicsClosureConstructorTheorem
+    canonicalTheoremLadder : Setω
+    canonicalTheoremChecklist : PCTC.PhysicsClosureTheoremChecklist
     canonicalFullClosure : PCF.PhysicsClosureFull
 
 canonicalProofSpine : CanonicalProofSpine
@@ -41,5 +51,14 @@ canonicalProofSpine =
         CQSB.canonicalContractionQuadraticToSignatureBridgeTheorem
     ; canonicalQuadraticToCliffordBridge =
         QTCB.canonicalQuadraticToCliffordBridgeTheorem
+    ; canonicalCliffordToEvenWaveLiftBridge =
+        CEW.canonicalCliffordToEvenWaveLiftBridgeTheorem
+    ; canonicalCoreWitness = PCFI.physicsClosureCoreWitness
+    ; canonicalConstructorTheorem =
+        PCCT.canonicalPhysicsClosureConstructorTheorem
+    ; canonicalTheoremLadder =
+        PCTL.RealizationIndependentPhysicsClosureTheorem
+    ; canonicalTheoremChecklist =
+        PCTC.canonicalPhysicsClosureTheoremChecklist
     ; canonicalFullClosure = PCFI.physicsClosureFull
     }

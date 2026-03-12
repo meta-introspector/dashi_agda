@@ -22,12 +22,14 @@ open import DASHI.MDL.MDLDescentTradeoff as MDL using (MDLParts)
 open import DASHI.Physics.Closure.MDLTradeoffShiftInstance as MSI
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
 open import DASHI.Physics.Closure.DynamicalClosure as DC
+open import DASHI.Physics.Closure.DynamicalClosureWitness as DCW
 open import DASHI.Physics.Closure.OrthogonalityZLift
 open import DASHI.Physics.UniversalityTheorem
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
 open import DASHI.Physics.RealTernaryCarrier as RTC
 open import DASHI.Geometry.OrthogonalityFromPolarization as OP
-open import DASHI.Physics.Signature31Canonical as S31C
+import DASHI.Physics.Signature31Canonical as S31C
+open import DASHI.Physics.Closure.PhysicsClosureCoreWitness as PCCW
 open import DASHI.Physics.Closure.ContractionForcesQuadraticTheorem as CFQT
 open import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
 open import DASHI.Physics.Closure.ConstraintClosureFromCanonicalPathTheorem as CCFCPT
@@ -130,3 +132,28 @@ canonicalPhysicsClosureFullFromExternal ext =
     ; dynamics = CanonicalExternalInputs.dynamics ext
     ; universality = CanonicalExternalInputs.universality ext
     }
+
+physicsClosureFullFromCoreWitness :
+  PCCW.PhysicsClosureCoreWitness →
+  PhysicsClosureFull
+physicsClosureFullFromCoreWitness witness =
+  canonicalPhysicsClosureFullFromExternal
+    record
+      { kit = PCCW.PhysicsClosureCoreWitness.kit witness
+      ; polarizationZ =
+          DCW.DynamicalClosureWitness.effectiveGeometryPolarization
+            (PCCW.PhysicsClosureCoreWitness.dynamicsWitness witness)
+      ; orthogonalityZ =
+          DCW.DynamicalClosureWitness.effectiveGeometryOrthogonality
+            (PCCW.PhysicsClosureCoreWitness.dynamicsWitness witness)
+      ; signatureCoreProvider =
+          PCCW.PhysicsClosureCoreWitness.signatureCoreProvider witness
+      ; mdlLyap =
+          DCW.DynamicalClosureWitness.monotoneLyapunov
+            (PCCW.PhysicsClosureCoreWitness.dynamicsWitness witness)
+      ; mdlFejer =
+          DCW.DynamicalClosureWitness.monotoneFejer
+            (PCCW.PhysicsClosureCoreWitness.dynamicsWitness witness)
+      ; dynamics = PCCW.PhysicsClosureCoreWitness.dynamics witness
+      ; universality = PCCW.PhysicsClosureCoreWitness.universality witness
+      }
