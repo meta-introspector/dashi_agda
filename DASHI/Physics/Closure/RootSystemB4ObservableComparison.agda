@@ -27,17 +27,52 @@ record B4ObservableComparison : Setω where
     signatureCompatibility :
       B4OSB.b4OrientationJustified ≡ B4OSB.b4OrientationJustified
 
+mkB4ObservableComparison :
+  B4OSC.OrbitStabilizerComparison →
+  B4OSC.OrbitStabilizerComparison →
+  B4OSC.OrbitStabilizerComparison →
+  B4OSC.OrbitStabilizerComparison →
+  B4OSC.OrbitStabilizerComparison →
+  B4OM.RootSystemB4OrbitMergeTheorem →
+  B4SR.RootSystemB4ShellRegradingTheorem →
+  (OPD.shell1_p3_q1 ≡ ORB4.b4-shell1-computed → ⊥) →
+  (OPD.shell2_p3_q1 ≡ ORB4.b4-shell2-computed → ⊥) →
+  B4OSB.b4OrientationJustified ≡ B4OSB.b4OrientationJustified →
+  B4ObservableComparison
+mkB4ObservableComparison
+  shell1-24
+  shell1-6
+  shell1-2
+  shell2-16
+  shell2-12
+  orbitMerge
+  shellRegrading
+  rawShiftShell1Mismatch
+  rawShiftShell2Mismatch
+  signatureCompatibility =
+  record
+    { shell1-24-comparison = shell1-24
+    ; shell1-6-comparison = shell1-6
+    ; shell1-2-comparison = shell1-2
+    ; shell2-16-comparison = shell2-16
+    ; shell2-12-comparison = shell2-12
+    ; orbitMerge = orbitMerge
+    ; shellRegrading = shellRegrading
+    ; rawShiftShell1Mismatch = rawShiftShell1Mismatch
+    ; rawShiftShell2Mismatch = rawShiftShell2Mismatch
+    ; signatureCompatibility = signatureCompatibility
+    }
+
 canonicalB4ObservableComparison : B4ObservableComparison
 canonicalB4ObservableComparison =
-  record
-    { shell1-24-comparison = B4OSC.comparison B4OSC.shiftShell1-24
-    ; shell1-6-comparison = B4OSC.comparison B4OSC.shiftShell1-6
-    ; shell1-2-comparison = B4OSC.comparison B4OSC.shiftShell1-2
-    ; shell2-16-comparison = B4OSC.comparison B4OSC.shiftShell2-16
-    ; shell2-12-comparison = B4OSC.comparison B4OSC.shiftShell2-12
-    ; orbitMerge = B4OM.canonicalRootSystemB4OrbitMergeTheorem
-    ; shellRegrading = B4SR.canonicalRootSystemB4ShellRegradingTheorem
-    ; rawShiftShell1Mismatch = λ ()
-    ; rawShiftShell2Mismatch = λ ()
-    ; signatureCompatibility = refl
-    }
+  mkB4ObservableComparison
+    (B4OSC.comparison B4OSC.shiftShell1-24)
+    (B4OSC.comparison B4OSC.shiftShell1-6)
+    (B4OSC.comparison B4OSC.shiftShell1-2)
+    (B4OSC.comparison B4OSC.shiftShell2-16)
+    (B4OSC.comparison B4OSC.shiftShell2-12)
+    B4OM.canonicalRootSystemB4OrbitMergeTheorem
+    B4SR.canonicalRootSystemB4ShellRegradingTheorem
+    (λ ())
+    (λ ())
+    refl

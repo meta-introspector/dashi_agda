@@ -39,16 +39,55 @@ record RootSystemB4RealizationWitness : Setω where
         B4DW.b4DynamicsWitness
       ≡ refl
 
+mkRootSystemB4RealizationWitness :
+  (observableComparison : B4OC.B4ObservableComparison) →
+  S31C.providerSource S31C.b4CoreProvider
+    ≡ S31C.rootSystemB4Source →
+  ORB4.b4-shell1-computed ≡ ORB4.b4-shell1-computed →
+  ORB4.b4-shell2-computed ≡ ORB4.b4-shell2-computed →
+  B4OSB.b4OrientationJustified ≡ B4OSB.b4OrientationJustified →
+  B4PB.B4PromotionBridge.promotionStatus B4PB.bridge
+    ≡ B4PB.admissiblePromotionReady →
+  B4C.B4ShellComparisonReport.verdict B4C.report
+    ≡ B4C.B4ShellComparisonReport.verdict B4C.report →
+  B4DW.RootSystemB4DynamicsWitness.shell1ProfilePreserved
+    B4DW.b4DynamicsWitness
+    ≡ refl →
+  B4DW.RootSystemB4DynamicsWitness.shell2ProfilePreserved
+    B4DW.b4DynamicsWitness
+    ≡ refl →
+  RootSystemB4RealizationWitness
+mkRootSystemB4RealizationWitness
+  observableComparison
+  providerIsB4
+  shell1ProfilePreserved
+  shell2ProfilePreserved
+  orientationJustified
+  promotionReady
+  shellComparisonAvailable
+  dynamicsWitnessPreservesShell1
+  dynamicsWitnessPreservesShell2 =
+  record
+    { observableComparison = observableComparison
+    ; providerIsB4 = providerIsB4
+    ; shell1ProfilePreserved = shell1ProfilePreserved
+    ; shell2ProfilePreserved = shell2ProfilePreserved
+    ; orientationJustified = orientationJustified
+    ; promotionReady = promotionReady
+    ; shellComparisonAvailable = shellComparisonAvailable
+    ; dynamicsWitnessPreservesShell1 = dynamicsWitnessPreservesShell1
+    ; dynamicsWitnessPreservesShell2 = dynamicsWitnessPreservesShell2
+    }
+
 b4RealizationWitness : RootSystemB4RealizationWitness
 b4RealizationWitness =
-  record
-    { observableComparison = B4OC.canonicalB4ObservableComparison
-    ; providerIsB4 = refl
-    ; shell1ProfilePreserved = refl
-    ; shell2ProfilePreserved = refl
-    ; orientationJustified = refl
-    ; promotionReady = refl
-    ; shellComparisonAvailable = refl
-    ; dynamicsWitnessPreservesShell1 = refl
-    ; dynamicsWitnessPreservesShell2 = refl
-    }
+  mkRootSystemB4RealizationWitness
+    B4OC.canonicalB4ObservableComparison
+    refl
+    refl
+    refl
+    refl
+    refl
+    refl
+    refl
+    refl

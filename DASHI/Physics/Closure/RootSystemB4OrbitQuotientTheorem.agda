@@ -48,18 +48,75 @@ record RootSystemB4OrbitQuotientTheorem : Setω where
       B4OM.RootSystemB4OrbitMergeTheorem.mergedShell1Representative
         (B4OC.B4ObservableComparison.orbitMerge observableComparison)
 
-canonicalRootSystemB4OrbitQuotientTheorem :
+mkRootSystemB4OrbitQuotientTheorem :
+  (resolutionMap : B4ORM.ObservableResolutionMap) →
+  (observableComparison : B4OC.B4ObservableComparison) →
+  (observableRefinement :
+    B4ORM.B4ObservableRefinement
+      SCOWI.shiftClosureObservableWitness
+      B4COWI.b4ClosureObservableWitness) →
+  B4ORM.ObservableResolutionMap.toB4 resolutionMap
+    B4OSC.shiftShell1-6
+  ≡
+  B4ORM.ObservableResolutionMap.toB4 resolutionMap
+    B4OSC.shiftShell1-2
+  →
+  B4OSC.b4OrbitSize B4OSC.shiftShell1-6
+  ≡
+  B4OSC.shiftOrbitSize B4OSC.shiftShell1-6
+  + B4OSC.shiftOrbitSize B4OSC.shiftShell1-2
+  →
+  B4ORM.ObservableResolutionMap.toB4 resolutionMap
+    B4OSC.shiftShell2-12
+  ≡
+  B4ORM.b4-shell2-class
+  →
+  B4ORM._≡ω_
+    (B4ORM.ObservableResolutionMap.onObservables resolutionMap
+      SCOWI.shiftClosureObservableWitness)
+    B4COWI.b4ClosureObservableWitness
+  →
+  B4OM.RootSystemB4OrbitMergeTheorem.mergedShell1Representative
+    (B4OC.B4ObservableComparison.orbitMerge observableComparison)
+  ≡
+  B4OM.RootSystemB4OrbitMergeTheorem.mergedShell1Representative
+    (B4OC.B4ObservableComparison.orbitMerge observableComparison)
+  →
+  RootSystemB4OrbitQuotientTheorem
+mkRootSystemB4OrbitQuotientTheorem
+  resolutionMap
+  observableComparison
+  observableRefinement
+  shell1FinePartitionDescendsToB4
+  shell1FinePartitionQuotientCardinality
+  shell2TwelveClassSurvivesAsB4Shell2
+  shiftObservableBoundaryDescendsToB4
+  quotientWitnessedByExplicitWeylElement =
+  record
+    { resolutionMap = resolutionMap
+    ; observableComparison = observableComparison
+    ; observableRefinement = observableRefinement
+    ; shell1FinePartitionDescendsToB4 = shell1FinePartitionDescendsToB4
+    ; shell1FinePartitionQuotientCardinality =
+        shell1FinePartitionQuotientCardinality
+    ; shell2TwelveClassSurvivesAsB4Shell2 =
+        shell2TwelveClassSurvivesAsB4Shell2
+    ; shiftObservableBoundaryDescendsToB4 =
+        shiftObservableBoundaryDescendsToB4
+    ; quotientWitnessedByExplicitWeylElement =
+        quotientWitnessedByExplicitWeylElement
+    }
+
+canonicalRootSystemB4OrbitQuotientTheorem :  
   RootSystemB4OrbitQuotientTheorem
 canonicalRootSystemB4OrbitQuotientTheorem =
-  record
-    { resolutionMap = B4ORM.canonicalObservableResolutionMap
-    ; observableComparison = B4OC.canonicalB4ObservableComparison
-    ; observableRefinement = B4ORM.canonicalB4ObservableRefinement
-    ; shell1FinePartitionDescendsToB4 = refl
-    ; shell1FinePartitionQuotientCardinality =
-        B4OM.RootSystemB4OrbitMergeTheorem.shell1MergedOrbitCardinality
-          B4OM.canonicalRootSystemB4OrbitMergeTheorem
-    ; shell2TwelveClassSurvivesAsB4Shell2 = refl
-    ; shiftObservableBoundaryDescendsToB4 = B4ORM.reflω
-    ; quotientWitnessedByExplicitWeylElement = refl
-    }
+  mkRootSystemB4OrbitQuotientTheorem
+    B4ORM.canonicalObservableResolutionMap
+    B4OC.canonicalB4ObservableComparison
+    B4ORM.canonicalB4ObservableRefinement
+    refl
+    (B4OM.RootSystemB4OrbitMergeTheorem.shell1MergedOrbitCardinality
+      B4OM.canonicalRootSystemB4OrbitMergeTheorem)
+    refl
+    B4ORM.reflω
+    refl

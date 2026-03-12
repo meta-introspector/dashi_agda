@@ -101,6 +101,18 @@ record B4ClosureEvidence : Setω where
   fullClosure =
     PCCT.PhysicsClosureConstructorTheorem.fullClosure constructorTheorem
 
+record B4PromotionEvidence : Setω where
+  field
+    promotionReady :
+      B4PB.B4PromotionBridge.promotionStatus B4PB.bridge
+      ≡ B4PB.admissiblePromotionReady
+
+canonicalB4PromotionEvidence : B4PromotionEvidence
+canonicalB4PromotionEvidence =
+  record
+    { promotionReady = refl
+    }
+
 mkShiftClosureEvidence :
   (obs : COW.ClosureObservableWitness) →
   S31C.signature31FromProvider S31C.shiftCoreProvider
@@ -127,8 +139,9 @@ mkB4ClosureEvidence :
     ≡ COW.ClosureObservableWitness.provedSignature obs →
   ObservableAdmissibility obs →
   B4OC.B4ObservableComparison →
+  B4PromotionEvidence →
   B4ClosureEvidence
-mkB4ClosureEvidence obs signatureAgreement admissibility comparison =
+mkB4ClosureEvidence obs signatureAgreement admissibility comparison promotion =
   let witness = PCFI.coreWitnessWithB4Observables obs signatureAgreement
   in
   record
@@ -140,7 +153,7 @@ mkB4ClosureEvidence obs signatureAgreement admissibility comparison =
     ; witnessObservables = reflω
     ; admissibility = admissibility
     ; observableComparison = comparison
-    ; promotionReady = refl
+    ; promotionReady = B4PromotionEvidence.promotionReady promotion
     ; signatureAgreement = signatureAgreement
     }
 
@@ -172,22 +185,36 @@ canonicalB4ClosureEvidence =
     signatureAgreement
     (admissibilityFromObservable obs)
     B4OC.canonicalB4ObservableComparison
+    canonicalB4PromotionEvidence
 
-descendClosureEvidence :
-  ShiftClosureEvidence → B4ClosureEvidence
-descendClosureEvidence shiftEvidence =
+descendClosureEvidenceWith :
+  B4OQT.RootSystemB4OrbitQuotientTheorem →
+  B4PromotionEvidence →
+  ShiftClosureEvidence →
+  B4ClosureEvidence
+descendClosureEvidenceWith quotientTheorem promotionEvidence shiftEvidence =
   let
     projectedObs =
       B4ORM.ObservableResolutionMap.onObservables
-        B4ORM.canonicalObservableResolutionMap
+        (B4OQT.RootSystemB4OrbitQuotientTheorem.resolutionMap quotientTheorem)
         (ShiftClosureEvidence.observables shiftEvidence)
+    comparison =
+      B4OQT.RootSystemB4OrbitQuotientTheorem.observableComparison
+        quotientTheorem
   in
   mkB4ClosureEvidence
     projectedObs
     refl
     (admissibilityFromObservable projectedObs)
-    (B4OQT.RootSystemB4OrbitQuotientTheorem.observableComparison
-      B4OQT.canonicalRootSystemB4OrbitQuotientTheorem)
+    comparison
+    promotionEvidence
+
+descendClosureEvidence :
+  ShiftClosureEvidence → B4ClosureEvidence
+descendClosureEvidence =
+  descendClosureEvidenceWith
+    B4OQT.canonicalRootSystemB4OrbitQuotientTheorem
+    canonicalB4PromotionEvidence
 
 reflectClosureEvidence :
   (b4 : B4ClosureEvidence) →
@@ -273,6 +300,7 @@ record ObservableResolutionInvarianceTheorem : Setω where
   field
     resolutionMap : B4ORM.ObservableResolutionMap
     orbitQuotientTheorem : B4OQT.RootSystemB4OrbitQuotientTheorem
+    promotionEvidence : B4PromotionEvidence
     canonicalShiftEvidence : ShiftClosureEvidence
     canonicalB4Evidence : B4ClosureEvidence
     canonicalRefinement :
@@ -300,10 +328,14 @@ canonicalObservableResolutionInvarianceTheorem =
   record
     { resolutionMap = B4ORM.canonicalObservableResolutionMap
     ; orbitQuotientTheorem = B4OQT.canonicalRootSystemB4OrbitQuotientTheorem
+    ; promotionEvidence = canonicalB4PromotionEvidence
     ; canonicalShiftEvidence = canonicalShiftClosureEvidence
     ; canonicalB4Evidence = canonicalB4ClosureEvidence
     ; canonicalRefinement = B4ORM.canonicalB4ObservableRefinement
-    ; closureDescends = descendClosureEvidence
+    ; closureDescends =
+        descendClosureEvidenceWith
+          B4OQT.canonicalRootSystemB4OrbitQuotientTheorem
+          canonicalB4PromotionEvidence
     ; closureReflects = reflectClosureEvidence
     ; closureInvariant =
         canonicalClosureInvariantUnderObservableResolution
