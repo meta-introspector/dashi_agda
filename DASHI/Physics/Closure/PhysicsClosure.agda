@@ -9,9 +9,12 @@ open import DASHI.Geometry.OrthogonalityFromPolarization
 open import DASHI.Geometry.SignatureUniqueness31
 open import DASHI.Physics.Constraints.Generators
 open import DASHI.Physics.Constraints.Bracket
-open import Agda.Builtin.Nat using (Nat)
+open import Agda.Builtin.Nat using (Nat; _+_)
 open import DASHI.Physics.Constraints.Closure
 open import MDL.Core.Core as OldMDL
+open import DASHI.MDL.MDLDescentTradeoff as MDL using (MDLParts)
+open import DASHI.Physics.Closure.MDLTradeoffShiftInstance as MSI
+open import DASHI.Physics.RealTernaryCarrier as RTC
 open import DASHI.Physics.Closure.OrthogonalityZLift
 open import DASHI.Physics.UniversalityTheorem
 
@@ -25,5 +28,9 @@ record PhysicsClosure : Set₂ where
     CS : ConstraintSystem
     L  : LieLike CS
     constraintClosure : ClosureLaw CS L
-    mdlLyap : ∀ {S : Set} (T : S → S) → OldMDL.Lyapunov T
+    mdlLyap :
+      ∀ {m k : Nat} →
+      OldMDL.Lyapunov
+        {S = RTC.Carrier (m + k)}
+        (MDLParts.T (MSI.MDLPartsShift {m} {k}))
     universality : Universality (RealClosureKit.C kit)

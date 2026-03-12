@@ -12,7 +12,7 @@ open import DASHI.Physics.Bridge using (BridgeSurface)
 
 open import DASHI.Geometry.ConeTimeIsotropy as CTI using (Signature)
 open import DASHI.Geometry.SignatureUniqueness31 as SU using (Signature31Theorem)
-open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
+open import DASHI.Physics.Signature31Canonical as S31C
 
 record LorentzAdapter : Set₁ where
   field
@@ -44,8 +44,8 @@ canonicalLorentzAdapter : BridgeSurface -> LorentzAdapter
 canonicalLorentzAdapter b =
   record
     { bridge = b
-    ; signature31Tag = S31OP.signature31
-    ; signature31Theorem = S31OP.signature31-theorem
+    ; signature31Tag = S31C.signature31
+    ; signature31Theorem = S31C.signature31-theorem
     }
 
 canonicalLorentzAdapterPlus : BridgeSurface -> LorentzAdapterPlus

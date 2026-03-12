@@ -25,8 +25,8 @@ authoritativeDynamics :
   MinimalCrediblePhysicsClosure → DC.DynamicalClosure
 authoritativeDynamics C = PCF.PhysicsClosureFull.dynamics (full C)
 
--- Current canonical Stage C path is shift-backed, so the authoritative
--- dynamics witness companion is the shift witness surface.
+-- Current canonical runtime provider is shift-backed, so the authoritative
+-- dynamics witness companion remains the shift witness surface.
 authoritativeDynamicsWitness :
   MinimalCrediblePhysicsClosure → DCW.DynamicalClosureWitness
 authoritativeDynamicsWitness _ = DCWI.shiftDynamicsWitness

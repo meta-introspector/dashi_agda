@@ -21,7 +21,7 @@ open import DASHI.Physics.UnifiedClosure as UC
 open import DASHI.Physics.ContractionQuadraticBridge as CQ
 open import DASHI.Physics.SignatureClassificationBridge as SC
 open import DASHI.Physics.CliffordEvenLiftBridge as CE
-open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
+open import DASHI.Physics.Signature31Canonical as S31C
 open import DASHI.Combinatorics.Entropy using (Involution)
 
 open import DASHI.Physics.DefaultClosure as DC
@@ -103,9 +103,9 @@ physicsUnification =
             record
               { p = suc (suc (suc zero))
               ; q = suc zero
-              ; signatureValue = S31OP.signature31
+              ; signatureValue = S31C.signature31
               ; signatureForced31 = refl
-              ; signatureTheorem = S31OP.signature31-theorem
+              ; signatureTheorem = S31C.signature31-theorem
               }
         }
     ; q2cl = record

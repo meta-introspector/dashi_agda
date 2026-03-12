@@ -21,8 +21,8 @@ open import DASHI.Physics.Closure.PolarizationZLift as PZL
 open import DASHI.Physics.Closure.DynamicalClosureShiftInstance as DCSI
 open import DASHI.Physics.Closure.MDLTradeoffShiftInstance as MSI
 open import DASHI.Physics.Closure.MDLLyapunovShiftInstance as MDLL
-open import DASHI.Physics.Closure.MDLLyapunovCompatibility as MDLC
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
+open import DASHI.Physics.Signature31Canonical as S31C
 open import DASHI.Physics.RealClosureKit as RK
 open import MDL.Core.Core as OldMDL
 open import DASHI.MDL.MDLDescentTradeoff as MDL using (MDLParts)
@@ -30,21 +30,30 @@ open import DASHI.Physics.RealTernaryCarrier as RTC
 open import DASHI.Physics.UniversalityTheorem as UTH
 
 -- Concrete instance: wires the Bool closure stack into PhysicsClosureFull.
--- The compatibility mdlLyap field remains generic, but the authoritative
--- Stage C Lyapunov witness is exposed through `MDLL.lyapunovShift`.
+-- The `mdlLyap` field now carries the authoritative shift witness directly.
 
-physicsClosureFull : PCF.PhysicsClosureFull
-physicsClosureFull =
+physicsClosureFullFromProvider :
+  S31C.IntrinsicCoreProvider → PCF.PhysicsClosureFull
+physicsClosureFullFromProvider provider =
   PCF.canonicalPhysicsClosureFullFromExternal
     record
       { kit = MRI.myKit
       ; polarizationZ = λ {m} → PZL.polarizationZLift {m}
       ; orthogonalityZ = λ {m} → OZ.orthogonalityZLift {m}
-      ; mdlLyap = λ {S} T → MDLC.mdlLyapTrivial T
+      ; signatureCoreProvider = provider
+      ; mdlLyap = λ {m} {k} → MDLL.lyapunovShift {m} {k}
       ; mdlFejer = MDLFA.mdlFejerShift
       ; dynamics = DCSI.shiftDynamics
       ; universality = UTH.canonicalUniversality (RK.RealClosureKit.C MRI.myKit)
       }
+
+physicsClosureFull : PCF.PhysicsClosureFull
+physicsClosureFull =
+  physicsClosureFullFromProvider S31C.shiftCoreProvider
+
+physicsClosureFullSynthetic : PCF.PhysicsClosureFull
+physicsClosureFullSynthetic =
+  physicsClosureFullFromProvider S31C.syntheticCoreProvider
 
 -- Concrete Lyapunov witness for the shift stack is available as:
 -- MDLL.lyapunovShift {m} {k}

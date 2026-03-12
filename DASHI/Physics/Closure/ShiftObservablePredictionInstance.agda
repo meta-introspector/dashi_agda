@@ -6,6 +6,7 @@ open import Data.Empty using (⊥-elim)
 open import DASHI.Physics.OrbitProfileData as OPD
 open import DASHI.Physics.ConeArrowIsotropyShiftOrbitEnumeration as SOE
 open import DASHI.Physics.OrbitSignatureDiscriminant as OSD
+open import DASHI.Physics.Signature31Canonical as S31C
 open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
 open import DASHI.Physics.Closure.ObservablePredictionPackage as OPP
 open import DASHI.Physics.Closure.ShiftSeamCertificates as SSC
@@ -35,7 +36,7 @@ falsifySig04-proof eq =
 shiftObservablePrediction : OPP.ObservablePredictionPackage
 shiftObservablePrediction =
   record
-    { provedSignature = S31OP.signature31
+    { provedSignature = S31C.signature31
     ; provedOrientation = SOE.orientationTagDerived
     ; provedShell1 = SOE.shiftEnumeration-shell1≡computed
     ; provedShell2 = SOE.shiftEnumeration-shell2≡computed

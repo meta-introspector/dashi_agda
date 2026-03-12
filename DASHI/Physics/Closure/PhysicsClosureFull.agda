@@ -2,7 +2,7 @@ module DASHI.Physics.Closure.PhysicsClosureFull where
 
 open import Agda.Builtin.Sigma using (Σ; _,_)
 open import Agda.Primitive using (Setω)
-open import Agda.Builtin.Nat using (Nat)
+open import Agda.Builtin.Nat using (Nat) renaming (_+_ to _+N_)
 open import Data.Unit using (⊤; tt)
 
 open import DASHI.Physics.RealClosureKit
@@ -18,12 +18,16 @@ open import DASHI.Physics.Constraints.Bracket
 open import DASHI.Physics.Constraints.Closure
 import DASHI.Physics.Constraints.ConcreteInstance as CI
 open import MDL.Core.Core as OldMDL
+open import DASHI.MDL.MDLDescentTradeoff as MDL using (MDLParts)
+open import DASHI.Physics.Closure.MDLTradeoffShiftInstance as MSI
 open import DASHI.Physics.Closure.MDLFejerAxiomsShift as MDLFA
 open import DASHI.Physics.Closure.DynamicalClosure as DC
 open import DASHI.Physics.Closure.OrthogonalityZLift
 open import DASHI.Physics.UniversalityTheorem
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
+open import DASHI.Physics.RealTernaryCarrier as RTC
 open import DASHI.Geometry.OrthogonalityFromPolarization as OP
+open import DASHI.Physics.Signature31Canonical as S31C
 open import DASHI.Physics.Closure.ContractionForcesQuadraticTheorem as CFQT
 open import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
 open import DASHI.Physics.Closure.ConstraintClosureFromCanonicalPathTheorem as CCFCPT
@@ -47,6 +51,7 @@ record PhysicsClosureFull : Setω where
     orthogonalityZ  : ∀ {m : Nat} → DASHI.Physics.Closure.OrthogonalityZLift.OrthogonalityZLift {m}
 
     -- Signature lock
+    signatureCoreProvider : S31C.IntrinsicCoreProvider
     signature31Theorem : SU.Signature31Theorem
     signature31 : CTI.Signature
 
@@ -56,7 +61,11 @@ record PhysicsClosureFull : Setω where
     constraintClosure : ClosureLaw CS L
 
     -- MDL Lyapunov descent
-    mdlLyap : ∀ {S : Set} (T : S → S) → OldMDL.Lyapunov T
+    mdlLyap :
+      ∀ {m k : Nat} →
+      OldMDL.Lyapunov
+        {S = RTC.Carrier (m +N k)}
+        (MDLParts.T (MSI.MDLPartsShift {m} {k}))
     mdlFejer : MDLFA.MDLFejerAxiomsShift
     dynamics : DC.DynamicalClosure
 
@@ -82,7 +91,12 @@ record CanonicalExternalInputs : Setω where
     orthogonalityZ :
       ∀ {m : Nat} →
         DASHI.Physics.Closure.OrthogonalityZLift.OrthogonalityZLift {m}
-    mdlLyap : ∀ {S : Set} (T : S → S) → OldMDL.Lyapunov T
+    signatureCoreProvider : S31C.IntrinsicCoreProvider
+    mdlLyap :
+      ∀ {m k : Nat} →
+      OldMDL.Lyapunov
+        {S = RTC.Carrier (m +N k)}
+        (MDLParts.T (MSI.MDLPartsShift {m} {k}))
     mdlFejer : MDLFA.MDLFejerAxiomsShift
     dynamics : DC.DynamicalClosure
     universality : Universality (RealClosureKit.C kit)
@@ -100,16 +114,18 @@ canonicalPhysicsClosureFullFromExternal ext =
           (CFQT.canonicalContractionForcesQuadraticTheorem m)
     ; polarizationZ = CanonicalExternalInputs.polarizationZ ext
     ; orthogonalityZ = CanonicalExternalInputs.orthogonalityZ ext
+    ; signatureCoreProvider =
+        CanonicalExternalInputs.signatureCoreProvider ext
     ; signature31Theorem =
-        CQSB.ContractionQuadraticToSignatureBridgeTheorem.signature31Theorem
-          canonicalContractionQuadraticToSignatureBridge
+        S31C.signature31-theoremFromProvider
+          (CanonicalExternalInputs.signatureCoreProvider ext)
     ; signature31 =
-        CQSB.ContractionQuadraticToSignatureBridgeTheorem.signature31Value
-          canonicalContractionQuadraticToSignatureBridge
+        S31C.signature31FromProvider
+          (CanonicalExternalInputs.signatureCoreProvider ext)
     ; CS = CI.CS
     ; L = CI.L
     ; constraintClosure = CCFCPT.canonicalPathInducedConstraintClosure
-    ; mdlLyap = CanonicalExternalInputs.mdlLyap ext
+    ; mdlLyap = λ {m} {k} → CanonicalExternalInputs.mdlLyap ext {m} {k}
     ; mdlFejer = CanonicalExternalInputs.mdlFejer ext
     ; dynamics = CanonicalExternalInputs.dynamics ext
     ; universality = CanonicalExternalInputs.universality ext

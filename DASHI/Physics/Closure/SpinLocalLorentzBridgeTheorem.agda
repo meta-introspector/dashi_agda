@@ -13,11 +13,16 @@ record SpinLocalLorentzBridge
     consumer : CSDC.SpinDiracConsumerFromMinimal C
     localCoherence : KLLCT.KnownLimitsLocalCoherenceTheorem
 
+spinLocalLorentzBridgeFromMinimal :
+  (C : MCPC.MinimalCrediblePhysicsClosure) →
+  SpinLocalLorentzBridge C
+spinLocalLorentzBridgeFromMinimal C =
+  record
+    { consumer = CSDC.spinDiracConsumerFromMinimal C
+    ; localCoherence = KLLCT.canonicalKnownLimitsLocalCoherenceTheorem
+    }
+
 canonicalSpinLocalLorentzBridge :
   SpinLocalLorentzBridge MCCSI.minimumCredibleClosureShift
 canonicalSpinLocalLorentzBridge =
-  record
-    { consumer =
-        CSDC.spinDiracConsumerFromMinimal MCCSI.minimumCredibleClosureShift
-    ; localCoherence = KLLCT.canonicalKnownLimitsLocalCoherenceTheorem
-    }
+  spinLocalLorentzBridgeFromMinimal MCCSI.minimumCredibleClosureShift

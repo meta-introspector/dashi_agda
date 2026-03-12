@@ -6,7 +6,7 @@ open import Relation.Binary.PropositionalEquality using (_≡_; refl; trans; sym
 
 open import DASHI.Geometry.ConeTimeIsotropy as CTI
 open import DASHI.Physics.OrbitSignatureDiscriminant as OSD
-open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
+open import DASHI.Physics.Signature31Canonical as S31C
 open import DASHI.Physics.SyntheticOneMinusShellRealization as SOM
 
 syntheticOrientationTag : Nat
@@ -27,4 +27,4 @@ syntheticOrientationJustified :
 syntheticOrientationJustified = refl
 
 syntheticSignature : CTI.Signature
-syntheticSignature = S31OP.signature31
+syntheticSignature = S31C.signature31

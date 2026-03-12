@@ -20,11 +20,12 @@ open import Agda.Builtin.Equality using (_≡_; refl)
 
 open import DASHI.Geometry.ConeTimeIsotropy as CTI
 open import DASHI.Geometry.QuadraticForm as QF
+open import DASHI.Geometry.Signature31FromIntrinsicShellForcing as S31ISF
 open import DASHI.Geometry.SignatureUniqueness31 as SU
 open import DASHI.Physics.Closure.ContractionForcesQuadraticTheorem as CFQT
 open import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
 open import DASHI.Physics.QuadraticPolarization as QP
-open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP
+open import DASHI.Physics.Signature31Canonical as S31C
 
 record ContractionQuadraticToSignatureBridgeTheorem : Setω where
   field
@@ -41,17 +42,35 @@ record ContractionQuadraticToSignatureBridgeTheorem : Setω where
           x
         ≡ QP.Q̂core x
 
-canonicalContractionQuadraticToSignatureBridgeTheorem :
+contractionQuadraticToSignatureBridgeFromIntrinsicCore :
+  (core : S31ISF.IntrinsicSignatureCoreAxioms) →
   ContractionQuadraticToSignatureBridgeTheorem
-canonicalContractionQuadraticToSignatureBridgeTheorem =
+contractionQuadraticToSignatureBridgeFromIntrinsicCore core =
   record
     { contractionForcesQuadraticTheorem =
-        CFQT.fromStrongContraction CFQS.canonicalNontrivialInvariantStrong
-    ; strengthenedContraction = CFQS.canonicalNontrivialInvariantStrong
-    ; signature31Theorem = S31OP.signature31-theorem
-    ; signature31Value = S31OP.signature31
+        CFQT.fromStrongContraction
+          (S31ISF.IntrinsicSignatureCoreAxioms.strengthenedContraction core)
+    ; strengthenedContraction =
+        S31ISF.IntrinsicSignatureCoreAxioms.strengthenedContraction core
+    ; signature31Theorem =
+        S31ISF.signature31-theoremFromIntrinsic core
+    ; signature31Value =
+        S31ISF.signature31FromIntrinsic core
     ; signatureForced31 = refl
     ; normalizedQuadratic =
         CFQS.uniqueUpToScaleWitness
-          CFQS.canonicalNontrivialInvariantStrong
+          (S31ISF.IntrinsicSignatureCoreAxioms.strengthenedContraction core)
     }
+
+contractionQuadraticToSignatureBridgeFromProvider :
+  (provider : S31C.IntrinsicCoreProvider) →
+  ContractionQuadraticToSignatureBridgeTheorem
+contractionQuadraticToSignatureBridgeFromProvider provider =
+  contractionQuadraticToSignatureBridgeFromIntrinsicCore
+    (S31C.IntrinsicCoreProvider.coreAxioms provider)
+
+canonicalContractionQuadraticToSignatureBridgeTheorem :
+  ContractionQuadraticToSignatureBridgeTheorem
+canonicalContractionQuadraticToSignatureBridgeTheorem =
+  contractionQuadraticToSignatureBridgeFromProvider
+    S31C.shiftCoreProvider

@@ -9,14 +9,25 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   -> shell-orbit enumeration
 --   -> orbit profile
 --   -> sig31.
+-- Stage B canonical theorem seam:
+--   intrinsic core axioms -> causal Lorentz forcing -> sig31.
+-- Current intrinsic-core providers:
+--   shift profile provider (canonical runtime path),
+--   synthetic one-minus provider (alternate theorem-typed inhabitant).
+-- Runtime selection plumbing:
+--   full closure now has provider-parametric constructors,
+--   minimal-credible closure now has a provider constructor with explicit
+--   signature-match proof input (shift default, synthetic optional).
 -- Stage B remaining open direction:
---   generalize that bridge beyond the current finite ternary
---   signed-permutation realization.
+--   broaden derivations of intrinsic core axioms beyond the current
+--   finite ternary signed-permutation realization stack.
 -- Stage C long-horizon program:
 --   full closure and downstream symmetry structure, documented in
 --   Docs/ResearchRoadmap_A_to_C.md and not asserted as a current theorem.
--- Primary closure consumers:
---   PhysicsClosureInstanceAssumed and PhysicsClosureFullInstance.
+-- Primary closure consumer:
+--   PhysicsClosureFullInstance.
+-- Legacy compatibility consumer:
+--   PhysicsClosureInstanceAssumed.
 -- Downstream physical consumer:
 --   SpinDiracGateFromClosure.
 -- Current validation snapshot:
@@ -80,8 +91,8 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   carrier instance,
 --   local known-limits widening now includes a geometry-transport theorem,
 --   canonical theorem bundle now aggregates the full current runway ladder.
--- The current theorem path is solved only for the present finite 4D
--- realization framework; realization-independent generalization remains open.
+-- The theorem surface is now intrinsic-core-parametric; current canonical
+-- inhabitants are still provided by the finite 4D realization framework.
 -- Current closure hardening status:
 --   the canonical full closure and empirical full adapter now share the same
 --   concrete constraint-closure witness, and the legacy assumed closure
@@ -107,8 +118,8 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 --   explicitly,
 --   canonical spin/Dirac consumer now depends on the stronger witness-bearing
 --   Stage C surface rather than only the forced metric seam,
--  canonical contraction-forces-quadratic theorem now exported explicitly,
--  canonical signature-forcing invariant now part of the Stage C path,
+--   canonical contraction-forces-quadratic theorem now exported explicitly,
+--   canonical signature-forcing invariant now part of the Stage C path,
 --   legacy wrappers are compatibility-only,
 --   wave-series / unification surfaces remain prototype-only.
 -- Current pre-moonshine hardening status:
@@ -177,6 +188,11 @@ module DASHI.Physics.Closure.PhysicsClosureSummary where
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF public
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI public
 open import DASHI.Physics.Closure.PhysicsClosureInstanceAssumed as PCA public
+  using
+    ( physicsClosureAssumed
+    ; physicsClosureAssumedDefault
+    ; legacyPhysicsClosureCompatibility
+    )
 open import DASHI.Physics.Closure.CanonicalStageC as CSC public
 open import DASHI.Physics.Closure.CanonicalStageCStatus as CSS public
 open import DASHI.Physics.Closure.CanonicalConstraintClosureStatus as CCCS public
@@ -221,11 +237,18 @@ open import DASHI.Physics.SignatureUniquenessOrbitLock as SUL public
 open import DASHI.Physics.SignatureUniquenessOrbitLockInstance as SULI public
 open import DASHI.Physics.OrbitProfileComputedSignedPermEvidence as OPCE public
 open import DASHI.Physics.ConeArrowIsotropyShiftOrbitEnumeration as SOE public
--- Canonical signature seam export (theorem-critical; realization-specific).
--- Canonical signature seam entrypoint (theorem-critical, realization-specific).
+-- Canonical signature seam export (theorem-primary intrinsic-core route).
 -- Intentionally *not* routed through the prototype trivial witness module
 -- `DASHI.Physics.Signature31`.
+open import DASHI.Physics.Signature31Canonical as S31C public
+-- Shift-orbit profile seam remains exported as a secondary compatibility
+-- witness path.
 open import DASHI.Physics.Signature31FromShiftOrbitProfile as S31OP public
+  using (profileEq; lorentzLock)
+  renaming
+    ( signature31-theorem to shiftProfile-signature31-theorem
+    ; signature31 to shiftProfile-signature31
+    )
 open import DASHI.Physics.Signature31ShiftProfileWitness as SPW public
 open import DASHI.Physics.Signature31OrbitActionAgreement as OAA public
 open import DASHI.Physics.OneMinusShellFamilyParametric as OMSFP public

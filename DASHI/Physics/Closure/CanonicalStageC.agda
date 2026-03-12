@@ -233,11 +233,25 @@ import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.Syn
 import DASHI.Physics.Closure.CanonicalWaveObservableTransportGeometry.Regime.FusionConsumer as CWOTGRFUSC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosure as MCPC
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureShiftInstance as MCCSI
+open import DASHI.Physics.Closure.ObservablePredictionPackage as OPP
+open import DASHI.Physics.Closure.ShiftObservablePredictionInstance as SOPI
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidation as MCPCV
 open import DASHI.Physics.Closure.MinimalCrediblePhysicsClosureValidationShiftInstance as MCPCVS
 import DASHI.Physics.Closure.KnownLimitsStatus as KLS
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
+open import DASHI.Physics.Signature31Canonical as S31C
+open import Relation.Binary.PropositionalEquality using (_≡_)
 open import DASHI.Physics.Closure.Validation.RealizationProfileRigidity as RPR
+
+canonicalClosureFromProvider :
+  (provider : S31C.IntrinsicCoreProvider) →
+  (providerSignatureMatches :
+    S31C.signature31FromProvider provider
+    ≡ OPP.ObservablePredictionPackage.provedSignature
+        SOPI.shiftObservablePrediction) →
+  MCPC.MinimalCrediblePhysicsClosure
+canonicalClosureFromProvider provider providerSignatureMatches =
+  MCCSI.minimumCredibleClosureFromProvider provider providerSignatureMatches
 
 canonicalClosure : MCPC.MinimalCrediblePhysicsClosure
 canonicalClosure = MCCSI.minimumCredibleClosureShift
@@ -247,6 +261,17 @@ canonicalValidation = MCPCVS.minimumCredibleClosureValidationShift
 
 canonicalFullClosure : PCF.PhysicsClosureFull
 canonicalFullClosure = MCPC.MinimalCrediblePhysicsClosure.full canonicalClosure
+
+canonicalFullClosureFromProvider :
+  (provider : S31C.IntrinsicCoreProvider) →
+  (providerSignatureMatches :
+    S31C.signature31FromProvider provider
+    ≡ OPP.ObservablePredictionPackage.provedSignature
+        SOPI.shiftObservablePrediction) →
+  PCF.PhysicsClosureFull
+canonicalFullClosureFromProvider provider providerSignatureMatches =
+  MCPC.MinimalCrediblePhysicsClosure.full
+    (canonicalClosureFromProvider provider providerSignatureMatches)
 
 canonicalDynamicsWitness : DCW.DynamicalClosureWitness
 canonicalDynamicsWitness =
