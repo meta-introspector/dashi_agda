@@ -6,6 +6,7 @@ open import Agda.Builtin.Nat using (Nat)
 open import DASHI.Geometry.ProjectionDefectToParallelogram as PDP
 open import DASHI.Physics.QuadraticEmergenceShiftInstance as QES
 open import DASHI.Geometry.ProjectionDefectSplitForcesParallelogram as PDSP
+  hiding (projectionDefectSplitForcesParallelogram)
 open import DASHI.Physics.Closure.ContractionForcesQuadraticTheorem as CFQT
 open import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
 open import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
@@ -14,6 +15,7 @@ open import DASHI.Physics.Closure.ContractionSignatureToSpinDiracBridgeTheorem a
 open import DASHI.Physics.Closure.CliffordToEvenWaveLiftBridgeTheorem as CEW
 open import DASHI.Physics.Closure.PhysicsClosureCoreWitness as PCCW
 open import DASHI.Physics.Closure.PhysicsClosureConstructorTheorem as PCCT
+open import DASHI.Physics.Closure.ObservableResolutionInvarianceTheorem as ORIT
 open import DASHI.Physics.Closure.PhysicsClosureRealizationIndependenceTheorem as PCRIT
 open import DASHI.Physics.Closure.PhysicsClosureTheoremLadder as PCTL
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
@@ -62,6 +64,8 @@ record PhysicsClosureHeadlineTheorem : Setω where
 record PhysicsClosureRealizationIndependenceChecklist : Setω where
   field
     canonicalHeadline : PhysicsClosureHeadlineTheorem
+    observableResolutionInvariance :
+      ORIT.ObservableResolutionInvarianceTheorem
     independenceTheorem :
       PCRIT.PhysicsClosureRealizationIndependenceTheorem
 
@@ -129,11 +133,18 @@ canonicalPhysicsClosureNamedTheoremChecklist =
     ; theoremG = PCTL.closureCoreWitnessForcesFullClosureTheorem
     }
 
+b4PhysicsClosureRealizationIndependenceChecklist :
+  PhysicsClosureRealizationIndependenceChecklist
+b4PhysicsClosureRealizationIndependenceChecklist =
+  record
+    { canonicalHeadline = canonicalPhysicsClosureHeadlineTheorem
+    ; observableResolutionInvariance =
+        ORIT.physicsClosureInvariantUnderObservableResolution
+    ; independenceTheorem =
+        PCRIT.b4PhysicsClosureRealizationIndependenceTheorem
+    }
+
 syntheticPhysicsClosureRealizationIndependenceChecklist :
   PhysicsClosureRealizationIndependenceChecklist
 syntheticPhysicsClosureRealizationIndependenceChecklist =
-  record
-    { canonicalHeadline = canonicalPhysicsClosureHeadlineTheorem
-    ; independenceTheorem =
-        PCRIT.syntheticPhysicsClosureRealizationIndependenceTheorem
-    }
+  b4PhysicsClosureRealizationIndependenceChecklist

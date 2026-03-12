@@ -8,9 +8,11 @@ open import DASHI.Physics.ShellNeighborhoodClass as SNC
 open import DASHI.Physics.LorentzNeighborhoodDynamicCandidate as LNDC
 open import DASHI.Physics.SyntheticOneMinusShellRealization as SOM
 open import DASHI.Physics.Signature31Canonical as S31C
+  hiding (syntheticSignatureMatchesCanonical)
 open import DASHI.Physics.Closure.Validation.SyntheticOneMinusDynamicsWitness as SODW
 open import DASHI.Physics.Closure.Validation.SyntheticOneMinusOrientationSignatureBridge as SOSB
 open import DASHI.Physics.Closure.Validation.SyntheticOneMinusPromotionBridge as SOPB
+  hiding (orientationJustified)
 
 record SyntheticRealizationWitness : Set where
   field

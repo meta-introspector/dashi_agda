@@ -9,11 +9,10 @@ open import DASHI.Physics.UniversalityTheorem
 open import DASHI.Physics.Closure.ContractionForcesQuadraticStrong as CFQS
 open import DASHI.Physics.Closure.ContractionQuadraticToSignatureBridgeTheorem as CQSB
 open import DASHI.Physics.Closure.QuadraticToCliffordBridgeTheorem as QTCB
-open import DASHI.Physics.Closure.CliffordToEvenWaveLiftBridgeTheorem as CEW
 open import DASHI.Physics.Closure.CanonicalConstraintClosureWitness as CCCW
+open import DASHI.Physics.Closure.ClosureObservableWitness as COW
 open import DASHI.Physics.Closure.DynamicalClosure as DC
 open import DASHI.Physics.Closure.DynamicalClosureWitness as DCW
-open import DASHI.Physics.Closure.ObservablePredictionPackage as OPP
 open import DASHI.Physics.Signature31Canonical as S31C
 
 record PhysicsClosureCoreWitness : Setω where
@@ -26,8 +25,6 @@ record PhysicsClosureCoreWitness : Setω where
       CQSB.ContractionQuadraticToSignatureBridgeTheorem
     quadraticCliffordWitness :
       QTCB.QuadraticToCliffordBridgeTheorem
-    evenWaveLiftWitness :
-      CEW.CliffordToEvenWaveLiftBridgeTheorem
 
     signatureCoreProvider : S31C.IntrinsicCoreProvider
     constraintClosureWitness : CCCW.CanonicalConstraintClosureWitness
@@ -35,11 +32,11 @@ record PhysicsClosureCoreWitness : Setω where
     dynamics : DC.DynamicalClosure
     dynamicsWitness : DCW.DynamicalClosureWitness
 
-    observables : OPP.ObservablePredictionPackage
+    observables : COW.ClosureObservableWitness
     observableSignatureAgreement :
       S31C.signature31FromProvider signatureCoreProvider
       ≡
-      OPP.ObservablePredictionPackage.provedSignature observables
+      COW.ClosureObservableWitness.provedSignature observables
 
   closureSignature : CTI.Signature
   closureSignature =

@@ -38,7 +38,7 @@ record CanonicalProofSpine : Setω where
     canonicalCliffordToEvenWaveLiftBridge : CEW.CliffordToEvenWaveLiftBridgeTheorem
     canonicalCoreWitness : PCCW.PhysicsClosureCoreWitness
     canonicalConstructorTheorem : PCCT.PhysicsClosureConstructorTheorem
-    canonicalTheoremLadder : Setω
+    canonicalTheoremLadder : PCTL.RealizationIndependentPhysicsClosureTheorem
     canonicalTheoremChecklist : PCTC.PhysicsClosureTheoremChecklist
     canonicalFullClosure : PCF.PhysicsClosureFull
 
@@ -57,7 +57,7 @@ canonicalProofSpine =
     ; canonicalConstructorTheorem =
         PCCT.canonicalPhysicsClosureConstructorTheorem
     ; canonicalTheoremLadder =
-        PCTL.RealizationIndependentPhysicsClosureTheorem
+        PCTL.realizationIndependentPhysicsClosureTheorem
     ; canonicalTheoremChecklist =
         PCTC.canonicalPhysicsClosureTheoremChecklist
     ; canonicalFullClosure = PCFI.physicsClosureFull

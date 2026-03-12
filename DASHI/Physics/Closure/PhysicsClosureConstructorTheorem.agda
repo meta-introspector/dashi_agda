@@ -1,7 +1,8 @@
 module DASHI.Physics.Closure.PhysicsClosureConstructorTheorem where
 
 open import Agda.Primitive using (Setω)
-open import Agda.Builtin.Equality using (_≡_; refl)
+data _≡ω_ {A : Setω} (x : A) : A → Setω where
+  reflω : x ≡ω x
 
 open import DASHI.Physics.Closure.PhysicsClosureCoreWitness as PCCW
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
@@ -12,7 +13,7 @@ record PhysicsClosureConstructorTheorem : Setω where
     closureCoreWitness : PCCW.PhysicsClosureCoreWitness
     fullClosure : PCF.PhysicsClosureFull
     constructedByCanonicalConstructor :
-      fullClosure ≡
+      fullClosure ≡ω
       PCF.physicsClosureFullFromCoreWitness closureCoreWitness
 
 physicsClosureConstructorTheorem :
@@ -22,7 +23,7 @@ physicsClosureConstructorTheorem w =
   record
     { closureCoreWitness = w
     ; fullClosure = PCF.physicsClosureFullFromCoreWitness w
-    ; constructedByCanonicalConstructor = refl
+    ; constructedByCanonicalConstructor = reflω
     }
 
 canonicalPhysicsClosureConstructorTheorem :
@@ -31,7 +32,7 @@ canonicalPhysicsClosureConstructorTheorem =
   record
     { closureCoreWitness = PCFI.physicsClosureCoreWitness
     ; fullClosure = PCFI.physicsClosureFull
-    ; constructedByCanonicalConstructor = refl
+    ; constructedByCanonicalConstructor = reflω
     }
 
 syntheticPhysicsClosureConstructorTheorem :
@@ -40,5 +41,14 @@ syntheticPhysicsClosureConstructorTheorem =
   record
     { closureCoreWitness = PCFI.syntheticPhysicsClosureCoreWitness
     ; fullClosure = PCFI.physicsClosureFullSynthetic
-    ; constructedByCanonicalConstructor = refl
+    ; constructedByCanonicalConstructor = reflω
+    }
+
+b4PhysicsClosureConstructorTheorem :
+  PhysicsClosureConstructorTheorem
+b4PhysicsClosureConstructorTheorem =
+  record
+    { closureCoreWitness = PCFI.b4PhysicsClosureCoreWitness
+    ; fullClosure = PCFI.b4PhysicsClosureFull
+    ; constructedByCanonicalConstructor = reflω
     }

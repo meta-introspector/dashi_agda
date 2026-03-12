@@ -148,9 +148,10 @@ physicsClosureFullFromCoreWitness witness =
             (PCCW.PhysicsClosureCoreWitness.dynamicsWitness witness)
       ; signatureCoreProvider =
           PCCW.PhysicsClosureCoreWitness.signatureCoreProvider witness
-      ; mdlLyap =
+      ; mdlLyap = λ {m} {k} →
           DCW.DynamicalClosureWitness.monotoneLyapunov
             (PCCW.PhysicsClosureCoreWitness.dynamicsWitness witness)
+            {m} {k}
       ; mdlFejer =
           DCW.DynamicalClosureWitness.monotoneFejer
             (PCCW.PhysicsClosureCoreWitness.dynamicsWitness witness)

@@ -1,37 +1,61 @@
 module DASHI.Physics.Closure.PhysicsClosureRealizationIndependenceTheorem where
 
 open import Agda.Primitive using (Setω)
-open import Agda.Builtin.Equality using (_≡_)
+open import Agda.Builtin.Equality using (_≡_; refl)
+
 open import Data.Empty using (⊥)
-open import Relation.Binary.PropositionalEquality using (cong)
+open import Relation.Binary.PropositionalEquality using (sym)
 
 open import DASHI.Physics.Closure.PhysicsClosureCoreWitness as PCCW
 open import DASHI.Physics.Closure.PhysicsClosureConstructorTheorem as PCCT
+open import DASHI.Physics.Closure.ClosureObservableWitness as COW
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI
-open import DASHI.Physics.Closure.ObservablePredictionPackage as OPP
-open import DASHI.Physics.Closure.SyntheticRealizationWitness as SYRW
+open import DASHI.Physics.Closure.RootSystemB4ObservableComparison as B4OC
+open import DASHI.Physics.Closure.RootSystemB4RealizationWitness as B4RW
 open import DASHI.Physics.Signature31Canonical as S31C
+
+record StructuralRealizationDifference
+  (w : PCCW.PhysicsClosureCoreWitness) : Setω where
+  field
+    comparisonMap : B4OC.B4ObservableComparison
+    providerSourceNotShift :
+      S31C.providerSource
+        (PCCW.PhysicsClosureCoreWitness.signatureCoreProvider w)
+      ≡
+      S31C.shiftOrbitProfileSource
+      → ⊥
+    shell1BoundaryNotIdentical :
+      COW.ClosureObservableWitness.observedShell1
+        (PCCW.PhysicsClosureCoreWitness.observables w)
+      ≡
+      COW.ClosureObservableWitness.observedShell1
+        (PCCW.PhysicsClosureCoreWitness.observables PCFI.physicsClosureCoreWitness)
+      → ⊥
+    shell2BoundaryNotIdentical :
+      COW.ClosureObservableWitness.observedShell2
+        (PCCW.PhysicsClosureCoreWitness.observables w)
+      ≡
+      COW.ClosureObservableWitness.observedShell2
+        (PCCW.PhysicsClosureCoreWitness.observables PCFI.physicsClosureCoreWitness)
+      → ⊥
 
 record IndependentFromShift
   (w : PCCW.PhysicsClosureCoreWitness) : Setω where
   field
-    syntheticRealization : SYRW.SyntheticRealizationWitness
-    witnessUsesSyntheticProvider :
-      PCCW.PhysicsClosureCoreWitness.signatureCoreProvider w
-      ≡
-      S31C.syntheticCoreProvider
+    b4Realization : B4RW.RootSystemB4RealizationWitness
+    witnessUsesB4Provider :
+      PCCT._≡ω_
+        (PCCW.PhysicsClosureCoreWitness.signatureCoreProvider w)
+        S31C.b4CoreProvider
     witnessSignatureAgreesWithObservables :
       S31C.signature31FromProvider
         (PCCW.PhysicsClosureCoreWitness.signatureCoreProvider w)
       ≡
-      OPP.ObservablePredictionPackage.provedSignature
+      COW.ClosureObservableWitness.provedSignature
         (PCCW.PhysicsClosureCoreWitness.observables w)
-    providerDistinguishedFromShift :
-      PCCW.PhysicsClosureCoreWitness.signatureCoreProvider w
-      ≡
-      S31C.shiftCoreProvider
-      → ⊥
+    structuralDifference :
+      StructuralRealizationDifference w
 
 record PhysicsClosureRealizationIndependenceTheorem : Setω where
   field
@@ -57,10 +81,10 @@ canonicalShiftConstructorTheorem :
 canonicalShiftConstructorTheorem =
   PCCT.canonicalPhysicsClosureConstructorTheorem
 
-syntheticSource≢shiftSource :
-  S31C.syntheticOneMinusSource ≡ S31C.shiftOrbitProfileSource →
+b4Source≢shiftSource :
+  S31C.rootSystemB4Source ≡ S31C.shiftOrbitProfileSource →
   ⊥
-syntheticSource≢shiftSource ()
+b4Source≢shiftSource ()
 
 realizationIndependenceTheoremFromWitnesses :
   (wShift : PCCW.PhysicsClosureCoreWitness) →
@@ -82,24 +106,40 @@ canonicalShiftWitness :
   PCCW.PhysicsClosureCoreWitness
 canonicalShiftWitness = PCFI.physicsClosureCoreWitness
 
-syntheticIndependentFromShift :
-  IndependentFromShift PCFI.syntheticPhysicsClosureCoreWitness
-syntheticIndependentFromShift =
+b4IndependentFromShift :
+  IndependentFromShift PCFI.b4PhysicsClosureCoreWitness
+b4IndependentFromShift =
+  let
+    cmp =
+      B4RW.RootSystemB4RealizationWitness.observableComparison
+        B4RW.b4RealizationWitness
+  in
   record
-    { syntheticRealization = SYRW.syntheticRealizationWitness
-    ; witnessUsesSyntheticProvider = refl
+    { b4Realization = B4RW.b4RealizationWitness
+    ; witnessUsesB4Provider = PCCT.reflω
     ; witnessSignatureAgreesWithObservables =
         PCCW.PhysicsClosureCoreWitness.observableSignatureAgreement
-          PCFI.syntheticPhysicsClosureCoreWitness
-    ; providerDistinguishedFromShift = λ eq →
-        syntheticSource≢shiftSource
-          (cong S31C.providerSource eq)
+          PCFI.b4PhysicsClosureCoreWitness
+    ; structuralDifference =
+        record
+          { comparisonMap = cmp
+          ; providerSourceNotShift = b4Source≢shiftSource
+          ; shell1BoundaryNotIdentical = λ eq →
+              B4OC.B4ObservableComparison.rawShiftShell1Mismatch cmp (sym eq)
+          ; shell2BoundaryNotIdentical = λ eq →
+              B4OC.B4ObservableComparison.rawShiftShell2Mismatch cmp (sym eq)
+          }
     }
 
-syntheticPhysicsClosureRealizationIndependenceTheorem :
+b4PhysicsClosureRealizationIndependenceTheorem :
   PhysicsClosureRealizationIndependenceTheorem
-syntheticPhysicsClosureRealizationIndependenceTheorem =
+b4PhysicsClosureRealizationIndependenceTheorem =
   realizationIndependenceTheoremFromWitnesses
     PCFI.physicsClosureCoreWitness
-    PCFI.syntheticPhysicsClosureCoreWitness
-    syntheticIndependentFromShift
+    PCFI.b4PhysicsClosureCoreWitness
+    b4IndependentFromShift
+
+shiftAndB4StructurallyDistinct :
+  StructuralRealizationDifference PCFI.b4PhysicsClosureCoreWitness
+shiftAndB4StructurallyDistinct =
+  IndependentFromShift.structuralDifference b4IndependentFromShift

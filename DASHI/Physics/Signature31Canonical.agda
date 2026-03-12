@@ -12,6 +12,7 @@ open import Agda.Builtin.String using (String)
 open import Agda.Builtin.Equality using (_≡_; refl)
 import DASHI.Physics.Signature31IntrinsicShiftInstance as S31I
 import DASHI.Physics.Signature31IntrinsicSyntheticInstance as S31S
+import DASHI.Physics.Signature31IntrinsicRootSystemB4Instance as S31B4
 
 open S31ISF public
   using
@@ -27,6 +28,7 @@ open S31ISF public
 data IntrinsicCoreProviderSource : Set where
   shiftOrbitProfileSource : IntrinsicCoreProviderSource
   syntheticOneMinusSource : IntrinsicCoreProviderSource
+  rootSystemB4Source : IntrinsicCoreProviderSource
 
 record IntrinsicCoreProvider : Setω where
   field
@@ -60,6 +62,14 @@ syntheticCoreProvider =
     { providerSource = syntheticOneMinusSource
     ; providerLabel = S31S.syntheticLabel
     ; coreAxioms = S31S.syntheticIntrinsicCoreAxioms
+    }
+
+b4CoreProvider : IntrinsicCoreProvider
+b4CoreProvider =
+  record
+    { providerSource = rootSystemB4Source
+    ; providerLabel = S31B4.b4Label
+    ; coreAxioms = S31B4.b4IntrinsicCoreAxioms
     }
 
 canonicalCoreAxioms : IntrinsicSignatureCoreAxioms

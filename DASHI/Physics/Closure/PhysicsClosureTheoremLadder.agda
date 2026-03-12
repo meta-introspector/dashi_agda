@@ -14,10 +14,11 @@ open import DASHI.Physics.Closure.ContractionSignatureToSpinDiracBridgeTheorem a
 open import DASHI.Physics.Closure.CliffordToEvenWaveLiftBridgeTheorem as CEW
 open import DASHI.Physics.Closure.PhysicsClosureCoreWitness as PCCW
 open import DASHI.Physics.Closure.PhysicsClosureConstructorTheorem as PCCT
+open import DASHI.Physics.Closure.ObservableResolutionInvarianceTheorem as ORIT
 open import DASHI.Physics.Closure.PhysicsClosureRealizationIndependenceTheorem as PCRIT
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI
 
-ProjectionDefectSplitForcesParallelogramTheorem : Setω
+ProjectionDefectSplitForcesParallelogramTheorem : Set₁
 ProjectionDefectSplitForcesParallelogramTheorem =
   ∀ {m : Nat} →
   PDP.ProjectionDefectParallelogramPackage
@@ -54,6 +55,10 @@ ClosureCoreWitnessForcesFullClosureTheorem =
 RealizationIndependentPhysicsClosureTheorem : Setω
 RealizationIndependentPhysicsClosureTheorem =
   PCRIT.PhysicsClosureRealizationIndependenceTheorem
+
+ObservableResolutionInvariantPhysicsClosureTheorem : Setω
+ObservableResolutionInvariantPhysicsClosureTheorem =
+  ORIT.ObservableResolutionInvarianceTheorem
 
 projectionDefectSplitForcesParallelogramTheorem :
   ProjectionDefectSplitForcesParallelogramTheorem
@@ -98,3 +103,13 @@ closureCoreWitnessForcesFullClosureTheorem :
   ClosureCoreWitnessForcesFullClosureTheorem
 closureCoreWitnessForcesFullClosureTheorem =
   PCCT.canonicalPhysicsClosureConstructorTheorem
+
+realizationIndependentPhysicsClosureTheorem :
+  RealizationIndependentPhysicsClosureTheorem
+realizationIndependentPhysicsClosureTheorem =
+  PCRIT.b4PhysicsClosureRealizationIndependenceTheorem
+
+observableResolutionInvariantPhysicsClosureTheorem :
+  ObservableResolutionInvariantPhysicsClosureTheorem
+observableResolutionInvariantPhysicsClosureTheorem =
+  ORIT.physicsClosureInvariantUnderObservableResolution
