@@ -57,7 +57,7 @@ def main() -> None:
     for mod, path in zip(modules, module_paths):
         rel_path = Path(os.path.relpath(path, OUT_DIR))
         lines.append("\\clearpage")
-        safe_title = mod.replace("_", "\\\\_").replace(".", "\\\\.")
+        safe_title = mod.replace("_", "\\_")
         lines.append(f"\\section*{{\\texttt{{{safe_title}}}}}")
         lines.append(f"\\addcontentsline{{toc}}{{section}}{{\\texttt{{{safe_title}}}}}")
         lines.append(f"\\VerbatimInput{{{rel_path.as_posix()}}}")
