@@ -188,11 +188,23 @@ canonicalB4ClosureEvidence =
     canonicalB4PromotionEvidence
 
 descendClosureEvidenceWith :
-  B4OQT.RootSystemB4OrbitQuotientTheorem →
+  (quotientTheorem : B4OQT.RootSystemB4OrbitQuotientTheorem) →
   B4PromotionEvidence →
+  ((shiftEvidence : ShiftClosureEvidence) →
+    S31C.signature31FromProvider S31C.b4CoreProvider
+      ≡
+      COW.ClosureObservableWitness.provedSignature
+        (B4ORM.ObservableResolutionMap.onObservables
+          (B4OQT.RootSystemB4OrbitQuotientTheorem.resolutionMap
+            quotientTheorem)
+          (ShiftClosureEvidence.observables shiftEvidence))) →
   ShiftClosureEvidence →
   B4ClosureEvidence
-descendClosureEvidenceWith quotientTheorem promotionEvidence shiftEvidence =
+descendClosureEvidenceWith
+  quotientTheorem
+  promotionEvidence
+  signatureAgreement
+  shiftEvidence =
   let
     projectedObs =
       B4ORM.ObservableResolutionMap.onObservables
@@ -204,7 +216,7 @@ descendClosureEvidenceWith quotientTheorem promotionEvidence shiftEvidence =
   in
   mkB4ClosureEvidence
     projectedObs
-    refl
+    (signatureAgreement shiftEvidence)
     (admissibilityFromObservable projectedObs)
     comparison
     promotionEvidence
@@ -215,6 +227,7 @@ descendClosureEvidence =
   descendClosureEvidenceWith
     B4OQT.canonicalRootSystemB4OrbitQuotientTheorem
     canonicalB4PromotionEvidence
+    (λ _ → refl)
 
 reflectClosureEvidence :
   (b4 : B4ClosureEvidence) →
@@ -336,6 +349,7 @@ canonicalObservableResolutionInvarianceTheorem =
         descendClosureEvidenceWith
           B4OQT.canonicalRootSystemB4OrbitQuotientTheorem
           canonicalB4PromotionEvidence
+          (λ _ → refl)
     ; closureReflects = reflectClosureEvidence
     ; closureInvariant =
         canonicalClosureInvariantUnderObservableResolution
