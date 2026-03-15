@@ -24,6 +24,11 @@ Priority bucket: `P0`
 - Runtime policy:
   do not run `PhysicsClosureValidationSummary.agda` in routine validation until
   runtime bounds are acceptable (currently ~1.25 hours).
+- [x] Closure hygiene policy:
+  `scripts/run_closure_hygiene.py` and
+  `scripts/run_closure_hygiene.sh` now skip learned `heavy` and
+  `aggregator` tasks by default, with an explicit `--include-heavy` flag for
+  aggregate integration runs.
 - Canonical pipeline policy:
   use `Docs/ClosurePipeline.md` as the single Stage C claim path, and label new
   closure modules as `canonical`, `supporting`, or `experimental`.

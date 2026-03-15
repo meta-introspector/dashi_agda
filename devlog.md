@@ -1,5 +1,36 @@
 # Devlog
 
+- 2026-03-14: Changed closure-hygiene runner defaults so routine runs no
+  longer spend hours draining aggregate summary targets after the leaf and
+  intermediate modules are already green.
+  - `scripts/run_closure_hygiene.py` now skips learned `heavy` and
+    `aggregator` tasks by default and exposes `--include-heavy` as the
+    opt-in switch for aggregate integration runs.
+  - `scripts/run_closure_hygiene.sh` now follows the same default/flag
+    contract, preventing the Bash entrypoint from drifting from the Python
+    runner.
+  Validation:
+  - `python3 scripts/run_closure_hygiene.py --help`: pass
+  - `bash scripts/run_closure_hygiene.sh --help`: pass
+  - `python3 scripts/run_closure_hygiene.py --discover-modules --class aggregator`:
+    pass, no tasks selected
+  - `python3 scripts/run_closure_hygiene.py --discover-modules --class aggregator --include-heavy`:
+    pass, reports `DASHI/Everything.agda` and
+    `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`
+- 2026-03-14: Removed an unnecessary `PhysicsClosureValidationSummary`
+  dependency from the canonical ladder path.
+  - `Canonical/LocalProgramBundle` now takes `closureStatus` directly from
+  `CanonicalStageCStatus.canonicalProved` instead of importing the heavy
+    validation summary only to read an alias.
+  - Removed unused `PhysicsClosureValidationSummary` imports from
+    `PhysicsClosureSummary` and `Everything` so routine aggregate checks no
+    longer force the 9-hour validation surface through the canonical bundle.
+  Validation:
+  - `agda -i . DASHI/Physics/Closure/Canonical/LocalProgramBundle.agda`: pass.
+  - `agda -i . DASHI/Physics/Closure/Canonical/Ladder.agda`: pass.
+  - `agda -i . DASHI/Physics/Closure/PhysicsClosureSummary.agda`: pass.
+  - `timeout 120s agda -i . DASHI/Everything.agda`: timeout `124`, no type
+    errors emitted before timeout.
 - 2026-03-12: Completed `PhysicsClosureFull` canonical-derivation consolidation.
   Added `CanonicalExternalInputs` + builder
   `canonicalPhysicsClosureFullFromExternal` in `PhysicsClosureFull`, so

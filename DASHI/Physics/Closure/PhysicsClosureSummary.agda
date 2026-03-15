@@ -256,4 +256,3 @@ open import DASHI.Physics.LorentzNeighborhoodDynamicCandidate as LNDC public
 open import DASHI.Physics.Closure.Validation.SyntheticOneMinusOrientationSignatureBridge as SOSB public
 open import DASHI.Physics.Closure.Validation.SyntheticOneMinusDynamicsWitness as SODW public
 open import DASHI.Physics.Closure.SpinDiracGateFromClosure as SDGC public
-import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS

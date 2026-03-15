@@ -709,7 +709,7 @@ class Runner:
             f"Stage filter from: {self.args.from_stage or 'none'}",
             f"Stage filter only: {','.join(sorted(self.args.only_ids)) if self.args.only_ids else 'none'}",
             f"Class filter: {self.args.class_filter or 'none'}",
-            f"Exclude heavy: {int(self.args.exclude_heavy)}",
+            f"Include heavy: {int(not self.args.exclude_heavy)}",
             f"Cache enabled: {int(self.args.cache)}",
             f"Cache refresh: {int(self.args.refresh_cache)}",
             f"Metadata file: {self.metadata_file}",
@@ -774,7 +774,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--list-stages", action="store_true")
     parser.add_argument("--discover-modules", action="store_true")
     parser.add_argument("--class", dest="class_filter")
-    parser.add_argument("--exclude-heavy", action="store_true")
+    parser.add_argument(
+        "--include-heavy",
+        dest="exclude_heavy",
+        action="store_false",
+        help="include learned heavy and aggregator tasks (default: skip them)",
+    )
+    parser.add_argument(
+        "--exclude-heavy",
+        dest="exclude_heavy",
+        action="store_true",
+        help="skip learned heavy and aggregator tasks",
+    )
     parser.add_argument("--timeout-ladder")
     parser.add_argument("--no-cache", dest="cache", action="store_false")
     parser.add_argument("--refresh-cache", action="store_true")
@@ -784,6 +795,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("-V", "--very-verbose", dest="verbose_level", action="store_const", const=2)
     parser.add_argument("-q", "--quiet", dest="verbose_level", action="store_const", const=0)
     parser.add_argument("-h", "--help", action="help")
+    parser.set_defaults(exclude_heavy=True)
     args = parser.parse_args()
 
     if args.jobs < 1:

@@ -12,7 +12,6 @@ open import DASHI.Physics.Closure.CanonicalStageCSummaryBundle as CSSB
 open import DASHI.Physics.Closure.Algebra.WaveRegime as AWR
 open import DASHI.Physics.Closure.Recovery.WaveRegime as RWR
 open import DASHI.Physics.Closure.Consumers.WaveRegime as CWR
-open import DASHI.Physics.Closure.PhysicsClosureValidationSummary as PCVS
 
 record LocalProgramBundle : Setω where
   field
@@ -23,7 +22,7 @@ record LocalProgramBundle : Setω where
 localProgramBundle : LocalProgramBundle
 localProgramBundle =
   record
-    { closureStatus = PCVS.canonicalStageCStatus
+    { closureStatus = CSS.canonicalProved
     ; theoremBundle = CSTB.canonicalStageCTheoremBundle
     ; summaryBundle = CSSB.canonicalStageCSummaryBundle
     }

@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-03-14
+
+- changed both closure-hygiene entrypoints
+  (`scripts/run_closure_hygiene.py` and
+  `scripts/run_closure_hygiene.sh`) to skip learned `heavy` and `aggregator`
+  tasks by default.
+- added explicit `--include-heavy` support for aggregate integration runs, so
+  routine hygiene passes stop after the relevant child modules instead of
+  draining multi-hour summary targets.
+- kept `--exclude-heavy` as the explicit skip flag for compatibility, but it is
+  now the default behavior.
+
 ## 2026-03-12
 
 - synchronized repo status docs with current canonical implementation:

@@ -509,7 +509,6 @@ import DASHI.Physics.Closure.PhysicsClosureRealizationIndependenceTheorem
 import DASHI.Physics.Closure.PhysicsClosureSummary
 import DASHI.Physics.Closure.PhysicsClosureTheoremChecklist
 import DASHI.Physics.Closure.PhysicsClosureTheoremLadder
-import DASHI.Physics.Closure.PhysicsClosureValidationSummary
 import DASHI.Physics.Closure.PolarizationZLift
 import DASHI.Physics.Closure.QuadraticToCliffordBridgeTheorem
 import DASHI.Physics.Closure.Recovery.WaveRegime

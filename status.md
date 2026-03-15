@@ -23,6 +23,11 @@
     `CanonicalContractionToCliffordBridgeTheorem` and
     `KnownLimitsQFTBridgeTheorem`: done
 - Tests:
+  - `agda -i . DASHI/Physics/Closure/Canonical/LocalProgramBundle.agda`: pass
+  - `agda -i . DASHI/Physics/Closure/Canonical/Ladder.agda`: pass
+  - `agda -i . DASHI/Physics/Closure/PhysicsClosureSummary.agda`: pass
+  - `timeout 120s agda -i . DASHI/Everything.agda`: timeout `124` with no type
+    errors emitted
   - `agda -i . DASHI/Geometry/CausalForcesLorentz31.agda`: pass
   - `agda -i . DASHI/Geometry/Signature31FromIntrinsicShellForcing.agda`: pass
   - `agda -i . DASHI/Physics/Signature31IntrinsicShiftInstance.agda`: pass

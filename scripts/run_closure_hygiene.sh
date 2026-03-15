@@ -14,7 +14,7 @@ ONLY_STAGE_IDS_CSV=""
 LIST_STAGES=0
 DISCOVER_ONLY=0
 CLASS_FILTER=""
-EXCLUDE_HEAVY=0
+EXCLUDE_HEAVY=1
 CACHE_ENABLED=1
 REFRESH_CACHE=0
 METADATA_FILE=".cache/closure_hygiene_metadata.tsv"
@@ -46,7 +46,8 @@ Options:
   --list-stages       Print built-in alias stages and exit
   --discover-modules  Print discovered modules with learned classes and exit
   --class CLASS       Run only learned class: fast, medium, heavy, aggregator, audit
-  --exclude-heavy     Skip learned heavy and aggregator tasks
+  --include-heavy     Include learned heavy and aggregator tasks
+  --exclude-heavy     Skip learned heavy and aggregator tasks (default)
   --timeout-ladder S  Timeout sweep in seconds, comma-separated (e.g. 1,2,5,10,30)
   --no-cache          Disable metadata lookup/update
   --refresh-cache     Ignore cached passes for this run, but update metadata
@@ -138,6 +139,9 @@ while [ "$#" -gt 0 ]; do
       shift
       [ "$#" -gt 0 ] || { echo "[error] missing value for --class" >&2; exit 2; }
       CLASS_FILTER="$1"
+      ;;
+    --include-heavy)
+      EXCLUDE_HEAVY=0
       ;;
     --exclude-heavy)
       EXCLUDE_HEAVY=1
@@ -928,7 +932,7 @@ Verbose: $VERBOSE
 Stage filter from: ${FROM_STAGE_ID:-none}
 Stage filter only: ${ONLY_STAGE_IDS_CSV:-none}
 Class filter: ${CLASS_FILTER:-none}
-Exclude heavy: $EXCLUDE_HEAVY
+Include heavy: $((1 - EXCLUDE_HEAVY))
 Cache enabled: $CACHE_ENABLED
 Cache refresh: $REFRESH_CACHE
 Metadata file: $METADATA_FILE

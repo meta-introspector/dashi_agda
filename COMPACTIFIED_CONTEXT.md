@@ -1,5 +1,22 @@
 # Compactified Context
 
+## 2026-03-14
+
+- Closure hygiene runtime policy is now stricter:
+  routine `run_closure_hygiene` runs should skip learned `heavy` and
+  `aggregator` tasks by default.
+- Heavy aggregate entrypoints such as
+  `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda` and
+  `DASHI/Everything.agda` remain opt-in integration checks, enabled only with
+  an explicit `--include-heavy` flag.
+- Reason:
+  child-module typechecks are the routine correctness signal, while the
+  aggregate summaries are packaging/integration surfaces with multi-hour
+  runtimes.
+- The canonical grouped ladder path was also decoupled from
+  `PhysicsClosureValidationSummary`, so local closure-bundle checks should no
+  longer force the 9-hour validation surface.
+
 ## 2026-03-12 (get-shit-done planning pass)
 
 - Converted the module-by-module closure roadmap into an execution-ready
