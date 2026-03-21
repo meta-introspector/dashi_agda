@@ -1,0 +1,6 @@
+name: dashi-agda
+depend: standard-library
+include: .
+         Verification
+         Kernel
+         Monster
