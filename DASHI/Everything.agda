@@ -798,7 +798,7 @@ import Fascism_Tests
 import FascisticSystem
 import FixedPoint
 import HGSA_Fixpoints
-import Kernel.Algebra
+import Kernel.KAlgebra
 import Kernel.Monoid
 import Kernel.Stabilisation
 import LogicTlurey
@@ -819,7 +819,7 @@ import Monster.Trace
 import Monster.TraceCounts
 import MonsterTraceCounts
 import Monster.TraceSound
-import Monster.Ultrametric
+import Monster.MUltrametric
 import MonsterVectors
 import Ontology.CICADA71
 import Ontology.Contracts

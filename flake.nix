@@ -49,13 +49,12 @@
           ${perf}/bin/perf annotate -i "$OUTDIR/$BASE.perf.data" --stdio \
             > "$OUTDIR/$BASE.annotate.txt" 2>&1 || true
 
-          # perf stat counters
+          # perf stat counters (separate run for clean numbers)
           ${perf}/bin/perf stat \
             -e cycles,instructions,cache-misses,cache-references,branch-misses,branches \
-            -o "$OUTDIR/$BASE.stat.txt" \
-            -- ${agdaWithStdlib}/bin/agda "$FILE" 2>/dev/null || true
+            -- ${agdaWithStdlib}/bin/agda "$FILE" 2>"$OUTDIR/$BASE.stat.txt" || true
 
-          # Parse stat to witness JSON
+          # Parse stat to witness JSON (stat file written by now)
           ${zkperf-parse}/bin/zkperf-parse "$OUTDIR/$BASE.stat.txt" "$FILE" \
             > "$OUTDIR/$BASE.witness.json" 2>/dev/null || true
 
