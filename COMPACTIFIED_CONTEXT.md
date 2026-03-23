@@ -1,5 +1,29 @@
 # Compactified Context
 
+## 2026-03-23
+
+- Review of upstream PR `#1` (`nix support`) showed the main technical gap is
+  not the presence of the demo JSONL files themselves, but the fact that the
+  proposed `flake` coverage only walks top-level `*.agda` plus
+  `Verification/`, while the repo and the PR both add meaningful Agda surface
+  under `Kernel/` and `Monster/`.
+- Merge-prep decision for the local repo:
+  keep demo DA51/zkperf JSONL artifacts acceptable in principle for now if
+  they are explicitly documented as illustrative witness data rather than
+  reproducibility-critical source inputs.
+- The actual merge hardening target is therefore:
+  add a local `flake`/`agda-lib` surface whose authoritative check mirrors the
+  existing GitHub action on `DASHI/Everything.agda`, and add a second
+  recursive smoke surface covering the merge-relevant standalone roots plus
+  recursive `Kernel/`, `Monster/`, and `Verification/` modules.
+- The same merge-relevant recursive target surface should drive
+  `agda-record-all`, so future perf/witness collection does not silently omit
+  nested modules while pretending to represent the whole repo.
+- Current merge-policy decision:
+  do not force JSONL sanitization in this pass;
+  instead document those demo artifacts as non-authoritative and keep the real
+  technical requirement on recursive check/record coverage.
+
 ## 2026-03-22
 
 - Canonical archived thread checked:
@@ -119,6 +143,14 @@
   address fields, and DASL section/address packaging;
   `src/ipfs.rs` wraps content in a DASL/CBOR envelope carrying orbifold and
   DASL address metadata.
+- Lean-side cross-check:
+  the sibling repo `../dashi_lean4` does not close the current JMD-side gap.
+  It is useful as a Lean-side DA51/moonshine witness
+  (`Main.lean`, `MoonshineFractran.lean`, `DashiPerf/Schema.lean`), but it
+  does not provide the missing class/projection layer:
+  no DASL address grammar, no `EigenSpace` / `Earth|Spoke|Hub|Clock`, no
+  Bott/Hecke/orbifold class table, and no class-level source projection for
+  the HEPData trace families.
 - Current bridge reading after that code check:
   `kant-zk-pastebin` supplies the source-side `Σ_src` anchor for
   source/basin/eigen questions,

@@ -2,6 +2,13 @@
 
 ## 2026-03-22
 
+- checked the sibling repo `../dashi_lean4` against the current JMD-side gap
+  and recorded the negative result:
+  it is useful as a Lean-side DA51/moonshine/schema witness, but it does not
+  provide the missing DASL class/projection layer
+  (`EigenSpace`, Bott/Hecke/orbifold class table, or source projection for
+  the HEPData families), so `../kant-zk-pastebin` remains the relevant
+  source-side anchor.
 - promoted the family-level execution taxonomy into the Agda witness layer:
   `ExecutionAdmissibilityWitness` now carries `FamilyClass`,
   `ExecutionAdmissibilityCurrentFamilyWitness.agda` exports the observed

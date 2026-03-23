@@ -58,6 +58,12 @@ structural and dynamical questions separate.
 - Current archive-backed conclusion:
   the DA51 / exponent-vector embedding can detect a shared rigid structural
   shell, but it does not currently separate Monster-labeled proofs as a class.
+- Local tooling discipline for merge-prep work:
+  when sibling-repo or upstream changes add Nix/zkperf/demo-witness surfaces,
+  treat them as acceptable only if the authoritative closure check still runs
+  through `DASHI/Everything.agda` and any recursive smoke/record surface
+  actually includes nested `Kernel/`, `Monster/`, and `Verification/`
+  modules rather than only top-level files.
 - Therefore:
   do not treat global cosine/L2 proximity or `p47` stability alone as a
   Monster-specific signal.
@@ -74,6 +80,12 @@ structural and dynamical questions separate.
   in the sibling repo `../kant-zk-pastebin`, where the `0xDA51` address space,
   orbifold coordinates, `EigenSpace`, and Bott/Hecke metadata are made
   explicit.
+  A separate Lean-side sibling check now clarifies the contrast:
+  `../dashi_lean4` is useful as a DA51/moonshine/schema witness, but it does
+  not provide the missing JMD class/projection layer.
+  In particular it does not add a DASL address grammar, explicit
+  `Earth/Spoke/Hub/Clock` eigenspace table, or Bott/Hecke/orbifold class table
+  for the HEPData family projection problem.
   That source anchor is enough to justify first-pass source-backed
   `Basin` / `Eigen` predicates in the local harness, but not yet enough to
   claim a realized class-projection theorem or automatic `p47` preservation.

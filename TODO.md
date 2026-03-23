@@ -1,5 +1,22 @@
 # TODO
 
+## Track N — Merge-Prep Nix / Zkperf Surface (2026-03-23)
+
+Priority bucket: `P1`
+
+- [ ] Add a local `flake.nix` that mirrors the existing authoritative GitHub
+  typecheck route through `DASHI/Everything.agda`.
+- [ ] Add a second Nix smoke-check surface for merge-relevant standalone roots
+  plus recursive `Kernel/`, `Monster/`, and `Verification/` modules.
+- [ ] Add a local `dashi-agda.agda-lib` so Nix/dev-shell tooling has an
+  explicit library surface to point at.
+- [ ] Make local `agda-record-all` recurse over the same merge-prep target
+  surface instead of top-level files only.
+- [ ] Keep demo DA51/zkperf JSONL artifacts, if merged, documented as sample
+  witness outputs rather than canonical reproducibility fixtures.
+- [ ] Follow-up once a networked Nix environment is available:
+  generate and commit `flake.lock`, then run `nix flake check` end to end.
+
 ## Track U — Physics Closure Spine Completion (2026-03-12)
 
 Priority bucket: `P0`
@@ -345,6 +362,12 @@ Priority bucket: `P0` first, then `P1`
   source model for the bridge.
   The authoritative source grammar for this pass lives in
   `src/dasl.rs`, `src/sheaf.rs`, and `src/ipfs.rs` there.
+- Cross-check on alternate sibling repo:
+  `../dashi_lean4` is now confirmed not to fill the current JMD-side gap.
+  It carries Lean-side DA51/moonshine/schema witnesses, but not the missing
+  class/projection layer for `Basin` / `Eigen`:
+  no DASL address grammar, no explicit `EigenSpace`, and no Bott/Hecke/
+  orbifold class table for the HEPData family projection problem.
 - Immediate source-integration task:
   extend `scripts/regime_test.py cone` with a parser/loader for that sibling
   repo so the execution export gains:

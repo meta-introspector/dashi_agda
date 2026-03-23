@@ -13,6 +13,13 @@ Archive-backed status update:
   prove the invariant quadratic + uniqueness-up-to-scale seams from the
   contraction/projection machinery and then derive the downstream
   signature/Clifford/gauge chain from that theorem.
+- Local merge-prep tooling status:
+  the repo now treats a Nix/zkperf surface as acceptable only if it preserves
+  the existing authoritative CI route through `DASHI/Everything.agda` and also
+  adds an explicit recursive smoke surface for merge-relevant nested modules.
+  Demo DA51/zkperf JSONL witness files are acceptable as illustrative tracked
+  artifacts for now, but they must be documented as non-authoritative sample
+  outputs rather than as canonical reproducibility inputs.
 - Canonical closure routing now includes an explicit
   `ContractionForcesQuadraticStrong -> QuadraticToCliffordBridgeTheorem`
   step that builds a canonical bilinear-form interface from normalized
@@ -253,6 +260,12 @@ Current theorem status:
   So the repo now treats `kant-zk-pastebin` as the source-side `Σ_src` anchor
   for `Basin` / `Eigen` questions, while this repo remains the execution-side
   admissibility layer.
+  A separate Lean-side check of `../dashi_lean4` does not change that.
+  That repo is useful as a Lean witness for DA51/moonshine numerics and schema
+  transport, but it does not provide the missing JMD-side class/projection
+  layer:
+  no DASL address grammar, no `EigenSpace` / `Earth|Spoke|Hub|Clock`, and no
+  Bott/Hecke/orbifold class table for the HEPData family projection problem.
   Immediate implementation consequence:
   the next harness pass should load that DASL source model directly so
   `basin_ok` and source-backed eigen overlap are computed against an explicit
@@ -872,3 +885,18 @@ Current refactor status:
 - the local Stage C wave-regime ladder is frozen for now
 - grouped ladder modules are the authoritative internal import path
 - widening resumes only after canonical code is routed through those grouped surfaces
+
+## Local Nix / Zkperf Merge Surface
+
+The repo now carries a local merge-prep Nix surface intended to harden an
+upstream `nix`/`zkperf` merge without overstating what it validates.
+
+- `nix build .#check` is the authoritative Nix check and mirrors the current
+  GitHub workflow by typechecking `DASHI/Everything.agda`.
+- `nix build .#merge-smoke` is the recursive merge-prep smoke check and walks
+  the merge-relevant standalone roots plus recursive `Kernel/`, `Monster/`,
+  and `Verification/` modules.
+- `agda-record-all` is expected to recurse over that same merge-prep target
+  surface rather than only top-level files.
+- Any tracked DA51 / zkperf JSONL examples should be read as sample witness
+  outputs, not as canonical reproducibility fixtures.
