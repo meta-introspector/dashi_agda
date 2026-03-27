@@ -8,7 +8,7 @@ open import Relation.Nullary
 
 open import Ultrametric
 open import Monster.Mask
-open import Monster.Ultrametric
+open import Monster.MUltrametric
 
 ------------------------------------------------------------------------
 -- Distinctness

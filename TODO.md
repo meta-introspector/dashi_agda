@@ -4,6 +4,10 @@
 
 Priority bucket: `P1`
 
+- [x] Import the PR `#1` Agda source patchset that adds
+  `Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`, `Moonshine.agda`,
+  `MoonshineEarn.agda`, `JFixedPoint.agda`, `PerfHistory.agda`, and
+  `perf_da51.py`, then rewire the existing modules to those names.
 - [x] Add a local `flake.nix` that mirrors the existing authoritative GitHub
   typecheck route through `DASHI/Everything.agda`.
 - [x] Add a second Nix smoke-check surface for merge-relevant standalone roots
@@ -407,11 +411,14 @@ Priority bucket: `P0` first, then `P1`
   The authoritative source grammar for this pass lives in
   `src/dasl.rs`, `src/sheaf.rs`, and `src/ipfs.rs` there.
 - Cross-check on alternate sibling repo:
-  `../dashi_lean4` is now confirmed not to fill the current JMD-side gap.
-  It carries Lean-side DA51/moonshine/schema witnesses, but not the missing
-  class/projection layer for `Basin` / `Eigen`:
-  no DASL address grammar, no explicit `EigenSpace`, and no Bott/Hecke/
-  orbifold class table for the HEPData family projection problem.
+  `../dashi_lean4` is present locally and still does not fill the current
+  JMD-side gap.
+  It carries Lean-side DA51/moonshine/schema witnesses
+  (`Main.lean`, `MoonshineFractran.lean`, `DashiPerf/Schema.lean`,
+  `DashiPerf/Audit.lean`), but not the missing class/projection layer for
+  `Basin` / `Eigen`: no DASL address grammar, no explicit `EigenSpace`, and
+  no Bott/Hecke/orbifold class table for the HEPData family projection
+  problem.
 - Immediate source-integration task:
   extend `scripts/regime_test.py cone` with a parser/loader for that sibling
   repo so the execution export gains:

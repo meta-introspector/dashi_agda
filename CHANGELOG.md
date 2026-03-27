@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-27
+
+- recorded PR `#1` (`nix support`) as the active source merge target for the
+  missing Agda surface in this checkout and documented the exact modules and
+  perf wiring it contributes.
+- merged the source-level Agda additions from that patchset into the local
+  tree: `Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`, `Moonshine.agda`,
+  `MoonshineEarn.agda`, `JFixedPoint.agda`, `PerfHistory.agda`, `perf_da51.py`,
+  `agda_da51_source.jsonl`, `agda_da51_traces.jsonl`, and the related import
+  rewrites.
+
 ## 2026-03-25
 
 - added [`MONSTER10WALK_INTAKE.md`](/home/c/Documents/code/dashi_agda/MONSTER10WALK_INTAKE.md)
@@ -95,6 +106,16 @@
   module, and introduced `DASHI/HME/Integration.agda` to show how to plug
   `canonicalWitnesses` into a `WitnessBundle` paired with an existing `Admissible`
   path so Casey/SL can consume a real proof data pair.
+
+## 2026-03-27
+
+- Confirmed the sibling repo `../dashi_lean4` is present locally and recorded
+  its exact scope: a small Lean-side perf/CBOR witness repo with
+  `Main.lean`, `MoonshineFractran.lean`, `MoonshineEarn.lean`, and
+  `DashiPerf/*`, but not the missing DASL class/projection layer.
+- Updated the compactified context and TODO state so future bridge work treats
+  `../dashi_lean4` as an auxiliary Lean witness repo, not as the source-side
+  anchor or as a replacement for `../kant-zk-pastebin`.
 
 ## 2026-03-22
 

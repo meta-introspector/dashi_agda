@@ -2,7 +2,7 @@ module Kernel.Stabilisation where
 
 open import Agda.Builtin.Nat
 open import Agda.Builtin.Equality
-open import Kernel.Algebra
+open import Kernel.KAlgebra
 
 ------------------------------------------------------------------------
 -- Iteration

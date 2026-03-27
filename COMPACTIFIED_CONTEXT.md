@@ -1,5 +1,30 @@
 # Compactified Context
 
+## 2026-03-27
+
+- Upstream PR `#1` (`nix support`) is now treated as the active source merge
+  target for the missing Agda surface in this checkout.
+- The specific PR payload to bring in is the new Agda/modules and perf wiring:
+  `Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`,
+  `Moonshine.agda`, `MoonshineEarn.agda`, `JFixedPoint.agda`,
+  `PerfHistory.agda`, `perf_da51.py`, and the import rewrites that point the
+  existing modules at those names.
+- The current local tree still has the merge-prep tooling surface, and now has
+  the PR `#1` Agda source and generated artifacts that are required by the main
+  import graph.
+- Confirmed the sibling Lean repo `../dashi_lean4` is present locally at
+  `/home/c/Documents/code/dashi_lean4`.
+- Current contents are a small Lean-side perf/CBOR bridge rather than a full
+  formal mirror:
+  `Main.lean`, `MoonshineFractran.lean`, `MoonshineEarn.lean`,
+  and `DashiPerf/{Schema,Audit,Sample100,Sample101,Sample102}.lean`.
+- Use it as a Lean-side DA51/moonshine/schema witness and perf-ingest target,
+  not as the missing DASL class/projection layer or as a replacement for the
+  AGDA source anchor.
+- This does not change the earlier bridge decision:
+  `../kant-zk-pastebin` remains the source-side anchor, and `../dashi_lean4`
+  remains an auxiliary Lean witness repo.
+
 ## 2026-03-25
 
 - Applied `zkp-problem-framing`, `get-shit-done`, and
@@ -170,12 +195,12 @@
   `src/ipfs.rs` wraps content in a DASL/CBOR envelope carrying orbifold and
   DASL address metadata.
 - Lean-side cross-check:
-  the sibling repo `../dashi_lean4` does not close the current JMD-side gap.
-  It is useful as a Lean-side DA51/moonshine witness
-  (`Main.lean`, `MoonshineFractran.lean`, `DashiPerf/Schema.lean`), but it
-  does not provide the missing class/projection layer:
-  no DASL address grammar, no `EigenSpace` / `Earth|Spoke|Hub|Clock`, no
-  Bott/Hecke/orbifold class table, and no class-level source projection for
+  the sibling repo `../dashi_lean4` exists locally and still does not close
+  the current JMD-side gap. It is useful as a Lean-side DA51/moonshine/schema
+  witness (`Main.lean`, `MoonshineFractran.lean`, `DashiPerf/Schema.lean`,
+  `DashiPerf/Audit.lean`), but it does not provide the missing class/projection
+  layer: no DASL address grammar, no `EigenSpace` / `Earth|Spoke|Hub|Clock`,
+  no Bott/Hecke/orbifold class table, and no class-level source projection for
   the HEPData trace families.
 - Current bridge reading after that code check:
   `kant-zk-pastebin` supplies the source-side `Σ_src` anchor for
