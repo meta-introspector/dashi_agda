@@ -508,6 +508,224 @@ rgCoarse n = Ref.ApproxRefinementStep.project (rgShellApproxRefinement n)
 rgCoarseClass : (n : Nat) → RGState (suc n) → RGPhysState n
 rgCoarseClass n x = SQ.classOf (rgQuotiented n) (rgCoarse n x)
 
+data RGCoarseScheme : Set where
+  tailScheme : RGCoarseScheme
+  flipTailScheme : RGCoarseScheme
+
+data RGFlowMode : Set where
+  relaxMode : RGFlowMode
+  holdMode  : RGFlowMode
+
+data RGFixedPoint : Set where
+  disorderedVacuumFP : RGFixedPoint
+  orderedVacuumFP    : RGFixedPoint
+  disorderedResidualFP : RGFixedPoint
+  orderedResidualFP    : RGFixedPoint
+
+rgCanonicalFixedPoint : Bool → RGFixedPoint
+rgCanonicalFixedPoint false = disorderedVacuumFP
+rgCanonicalFixedPoint true = orderedVacuumFP
+
+rgStepBy : (mode : RGFlowMode) → (n : Nat) → RGState n → RGState n
+rgStepBy relaxMode n x = rgShellStep n x
+rgStepBy holdMode n x = x
+
+rgCoarseBy : (scheme : RGCoarseScheme) → (n : Nat) → RGState (suc n) → RGState n
+rgCoarseBy tailScheme n x = rgCoarse n x
+rgCoarseBy flipTailScheme n (mkRGState r i) = mkRGState r (SC.flipVec (SC.dropLast i))
+
+rgFixedPointOfClass : ∀ {n} → RGPhysState n → RGFixedPoint
+rgFixedPointOfClass (false , s) with SC.countTrueVec s NatP.≟ zero
+... | yes _ = disorderedVacuumFP
+... | no _ = disorderedResidualFP
+rgFixedPointOfClass (true , s) with SC.countTrueVec s NatP.≟ zero
+... | yes _ = orderedVacuumFP
+... | no _ = orderedResidualFP
+
+rgFixedPointOfState : ∀ {n} → RGState n → RGFixedPoint
+rgFixedPointOfState x = rgFixedPointOfClass (rgClassOf x)
+
+rgCoarseBy-class :
+  ∀ scheme n (x : RGState (suc n)) →
+  rgClassOf (rgCoarseBy scheme n x) ≡ rgCoarseClass n x
+rgCoarseBy-class tailScheme n x = refl
+rgCoarseBy-class flipTailScheme n (mkRGState r i) =
+  cong₂ _,_ refl (sym (SC.support-flipVec (SC.dropLast i)))
+
+rgBasinLabel-stepBy :
+  ∀ mode n (x : RGState n) →
+  rgBasinLabel (rgStepBy mode n x) ≡ rgBasinLabel x
+rgBasinLabel-stepBy relaxMode n (mkRGState r i) = refl
+rgBasinLabel-stepBy holdMode n x = refl
+
+rgBasinLabel-coarseBy :
+  ∀ scheme n (x : RGState (suc n)) →
+  rgBasinLabel (rgCoarseBy scheme n x) ≡ rgBasinLabel x
+rgBasinLabel-coarseBy tailScheme n (mkRGState r i) = refl
+rgBasinLabel-coarseBy flipTailScheme n x = refl
+
+rgIrrelevantContractsUnderStepBy :
+  ∀ mode n (x : RGState n) →
+  rgIrrelevantSize (rgStepBy mode n x) ≤ rgIrrelevantSize x
+rgIrrelevantContractsUnderStepBy relaxMode n (mkRGState r i)
+  rewrite SC.countTrue-supportVec (SC.scalarStep n i)
+        | SC.countTrue-supportVec i
+  = SC.scalarDefectMonotone n {i}
+rgIrrelevantContractsUnderStepBy holdMode n x = NatP.≤-refl
+
+rgCoarseByRelObservableStable :
+  ∀ scheme n (x : RGState (suc n)) →
+  rgObservableExprEval n rel# (rgClassOf (rgCoarseBy scheme n x)) ≡
+  rgObservableExprEval (suc n) rel# (rgClassOf x)
+rgCoarseByRelObservableStable tailScheme n (mkRGState r i) = refl
+rgCoarseByRelObservableStable flipTailScheme n (mkRGState r i) = refl
+
+rgCoarseByIrrelObservableMonotone :
+  ∀ scheme n (x : RGState (suc n)) →
+  rgObservableExprEval n irr# (rgClassOf (rgCoarseBy scheme n x)) ≤
+  rgObservableExprEval (suc n) irr# (rgClassOf x)
+rgCoarseByIrrelObservableMonotone tailScheme n (mkRGState r i)
+  rewrite SC.countTrue-supportVec (SC.dropLast i)
+        | SC.countTrue-supportVec i
+  = SC.countNonZero-dropLast i
+rgCoarseByIrrelObservableMonotone flipTailScheme n (mkRGState r i)
+  rewrite sym (SC.support-flipVec (SC.dropLast i))
+        | SC.countTrue-supportVec (SC.dropLast i)
+        | SC.countTrue-supportVec i
+  = SC.countNonZero-dropLast i
+
+rgIrrelevantContractsUnderCoarseBy :
+  ∀ scheme n (x : RGState (suc n)) →
+  rgIrrelevantSize (rgCoarseBy scheme n x) ≤ rgIrrelevantSize x
+rgIrrelevantContractsUnderCoarseBy tailScheme n (mkRGState r i)
+  rewrite SC.countTrue-supportVec (SC.dropLast i)
+        | SC.countTrue-supportVec i
+  = SC.countNonZero-dropLast i
+rgIrrelevantContractsUnderCoarseBy flipTailScheme n (mkRGState r i)
+  rewrite sym (SC.support-flipVec (SC.dropLast i))
+        | SC.countTrue-supportVec (SC.dropLast i)
+        | SC.countTrue-supportVec i
+  = SC.countNonZero-dropLast i
+
+stepPowBy : (mode : RGFlowMode) → (n : Nat) → Nat → RGState n → RGState n
+stepPowBy mode n zero x = x
+stepPowBy mode n (suc k) x = rgStepBy mode n (stepPowBy mode n k x)
+
+coarsePowBy : ∀ scheme k n → RGState (k + n) → RGState n
+coarsePowBy scheme zero n x = x
+coarsePowBy scheme (suc k) n x = coarsePowBy scheme k n (rgCoarseBy scheme (k + n) x)
+
+rgSchemeFlow : ∀ scheme mode k m n → RGState (k + n) → RGState n
+rgSchemeFlow scheme mode k m n x = stepPowBy mode n m (coarsePowBy scheme k n x)
+
+rgBasinLabel-stepPowBy :
+  ∀ mode n k (x : RGState n) →
+  rgBasinLabel (stepPowBy mode n k x) ≡ rgBasinLabel x
+rgBasinLabel-stepPowBy mode n zero x = refl
+rgBasinLabel-stepPowBy mode n (suc k) x =
+  trans (rgBasinLabel-stepBy mode n (stepPowBy mode n k x))
+        (rgBasinLabel-stepPowBy mode n k x)
+
+rgIrrelevantSize-stepPowBy-monotone :
+  ∀ mode n k (x : RGState n) →
+  rgIrrelevantSize (stepPowBy mode n k x) ≤ rgIrrelevantSize x
+rgIrrelevantSize-stepPowBy-monotone mode n zero x = NatP.≤-refl
+rgIrrelevantSize-stepPowBy-monotone mode n (suc k) x =
+  NatP.≤-trans
+    (rgIrrelevantContractsUnderStepBy mode n (stepPowBy mode n k x))
+    (rgIrrelevantSize-stepPowBy-monotone mode n k x)
+
+rgBasinLabel-coarsePowBy :
+  ∀ scheme k n (x : RGState (k + n)) →
+  rgBasinLabel (coarsePowBy scheme k n x) ≡ rgBasinLabel x
+rgBasinLabel-coarsePowBy scheme zero n x = refl
+rgBasinLabel-coarsePowBy scheme (suc k) n x =
+  trans
+    (rgBasinLabel-coarsePowBy scheme k n (rgCoarseBy scheme (k + n) x))
+    (rgBasinLabel-coarseBy scheme (k + n) x)
+
+rgIrrelevantSize-coarsePowBy-monotone :
+  ∀ scheme k n (x : RGState (k + n)) →
+  rgIrrelevantSize (coarsePowBy scheme k n x) ≤ rgIrrelevantSize x
+rgIrrelevantSize-coarsePowBy-monotone scheme zero n x = NatP.≤-refl
+rgIrrelevantSize-coarsePowBy-monotone scheme (suc k) n x =
+  NatP.≤-trans
+    (rgIrrelevantSize-coarsePowBy-monotone scheme k n (rgCoarseBy scheme (k + n) x))
+    (rgIrrelevantContractsUnderCoarseBy scheme (k + n) x)
+
+rgSchemeFlow-basin-stable :
+  ∀ scheme mode k m n (x : RGState (k + n)) →
+  rgBasinLabel (rgSchemeFlow scheme mode k m n x) ≡ rgBasinLabel x
+rgSchemeFlow-basin-stable scheme mode k m n x =
+  trans (rgBasinLabel-stepPowBy mode n m (coarsePowBy scheme k n x))
+        (rgBasinLabel-coarsePowBy scheme k n x)
+
+rgSchemeFlow-irrelevant-monotone :
+  ∀ scheme mode k m n (x : RGState (k + n)) →
+  rgIrrelevantSize (rgSchemeFlow scheme mode k m n x) ≤ rgIrrelevantSize x
+rgSchemeFlow-irrelevant-monotone scheme mode k m n x =
+  NatP.≤-trans
+    (rgIrrelevantSize-stepPowBy-monotone mode n m (coarsePowBy scheme k n x))
+    (rgIrrelevantSize-coarsePowBy-monotone scheme k n x)
+
+rgSchemeFlow-rel-observable-stable :
+  ∀ scheme mode k m n (x : RGState (k + n)) →
+  rgObservableExprEval n rel# (rgClassOf (rgSchemeFlow scheme mode k m n x)) ≡
+  rgObservableExprEval (k + n) rel# (rgClassOf x)
+rgSchemeFlow-rel-observable-stable scheme mode k m n x =
+  cong relevantAsNat (rgSchemeFlow-basin-stable scheme mode k m n x)
+
+rgStepBy-from-recovered :
+  ∀ mode n {x : RGState n} →
+  PT.recoveredLaw (rgShellTheory n) x →
+  PT.recoveredLaw (rgShellTheory n) (rgStepBy mode n x)
+rgStepBy-from-recovered relaxMode n {mkRGState r i} rx rewrite rx = SC.relaxSym-vacuum n
+rgStepBy-from-recovered holdMode n rx = rx
+
+rgStepPowBy-from-recovered :
+  ∀ mode n k {x : RGState n} →
+  PT.recoveredLaw (rgShellTheory n) x →
+  PT.recoveredLaw (rgShellTheory n) (stepPowBy mode n k x)
+rgStepPowBy-from-recovered mode n zero rx = rx
+rgStepPowBy-from-recovered mode n (suc k) {x} rx =
+  rgStepBy-from-recovered mode n (rgStepPowBy-from-recovered mode n k {x} rx)
+
+rgSchemeFlow-canonical-on-recovered :
+  ∀ scheme mode k m n (x : RGState (k + n)) →
+  PT.recoveredLaw (rgShellTheory n) (rgSchemeFlow scheme mode k m n x) →
+  rgClassOf (rgSchemeFlow scheme mode k m n x) ≡ rgClassOf (rgVacuum n (rgBasinLabel x))
+rgSchemeFlow-canonical-on-recovered scheme mode k m n x rx =
+  cong₂ _,_
+    (rgSchemeFlow-basin-stable scheme mode k m n x)
+    (cong SC.supportVec rx)
+
+rgVacuum-support-count-zero :
+  ∀ n →
+  SC.countTrueVec (SC.supportVec (SC.vacuum n)) ≡ zero
+rgVacuum-support-count-zero n
+  rewrite SC.countTrue-supportVec (SC.vacuum n)
+        | SC.countNonZero-vacuum n
+  = refl
+
+rgVacuum-fixedPoint :
+  ∀ n r →
+  rgFixedPointOfState (rgVacuum n r) ≡ rgCanonicalFixedPoint r
+rgVacuum-fixedPoint n false with SC.countTrueVec (SC.supportVec (SC.vacuum n)) NatP.≟ zero
+... | yes _ = refl
+... | no nz rewrite rgVacuum-support-count-zero n = ⊥-elim (nz refl)
+rgVacuum-fixedPoint n true with SC.countTrueVec (SC.supportVec (SC.vacuum n)) NatP.≟ zero
+... | yes _ = refl
+... | no nz rewrite rgVacuum-support-count-zero n = ⊥-elim (nz refl)
+
+rgSchemeFlow-fixedPoint-on-recovered :
+  ∀ scheme mode k m n (x : RGState (k + n)) →
+  PT.recoveredLaw (rgShellTheory n) (rgSchemeFlow scheme mode k m n x) →
+  rgFixedPointOfState (rgSchemeFlow scheme mode k m n x) ≡
+  rgCanonicalFixedPoint (rgBasinLabel x)
+rgSchemeFlow-fixedPoint-on-recovered scheme mode k m n x rx
+  rewrite rgSchemeFlow-canonical-on-recovered scheme mode k m n x rx
+  = rgVacuum-fixedPoint n (rgBasinLabel x)
+
 rgBasinLabel-step :
   ∀ n (x : RGState n) →
   rgBasinLabel (rgShellStep n x) ≡ rgBasinLabel x
@@ -807,9 +1025,409 @@ rgRunMixed {n = n} (mixed-done m) x = stepPow n m x
 rgRunMixed {n = n} (mixed-layer {k} m sch) x =
   rgRunMixed sch (rgCoarse (k + n) (stepPow (suc (k + n)) m x))
 
+rgMixedPathMass : ∀ {k n} → RGMixedSchedule n k → RGState (k + n) → Nat
+rgMixedPathMass {n = n} (mixed-done m) x =
+  rgIrrelevantSize (stepPow n m x)
+rgMixedPathMass {n = n} (mixed-layer {k} m sch) x =
+  let coarseState = rgCoarse (k + n) (stepPow (suc (k + n)) m x) in
+  rgIrrelevantSize coarseState + rgMixedPathMass sch coarseState
+
+rgMixedRecoveryMass : ∀ {k n} → RGMixedSchedule n k → RGState (k + n) → Nat
+rgMixedRecoveryMass {n = n} (mixed-done m) x =
+  recoveryResidueNat (rgIrrelevantSize (stepPow n m x))
+rgMixedRecoveryMass {n = n} (mixed-layer {k} m sch) x =
+  let coarseState = rgCoarse (k + n) (stepPow (suc (k + n)) m x) in
+  recoveryResidueNat (rgIrrelevantSize coarseState) + rgMixedRecoveryMass sch coarseState
+
+rgMixedScaleMass : ∀ {k n} → RGMixedSchedule n k → RGState (k + n) → Nat
+rgMixedScaleMass {n = n} (mixed-done m) x =
+  scaleProfileNat (relevantAsNat (rgBasinLabel (stepPow n m x)))
+                  (rgIrrelevantSize (stepPow n m x))
+rgMixedScaleMass {n = n} (mixed-layer {k} m sch) x =
+  let coarseState = rgCoarse (k + n) (stepPow (suc (k + n)) m x) in
+  scaleProfileNat (relevantAsNat (rgBasinLabel coarseState))
+                  (rgIrrelevantSize coarseState)
+  + rgMixedScaleMass sch coarseState
+
 uniformMixed : (n k m : Nat) → RGMixedSchedule n k
 uniformMixed n zero m = mixed-done m
 uniformMixed n (suc k) m = mixed-layer m (uniformMixed n k m)
+
+data RGMixedSchedule2 (n : Nat) : Nat → Set where
+  mixed2-done : RGFlowMode → Nat → RGMixedSchedule2 n zero
+  mixed2-layer : ∀ {k} → RGCoarseScheme → RGFlowMode → Nat → RGMixedSchedule2 n k → RGMixedSchedule2 n (suc k)
+
+rgRunMixed2 : ∀ {k n} → RGMixedSchedule2 n k → RGState (k + n) → RGState n
+rgRunMixed2 {n = n} (mixed2-done mode m) x = stepPowBy mode n m x
+rgRunMixed2 {n = n} (mixed2-layer {k} scheme mode m sch) x =
+  rgRunMixed2 sch (rgCoarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x))
+
+uniformMixed2 : (scheme : RGCoarseScheme) → (mode : RGFlowMode) → (n k m : Nat) → RGMixedSchedule2 n k
+uniformMixed2 scheme mode n zero m = mixed2-done mode m
+uniformMixed2 scheme mode n (suc k) m = mixed2-layer scheme mode m (uniformMixed2 scheme mode n k m)
+
+rgMixed2-basin-stable :
+  ∀ {k n} (sch : RGMixedSchedule2 n k) (x : RGState (k + n)) →
+  rgBasinLabel (rgRunMixed2 sch x) ≡ rgBasinLabel x
+rgMixed2-basin-stable (mixed2-done mode m) x = rgBasinLabel-stepPowBy mode _ m x
+rgMixed2-basin-stable {n = n} (mixed2-layer {k} scheme mode m sch) x =
+  trans
+    (rgMixed2-basin-stable sch (rgCoarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x)))
+    (trans
+      (rgBasinLabel-coarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x))
+      (rgBasinLabel-stepPowBy mode (suc (k + n)) m x))
+
+rgMixed2-irrelevant-bounded :
+  ∀ {k n} (sch : RGMixedSchedule2 n k) (x : RGState (k + n)) →
+  rgObservableExprEval n irr# (rgClassOf (rgRunMixed2 sch x)) ≤ rgIrrelevantSize x
+rgMixed2-irrelevant-bounded (mixed2-done mode m) x
+  rewrite sym (rgIrrelevantSize-class (stepPowBy mode _ m x))
+        | sym (rgIrrelevantSize-class x)
+  = rgIrrelevantSize-stepPowBy-monotone mode _ m x
+rgMixed2-irrelevant-bounded {n = n} (mixed2-layer {k} scheme mode m sch) x =
+  NatP.≤-trans
+    (rgMixed2-irrelevant-bounded sch (rgCoarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x)))
+    (NatP.≤-trans
+      (rgIrrelevantContractsUnderCoarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x))
+      (rgIrrelevantSize-stepPowBy-monotone mode (suc (k + n)) m x))
+
+rgMixed2-recovered-same-class :
+  ∀ {k} n (sch₁ sch₂ : RGMixedSchedule2 n k) (x : RGState (k + n)) →
+  PT.recoveredLaw (rgShellTheory n) (rgRunMixed2 sch₁ x) →
+  PT.recoveredLaw (rgShellTheory n) (rgRunMixed2 sch₂ x) →
+  rgClassOf (rgRunMixed2 sch₁ x) ≡ rgClassOf (rgRunMixed2 sch₂ x)
+rgMixed2-recovered-same-class n sch₁ sch₂ x rx₁ rx₂ =
+  cong₂ _,_
+    (trans (rgMixed2-basin-stable sch₁ x)
+           (sym (rgMixed2-basin-stable sch₂ x)))
+    (trans (cong SC.supportVec rx₁)
+           (sym (cong SC.supportVec rx₂)))
+
+rgMixed2-rel-observable-stable :
+  ∀ {k} n (sch : RGMixedSchedule2 n k) gain (x : RGState (k + n)) →
+  gain * rgObservableExprEval n rel# (rgClassOf (rgRunMixed2 sch x)) ≡
+  gain * rgObservableExprEval (k + n) rel# (rgClassOf x)
+rgMixed2-rel-observable-stable n sch gain x =
+  cong (gain *_) (cong relevantAsNat (rgMixed2-basin-stable sch x))
+
+data RGMixedTraceObservable2 : Set where
+  endpoint2RG : RGObservableExpr → RGMixedTraceObservable2
+  path2RG     : RGMixedTraceObservable2
+  recovery2RG : RGMixedTraceObservable2
+  scale2RG#   : RGMixedTraceObservable2
+
+schemeMass : RGCoarseScheme → Nat
+schemeMass tailScheme = zero
+schemeMass flipTailScheme = suc zero
+
+modeMass : RGFlowMode → Nat
+modeMass relaxMode = suc zero
+modeMass holdMode = zero
+
+rgMixed2PathMass : ∀ {k n} → RGMixedSchedule2 n k → RGState (k + n) → Nat
+rgMixed2PathMass {n = n} (mixed2-done mode m) x =
+  modeMass mode + rgIrrelevantSize (stepPowBy mode n m x)
+rgMixed2PathMass {n = n} (mixed2-layer {k} scheme mode m sch) x =
+  let coarseState = rgCoarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x) in
+  schemeMass scheme + modeMass mode + rgIrrelevantSize coarseState + rgMixed2PathMass sch coarseState
+
+rgMixed2RecoveryMass : ∀ {k n} → RGMixedSchedule2 n k → RGState (k + n) → Nat
+rgMixed2RecoveryMass {n = n} (mixed2-done mode m) x =
+  modeMass mode + recoveryResidueNat (rgIrrelevantSize (stepPowBy mode n m x))
+rgMixed2RecoveryMass {n = n} (mixed2-layer {k} scheme mode m sch) x =
+  let coarseState = rgCoarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x) in
+  schemeMass scheme + modeMass mode + recoveryResidueNat (rgIrrelevantSize coarseState) + rgMixed2RecoveryMass sch coarseState
+
+rgMixed2ScaleMass : ∀ {k n} → RGMixedSchedule2 n k → RGState (k + n) → Nat
+rgMixed2ScaleMass {n = n} (mixed2-done mode m) x =
+  modeMass mode +
+  scaleProfileNat (relevantAsNat (rgBasinLabel (stepPowBy mode n m x)))
+                  (rgIrrelevantSize (stepPowBy mode n m x))
+rgMixed2ScaleMass {n = n} (mixed2-layer {k} scheme mode m sch) x =
+  let coarseState = rgCoarseBy scheme (k + n) (stepPowBy mode (suc (k + n)) m x) in
+  schemeMass scheme + modeMass mode +
+  scaleProfileNat (relevantAsNat (rgBasinLabel coarseState))
+                  (rgIrrelevantSize coarseState)
+  + rgMixed2ScaleMass sch coarseState
+
+rgMixed2TraceObservableEval :
+  ∀ {k} n (sch : RGMixedSchedule2 n k) →
+  RGMixedTraceObservable2 → RGState (k + n) → Nat
+rgMixed2TraceObservableEval n sch (endpoint2RG O) st =
+  rgObservableExprEval n O (rgClassOf (rgRunMixed2 sch st))
+rgMixed2TraceObservableEval n sch path2RG st = rgMixed2PathMass sch st
+rgMixed2TraceObservableEval n sch recovery2RG st = rgMixed2RecoveryMass sch st
+rgMixed2TraceObservableEval n sch scale2RG# st = rgMixed2ScaleMass sch st
+
+rgMixed2TraceBenchmarkTheory :
+  ∀ {k} (n : Nat) →
+  (sch : RGMixedSchedule2 n k) →
+  Bench.BenchmarkTheory′ (rgRawQuotiented (k + n))
+rgMixed2TraceBenchmarkTheory n sch =
+  record
+    { Parameter = RGBenchmarkParameter
+    ; Observable = RGMixedTraceObservable2
+    ; Datum = λ _ → Nat
+    ; predictB = λ gain O st → gain * rgMixed2TraceObservableEval n sch O st
+    }
+
+rgMixed2TraceBenchmarkDataset :
+  ∀ {k} (n : Nat) →
+  (sch : RGMixedSchedule2 n k) →
+  RGBenchmarkParameter →
+  RGState (k + n) →
+  Bench.Dataset RGMixedTraceObservable2 (λ _ → Nat)
+rgMixed2TraceBenchmarkDataset n sch gain st =
+  record
+    { observed = λ O → Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain O st
+    }
+
+rgMixed2TraceBenchmarkMatch :
+  ∀ {k} (n : Nat) →
+  (sch : RGMixedSchedule2 n k) →
+  Bench.BenchmarkMatch (rgMixed2TraceBenchmarkTheory n sch)
+rgMixed2TraceBenchmarkMatch n sch =
+  record
+    { Score = RGBenchmarkScore
+    ; mismatch = λ gain st ds →
+        mkRGBenchmarkScore
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain (endpoint2RG rel#) st)
+             (Bench.Dataset.observed ds (endpoint2RG rel#))
+           + eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain (endpoint2RG irr#) st)
+             (Bench.Dataset.observed ds (endpoint2RG irr#)))
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain path2RG st)
+             (Bench.Dataset.observed ds path2RG))
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain recovery2RG st)
+             (Bench.Dataset.observed ds recovery2RG))
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain scale2RG# st)
+             (Bench.Dataset.observed ds scale2RG#))
+    }
+
+rgMixed2TraceBenchmarkSelfMismatch-zero :
+  ∀ {k} n (sch : RGMixedSchedule2 n k) gain (st : RGState (k + n)) →
+  Bench.BenchmarkMatch.mismatch (rgMixed2TraceBenchmarkMatch n sch) gain st (rgMixed2TraceBenchmarkDataset n sch gain st) ≡
+  zeroRGBenchmarkScore
+rgMixed2TraceBenchmarkSelfMismatch-zero n sch gain st
+  rewrite eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain (endpoint2RG rel#) st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain (endpoint2RG irr#) st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain path2RG st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain recovery2RG st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch) gain scale2RG# st)
+  = refl
+
+rgMixed2TraceRecovered-endpoint-zero :
+  ∀ {k} n (sch₁ sch₂ : RGMixedSchedule2 n k) gain (x : RGState (k + n)) →
+  PT.recoveredLaw (rgShellTheory n) (rgRunMixed2 sch₁ x) →
+  PT.recoveredLaw (rgShellTheory n) (rgRunMixed2 sch₂ x) →
+  RGBenchmarkScore.endpoint
+        (Bench.BenchmarkMatch.mismatch
+          (rgMixed2TraceBenchmarkMatch n sch₁)
+          gain
+          x
+          (rgMixed2TraceBenchmarkDataset n sch₂ gain x))
+  ≡ zero
+rgMixed2TraceRecovered-endpoint-zero n sch₁ sch₂ gain x rx₁ rx₂
+  rewrite cong (gain *_) (cong (rgObservableExprEval n rel#) (rgMixed2-recovered-same-class n sch₁ sch₂ x rx₁ rx₂))
+        | cong (gain *_) (cong (rgObservableExprEval n irr#) (rgMixed2-recovered-same-class n sch₁ sch₂ x rx₁ rx₂))
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch₂) gain (endpoint2RG rel#) x)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixed2TraceBenchmarkTheory n sch₂) gain (endpoint2RG irr#) x)
+  = refl
+
+rgFlipVacuum-support-count-zero :
+  ∀ n →
+  SC.countTrueVec (SC.supportVec (SC.flipVec (SC.vacuum n))) ≡ zero
+rgFlipVacuum-support-count-zero n =
+  trans
+    (cong SC.countTrueVec (sym (SC.support-flipVec (SC.vacuum n))))
+    (rgVacuum-support-count-zero n)
+
+rgVacuum-irrelevantSize-zero :
+  ∀ n r →
+  rgIrrelevantSize (rgVacuum n r) ≡ zero
+rgVacuum-irrelevantSize-zero n r = rgVacuum-support-count-zero n
+
+rgCoarseBy-vacuum :
+  ∀ scheme n r →
+  rgCoarseBy scheme n (rgVacuum (suc n) r) ≡ rgVacuum n r
+rgCoarseBy-vacuum tailScheme n r
+  rewrite SC.project-vacuum n
+  = refl
+rgCoarseBy-vacuum flipTailScheme n r
+  rewrite SC.project-vacuum n
+        | SC.flip-vacuum n
+  = refl
+
+rgRunUniformMixed2-hold-vacuum :
+  ∀ scheme k n r →
+  rgRunMixed2 (uniformMixed2 scheme holdMode n k zero) (rgVacuum (k + n) r) ≡
+  rgVacuum n r
+rgRunUniformMixed2-hold-vacuum scheme zero n r = refl
+rgRunUniformMixed2-hold-vacuum scheme (suc k) n r
+  rewrite rgCoarseBy-vacuum scheme (k + n) r
+  = rgRunUniformMixed2-hold-vacuum scheme k n r
+
+rgUniformMixed2-tail-path-on-vacuum :
+  ∀ k n r →
+  rgMixed2TraceObservableEval n (uniformMixed2 tailScheme holdMode n k zero) path2RG (rgVacuum (k + n) r) ≡ zero
+rgUniformMixed2-tail-path-on-vacuum zero n r
+  rewrite rgVacuum-irrelevantSize-zero n r
+  = refl
+rgUniformMixed2-tail-path-on-vacuum (suc k) n r
+  rewrite SC.project-vacuum (k + n)
+        | rgVacuum-irrelevantSize-zero (k + n) r
+  = rgUniformMixed2-tail-path-on-vacuum k n r
+
+mutual
+  rgUniformMixed2-flip-path-on-vacuum :
+    ∀ k n r →
+    rgMixed2TraceObservableEval n (uniformMixed2 flipTailScheme holdMode n k zero) path2RG (rgVacuum (k + n) r) ≡ k
+  rgUniformMixed2-flip-path-on-vacuum zero n r
+    rewrite rgVacuum-irrelevantSize-zero n r
+    = refl
+  rgUniformMixed2-flip-path-on-vacuum (suc k) n r
+    rewrite SC.project-vacuum (k + n)
+          | rgFlipVacuum-support-count-zero (k + n)
+          | rgUniformMixed2-flip-path-on-flipped-vacuum k n r
+    = refl
+
+  rgUniformMixed2-flip-path-on-flipped-vacuum :
+    ∀ k n r →
+    rgMixed2PathMass (uniformMixed2 flipTailScheme holdMode n k zero) (mkRGState r (SC.flipVec (SC.vacuum (k + n)))) ≡ k
+  rgUniformMixed2-flip-path-on-flipped-vacuum k n r
+    rewrite SC.flip-vacuum (k + n)
+    = rgUniformMixed2-flip-path-on-vacuum k n r
+
+eqPenalty-zero-suc : ∀ k → eqPenalty zero (suc k) ≡ suc zero
+eqPenalty-zero-suc k with zero NatP.≟ suc k
+... | yes ()
+... | no _ = refl
+
+rgMixed2-tail-vs-flip-endpoint-class-on-vacuum :
+  ∀ n r →
+  rgClassOf (rgRunMixed2 (uniformMixed2 tailScheme holdMode n (suc zero) zero) (rgVacuum (suc n) r)) ≡
+  rgClassOf (rgRunMixed2 (uniformMixed2 flipTailScheme holdMode n (suc zero) zero) (rgVacuum (suc n) r))
+rgMixed2-tail-vs-flip-endpoint-class-on-vacuum n r
+  rewrite SC.project-vacuum n
+        | SC.project-vacuum n
+        | sym (SC.support-flipVec (SC.vacuum n))
+  = refl
+
+rgMixed2-tail-vs-flip-path-channel-on-vacuum :
+  ∀ n r →
+  rgMixed2TraceObservableEval n (uniformMixed2 tailScheme holdMode n (suc zero) zero) path2RG (rgVacuum (suc n) r) ≡ zero
+  ×
+  rgMixed2TraceObservableEval n (uniformMixed2 flipTailScheme holdMode n (suc zero) zero) path2RG (rgVacuum (suc n) r) ≡ suc zero
+rgMixed2-tail-vs-flip-path-channel-on-vacuum n r
+  rewrite SC.project-vacuum n
+        | SC.project-vacuum n
+        | rgVacuum-support-count-zero n
+        | rgFlipVacuum-support-count-zero n
+  = refl , refl
+
+rgCoarseBy-flip-irrelevantSize :
+  ∀ n (x : RGState (suc n)) →
+  rgIrrelevantSize (rgCoarseBy flipTailScheme n x) ≡
+  rgIrrelevantSize (rgCoarseBy tailScheme n x)
+rgCoarseBy-flip-irrelevantSize n (mkRGState r i)
+  rewrite sym (SC.support-flipVec (SC.dropLast i))
+  = refl
+
+rgMixed2-tail-vs-flip-one-layer-hold-endpoint-class :
+  ∀ n (x : RGState (suc n)) →
+  rgClassOf (rgRunMixed2 (uniformMixed2 tailScheme holdMode n (suc zero) zero) x) ≡
+  rgClassOf (rgRunMixed2 (uniformMixed2 flipTailScheme holdMode n (suc zero) zero) x)
+rgMixed2-tail-vs-flip-one-layer-hold-endpoint-class n x
+  rewrite rgCoarseBy-class tailScheme n x
+        | rgCoarseBy-class flipTailScheme n x
+  = refl
+
+rgMixed2-tail-vs-flip-one-layer-hold-path-step :
+  ∀ n (x : RGState (suc n)) →
+  suc (rgMixed2TraceObservableEval n (uniformMixed2 tailScheme holdMode n (suc zero) zero) path2RG x) ≡
+  rgMixed2TraceObservableEval n (uniformMixed2 flipTailScheme holdMode n (suc zero) zero) path2RG x
+rgMixed2-tail-vs-flip-one-layer-hold-path-step n x
+  rewrite rgCoarseBy-flip-irrelevantSize n x
+  = refl
+
+rgUniformMixed2-tail-vs-flip-endpoint-class-on-vacuum :
+  ∀ k n r →
+  rgClassOf (rgRunMixed2 (uniformMixed2 tailScheme holdMode n k zero) (rgVacuum (k + n) r)) ≡
+  rgClassOf (rgRunMixed2 (uniformMixed2 flipTailScheme holdMode n k zero) (rgVacuum (k + n) r))
+rgUniformMixed2-tail-vs-flip-endpoint-class-on-vacuum k n r
+  rewrite rgRunUniformMixed2-hold-vacuum tailScheme k n r
+        | rgRunUniformMixed2-hold-vacuum flipTailScheme k n r
+  = refl
+
+rgMixed2-tail-vs-flip-trace-benchmark-split :
+  ∀ n r →
+  let x = rgVacuum (suc n) r in
+  RGBenchmarkScore.endpoint
+    (Bench.BenchmarkMatch.mismatch
+      (rgMixed2TraceBenchmarkMatch n (uniformMixed2 tailScheme holdMode n (suc zero) zero))
+      (suc zero)
+      x
+      (rgMixed2TraceBenchmarkDataset n (uniformMixed2 flipTailScheme holdMode n (suc zero) zero) (suc zero) x))
+  ≡ zero
+  ×
+  RGBenchmarkScore.path
+    (Bench.BenchmarkMatch.mismatch
+      (rgMixed2TraceBenchmarkMatch n (uniformMixed2 tailScheme holdMode n (suc zero) zero))
+      (suc zero)
+      x
+      (rgMixed2TraceBenchmarkDataset n (uniformMixed2 flipTailScheme holdMode n (suc zero) zero) (suc zero) x))
+  ≡ suc zero
+rgMixed2-tail-vs-flip-trace-benchmark-split n r
+  rewrite rgMixed2-tail-vs-flip-endpoint-class-on-vacuum n r
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB
+            (rgMixed2TraceBenchmarkTheory n (uniformMixed2 flipTailScheme holdMode n (suc zero) zero))
+            (suc zero) (endpoint2RG rel#) (rgVacuum (suc n) r))
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB
+            (rgMixed2TraceBenchmarkTheory n (uniformMixed2 flipTailScheme holdMode n (suc zero) zero))
+            (suc zero) (endpoint2RG irr#) (rgVacuum (suc n) r))
+        | SC.project-vacuum n
+        | SC.project-vacuum n
+        | rgVacuum-support-count-zero n
+        | rgFlipVacuum-support-count-zero n
+  = refl , refl
+
+rgUniformMixed2-tail-vs-flip-trace-benchmark-split :
+  ∀ k n r →
+  let x = rgVacuum ((suc k) + n) r in
+  RGBenchmarkScore.endpoint
+    (Bench.BenchmarkMatch.mismatch
+      (rgMixed2TraceBenchmarkMatch n (uniformMixed2 tailScheme holdMode n (suc k) zero))
+      (suc zero)
+      x
+      (rgMixed2TraceBenchmarkDataset n (uniformMixed2 flipTailScheme holdMode n (suc k) zero) (suc zero) x))
+  ≡ zero
+  ×
+  RGBenchmarkScore.path
+    (Bench.BenchmarkMatch.mismatch
+      (rgMixed2TraceBenchmarkMatch n (uniformMixed2 tailScheme holdMode n (suc k) zero))
+      (suc zero)
+      x
+      (rgMixed2TraceBenchmarkDataset n (uniformMixed2 flipTailScheme holdMode n (suc k) zero) (suc zero) x))
+  ≡ suc zero
+rgUniformMixed2-tail-vs-flip-trace-benchmark-split k n r
+  rewrite cong (suc zero *_) (cong (rgObservableExprEval n rel#)
+            (rgUniformMixed2-tail-vs-flip-endpoint-class-on-vacuum (suc k) n r))
+        | cong (suc zero *_) (cong (rgObservableExprEval n irr#)
+            (rgUniformMixed2-tail-vs-flip-endpoint-class-on-vacuum (suc k) n r))
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB
+            (rgMixed2TraceBenchmarkTheory n (uniformMixed2 flipTailScheme holdMode n (suc k) zero))
+            (suc zero) (endpoint2RG rel#) (rgVacuum ((suc k) + n) r))
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB
+            (rgMixed2TraceBenchmarkTheory n (uniformMixed2 flipTailScheme holdMode n (suc k) zero))
+            (suc zero) (endpoint2RG irr#) (rgVacuum ((suc k) + n) r))
+        | rgUniformMixed2-tail-path-on-vacuum (suc k) n r
+        | rgUniformMixed2-flip-path-on-vacuum (suc k) n r
+        | eqPenalty-zero-suc k
+  = refl , refl
 
 rgMixed-basin-stable :
   ∀ {k n} (sch : RGMixedSchedule n k) (x : RGState (k + n)) →
@@ -846,6 +1464,44 @@ rgMixedBenchmarkTheory {k} n sch =
     ; Observable = RGObservableExpr
     ; Datum = λ _ → Nat
     ; predictB = λ gain O st → gain * rgObservableExprEval n O (rgClassOf (rgRunMixed sch st))
+    }
+
+data RGMixedTraceObservable : Set where
+  endpointRG : RGObservableExpr → RGMixedTraceObservable
+  pathRG     : RGMixedTraceObservable
+  recoveryRG : RGMixedTraceObservable
+  scaleRG#   : RGMixedTraceObservable
+
+rgMixedTraceObservableEval :
+  ∀ {k} n (sch : RGMixedSchedule n k) →
+  RGMixedTraceObservable → RGState (k + n) → Nat
+rgMixedTraceObservableEval n sch (endpointRG O) st =
+  rgObservableExprEval n O (rgClassOf (rgRunMixed sch st))
+rgMixedTraceObservableEval n sch pathRG st = rgMixedPathMass sch st
+rgMixedTraceObservableEval n sch recoveryRG st = rgMixedRecoveryMass sch st
+rgMixedTraceObservableEval n sch scaleRG# st = rgMixedScaleMass sch st
+
+rgMixedTraceBenchmarkTheory :
+  ∀ {k} (n : Nat) →
+  (sch : RGMixedSchedule n k) →
+  Bench.BenchmarkTheory′ (rgRawQuotiented (k + n))
+rgMixedTraceBenchmarkTheory n sch =
+  record
+    { Parameter = RGBenchmarkParameter
+    ; Observable = RGMixedTraceObservable
+    ; Datum = λ _ → Nat
+    ; predictB = λ gain O st → gain * rgMixedTraceObservableEval n sch O st
+    }
+
+rgMixedTraceBenchmarkDataset :
+  ∀ {k} (n : Nat) →
+  (sch : RGMixedSchedule n k) →
+  RGBenchmarkParameter →
+  RGState (k + n) →
+  Bench.Dataset RGMixedTraceObservable (λ _ → Nat)
+rgMixedTraceBenchmarkDataset n sch gain st =
+  record
+    { observed = λ O → Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain O st
     }
 
 rgMixedBenchmarkDataset :
@@ -890,6 +1546,32 @@ rgMixedRichBenchmarkMatch n sch =
           (Bench.Dataset.observed ds irr#)
     }
 
+rgMixedTraceBenchmarkMatch :
+  ∀ {k} (n : Nat) →
+  (sch : RGMixedSchedule n k) →
+  Bench.BenchmarkMatch (rgMixedTraceBenchmarkTheory n sch)
+rgMixedTraceBenchmarkMatch n sch =
+  record
+    { Score = RGBenchmarkScore
+    ; mismatch = λ gain st ds →
+        mkRGBenchmarkScore
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain (endpointRG rel#) st)
+             (Bench.Dataset.observed ds (endpointRG rel#))
+           + eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain (endpointRG irr#) st)
+             (Bench.Dataset.observed ds (endpointRG irr#)))
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain pathRG st)
+             (Bench.Dataset.observed ds pathRG))
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain recoveryRG st)
+             (Bench.Dataset.observed ds recoveryRG))
+          (eqPenalty
+             (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain scaleRG# st)
+             (Bench.Dataset.observed ds scaleRG#))
+    }
+
 rgMixedBenchmarkSelfMismatch-zero :
   ∀ {k} n (sch : RGMixedSchedule n k) gain (st : RGState (k + n)) →
   Bench.BenchmarkMatch.mismatch (rgMixedBenchmarkMatch n sch) gain st (rgMixedBenchmarkDataset n sch gain st) ≡ zero
@@ -906,6 +1588,18 @@ rgMixedRichBenchmarkSelfMismatch-zero n sch gain st =
   rgBenchmarkScore-refl
     (Bench.BenchmarkTheory′.predictB (rgMixedBenchmarkTheory n sch) gain rel# st)
     (Bench.BenchmarkTheory′.predictB (rgMixedBenchmarkTheory n sch) gain irr# st)
+
+rgMixedTraceBenchmarkSelfMismatch-zero :
+  ∀ {k} n (sch : RGMixedSchedule n k) gain (st : RGState (k + n)) →
+  Bench.BenchmarkMatch.mismatch (rgMixedTraceBenchmarkMatch n sch) gain st (rgMixedTraceBenchmarkDataset n sch gain st) ≡
+  zeroRGBenchmarkScore
+rgMixedTraceBenchmarkSelfMismatch-zero n sch gain st
+  rewrite eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain (endpointRG rel#) st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain (endpointRG irr#) st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain pathRG st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain recoveryRG st)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch) gain scaleRG# st)
+  = refl
 
 rgMixed-rel-benchmark-stable :
   ∀ {k} n (sch : RGMixedSchedule n k) gain (x : RGState (k + n)) →
@@ -985,9 +1679,26 @@ rgMixed-recovered-rich-benchmark-mismatch-zero :
 rgMixed-recovered-rich-benchmark-mismatch-zero n sch₁ sch₂ gain x rx₁ rx₂
   rewrite rgMixed-recovered-observable-agree n sch₁ sch₂ rel# x rx₁ rx₂
         | rgMixed-recovered-observable-agree n sch₁ sch₂ irr# x rx₁ rx₂
-  = rgBenchmarkScore-refl
-      (Bench.BenchmarkTheory′.predictB (rgMixedBenchmarkTheory n sch₂) gain rel# x)
-      (Bench.BenchmarkTheory′.predictB (rgMixedBenchmarkTheory n sch₂) gain irr# x)
+  = rgBenchmarkScore-refl (Bench.BenchmarkTheory′.predictB (rgMixedBenchmarkTheory n sch₂) gain rel# x)
+                         (Bench.BenchmarkTheory′.predictB (rgMixedBenchmarkTheory n sch₂) gain irr# x)
+
+rgMixedTraceRecovered-endpoint-zero :
+  ∀ {k} n (sch₁ sch₂ : RGMixedSchedule n k) gain (x : RGState (k + n)) →
+  PT.recoveredLaw (rgShellTheory n) (rgRunMixed sch₁ x) →
+  PT.recoveredLaw (rgShellTheory n) (rgRunMixed sch₂ x) →
+  RGBenchmarkScore.endpoint
+    (Bench.BenchmarkMatch.mismatch
+      (rgMixedTraceBenchmarkMatch n sch₁)
+      gain
+      x
+      (rgMixedTraceBenchmarkDataset n sch₂ gain x))
+  ≡ zero
+rgMixedTraceRecovered-endpoint-zero n sch₁ sch₂ gain x rx₁ rx₂
+  rewrite rgMixed-recovered-observable-agree n sch₁ sch₂ rel# x rx₁ rx₂
+        | rgMixed-recovered-observable-agree n sch₁ sch₂ irr# x rx₁ rx₂
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch₂) gain (endpointRG rel#) x)
+        | eqPenalty-refl (Bench.BenchmarkTheory′.predictB (rgMixedTraceBenchmarkTheory n sch₂) gain (endpointRG irr#) x)
+  = refl
 
 rgMixed-step-tail-canonical :
   ∀ {k} n (sch : RGMixedSchedule n k) t (x : RGState (k + n)) →
@@ -1453,6 +2164,64 @@ rgFlowBundle =
     ; irr-benchmark-step-monotone = rgFlow-irr-benchmark-step-monotone
     ; step-tail-canonical = rgFlow-step-tail-canonical
     ; step-tail-canonical-observable = rgFlow-step-tail-canonical-observable
+    }
+
+record RGPhase2HierarchyBundle : Set₁ where
+  field
+    coarseBy : RGCoarseScheme → ∀ n → RGState (suc n) → RGState n
+    stepBy : RGFlowMode → ∀ n → RGState n → RGState n
+    fixedPointOfState : ∀ {n} → RGState n → RGFixedPoint
+    canonicalFixedPoint : Bool → RGFixedPoint
+    coarseBy-class :
+      ∀ scheme n (x : RGState (suc n)) →
+      rgClassOf (coarseBy scheme n x) ≡ rgCoarseClass n x
+    coarseBy-rel-observable-stable :
+      ∀ scheme n (x : RGState (suc n)) →
+      rgObservableExprEval n rel# (rgClassOf (coarseBy scheme n x)) ≡
+      rgObservableExprEval (suc n) rel# (rgClassOf x)
+    coarseBy-irr-observable-monotone :
+      ∀ scheme n (x : RGState (suc n)) →
+      rgObservableExprEval n irr# (rgClassOf (coarseBy scheme n x)) ≤
+      rgObservableExprEval (suc n) irr# (rgClassOf x)
+    schemeFlow :
+      ∀ (scheme : RGCoarseScheme) (mode : RGFlowMode) (k m n : Nat) → RGState (k + n) → RGState n
+    schemeFlow-basin-stable :
+      ∀ (scheme : RGCoarseScheme) (mode : RGFlowMode) (k m n : Nat) (x : RGState (k + n)) →
+      rgBasinLabel (schemeFlow scheme mode k m n x) ≡ rgBasinLabel x
+    schemeFlow-irrelevant-monotone :
+      ∀ (scheme : RGCoarseScheme) (mode : RGFlowMode) (k m n : Nat) (x : RGState (k + n)) →
+      rgIrrelevantSize (schemeFlow scheme mode k m n x) ≤ rgIrrelevantSize x
+    schemeFlow-rel-observable-stable :
+      ∀ (scheme : RGCoarseScheme) (mode : RGFlowMode) (k m n : Nat) (x : RGState (k + n)) →
+      rgObservableExprEval n rel# (rgClassOf (schemeFlow scheme mode k m n x)) ≡
+      rgObservableExprEval (k + n) rel# (rgClassOf x)
+    schemeFlow-canonical-on-recovered :
+      ∀ (scheme : RGCoarseScheme) (mode : RGFlowMode) (k m n : Nat) (x : RGState (k + n)) →
+      PT.recoveredLaw (rgShellTheory n) (schemeFlow scheme mode k m n x) →
+      rgClassOf (schemeFlow scheme mode k m n x) ≡
+      rgClassOf (rgVacuum n (rgBasinLabel x))
+    schemeFlow-fixedPoint-on-recovered :
+      ∀ (scheme : RGCoarseScheme) (mode : RGFlowMode) (k m n : Nat) (x : RGState (k + n)) →
+      PT.recoveredLaw (rgShellTheory n) (schemeFlow scheme mode k m n x) →
+      fixedPointOfState (schemeFlow scheme mode k m n x) ≡
+      canonicalFixedPoint (rgBasinLabel x)
+
+rgPhase2HierarchyBundle : RGPhase2HierarchyBundle
+rgPhase2HierarchyBundle =
+  record
+    { coarseBy = rgCoarseBy
+    ; stepBy = rgStepBy
+    ; fixedPointOfState = rgFixedPointOfState
+    ; canonicalFixedPoint = rgCanonicalFixedPoint
+    ; coarseBy-class = rgCoarseBy-class
+    ; coarseBy-rel-observable-stable = rgCoarseByRelObservableStable
+    ; coarseBy-irr-observable-monotone = rgCoarseByIrrelObservableMonotone
+    ; schemeFlow = rgSchemeFlow
+    ; schemeFlow-basin-stable = rgSchemeFlow-basin-stable
+    ; schemeFlow-irrelevant-monotone = rgSchemeFlow-irrelevant-monotone
+    ; schemeFlow-rel-observable-stable = rgSchemeFlow-rel-observable-stable
+    ; schemeFlow-canonical-on-recovered = rgSchemeFlow-canonical-on-recovered
+    ; schemeFlow-fixedPoint-on-recovered = rgSchemeFlow-fixedPoint-on-recovered
     }
 
 rgRelevantPreserved :

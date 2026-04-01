@@ -25,6 +25,20 @@ Archive-backed status update:
   `PhysicsClosureValidationSummary.agda` as heavy/avoid-by-default, and treat
   `Everything.agda` as an occasional bounded checkpoint rather than a routine
   inner-loop command.
+- Representation-language clarification:
+  `Docs/ColourInDashi.md` now fixes the repo-facing split between optical
+  colour, perceptual colour, and QCD colour, and states the safe Dashi claim
+  boundary: colour is a projection-stable observable on a structured latent
+  signal, not a primitive property.
+- Internal-symmetry clarification:
+  `Docs/TriadicCarrierToSU3.md` now fixes the safe bridge from a triadic
+  3-sector carrier to an `SU(3)`-like internal symmetry claim. Ternary
+  counting alone is not enough; the lift requires conserved Hermitian norm,
+  determinant-one admissible mixing, and an observable quotient.
+- MDL toy clarification:
+  `Docs/MusicalSymmetryMDL.md` now states the stronger basin target explicitly:
+  replace direct symmetry reward with a compression/MDL proxy and ask whether
+  symmetric attractor classes still dominate.
 - Canonical closure routing now includes an explicit
   `ContractionForcesQuadraticStrong -> QuadraticToCliffordBridgeTheorem`
   step that builds a canonical bilinear-form interface from normalized
@@ -34,6 +48,17 @@ Archive-backed status update:
   signature source with a causal-classification theorem on the normalized
   quadratic (`Q̂core`) under cone/arrow/isotropy/finite-speed/nondegeneracy
   assumptions.
+- Archive coverage update:
+  `Docs/PhysicsArchiveCoverageMap.md` now records the current high-signal
+  local-DB support threads for the physics-closure spine. The current repo
+  reading is:
+  `Physics Closure in DASHI`,
+  `Branch · Cone monotonicity analysis`,
+  and `Branch · Snap Filtering Analysis`
+  are direct formal support lanes, while
+  `Branch · Topology and MDA/MDL`
+  and the light-transport / phase-sync thread remain support lanes for
+  continuum and physical-realization work.
 
 Current theorem status:
 
@@ -48,6 +73,12 @@ Current theorem status:
   distinguish what is already proved from what is only a forward prediction
   claim. The next concrete benchmark is profile rigidity across new 4D
   realizations.
+- Current archive-backed Stage C priority order:
+  1. derived dynamics law;
+  2. realization-independent projection/delta theorem;
+  3. signature forcing / execution-delta interface;
+  4. continuum scaling law;
+  5. physical reality bridge from wavefield / phase synchronization.
 - Current validation snapshot:
   reference signed-permutation self-check = `exactMatch`,
   synthetic one-minus admissible candidate = `exactMatch`,
@@ -928,3 +959,20 @@ Merge-prep status:
 the local Nix / zkperf surface is complete and validated, so active work now
 returns to the physics closure spine and the existing tail-boundary follow-up
 track.
+
+## RG Toy Next Phase
+
+The RG toy is now past pure shell/plumbing work.
+It has operator families, mixed coarse/evolve schedules, endpoint and rich
+benchmark layers, and a trace-aware mixed benchmark surface.
+
+The next RG implementation work is split deliberately:
+
+- Phase 2: enrich the operator/state hierarchy.
+  Add multiple coarse schemes, multiple evolve modes, and a less trivial
+  fixed-point/family structure so universality is not being tested against one
+  stylized route.
+- Phase 3: restate the current comparison and benchmark theorems against that
+  richer hierarchy.
+  The target is endpoint agreement with room for path/scale disagreement,
+  rather than more collapse lemmas on the current toy encoding.

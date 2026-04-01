@@ -23,12 +23,15 @@ record UnifiedToyIterateBundle (n : Nat) : Set₁ where
     rg-renormalization : RG.RGRenormalizationSummary
     rg-flow            : RG.RGFlowSummary
     rg-fused           : RG.RGFusedSummary
+    rg-phase2-hierarchy : RG.RGPhase2HierarchySummary
     rg-prediction      : RG.RGPredictionSummary n
     rg-scheduled-prediction : RG.RGScheduledPredictionSummary n
     rg-benchmark       : RG.RGBenchmarkSummary n
     rg-rich-benchmark  : RG.RGRichBenchmarkSummary n
     rg-scheduled-benchmark : RG.RGScheduledBenchmarkSummary n
     rg-mixed-scheduled-benchmark : (k : Nat) → RG.RGMixedScheduledBenchmarkSummary n k
+    rg-mixed-trace-benchmark : (k : Nat) → RG.RGMixedTraceBenchmarkSummary n k
+    rg-mixed-phase2-trace-benchmark : (k : Nat) → RG.RGMixedPhase2TraceBenchmarkSummary n k
     rg-benchmark-compare : RG.RGBenchmarkComparisonBundle n
     rg-asymptotic :
       (x : RGBase.RGState n) →
@@ -51,12 +54,15 @@ unifiedToyIterateBundle n =
     { rg-renormalization = RG.rgRenormalizationSummary
     ; rg-flow = RG.rgFlowSummary
     ; rg-fused = RG.rgFusedSummary
+    ; rg-phase2-hierarchy = RG.rgPhase2HierarchySummary
     ; rg-prediction = RG.rgPredictionSummary n
     ; rg-scheduled-prediction = RG.rgScheduledPredictionSummary n
     ; rg-benchmark = RG.rgBenchmarkSummary n
     ; rg-rich-benchmark = RG.rgRichBenchmarkSummary n
     ; rg-scheduled-benchmark = RG.rgScheduledBenchmarkSummary n
     ; rg-mixed-scheduled-benchmark = RG.rgMixedScheduledBenchmarkSummary n
+    ; rg-mixed-trace-benchmark = RG.rgMixedTraceBenchmarkSummary n
+    ; rg-mixed-phase2-trace-benchmark = RG.rgMixedPhase2TraceBenchmarkSummary n
     ; rg-benchmark-compare = RG.rgBenchmarkComparisonBundle n
     ; rg-asymptotic = RG.rgAsymptoticBundle n
     ; rg-recovered-tail = RG.rgRecoveredTailBundle n

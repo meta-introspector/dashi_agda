@@ -79,6 +79,8 @@ import DASHI.Energy.FejerToClosestPoint
 import DASHI.Energy.FejerToClosestPointCore
 import DASHI.Energy.L1
 import DASHI.Energy.TranslationInvariantMetric
+import DASHI.Execution.Contract
+import DASHI.Execution.ShiftGeometryBridge
 import DASHI.Examples.ConcreteInstances
 import DASHI.Geometry.BanachFixedPoint
 import DASHI.Geometry.BanachFixedPointNat
@@ -166,6 +168,10 @@ import DASHI.Geometry.Signature31FromConeArrowIsotropy
 import DASHI.Geometry.Signature31FromIntrinsicShellForcing
 import DASHI.Geometry.Signature31Lock
 import DASHI.Geometry.Signature.ConeArrowInstances
+import DASHI.Geometry.LorentzEmergence
+import DASHI.Geometry.LorentzEmergenceFromCausalAxioms
+import DASHI.Geometry.ShiftLorentzEmergenceInstance
+import DASHI.Geometry.SignatureCombinatorics
 import DASHI.Geometry.Signature.Elimination
 import DASHI.Geometry.SignatureExclusionFromOrbitProfile
 import DASHI.Geometry.Signature.HyperbolicForm
@@ -181,6 +187,7 @@ import DASHI.Geometry.UniqueInnerProduct
 import DASHI.Instances.HEP
 import DASHI.Instances.Primes
 import DASHI.Instances.Signals
+import DASHI.Lorentz.DeltaConeSignatureEmergence
 import DASHI.Lorentz.SignatureUniqueness
 import DASHI.MDL.CodeLengths
 import DASHI.MDL.MDLDescent
@@ -313,6 +320,7 @@ import DASHI.Physics.Closure.DynamicalClosureShiftInstance
 import DASHI.Physics.Closure.DynamicalClosureShiftWitnessInstance
 import DASHI.Physics.Closure.DynamicalClosureStatus
 import DASHI.Physics.Closure.DynamicalClosureWitness
+import DASHI.Physics.Closure.ExecutionContract
 import DASHI.Physics.Closure.EmpiricalClosureWithSignatureLock
 import DASHI.Physics.Closure.EmpiricalClosureWithWitnessPolicy
 import DASHI.Physics.Closure.EnergyClosestPointShiftInstance
@@ -511,6 +519,7 @@ import DASHI.Physics.Closure.PhysicsClosureTheoremChecklist
 import DASHI.Physics.Closure.PhysicsClosureTheoremLadder
 import DASHI.Physics.Closure.PolarizationZLift
 import DASHI.Physics.Closure.QuadraticToCliffordBridgeTheorem
+import DASHI.Physics.Closure.RGObservableInvariance
 import DASHI.Physics.Closure.Recovery.WaveRegime
 import DASHI.Physics.Closure.RootSystemB4ClosureObservableWitnessInstance
 import DASHI.Physics.Closure.RootSystemB4IndependenceScaffold
@@ -520,6 +529,7 @@ import DASHI.Physics.Closure.RootSystemB4OrbitQuotientTheorem
 import DASHI.Physics.Closure.RootSystemB4RealizationWitness
 import DASHI.Physics.Closure.SecondaryConstraintGaugeInstance
 import DASHI.Physics.Closure.ShiftClosureObservableWitnessInstance
+import DASHI.Physics.Closure.ShiftRGObservableInstance
 import DASHI.Physics.Closure.ShiftEnergyMDLInstances
 import DASHI.Physics.Closure.ShiftObservablePredictionInstance
 import DASHI.Physics.Closure.ShiftSeamCertificates
@@ -836,6 +846,7 @@ import MonsterVectors
 import Ontology.CICADA71
 import Ontology.Contracts
 import Ontology.GodelLattice
+import Ontology.Hecke.PrimeHeckeEigenMotifPipeline
 import Ontology.Hecke.Scan
 import Overflow
 import PrimeRoles

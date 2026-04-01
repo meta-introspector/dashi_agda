@@ -93,6 +93,16 @@ rgFusedSummary =
     { bundle = RG.rgFusedBundle
     }
 
+record RGPhase2HierarchySummary : Set₁ where
+  field
+    bundle : RG.RGPhase2HierarchyBundle
+
+rgPhase2HierarchySummary : RGPhase2HierarchySummary
+rgPhase2HierarchySummary =
+  record
+    { bundle = RG.rgPhase2HierarchyBundle
+    }
+
 record RGPredictionSummary (n : Nat) : Set₁ where
   field
     theory : Meas.PredictionTheory (RG.rgQuotiented n)
@@ -258,6 +268,90 @@ record RGMixedScheduledBenchmarkSummary (n k : Nat) : Set₁ where
         (RG.rgBenchmarkDataset n gain (RG.rgClassOf (RG.stepPow n t (RG.rgRunMixed sch₂ x))))
       ≡ zero
 
+record RGMixedTraceBenchmarkSummary (n k : Nat) : Set₁ where
+  field
+    theory : RG.RGMixedSchedule n k → Bench.BenchmarkTheory′ (RG.rgRawQuotiented (k + n))
+    match : (sch : RG.RGMixedSchedule n k) → Bench.BenchmarkMatch (RG.rgMixedTraceBenchmarkTheory n sch)
+    self-mismatch-zero :
+      ∀ (sch : RG.RGMixedSchedule n k) gain (x : RG.RGState (k + n)) →
+      Bench.BenchmarkMatch.mismatch
+        (RG.rgMixedTraceBenchmarkMatch n sch)
+        gain
+        x
+        (RG.rgMixedTraceBenchmarkDataset n sch gain x)
+      ≡ RG.zeroRGBenchmarkScore
+    recovered-endpoint-zero :
+      ∀ (sch₁ sch₂ : RG.RGMixedSchedule n k) gain (x : RG.RGState (k + n)) →
+      PT.recoveredLaw (RG.rgShellTheory n) (RG.rgRunMixed sch₁ x) →
+      PT.recoveredLaw (RG.rgShellTheory n) (RG.rgRunMixed sch₂ x) →
+      RG.RGBenchmarkScore.endpoint
+        (Bench.BenchmarkMatch.mismatch
+          (RG.rgMixedTraceBenchmarkMatch n sch₁)
+          gain
+          x
+          (RG.rgMixedTraceBenchmarkDataset n sch₂ gain x))
+      ≡ zero
+
+record RGMixedPhase2TraceBenchmarkSummary (n k : Nat) : Set₁ where
+  field
+    theory : RG.RGMixedSchedule2 n k → Bench.BenchmarkTheory′ (RG.rgRawQuotiented (k + n))
+    match : (sch : RG.RGMixedSchedule2 n k) → Bench.BenchmarkMatch (RG.rgMixed2TraceBenchmarkTheory n sch)
+    self-mismatch-zero :
+      ∀ (sch : RG.RGMixedSchedule2 n k) gain (x : RG.RGState (k + n)) →
+      Bench.BenchmarkMatch.mismatch
+        (RG.rgMixed2TraceBenchmarkMatch n sch)
+        gain
+        x
+        (RG.rgMixed2TraceBenchmarkDataset n sch gain x)
+      ≡ RG.zeroRGBenchmarkScore
+    recovered-endpoint-zero :
+      ∀ (sch₁ sch₂ : RG.RGMixedSchedule2 n k) gain (x : RG.RGState (k + n)) →
+      PT.recoveredLaw (RG.rgShellTheory n) (RG.rgRunMixed2 sch₁ x) →
+      PT.recoveredLaw (RG.rgShellTheory n) (RG.rgRunMixed2 sch₂ x) →
+      RG.RGBenchmarkScore.endpoint
+        (Bench.BenchmarkMatch.mismatch
+          (RG.rgMixed2TraceBenchmarkMatch n sch₁)
+          gain
+          x
+          (RG.rgMixed2TraceBenchmarkDataset n sch₂ gain x))
+      ≡ zero
+    tail-vs-flip-vacuum-split :
+      ∀ r →
+      RG.rgClassOf (RG.rgRunMixed2 (RG.uniformMixed2 RG.tailScheme RG.holdMode n (suc zero) zero) (RG.rgVacuum (suc n) r)) ≡
+      RG.rgClassOf (RG.rgRunMixed2 (RG.uniformMixed2 RG.flipTailScheme RG.holdMode n (suc zero) zero) (RG.rgVacuum (suc n) r))
+      ×
+      RG.RGBenchmarkScore.path
+        (Bench.BenchmarkMatch.mismatch
+          (RG.rgMixed2TraceBenchmarkMatch n (RG.uniformMixed2 RG.tailScheme RG.holdMode n (suc zero) zero))
+          (suc zero)
+          (RG.rgVacuum (suc n) r)
+          (RG.rgMixed2TraceBenchmarkDataset n (RG.uniformMixed2 RG.flipTailScheme RG.holdMode n (suc zero) zero) (suc zero) (RG.rgVacuum (suc n) r)))
+      ≡ suc zero
+    uniform-tail-vs-flip-positive-depth-split :
+      ∀ k r →
+      RG.RGBenchmarkScore.endpoint
+        (Bench.BenchmarkMatch.mismatch
+          (RG.rgMixed2TraceBenchmarkMatch n (RG.uniformMixed2 RG.tailScheme RG.holdMode n (suc k) zero))
+          (suc zero)
+          (RG.rgVacuum ((suc k) + n) r)
+          (RG.rgMixed2TraceBenchmarkDataset n (RG.uniformMixed2 RG.flipTailScheme RG.holdMode n (suc k) zero) (suc zero) (RG.rgVacuum ((suc k) + n) r)))
+      ≡ zero
+      ×
+      RG.RGBenchmarkScore.path
+        (Bench.BenchmarkMatch.mismatch
+          (RG.rgMixed2TraceBenchmarkMatch n (RG.uniformMixed2 RG.tailScheme RG.holdMode n (suc k) zero))
+          (suc zero)
+          (RG.rgVacuum ((suc k) + n) r)
+          (RG.rgMixed2TraceBenchmarkDataset n (RG.uniformMixed2 RG.flipTailScheme RG.holdMode n (suc k) zero) (suc zero) (RG.rgVacuum ((suc k) + n) r)))
+      ≡ suc zero
+    one-layer-hold-raw-split :
+      ∀ (x : RG.RGState (suc n)) →
+      RG.rgClassOf (RG.rgRunMixed2 (RG.uniformMixed2 RG.tailScheme RG.holdMode n (suc zero) zero) x) ≡
+      RG.rgClassOf (RG.rgRunMixed2 (RG.uniformMixed2 RG.flipTailScheme RG.holdMode n (suc zero) zero) x)
+      ×
+      suc (RG.rgMixed2TraceObservableEval n (RG.uniformMixed2 RG.tailScheme RG.holdMode n (suc zero) zero) RG.path2RG x) ≡
+      RG.rgMixed2TraceObservableEval n (RG.uniformMixed2 RG.flipTailScheme RG.holdMode n (suc zero) zero) RG.path2RG x
+
 rgMixedScheduledBenchmarkSummary : (n k : Nat) → RGMixedScheduledBenchmarkSummary n k
 rgMixedScheduledBenchmarkSummary n k =
   record
@@ -276,6 +370,32 @@ rgMixedScheduledBenchmarkSummary n k =
     ; step-tail-canonical-observable = RG.rgMixed-step-tail-canonical-observable n
     ; step-tail-benchmark-mismatch-zero = RG.rgMixed-step-tail-benchmark-mismatch-zero n
     ; step-tail-cross-benchmark-mismatch-zero = RG.rgMixed-step-tail-cross-benchmark-mismatch-zero n
+    }
+
+rgMixedTraceBenchmarkSummary : (n k : Nat) → RGMixedTraceBenchmarkSummary n k
+rgMixedTraceBenchmarkSummary n k =
+  record
+    { theory = RG.rgMixedTraceBenchmarkTheory n
+    ; match = RG.rgMixedTraceBenchmarkMatch n
+    ; self-mismatch-zero = RG.rgMixedTraceBenchmarkSelfMismatch-zero n
+    ; recovered-endpoint-zero = RG.rgMixedTraceRecovered-endpoint-zero n
+    }
+
+rgMixedPhase2TraceBenchmarkSummary : (n k : Nat) → RGMixedPhase2TraceBenchmarkSummary n k
+rgMixedPhase2TraceBenchmarkSummary n k =
+  record
+    { theory = RG.rgMixed2TraceBenchmarkTheory n
+    ; match = RG.rgMixed2TraceBenchmarkMatch n
+    ; self-mismatch-zero = RG.rgMixed2TraceBenchmarkSelfMismatch-zero n
+    ; recovered-endpoint-zero = RG.rgMixed2TraceRecovered-endpoint-zero n
+    ; tail-vs-flip-vacuum-split = λ r →
+        RG.rgMixed2-tail-vs-flip-endpoint-class-on-vacuum n r ,
+        proj₂ (RG.rgMixed2-tail-vs-flip-trace-benchmark-split n r)
+    ; uniform-tail-vs-flip-positive-depth-split = λ k r →
+        RG.rgUniformMixed2-tail-vs-flip-trace-benchmark-split k n r
+    ; one-layer-hold-raw-split = λ x →
+        RG.rgMixed2-tail-vs-flip-one-layer-hold-endpoint-class n x ,
+        RG.rgMixed2-tail-vs-flip-one-layer-hold-path-step n x
     }
 
 record RGBenchmarkComparisonBundle (n : Nat) : Set₁ where

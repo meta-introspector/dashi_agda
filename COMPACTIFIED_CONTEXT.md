@@ -1,5 +1,204 @@
 # Compactified Context
 
+## 2026-04-02
+
+- Current closure-language correction:
+  "closure" must mean more than a compiling bridge or a toy that works on one
+  carrier. The durable target is now stated as:
+  one carrier,
+  one admissible law,
+  one observable algebra,
+  one RG/coarse-graining story,
+  and one conserved/defect interpretation,
+  with no unresolved bridge theorem between those layers.
+- Current canonical repo status relative to that target:
+  - the first honest canonical closure→schedule bridge is now landed only on
+    the quotient `Gauge × basinLabel × motifClass`;
+  - the larger projected package
+    `Gauge × basinLabel × mdlLevel × motifClass × eigenShadow`
+    is still obstructed on the `CP` branch as a closure→schedule bridge even
+    though it remains the strongest landed closure-honest conserved package on
+    the canonical AGMB carrier;
+  - raw `heckeSignature` and raw `eigenSummary` remain explicitly obstructed
+    on `CP`.
+- Main interpretation decision pulled from the current local theorem state:
+  the present closure law is already acting like a physical quotient.
+  The right next question is therefore not "how do we force every fine channel
+  to survive?" but "what is the maximal closure-invariant observable package,
+  and how should the non-descending channels be reinterpreted as
+  gauge/fibre/defect structure?"
+- Immediate implementation-facing target:
+  define that maximal closure-invariant observable package explicitly, prove
+  the current canonical inhabitant for the motif-level bridge package, and
+  classify the failed channels
+  (`mdlLevel`, `eigenShadow` as bridge data, raw `eigenSummary`,
+  raw `heckeSignature`) as obstruction/defect data rather than silent failures.
+
+## 2026-03-31
+
+- Archive/formalism sweep is now broad enough to drive the next physics-closure
+  phase, though not every Agda-adjacent thread has been exhaustively audited.
+- Canonical archived threads checked from the local DB:
+  - title `Dashi and Physics Insights`,
+    online UUID `69ca43a9-09fc-839b-8cc3-e5ce3868eef5`,
+    canonical thread `ad17536d8eeb320106585654a0950424abafa93b`,
+    source `db` after live pull repair on `2026-03-31`.
+  - title `Physics Closure in DASHI`,
+    online UUID `69a80d0b-28b4-839b-aaae-90f7d7f0589c`,
+    canonical thread `2fa5dc5c445be6ce34c31cf6d2d9f94c6d029320`,
+    source `db`.
+  - title `Branch · Cone monotonicity analysis`,
+    online UUID `699dc8f6-b6f0-839e-8b3a-7912abb07093`,
+    canonical thread `64ca6555941802f7cd4974541eab012188b635b3`,
+    source `db`.
+  - title `Branch · Snap Filtering Analysis`,
+    online UUID `69a392fb-aba0-8398-93b8-7951cc8297ac`,
+    canonical thread `0841ea838af3f2a00f66812316133e2162d9d550`,
+    source `db`.
+  - title `Branch · Topology and MDA/MDL`,
+    online UUID `69718c29-6bcc-8324-b9e9-e412af8c89eb`,
+    canonical thread `53a59124cb8ef2f2e3a708a31fceb0010f3208ca`,
+    source `db`.
+  - title `Branch · Visualising Collapse and Sparsity - RTX - light transport`,
+    online UUID `69719a75-e538-8320-b5cc-1da13392b090`,
+    canonical thread `ea0e0d537a1c6effd17bba4c32faeec4f8fc66f5`,
+    source `db`.
+- Main archive decisions pulled from those threads:
+  - the newly resolved `Dashi and Physics Insights` thread sharpens the Hecke
+    boundary:
+    Hecke/FRACTRAN belong on the prime-lattice representation layer rather
+    than in the transported conserved witness on the contractive dynamics
+    layer;
+  - the same `Dashi and Physics Insights` thread was refreshed again on
+    2026-03-31 and did in fact ingest newer material:
+    the thread now resolves to `144` archived messages.
+    The latest high-signal target is no longer another raw Hecke lift:
+    the highest-probability next bridge shape is a forced-stable transfer
+    statement (illegal-count compatibility through the closure→shift transport
+    image `S(x)`), with the candidate chain
+    `illegalCount_chamber ≤ forcedStableCount_hist ≤ forcedStableCount_orbit`.
+    The explicit bridge target is now written as:
+    `illegalCount_chamber(x,p) ≤ forcedStableCount_hist(S(x),p) ≤
+    forcedStableCount_orbit(S(x),p)`, with equality of the first inequality as
+    the preferred next strengthening.
+  - the remaining proof mass is still dynamics bound to invariants, not
+    discovery of cone/projection/quadratic structure from scratch;
+  - projected-delta structure remains the right invariant carrier, and
+    cone monotonicity should be treated boundary-vs-interior rather than as a
+    flat global predicate;
+  - the cone-monotonicity archive also sharpens the mathematical route:
+    non-expansiveness alone does not force orthogonality; the honest bridge is
+    closer to proximal/closest-point structure or MDL-energy-first quadratic
+    recovery;
+  - the snap-filtering thread is now promoted from “analysis noise” to a real
+    support lane for signature forcing and arrow-separated delta interfaces;
+  - the same snap-filtering thread now contributes a concrete interface rule:
+    arrow-separated delta cone is the honest screen, and the arrow coordinate
+    should orient forwardness while staying outside the quadratic itself;
+  - sparse/twist/phase transport remains the strongest missing physical channel
+    from the archive side;
+  - the light-transport / MASI-style phase-synchronization material is the
+    strongest current physical bridge for quotient observables and MDL-style
+    representative selection, but it has not yet been formalized locally;
+  - the light-transport thread is strong on multi-sensor wavefield recovery
+    and phase synchronization, but it is not yet an archived proof of a full
+    lensless time-of-flight formalism.
+- Current Hecke-side stack status has now been tightened in local docs:
+  the repo already has representation, transport, defect, quotient,
+  correspondence, and exact chamber layers on the `FactorVec` / Monster-prime
+  carrier. The open layers are compressed chamber quotients, orbit families,
+  correspondence algebra, weighted/measure layers, spectral structure, and any
+  bridge into the contractive physics bundle.
+- Current Hecke-side next theorem target:
+  extract histogram-level data from the 15-entry defect correspondence fiber
+  and prove chamber-stability first for the forced-stable / illegal count
+  before attempting stronger full-profile chamber invariants.
+- Resolver bug fixed during the same pass:
+  `ITIR-suite/chat_context_resolver_lib/live_provider.py` had been ignoring
+  `~/.chatgpt_session_new` and therefore falling back to a stale legacy token;
+  the live path now checks the refreshed token source first.
+- Current archive-backed priority order for the repo:
+  - P0:
+    derived dynamics law,
+    realization-independent projection/delta theorem,
+    signature forcing / execution-delta interface,
+    continuum scaling law;
+  - P1:
+    physical reality bridge from wavefield / phase synchronization;
+  - P2:
+    algebraic-carrier / moonshine-adjacent archive material unless it directly
+    helps the physics-closure spine.
+
+## 2026-03-30
+
+- New representation-language clarification:
+  the repo did not previously carry a local colour note, so this decision is
+  now explicit in `Docs/ColourInDashi.md`.
+- Current safe colour-language split:
+  - optical colour = projected observable
+  - perceptual colour = organized or reconstructed interpretation of that
+    observable
+  - QCD colour = separate gauge-theoretic internal degree of freedom
+- Current safe Dashi claim:
+  colour is a projection-stable observable on a structured latent signal.
+  MDL can choose preferred representatives of a projection class, but that
+  reconstruction rule should not be identified with the observable itself.
+- Claim-boundary correction:
+  ultrametric similarity and cone-screened delta dynamics are internal Dashi
+  geometry/dynamics on encoded colour states; they should not be stated as
+  finished empirical theorems about human perceptual colour space.
+- New internal-symmetry clarification:
+  `Docs/TriadicCarrierToSU3.md` now records the safe bridge from a triadic
+  3-sector carrier to an `SU(3)`-like internal symmetry candidate.
+  Current decision:
+  triadic structure supplies carrier grammar only; Hermitian norm preservation,
+  determinant-one admissible mixing, and observable quotienting are the extra
+  ingredients required before the `SU(3)` language becomes defensible.
+- New MDL toy clarification:
+  `Docs/MusicalSymmetryMDL.md` and `scripts/musical_symmetry_mdl.py` now pin
+  the stronger symmetry-emergence experiment.
+  Current decision:
+  the right test is no longer "symmetry rewarded therefore symmetry wins" but
+  "compression/MDL proxy plus contraction yields symmetric attractor classes
+  with large basins."
+- The photonuclear / near-miss bridge is now documented end to end in local
+  notes:
+  `Docs/PhotonBridge.md`,
+  `Docs/CMSPhotonuclearBridge.md`,
+  `Docs/CharmPhotoproduction.md`,
+  `Docs/SaturationLayer.md`,
+  and `Docs/CMSCapstone.md`.
+- The current executable target is no longer documentation alone, but a small
+  surrogate numerical prototype that tests explanatory structure rather than
+  fitted empirical success.
+- The prototype surface is split deliberately into three layers:
+  Dashi observable extraction
+  (`scripts/prototype_schema.py`),
+  reduced model families
+  (`scripts/prototype_gbw.py`, `scripts/prototype_ipsat.py`),
+  and runner/comparison entrypoints
+  (`scripts/prototype_runner.py`,
+  `scripts/compare_prototype_channels.py`,
+  `scripts/compare_surrogate_models.py`).
+- Current governance correction:
+  the prototype should not assert that near-miss channels are intrinsically
+  preferred. It should expose how the surrogate explains different channels in
+  terms of defect intensity, MDL burden, promoted observables, and model
+  response.
+- The example states are no longer meant to remain freehand fixtures. The next
+  prototype anchor is a small emitter that materializes those JSON inputs from
+  the canonical shift geometry / admissibility path, centered on
+  `canonicalShiftStateWitness` and the `ShiftInBasin` coarse-head condition.
+- The batch prediction matrix remains the main explanatory inspection surface,
+  but it should now be read as operating on emitted shift-path states rather
+  than arbitrary hand-authored examples.
+- The runner layer now auto-refreshes the canonical emitted example files when
+  those documented paths are missing or stale relative to the emitter script.
+- The prototype now has a shared non-fitting explanation scorecard based on
+  normalized residual, MDL burden, and surrogate-confidence penalty. This is
+  the current repo-local meaning of “better explanation”; it is explicitly not
+  an empirical fit score.
+
 ## 2026-03-27
 
 - Upstream PR `#1` (`nix support`) is now treated as the active source merge
@@ -1036,3 +1235,74 @@ Cleanup state:
   `rgMixed-step-tail-benchmark-mismatch-zero` identifies the canonical-vacuum benchmark score as zero after any recovered mixed schedule is pushed forward by `stepPow`,
   and `rgMixed-step-tail-cross-benchmark-mismatch-zero` does the same across two recovered mixed schedules after matching target-scale evolution.
   `RGMixedScheduledBenchmarkSummary` now exposes these benchmark-tail theorems in the same package as the mixed class/observable tail facts.
+
+- Rich-score follow-up: the RG benchmark line now has a parallel structured score layer instead of only the old two-penalty `Nat`.
+  `RGBenchmarkScore` splits mismatch into `endpoint`, `path`, `recovery`, and `scale` channels using the current encoding’s observable proxies,
+  `rgRichBenchmarkMatch` and `rgMixedRichBenchmarkMatch` expose that score on the quotient and mixed-schedule surfaces,
+  and `rgRichBenchmarkSelfMismatch-zero`, `rgMixedRichBenchmarkSelfMismatch-zero`, and `rgMixed-recovered-rich-benchmark-mismatch-zero`
+  show the structured score collapses cleanly in the same self/recovered regimes as the earlier thin score.
+  `RGSummaryBundle` and `UnifiedToySummaryBundle` now expose the richer RG benchmark surface in parallel with the old compatibility-preserving one.
+
+- Trace-score follow-up: the RG mixed schedule line now has a trace-aware benchmark surface rather than only endpoint-derived rich proxies.
+  `rgMixedPathMass`, `rgMixedRecoveryMass`, and `rgMixedScaleMass` accumulate recursive mixed-schedule path/recovery/scale information across coarse/evolve checkpoints,
+  `rgMixedTraceBenchmarkTheory` and `rgMixedTraceBenchmarkMatch` expose those channels through a new mixed trace benchmark layer,
+  `rgMixedTraceBenchmarkSelfMismatch-zero` proves the structured trace score vanishes on self-comparison,
+  and `rgMixedTraceRecovered-endpoint-zero` states the intended asymmetry: recovered mixed schedules force the endpoint channel to zero, while the trace/recovery/scale channels remain available to distinguish schedules.
+  `RGSummaryBundle` and `UnifiedToySummaryBundle` now expose this mixed trace benchmark layer alongside the thinner endpoint-only benchmark surfaces.
+
+- Pre-Phase-2 planning decision:
+  treat the current RG benchmark work as sufficient Phase 1 for the existing toy encoding.
+  The next implementation phase should not add more collapse lemmas first.
+  Phase 2 is operator/state enrichment:
+  multiple coarse schemes, multiple evolve modes, and a less trivial fixed-point/family structure.
+  Phase 3 then re-states the comparison and universality theorems against that richer hierarchy,
+  with explicit room for endpoint agreement but path/scale disagreement on the trace-aware benchmark layer.
+
+- Phase-2 hierarchy landing:
+  `RGUniversality` now carries `RGCoarseScheme` (`tailScheme`, `flipTailScheme`),
+  `RGFlowMode` (`relaxMode`, `holdMode`),
+  and a four-way `RGFixedPoint` surface distinguishing vacuum vs residual and ordered vs disordered sectors.
+  The new operator layer is additive rather than disruptive:
+  `rgCoarseBy`, `rgStepBy`, `coarsePowBy`, and `rgSchemeFlow` sit alongside the earlier single-path operators,
+  while `rgSchemeFlow-basin-stable`, `rgSchemeFlow-rel-observable-stable`,
+  `rgSchemeFlow-canonical-on-recovered`, and `rgSchemeFlow-fixedPoint-on-recovered`
+  provide the first theorem pack on the richer hierarchy.
+  `RGPhase2HierarchyBundle` / `RGPhase2HierarchySummary` / the unified toy bundle now expose this hierarchy for later Phase 3 theorem restatement.
+
+- Phase-2 mixed-path lift:
+  the RG path layer now also exists on top of the new scheme/mode hierarchy instead of only the old single-scheme mixed schedule.
+  `RGMixedSchedule2`, `rgRunMixed2`, and `uniformMixed2` let mixed schedules choose coarse scheme and evolve mode per layer,
+  `rgMixed2-basin-stable` / `rgMixed2-irrelevant-bounded` / `rgMixed2-recovered-same-class` provide the first structural theorem pack there,
+  and `rgMixed2TraceBenchmarkTheory` / `rgMixed2TraceBenchmarkMatch` / `rgMixed2TraceRecovered-endpoint-zero`
+  lift the trace-aware benchmark surface onto that richer path family.
+  `RGMixedPhase2TraceBenchmarkSummary` and the unified toy bundle now expose the new Phase-2 mixed path layer for upcoming theorem restatement.
+
+- Phase-3 first split theorem:
+  the Phase-2 mixed trace layer is no longer just a proxy wrapper around the old mixed schedule masses.
+  `rgMixed2PathMass`, `rgMixed2RecoveryMass`, and `rgMixed2ScaleMass` now carry explicit scheme/mode weights,
+  so the Phase-2 trace channels can distinguish schedules even when endpoint class agrees.
+  The first concrete theorem is the one-layer vacuum witness:
+  `uniformMixed2 tailScheme holdMode ...` and `uniformMixed2 flipTailScheme holdMode ...`
+  have the same endpoint class on `rgVacuum`, but `rgMixed2-tail-vs-flip-trace-benchmark-split`
+  proves the trace benchmark still has zero endpoint component and path component `1`.
+  `RGMixedPhase2TraceBenchmarkSummary` now exports this as `tail-vs-flip-vacuum-split`.
+
+- Phase-3 deeper split extension:
+  the same endpoint/path separation now scales beyond the one-layer witness.
+  `rgRunUniformMixed2-hold-vacuum`, `rgUniformMixed2-tail-path-on-vacuum`,
+  `rgUniformMixed2-flip-path-on-vacuum`, and
+  `rgUniformMixed2-tail-vs-flip-trace-benchmark-split`
+  show that for any positive uniform coarse depth in `holdMode`,
+  tail-vs-flip schedules still collapse to the same vacuum endpoint class while the trace benchmark path channel remains nonzero.
+  `RGMixedPhase2TraceBenchmarkSummary` now exports this as
+  `uniform-tail-vs-flip-positive-depth-split`.
+
+- Phase-3 non-vacuum hold split:
+  the split now also survives outside vacuum-only witnesses.
+  `rgMixed2-tail-vs-flip-one-layer-hold-endpoint-class` and
+  `rgMixed2-tail-vs-flip-one-layer-hold-path-step`
+  show that for any one-layer `holdMode` state, tail-vs-flip schedules share the same endpoint class
+  while the raw trace path channel differs by one.
+  `RGMixedPhase2TraceBenchmarkSummary` now exports this as
+  `one-layer-hold-raw-split`.
+- 2026-04-01 context refresh (db): “Dashi and Physics Insights” online ID `69ca43a9-09fc-839b-8cc3-e5ce3868eef5`, canonical `ad17536d8eeb320106585654a0950424abafa93b`, latest ts 2026-03-31 15:52 UTC. Key payload: Forced-Stable Transfer Bridge candidate (illegalCount_chamber ≤ forcedStableCount_hist ≤ forcedStableCount_orbit) and the pre-bridge inequality target illegalCount_chamber(x,p) ≤ forcedStableCount_hist(S(x),p); confirms exact chambers already exist and next theorems should test chamber-stability of defect histograms/correspondences.

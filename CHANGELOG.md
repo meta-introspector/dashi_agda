@@ -1,5 +1,583 @@
 # Changelog
 
+## 2026-04-02
+
+- update `COMPACTIFIED_CONTEXT.md`,
+  `Docs/AbstractGaugeMatterBundle.md`,
+  `Docs/HeckeRepresentationLayer.md`,
+  `Docs/ConservedQuantities.md`,
+  and `TODO.md` to record the stricter closure target and observable split that
+  emerged from the current bridge/obstruction results:
+  closure now means one carrier, one admissible law, one observable package,
+  one RG/coarse-graining story, and one conserved/defect interpretation with
+  no unresolved bridge theorem between them. The docs now also state the
+  current canonical boundary explicitly:
+  `Gauge × basinLabel × motifClass` is the strongest landed
+  closure→schedule bridge quotient, while bridge-level `mdlLevel`,
+  bridge-level `eigenShadow`, raw `eigenSummary`, and raw `heckeSignature`
+  remain non-descending on `CP`; these are now documented explicitly as
+  fibre/defect data rather than left as undifferentiated failed widenings.
+
+## 2026-04-01
+
+- strengthen `DASHI/Physics/Closure/CanonicalClosureShiftScheduleBridge.agda`
+  with the first honest canonical closure→schedule bridge on a nontrivial
+  quotient, namely `Gauge × basinLabel × motifClass`; also record that the
+  larger projected-charge bridge
+  `Gauge × basinLabel × mdlLevel × motifClass × eigenShadow` is obstructed on
+  the canonical `CP` branch. Sync the reporter-boundary wording in
+  `Docs/HeckeRepresentationLayer.md`, `Docs/AbstractGaugeMatterBundle.md`, and
+  `TODO.md`.
+- add `DASHI/Physics/Closure/CanonicalClosureShiftScheduleBridge.agda` and
+  sharpen the schedule-bridge roadmap in `TODO.md` plus
+  `Docs/DynamicsInvariantGapChecklist.md`: the minimal transported
+  closure→shift schedule surface is now explicit, and the stronger raw-eigen
+  closure/schedule bridge shape is now proved obstructed on the canonical
+  `CP` branch.
+- add `canonicalEigenLevel-CP-obstructed` to
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`, making
+  the canonical raw-`eigenSummary` obstruction proof-bearing rather than only
+  narrative; this sharpens the current AGMB boundary that
+  `eigenShadow = (earth , hub)` is the strongest landed closure-honest
+  quotient on the tiny `CR/CP/CC` carrier.
+- add `DASHI/Physics/Closure/CanonicalObservableTransportPrimeCompatibilityProfileInstance.agda`
+  and extend the Hecke bridge docs/TODO so the bundle-level
+  `ObservableTransportWitness` lift is now exercised concretely on the
+  canonical abstract gauge/matter bundle carrier, via
+  `canonicalShiftHeckeState -> shiftPrimeEmbedding`.
+- repair the canonical AGMB continuum lane in
+  `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda` and
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda` by making
+  `ContinuumWitness` preserve a projected continuum observable rather than the
+  full transported `RGObservable`; the canonical instance now compiles again
+  with the closure-honest target
+  `Gauge × basinLabel × mdlLevel × motifClass × eigenShadow`, where
+  `eigenShadow = (earth , hub)` is the first nontrivial preserved quotient of
+  `eigenSummary`, while the stronger
+  full-observable target remains explicitly blocked on the `CP` branch.
+- add `DASHI/Physics/Closure/ShiftContractStatePrimeCompatibilityProfileInstance.agda`
+  and extend the Hecke bridge docs/TODO so the transported-profile route now
+  also has a full execution-contract carrier instance:
+  `EC.Contract.State (shiftContract {1}{3})` now instantiates both
+  `illegalCount-chamber <= forcedStableCount-hist` and the orbit-side
+  forced-stable bridge through
+  `canonicalShiftHeckeState -> shiftPrimeEmbedding`.
+- add `DASHI/Physics/Closure/ShiftGeoVPrimeCompatibilityProfileInstance.agda`
+  and extend the Hecke bridge docs/TODO so the transported-profile route now
+  has a genuinely broader concrete carrier: the full `ShiftGeoV` state family
+  now instantiates both the witness-level inequality
+  `illegalCount-chamber <= forcedStableCount-hist`
+  and the orbit-side forced-stable bridge, rather than only the tiny canonical
+  `CR/CP/CC` carrier.
+- add `DASHI/Physics/Closure/CanonicalTransportedPrimeCompatibilityProfileInstance.agda`
+  and extend the Hecke bridge docs/TODO so the generic transported-profile
+  constructor is now exercised concretely on the canonical carrier and shown to
+  agree with the closure-native `CR/CP/CC` prime embedding.
+- add `DASHI/Physics/Closure/ObservableTransportPrimeCompatibilityProfile.agda`
+  and extend the Hecke bridge docs/TODO so bundle-level closure carriers can
+  now inherit the minimal witness bridge whenever they already export an
+  `ObservableTransportWitness` and a target-side prime embedding.
+- add `DASHI/Physics/Closure/TransportedPrimeCompatibilityProfile.agda` and
+  extend the Hecke bridge docs/TODO so any closure family with a transported
+  `State -> FactorVec` image can now recover the same witness-level bridge
+  surface by forgetting multiplicity and keeping only prime-lane presence.
+- add `DASHI/Physics/Closure/PrimeCompatibilityProfile.agda` and refactor
+  `DASHI/Physics/Closure/CanonicalChamberToShiftWitnessBridgeInstance.agda`
+  through it, so closure-native compatibility data now has a reusable path to
+  prime embeddings, illegal masks, and witness-level forced-stable bridges
+  instead of being wired only as a one-off canonical table.
+- add `DASHI/Physics/Closure/CanonicalChamberToShiftWitnessBridgeInstance.agda`
+  and extend `Docs/HeckeDefectOrbitSummaries.md`,
+  `Docs/HeckeRepresentationLayer.md`, and `TODO.md` so the smaller witness-level
+  bridge now has a first concrete canonical inhabitant. This gives a real
+  canonical proof of `illegalCount-chamber <= forcedStableCount-hist`, and it
+  now computes the compatibility mask from a closure-native profile on the
+  three-generator canonical carrier, with the transported shift image retained
+  only as an audit equality.
+- add `Ontology/Hecke/ChamberToShiftWitnessBridge.agda` and extend
+  `Docs/HeckeDefectOrbitSummaries.md`, `Docs/HeckeRepresentationLayer.md`, and
+  `TODO.md` so the repo now has the minimal fixed-prime witness bridge:
+  closure-side illegal mask,
+  shift-side forced-stable witness mask,
+  and the aggregate theorem
+  `illegalCount-chamber <= forcedStableCount-hist`
+  derived from pointwise witness soundness.
+- weaken `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda` ContinuumWitness
+  by removing `scaleFromCarrier` and preservation laws, and adjust
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+  accordingly. Docs/TODO now reflect that the canonical AGMB instance compiles
+  under the weaker continuum surface; stronger continuum targets remain
+  blocked because the current closure-derived law does not preserve
+  `canonicalRGObservableOf` on the `CP` branch.
+- add `DASHI/Physics/Closure/CanonicalForcedStableTransferBridgeInstance.agda`
+  and extend `Docs/HeckeDefectOrbitSummaries.md`,
+  `Docs/HeckeRepresentationLayer.md`, and `TODO.md` so the forced-stable bridge
+  ladder now has a first concrete canonical inhabitant using the existing map
+  `canonicalTransportState -> canonicalShiftHeckeState -> shiftPrimeEmbedding`.
+  This instantiates the orbit-side inequality on the canonical closure carrier,
+  but the chamber count is still defined from the transported shift image, so
+  the bridge is concrete without yet being closure-native.
+- add `Ontology/Hecke/ForcedStableTransferBridge.agda` and update
+  `Docs/HeckeDefectOrbitSummaries.md`, `Docs/HeckeRepresentationLayer.md`, and
+  `TODO.md` so the current bridge ladder is now explicit code rather than only
+  a note:
+  exact-chamber illegal-count constancy,
+  an abstract closure-to-shift lower bound
+  `illegalCount_chamber <= forcedStableCount_hist`,
+  and the derived composed bound
+  `illegalCount_chamber <= forcedStableCount_orbit`.
+  The closure-to-shift bridge map itself is still not inhabited.
+- update `COMPACTIFIED_CONTEXT.md`, `TODO.md`, and `Docs/HeckeDefectOrbitSummaries.md`
+  after the refreshed pull of archived thread `Dashi and Physics Insights` to
+  record the current bridge-sequencing target as
+  `illegalCount_chamber ≤ forcedStableCount_hist ≤ forcedStableCount_orbit`, with
+  `S(x)` the closure→shift transport image and a preferred first goal of
+  `illegalCount_chamber(x,p) ≤ forcedStableCount_hist(S(x),p)`.
+- add a reminder that the physics-facing story must stay on the representation
+  layer until the canonical closure-to-shift schedule bridge is proven and the
+  raw `heckeSignature`/`eigenSummary` obstructions are resolved; this keeps
+  reporter claims grounded in the formal inequality ladder rather than an
+  unproven conserved observable.
+
+## 2026-03-31
+
+- add `Ontology/Hecke/FactorVecChamberDefectProfileCorrespondence.agda` and
+  extend `Docs/HeckeDefectProfileCorrespondence.md` so the chamber-side
+  illegal-mode restriction now lifts from coarse defect classes to the full
+  defect-profile correspondence: illegal entries are forced to have zero
+  signature drift, fixed motif, and `Stable` coarse defect throughout an exact
+  chamber.
+- add `Ontology/Hecke/FactorVecOrbitForcedStableLowerBound.agda` and extend
+  `Docs/HeckeDefectOrbitSummaries.md` so the first orbit-summary component is
+  now constrained honestly: the histogram-layer forced-stable / illegal count
+  is a lower bound for the orbit-summary `forcedStableCount` field, because
+  illegal entries are always Stable at the full defect-profile level even
+  though not every Stable profile entry is forced by illegality.
+- update `Docs/ConservedQuantities.md`,
+  `Docs/DynamicsInvariantGapChecklist.md`, and `TODO.md` to pin down the
+  current eigen-side widening blocker more precisely: the live
+  `shiftEigenSchedule` theorem exists only on the shift carrier, and there is
+  still no canonical closure-to-shift schedule bridge from the closure-derived
+  law `x ↦ [ CR , x ]` into that live schedule.
+- update `Docs/HeckeRepresentationLayer.md`, `TODO.md`, and
+  `COMPACTIFIED_CONTEXT.md` to record the current full Hecke-side stack more
+  accurately:
+  exact legality-signature chambers are already landed locally, while
+  compressed chamber quotients, orbit families, correspondence algebra,
+  weighted operators, spectral structure, and any bridge to the contractive
+  physics bundle remain open. The next explicit Hecke-side target is now
+  histogram-level chamber stability on the defect correspondence fiber rather
+  than another abstract transport surface.
+- add `Ontology/Hecke/FactorVecDefectHistograms.agda`,
+  `Ontology/Hecke/FactorVecChamberDefectHistograms.agda`, and
+  `Docs/HeckeDefectHistograms.md` as the first histogram layer above the
+  15-entry defect correspondence fiber; the repo now extracts full
+  defect-class histograms and proves chamber-stability for the forced-stable /
+  illegal count, without yet claiming that the full histogram is chamber
+  invariant.
+- add `Ontology/Hecke/FactorVecHistogramObstruction.agda` plus
+  `Docs/HeckeDefectHistogramObstruction.md` to record a concrete small
+  counterexample showing that the full defect histogram is not determined by
+  the exact legality-signature data alone; the forced-stable / illegal count
+  remains the strongest proved chamber-invariant histogram component.
+- add `Ontology/Hecke/FactorVecDefectOrbitSummaries.agda` plus
+  `Docs/HeckeDefectOrbitSummaries.md` as the first orbit-style summary layer
+  above the full defect-profile correspondence, compressing each target-prime
+  fiber to drift, motif-change, and coarse defect-count statistics without yet
+  claiming chamber or transport invariance for that summary carrier.
+- add `Ontology/Hecke/FactorVecOrbitSummaryObstruction.agda` to record that
+  the first orbit-style summary layer is also not determined by legality-
+  signature data alone; the current counterexample already separates the full
+  orbit summary on the same small `p7 = 2` versus `p7 = 3` family.
+- add `Ontology/Hecke/ReverseRepresentation.agda` plus
+  `Docs/ReverseHeckeRepresentation.md` as the first local implementation of
+  the archived reverse-Hecke idea, explicitly on the representation layer and
+  not in the contractive conserved-witness bundle.
+- add `Ontology/Hecke/QuotientRepresentation.agda` plus
+  `Docs/HeckeQuotientRepresentation.md` as the first local equivalence/setoid
+  and quotient-facing Hecke interface, again on the representation layer and
+  not in the contractive closure bundle.
+- add `Ontology/Hecke/FactorVecInstances.agda` plus
+  `Docs/FactorVecHeckeInstance.md` as the first concrete representation-layer
+  Hecke inhabitant on the existing 15-prime factor-vector carrier.
+- strengthen that first concrete `FactorVec` inhabitant with a genuinely
+  coarser quotient carrier, `SupportMask`, so the representation-layer Hecke
+  path now has more than the trivial equality quotient.
+- strengthen the same `FactorVec` inhabitant again with a richer alternate
+  transport family, `flowPrime`, which acts on the selected prime lane and the
+  next prime lane in the fixed Monster ordering.
+- add `Ontology/Hecke/SignedTransport.agda`,
+  `Ontology/Hecke/FactorVecSignedTransport.agda`, and
+  `Docs/FactorVecSignedTransport.md` as the first signed multi-lane transport
+  law on the prime-address carrier, with explicit legality and a fine
+  equality-quotient descended action.
+- clarify that the signed `FactorVec` transport still does not descend to a
+  finite coarse multiplicity quotient, so the current strongest honest
+  statement remains: exact signed transport descends on the fine equality
+  quotient but not on the coarser support-style quotients.
+- add `Ontology/Hecke/SignedTransportObstruction.agda` as a concrete
+  counterexample module showing that support-mask equivalence is not preserved
+  by the signed decrement-plus-increment transport.
+- strengthen that obstruction module with a general proof that positive bounded
+  saturation quotients of the form `e ↦ min(e, K)` also fail to respect the
+  signed decrement-plus-increment transport.
+- add `Ontology/Hecke/FactorVecSignedScan.agda` plus
+  `Docs/FactorVecSignedScan.md` to attach the signed transport family to the
+  existing Hecke scan and motif pipeline surfaces on the representation layer.
+- add `Ontology/Hecke/MultiLaneSignedTransport.agda`,
+  `Ontology/Hecke/FactorVecMultiLaneTransport.agda`, and
+  `Docs/FactorVecMultiLaneTransport.md` as the first reusable mode-labelled
+  multi-lane signed-transport interface and concrete `FactorVec` inhabitant.
+- add `Ontology/Hecke/TransportChambers.agda`,
+  `Ontology/Hecke/FactorVecTransportChambers.agda`, and
+  `Docs/FactorVecTransportChambers.md` as the first exact chamber surface for
+  the multi-lane `FactorVec` transport stack, using full `PairMode` legality
+  signatures rather than an overcompressed threshold quotient.
+- add `Ontology/Hecke/FactorVecMultiLaneDefects.agda` plus
+  `Docs/FactorVecMultiLaneDefects.md` as the first pre/post signed-scan defect
+  layer for the multi-lane `FactorVec` transport stack, classifying
+  scan-visible behavior into `Stable`, `Repatterning`, `Contractive`, and
+  `Expansive`.
+- strengthen `Ontology/Hecke/FactorVecMultiLaneDefects.agda` with explicit
+  illegal-mode stability lemmas, and add
+  `Ontology/Hecke/FactorVecChamberDefectRestrictions.agda` plus
+  `Docs/FactorVecChamberDefectRestrictions.md` as the first theorem bridge
+  from exact chamber agreement to defect behavior: illegal modes force
+  `Stable` defects throughout an exact chamber.
+- add `Ontology/Hecke/CorrespondenceRepresentation.agda`,
+  `Ontology/Hecke/FactorVecCorrespondence.agda`, and
+  `Docs/HeckeCorrespondenceRepresentation.md` as the first genuine finite
+  correspondence-class Hecke operator on the representation layer, with a
+  true sum-over-fiber action on the `SupportMask` quotient carrier.
+- add `Ontology/Hecke/DefectCorrespondenceRepresentation.agda`,
+  `Ontology/Hecke/FactorVecDefectCorrespondence.agda`, and
+  `Docs/HeckeDefectCorrespondence.md` as the first scan/defect-derived finite
+  correspondence family and averaging operator on the representation layer.
+- add `Ontology/Hecke/FactorVecDefectProfileCorrespondence.agda`,
+  `Ontology/Hecke/FactorVecChamberDefectCorrespondence.agda`,
+  `Docs/HeckeDefectProfileCorrespondence.md`, and
+  `Docs/HeckeChamberDefectCorrespondence.md` to lift the defect-derived
+  correspondence from coarse defect classes to full finite profiles and to
+  state the first chamber-side restriction directly on correspondence entries.
+- add `Ontology/DNA/Supervoxel4Adic.agda`,
+  `Ontology/DNA/ChemistryQuotient.agda`, and
+  `Docs/DNASupervoxelHierarchy.md` to start a local DNA-first 4-adic
+  supervoxel lane with a chemistry-visible quotient surface on `DNA256`.
+- add `Ontology/DNA/ChemistryConcrete.agda` as the first concrete chemistry
+  quotient instance on `DNA256`, with a `U/V` feature map, strong-base thermo
+  count, and local immediate repeat/complement admissibility screen.
+- strengthen that concrete `DNA256` chemistry instance with a bounded
+  nonlocal complement rule at span 2, so the thermo/admissibility surface is
+  no longer purely nearest-neighbor.
+- strengthen the same concrete `DNA256` chemistry instance again with a
+  sliding 4-window GC-extremal ban, so the admissibility screen now includes a
+  first local GC-balance constraint in addition to repeat/complement checks.
+- strengthen that same concrete `DNA256` chemistry instance again with a
+  sliding 4-window reverse-complement palindrome ban, so the admissibility and
+  thermo surfaces now include a first explicitly DNA-specific reverse-
+  complement screen beyond the earlier span-2 rule.
+- strengthen that same concrete `DNA256` chemistry instance again with a
+  sliding 6-window hairpin-style reverse-complement screen, so the bounded
+  thermo surface now includes a first explicitly hairpin-flavored local law.
+- add `Docs/PhysicsArchiveCoverageMap.md` and update
+  `COMPACTIFIED_CONTEXT.md` with the current local-DB archive coverage map for
+  the physics-closure program, including canonical thread metadata and the
+  current repo-facing priority order:
+  derived dynamics law,
+  realization-independent projection/delta theorem,
+  signature forcing / execution-delta interface,
+  continuum scaling law,
+  then the physical reality bridge from wavefield / phase synchronization.
+- update `README.md` and `TODO.md` so the same archive-backed lane split is
+  now explicit in public status and roadmap files, with the light-transport /
+  phase-sync material treated as P1 support work and moonshine-adjacent
+  material kept off the critical physics path unless it directly reduces a P0
+  proof gap.
+- strengthen the abstract recovery theorem surface again by making transported
+  projection/Δ compatibility part of `GaugeMatterRecoveryTheorem` in
+  `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda`; the canonical bundle
+  inhabitant now supplies that proof payload directly, and the surrounding
+  bundle/gap docs and TODOs now record that this seam is no longer only a
+  parallel export.
+- strengthen that same recovery theorem surface again so it now carries both
+  the base and alternate transported projection/Δ schedule families rather
+  than only one target-side family; the canonical bundle instance exports both
+  through recovery-level conversion helpers.
+
+## 2026-03-30
+
+- add a second live-shift inhabitant of the reusable
+  `TransportedProjectionDeltaWitness` surface in
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`, covering
+  the alternate phase schedule pair
+  (`shiftCoarseAlt ∘ step`, `step ∘ shiftCoarseAlt`) alongside the original
+  base pair.
+- generalize the new target-side projection/Δ lane into a reusable bundle-layer
+  theorem surface by adding `TransportedProjectionDeltaWitness` plus
+  `toTransportedProjectionDeltaCompatibility` in
+  `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda`; the canonical
+  shift-target witness now inhabits that generic surface.
+- add a first transport-attached target-side projection/Δ witness in
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`, so the
+  canonical bundle now exports the live shift carrier schedules
+  (`shiftCoarse ∘ step`, `shiftCoarseAlt`) and cone transport lemmas through
+  the existing observable transport layer.
+- strengthen the canonical bundle-side projection/Δ lane in
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda` with a
+  second, quotient-sensitive witness over the transported live
+  `RGObservable`, reusing the shift RG lane’s `Observable≈` quotient instead
+  of only plain equality on the full bundle observable.
+- lift the new `ProjectionDeltaCompatibility` surface into
+  `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda` by extending
+  `NaturalDynamicsWitness` with offset admissibility/cone preservation and
+  exporting `toProjectionDeltaCompatibility`; the canonical bundle instance
+  now exposes `canonicalBundleProjectionDeltaCompatibility`.
+- add an explicit projection/delta abstraction surface in
+  `DASHI/Physics/Closure/RGObservableInvariance.agda` as
+  `ProjectionDeltaCompatibility`, then instantiate it from the live shift RG
+  schedules in `DASHI/Physics/Closure/ShiftRGObservableInstance.agda` so the
+  projection/Δ lane is no longer only a documentation target.
+- strengthen `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+  so the canonical bundle's `mdlLevel` is no longer a constant-zero placeholder
+  but is instead read from the transported live `RGObservable` imported from
+  `shiftRGSurface`; keep the cone witness intentionally trivial at this layer
+  because the current carrier dynamics is still synthetic and does not yet
+  justify a shift-derived cone-preservation theorem.
+- replace the synthetic three-cycle in
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+  with the first closure-derived carrier law, namely the canonical bracket
+  action `x ↦ [ CR , x ]`; this keeps the bundle nontrivial while tying the
+  dynamics to the actual canonical closure package rather than a hand-chosen
+  carrier permutation.
+- strengthen that same canonical abstract bundle instance again so the
+  conserved witness is no longer gauge-only but now carries the first stable
+  transported RG payload under the closure-derived law:
+  `Gauge × mdlLevel × motifClass`.
+- strengthen the abstract continuum lane so `ContinuumWitness` now carries an
+  explicit limit carrier, scaling map, limit-side MDL readout, and limit-side
+  cone witness rather than only a bare `limitObservable`; inhabit that stronger
+  surface canonically in
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`.
+- connect the already-landed offset-universality abstraction back into the
+  abstract bundle layer by exporting `GaugeMatterRecoveryTheorem` as an
+  `ObservableRGOffsetUniversality` witness in
+  `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda`, and expose that
+  converted witness from the canonical abstract bundle instance.
+- strengthen the canonical continuum inhabitant again so its limit carrier is
+  now the transported `RGObservable` rather than the whole
+  `Gauge × RGObservable` field; the first continuum scaling law therefore
+  quotients away the gauge wrapper instead of merely rewrapping the same
+  finite bundle object.
+- update `Docs/AbstractGaugeMatterBundle.md`,
+  `Docs/RealizationIndependence.md`, `Docs/ContinuumLimit.md`,
+  `Docs/GaugeMatterCapstone.md`, and `TODO.md` so the next promotion
+  gates are explicit: possible widening beyond the current conserved
+  `mdlLevel`/`motifClass` witness, bundle-level integration of the already-
+  landed offset-universality surface, and a less finite/repackaged continuum
+  carrier/scaling law.
+- added the moonshine-primes proof-planning stack:
+  `Docs/MoonshinePrimeObject.md`,
+  `Docs/MoonshinePrimeNullModels.md`,
+  `Docs/CarrierFactorization.md`,
+  `Docs/CanonicalPrimeSelectionLaw.md`,
+  `Docs/MoonshineMatch.md`,
+  `Docs/PrimeToModular.md`,
+  and `Docs/MoonshineProofChecklist.md`,
+  so the repo now has a staged proof program with definitions, null tests,
+  carrier hypotheses, legal Monster-comparison forms, and explicit promotion
+  gates.
+- tightened `Docs/MoonshinePrimeObject.md` with the executable schema contract
+  for the first implementation surface:
+  accepted JSON fields, normalized quotient output, and the exact observable
+  summary needed before null models or prime-selection tests can run.
+- added `Docs/DynamicsInvariantGapChecklist.md` and cleaned
+  `Docs/RealizationIndependence.md` so the physics-gap story now matches the
+  repo:
+  execution, basin, cone, and signature surfaces already exist, but several
+  of the strongest witnesses remain canonical-only or partially trivialized,
+  with the highest-priority gap now stated as the execution/eigen bridge into
+  the abstract bundle layer.
+- added `DASHI/Physics/Closure/ShiftExecutionInvariantCore.agda` as a shared
+  shift-side invariant core:
+  it computes the canonical shift Hecke/signature/eigen payload below both the
+  execution and RG layers so execution-side eigen witnesses no longer have to
+  stay at the constant-zero placeholder level.
+- strengthened
+  `DASHI/Geometry/ShiftLorentzEmergenceInstance.agda` so the canonical `(1,3)`
+  execution contract now uses that shared core for its eigen witness and keeps
+  the noncanonical fallback branch explicitly trivial rather than implicitly
+  pretending to carry the same proof mass.
+- extended
+  `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda`
+  with `SignatureLockWitness`, and strengthened
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+  so the canonical bundle inhabitant now carries:
+  - a shift-derived canonical signature/eigen payload from the shared core,
+  - and a `sig31`-locked signature witness on the abstract bundle surface.
+- revalidated `DASHI/Physics/Closure/ShiftRGObservableInstance.agda` on its own
+  theorem path after making the canonical basin transport explicit, then
+  replaced the synthetic RG payload in
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+  with the observed value of the live `shiftRGSurface` at
+  `canonicalShiftStateWitness`, so the abstract bundle now carries a real
+  anchor-state import from the shift RG surface rather than a locally
+  manufactured placeholder observable.
+- extended
+  `DASHI/Physics/Closure/AbstractGaugeMatterBundle.agda`
+  with `ObservableTransportWitness` and strengthened
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+  with the first carrier-level observable transport inhabitant:
+  the canonical bundle now transports every carrier point into an external
+  shift-RG target carrier and proves admissible-state soundness of that
+  transport, while still keeping the target-side map explicitly constant at
+  `canonicalShiftStateWitness`.
+- strengthened that first transport inhabitant further:
+  the canonical observable transport now factors through the concrete
+  three-generator carrier (`CR`, `CP`, `CC`) and chooses among three
+  shift-side representatives.
+- tightened the canonical bundle observable layer so it now follows the
+  transported shift state itself rather than carrying one fixed RG payload:
+  the abstract bundle transport is therefore sensitive at the
+  `RGObservable` level, while the surrounding canonical bundle dynamics remain
+  the minimal identity dynamics.
+- replaced those identity bundle dynamics in
+  `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+  with the first non-identity carrier law on the concrete canonical carrier:
+  a three-cycle `CR -> CP -> CC -> CR`, while narrowing the conserved witness
+  to the gauge charge and letting the transported RG observable vary with the
+  chosen shift-side target.
+- added `scripts/moonshine_prime_object.py` as the first executable schema for
+  the moonshine-primes program:
+  it parses one `MoonshinePrimeState` JSON payload and emits the normalized
+  quotient object (`factorSupport`, support weight, signature, eigen summary,
+  basin label, and denominator fields) required by the later null-model and
+  prime-selection lanes.
+- added `scripts/moonshine_prime_nulls.py` as the first executable null-model
+  harness for the moonshine-primes program:
+  it runs schema-level random-partition, ternary-state, matched-support, and
+  randomized-rotation controls, computes empirical `p`-values, and emits the
+  stop-rule verdict needed before any Monster comparison logic.
+- tightened the next grounding step for that program:
+  the moonshine-prime schema should now be attached to a repo-native emitted
+  state source (starting with the canonical shift example JSONs) before the
+  null-model lane is widened further.
+- added `scripts/moonshine_prime_from_prototype.py` to adapt the canonical
+  emitted prototype states into `MoonshinePrimeState` payloads, and validated
+  the full path on `scripts/examples/near_miss_state.json`; on that grounded
+  example the target-prime support is empty (`47,59,71` absent), so the
+  null-model stop rule remains triggered as it should.
+- added `Docs/MoonshinePrimeSource.md` to separate the moonshine-prime program
+  from the photonuclear lane and name the first repo-native source-family
+  candidates under `DASHI/Physics/Moonshine`.
+- fixed the first moonshine-native adapter boundary in
+  `Docs/MoonshinePrimeSource.md`:
+  `FiniteTwinedShellTraceShift.agda` can first be consumed as an
+  orientation-prime source before any stronger fixed-count trace extraction is
+  claimed.
+- tightened that moonshine-native source contract further:
+  the first executable adapter is explicitly restricted to an
+  `orientation_prime_only` state lifted from
+  `FiniteTwinedShellTraceShift.agda`, with provenance but without any invented
+  full-trace or modular semantics.
+- added `scripts/moonshine_prime_from_twined_trace_shift.py` as the first
+  moonshine-native adapter:
+  it extracts the explicit `just 31` orientation hook from
+  `FiniteTwinedShellTraceShift.agda`, emits a minimal
+  `MoonshinePrimeState` payload marked `orientation_prime_only`, and validates
+  cleanly through `scripts/moonshine_prime_object.py` to the normalized
+  quotient object with factor support `{31}`.
+- tightened the next moonshine-native strengthening rule:
+  richer finite-twined report/bundle fields may now be attached as auxiliary
+  metadata, but they still must not silently alter the normalized
+  moonshine-prime observable until a documented lift exists.
+- strengthened `scripts/moonshine_prime_from_twined_trace_shift.py` to attach
+  auxiliary finite-twined report metadata drawn from
+  `FiniteTwinedTraceDetailedReport.agda`,
+  `MoonshineTraceFamilySummary.agda`,
+  `MoonshinePrototypeComparisonBundle.agda`, and
+  `FiniteTwinerLibraryShift.agda`:
+  the emitted state now carries explicit verdict-slot counts, extra-verdict
+  counts, compared-twiner counts, and labeled shift twiner names under
+  `traceReport` while the normalized observable remains conservatively pinned
+  to factor support `{31}`.
+- added the `P0` gauge/matter recovery documentation stack:
+  `Docs/RealizationIndependence.md`,
+  `Docs/NaturalDynamicsLaw.md`,
+  `Docs/ConservedQuantities.md`,
+  `Docs/ContinuumLimit.md`,
+  `Docs/GaugeMatterCapstone.md`,
+  and `Docs/AbstractGaugeMatterBundle.md`,
+  so the weakest physics block now has an explicit theorem/program breakdown
+  and a named next implementation seam.
+- clarified the first planned inhabitant of the abstract gauge/matter bundle:
+  the current canonical constraint/gauge package lifted through identity
+  dynamics with the gauge label treated as the first conserved observable.
+- tightened the next follow-up on that bundle:
+  the first strengthening should import the `RGObservable` surface as a minimal
+  typed payload alongside the gauge label, rather than faking a shift-side RG
+  computation on the canonical constraint carrier.
+- narrowed that strengthening further:
+  the first honest transported payload should come from the real shift RG
+  surface evaluated at `canonicalShiftStateWitness`, making the lift
+  anchor-state-based rather than purely synthetic.
+- added `Docs/TriadicCarrierToSU3.md` to state the safe bridge from a triadic
+  3-sector carrier to an `SU(3)`-like internal symmetry candidate, including
+  the required extra assumptions (Hermitian norm preservation,
+  determinant-one admissible mixing, observable quotient).
+- added `Docs/MusicalSymmetryMDL.md` plus
+  `scripts/musical_symmetry_mdl.py` to replace the earlier symmetry-reward toy
+  target with the stronger MDL/compression basin target:
+  contraction plus a compression proxy, without explicit symmetry reward.
+- added `Docs/ColourInDashi.md` to make the colour-language claim boundary
+  explicit:
+  optical colour is treated as a projection-stable observable on a structured
+  latent signal, perceptual colour is kept separate as an organized
+  interpretation/reconstruction layer, and QCD colour is not collapsed into the
+  same formal object.
+- updated repo-facing context/docs so MDL reconstruction, ultrametric geometry,
+  and cone-screened dynamics are described as internal Dashi structure on
+  encoded colour states rather than as finished empirical theorems about human
+  colour perception.
+- added the photonuclear prototype documentation stack:
+  `Docs/PhotonBridge.md`,
+  `Docs/CMSPhotonuclearBridge.md`,
+  `Docs/CharmPhotoproduction.md`,
+  `Docs/SaturationLayer.md`,
+  `Docs/CMSCapstone.md`,
+  `Docs/NumericObservableInterface.md`,
+  `Docs/GBWResponse.md`,
+  `Docs/ModelComparison.md`,
+  `Docs/PrototypeRunner.md`,
+  and `Docs/PrototypeExamples.md`.
+- added the first executable surrogate prototype surface:
+  `scripts/prototype_schema.py`,
+  `scripts/prototype_gbw.py`,
+  `scripts/prototype_ipsat.py`,
+  `scripts/prototype_runner.py`,
+  `scripts/compare_prototype_channels.py`,
+  and `scripts/compare_surrogate_models.py`.
+- added hand-constructed example states for qualitative explanatory inspection:
+  `scripts/examples/near_miss_state.json` and
+  `scripts/examples/head_on_state.json`.
+- added `scripts/prototype_matrix.py` as the first batch prediction matrix over
+  example states and reduced model families, making the prototype compare
+  channel-to-channel and model-to-model explanations without performing fitting
+  or claiming empirical validation.
+- replaced the prototype's freehand example-fixture plan with an emitted
+  shift-path example plan:
+  docs/TODO now anchor prototype example states to
+  `DASHI/Geometry/ShiftLorentzEmergenceInstance.agda::canonicalShiftStateWitness`
+  and `ShiftInBasin`, and a dedicated emitter script materializes the example
+  JSON files from that named provenance surface.
+- taught the comparison/matrix runner layer to auto-refresh the canonical
+  emitted example files when those documented example paths are missing or
+  stale relative to `scripts/emit_shift_prototype_examples.py`.
+- added a shared non-fitting explanation scorecard in
+  `scripts/prototype_scorecard.py` and threaded it into the comparison/model
+  inspection surfaces so “better explanation” is now defined in terms of
+  normalized residual, MDL burden, and surrogate-confidence penalty rather
+  than empirical fit claims.
+
 ## 2026-03-27
 
 - recorded PR `#1` (`nix support`) as the active source merge target for the
@@ -1199,3 +1777,24 @@
 - extend the mixed RG benchmark surface with cross-schedule theorems (`rgMixed-rel-benchmark-agree`, `rgMixed-recovered-same-class`, `rgMixed-recovered-observable-agree`, `rgMixed-recovered-benchmark-mismatch-zero`) and expose them through `DASHI/Physics/Toy/RGSummaryBundle.agda`
 - extend the mixed RG benchmark surface with tail persistence theorems (`rgMixed-step-tail-canonical`, `rgMixed-step-tail-canonical-observable`) so recovered mixed schedules stay at the same canonical class/observable under later target-scale evolution
 - extend the mixed RG benchmark surface with benchmark-tail collapse theorems (`rgMixed-step-tail-benchmark-mismatch-zero`, `rgMixed-step-tail-cross-benchmark-mismatch-zero`) so recovered mixed schedules also have zero benchmark mismatch after further target-scale evolution, both against the canonical vacuum benchmark and against each other
+- add a parallel richer RG benchmark score layer (`RGBenchmarkScore`) with four channels (`endpoint`, `path`, `recovery`, `scale`), expose it through `rgRichBenchmarkMatch`, `rgMixedRichBenchmarkMatch`, `RGRichBenchmarkSummary`, and the unified toy bundle, and prove self/recovered zero-score theorems for the new structured score without breaking the earlier thin compatibility score
+- add a mixed trace-aware RG benchmark surface (`rgMixedPathMass`, `rgMixedRecoveryMass`, `rgMixedScaleMass`, `rgMixedTraceBenchmarkTheory`, `rgMixedTraceBenchmarkMatch`) and expose it through `RGMixedTraceBenchmarkSummary` and the unified toy bundle; prove self zero-score and recovered endpoint-zero theorems so the benchmark can retain path/recovery/scale structure even after endpoint recovery
+- add the first Phase 2 RG hierarchy layer: `RGCoarseScheme`, `RGFlowMode`, and `RGFixedPoint` in `DASHI/Physics/Toy/RGUniversality.agda`, together with additive scheme/mode operators (`rgCoarseBy`, `rgStepBy`, `coarsePowBy`, `rgSchemeFlow`) and a first theorem pack (`rgSchemeFlow-basin-stable`, `rgSchemeFlow-rel-observable-stable`, `rgSchemeFlow-canonical-on-recovered`, `rgSchemeFlow-fixedPoint-on-recovered`); expose it through `RGPhase2HierarchySummary` and the unified toy bundle
+- lift the RG mixed path layer onto the new Phase 2 hierarchy via `RGMixedSchedule2`, `rgRunMixed2`, `uniformMixed2`, and a first benchmark-facing theorem pack (`rgMixed2-basin-stable`, `rgMixed2-irrelevant-bounded`, `rgMixed2-recovered-same-class`, `rgMixed2TraceBenchmarkSelfMismatch-zero`, `rgMixed2TraceRecovered-endpoint-zero`); expose it through `RGMixedPhase2TraceBenchmarkSummary` and the unified toy bundle
+- make the Phase-2 RG mixed trace channels explicitly scheme/mode-sensitive with `rgMixed2PathMass`, `rgMixed2RecoveryMass`, and `rgMixed2ScaleMass`, then land the first true Phase-3 split theorem: `rgMixed2-tail-vs-flip-trace-benchmark-split` proves one-layer `tailScheme` vs `flipTailScheme` in `holdMode` share the same vacuum endpoint class while still differing on the trace benchmark path channel; export it through `RGMixedPhase2TraceBenchmarkSummary`
+- extend that Phase-3 split from the one-layer witness to arbitrary positive uniform coarse depth in `holdMode` via `rgRunUniformMixed2-hold-vacuum`, `rgUniformMixed2-tail-path-on-vacuum`, `rgUniformMixed2-flip-path-on-vacuum`, and `rgUniformMixed2-tail-vs-flip-trace-benchmark-split`; expose the deeper witness through `RGMixedPhase2TraceBenchmarkSummary.uniform-tail-vs-flip-positive-depth-split`
+- add the first non-vacuum Phase-3 hold witness: `rgMixed2-tail-vs-flip-one-layer-hold-endpoint-class` and `rgMixed2-tail-vs-flip-one-layer-hold-path-step` show that one-layer `holdMode` tail-vs-flip schedules agree on endpoint class for arbitrary states while the raw path channel differs by one; expose it through `RGMixedPhase2TraceBenchmarkSummary.one-layer-hold-raw-split`
+- probe widening the canonical abstract-bundle conserved charge with `heckeSignature`, then back the change out after Agda shows it fails on the concrete `CP` branch under the current closure-derived law
+- update `Docs/AbstractGaugeMatterBundle.md`, `Docs/DynamicsInvariantGapChecklist.md`, and `TODO.md` to record that `heckeSignature` and `eigenSummary` remain observable-side only for the current law, and that adding more canonical transported phase families is now lower-value than a less canonical target family or a stronger dynamics law
+- added [`Docs/HeckeRepresentationLayer.md`](./Docs/HeckeRepresentationLayer.md)
+  to record the now-archived boundary from `Dashi and Physics Insights`:
+  Hecke/FRACTRAN belong first on the prime-lattice representation layer rather
+  than as the next default conserved charge in the contractive closure lane.
+- strengthened `scripts/moonshine_prime_from_twined_trace_shift.py` with the
+  first principled metadata lift from finite-twined report fields into the
+  normalized observable, adding `normalizedObservable` report counts, support,
+  and eigen-ratio summary data rather than leaving all richer report structure
+  stranded under `traceReport`
+- updated `Docs/MoonshinePrimeObject.md` and `TODO.md` to record that this
+  first principled lift is now landed and that the next moonshine step is a
+  richer normalized-observable lift beyond verdict-slot/cardinality metadata
