@@ -1,5 +1,29 @@
 # Compactified Context
 
+## 2026-04-06
+
+- Resolved the live LILA-to-DASHI bridge thread from the archived ChatGPT URL
+  `69d30a80-6ed8-839b-a712-c751b517246d`
+  with canonical thread ID
+  `9f1b35187081584dfd0d43a51f0e7931bde2d6c3`.
+  The stable reading is now explicit in the repo:
+  LILA is the execution system, DASHI is the formal admissibility lens, and
+  the bridge is a trace contract rather than an equality claim.
+  The first repo-native surface for that reading now lives in
+  `DASHI/Physics/Closure/LilaDashiBridge.agda`, with the structured note in
+  `Docs/LILA_DASHI_Bridge.md`.
+  The first operational bridge pack now also includes
+  `scripts/delta_cone_lila.py`, `scripts/checkpoint_prime_vectors.py`, and the
+  lifting schema `DASHI/Physics/Closure/LilaTraceFamily.agda`.
+  The compare path is now one-command via `scripts/run_all.sh`, with the
+  quickstart documented in `Docs/TRAINING_DYNAMICS.md` and the PlantUML flow
+  diagram source in `Docs/TRAINING_DYNAMICS.puml` and the rendered preview in
+  `Docs/TRAINING_DYNAMICS.svg`.
+  The thread's latest concrete advice was to give him the "best foot forward":
+  keep the delta-cone analyzer, add a minimal baseline-vs-LILA compare harness,
+  and show training-dynamics plots so the result is credible, evaluable, and
+  directionally useful without over-engineering the PR.
+
 ## 2026-04-02
 
 - Noncanonical closure-control reframing after the latest audits:
@@ -269,6 +293,11 @@
   It also supports a small dedup mode, so repeated identical `agda`
   invocations can collapse to a unique offline command list when that is the
   more useful handoff artifact.
+  The repo now also carries
+  `scripts/route_agda_by_layer.py`,
+  which turns that same operational lesson into a simple `L0/L1/L2` policy:
+  interactive thin targets, bounded medium targets, and queue-only current
+  Layer 2 Hecke long-compute targets.
   That script is intentionally queue-only: it externalizes the bounded
   shell-first / replay-later order without touching the heavy proof modules.
   Those modules should currently be treated as long-compute items rather than
@@ -1083,6 +1112,27 @@
   So the bridge remains stable after both trace-side classifier refinement and
   source-side catalog enrichment.
 - An explicit source-projection surface now sits above that richer catalog.
+- Carrier-level Moonshine/Ogg match is now separated from the saturated
+  Hecke-side `15` scalar question.
+  `Ontology/Hecke/MoonshinePrimeCarrierMatch.agda` proves that the intrinsic
+  `SSP` carrier is exactly the canonical 15-prime Monster/Ogg list
+  `2,3,5,7,11,13,17,19,23,29,31,41,47,59,71`, and
+  `scripts/check_monster_prime_carrier_match.py` provides the matching cheap
+  runtime check for the Python-side catalog.
+  This does not upgrade `forcedStableCount = 15` into an Ogg/Monster theorem;
+  it only settles that the current 15-lane carrier really is that canonical
+  15-prime set.
+- The next bridge layer is now implemented as a real closure-side surface in
+  `DASHI/Physics/Closure/CanonicalPrimeSelectionBridge.agda`.
+  It packages what is currently theorem-bearing on the existing closure path:
+  prime witnesses on the transported 15-lane carrier,
+  coarse/step commutation for the transported prime embedding,
+  coarse/step commutation for the transported Hecke signature,
+  and the current lower-bound bridge
+  `illegalCount_chamber <= forcedStableCount_hist`.
+  The stronger MDL concentration and non-accidental isolation clauses remain
+  explicit open targets there (`PrimeInvarianceTarget`,
+  `PrimeIsolationTarget`) rather than silently assumed.
   It is currently a canonical class-to-prime projection proxy chosen by
   matching refined trace eigenspace and then selecting the highest-exponent
   source prime in that class (lowest prime as tie-break).
@@ -1090,6 +1140,56 @@
   Earth-family traces project to `p2 / T_2 / exponent 46`,
   and the refined `Spoke` trace `pTll_76_106` projects to
   `p17 / T_17 / exponent 1`.
+- The first light invariance layer above that bridge is now explicit in
+  `DASHI/Physics/Closure/CanonicalPrimeInvariance.agda`.
+  It proves support-level transport on the canonical 15-prime carrier across
+  the already-landed
+  `shiftCoarse (shiftStep x) ~ shiftStep (shiftCoarse x)` commutation law,
+  and it now also proves the present support-level no-growth statement over
+  the existing execution-admissibility boundary.
+  So the remaining gap is no longer support transport or support no-growth;
+  it is the stronger MDL concentration / isolation claim beyond this
+  support-level theorem.
+- The next stronger light layer above support is now explicit in
+  `DASHI/Physics/Closure/CanonicalPrimeConcentration.agda`.
+  That module moves the selection question to exponent level:
+  `PrimeWeight`,
+  `PrimeDominates`,
+  `PrimeConcentrated`.
+  It already proves weight transport across the existing coarse/step
+  commutation law, and leaves the right next open targets explicit:
+  existence of a concentrated prime and no-loss of concentration under
+  admissible descent.
+  So the current gap is no longer “support-level invariance” but a genuinely
+  selective concentration theorem on the canonical 15-prime carrier.
+- The next thin control surface above concentration is now explicit in
+  `DASHI/Physics/Closure/CanonicalPrimeSelector.agda`.
+  That lane is now partly discharged, not just named.
+  The selector is explicit on the canonical 15-prime carrier:
+  highest exponent, lowest prime on ties.
+  `selector-sound` is now proved on the Agda side.
+  The remaining selection problem is narrower:
+  selector no-loss under admissible descent,
+  and selector commutation with the current coarse/step schedule.
+  The matching runtime helper
+  `scripts/select_canonical_prime.py`
+  implements the same explicit rule.
+  So the selection gap is now phrased as a concrete selector theorem rather
+  than a loose concentration narrative.
+  For the still-open selector commutation claim, the repo now also has a cheap
+  Python probe:
+  `scripts/check_selector_step_coarse.py`.
+  It compares two concrete transported `MoonshinePrimeState` payloads treated
+  as `coarse(step(x))` and `step(coarse(x))`, then checks whether the runtime
+  selector agrees on both sides.
+  This is evidence/counterexample infrastructure only, not a replacement for
+  the Agda theorem.
+  The first repo-native way to materialize that bundle is now
+  `scripts/build_selector_step_coarse_bundle.py`, which reuses the current
+  Agda-backed orientation-prime adapter and emits the required
+  `coarse_step` / `step_coarse` shape directly.
+  This is still a bridge-aligned probe, not a full independent evaluator of
+  the live `shiftCoarse` / `shiftStep` schedule.
 - Claim boundary remains:
   this is a controlled source-projection surface, not yet a geometric nearest
   prime/class theorem.

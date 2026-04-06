@@ -106,12 +106,105 @@ Priority bucket: `P0`
   Use the dedup mode when the batch carries repeated identical `agda`
   invocations and the right artifact is a unique command list rather than a
   step-by-step replay script.
+- [ ] Use
+  `scripts/route_agda_by_layer.py`
+  as the canonical execution-policy helper before running Agda targets in
+  session. Keep the stratification explicit:
+  `L0` interactive,
+  `L1` bounded,
+  `L2` offline only.
+  In particular, route the current heavy Hecke Layer 2 implementation lane to
+  queue generation rather than running those modules interactively.
+- [x] Add a simple easiest-to-hardest runner above the existing policy and
+  queue tools for the already-validated light and medium targets.
+  `scripts/run_agda_easy_to_hard.py` now runs the current thin sequence in the
+  intended order:
+  `Layer2FiniteSearchShell`,
+  `Kernel/Monoid`,
+  `Verification/Prelude`,
+  the five canonical-prime bridge/invariance/concentration/selector/isolation modules,
+  then optionally the bounded status module
+  `Ontology/Hecke/SaturatedInvariantRefinementStatus.agda`,
+  and finally optional Layer 2 queue generation.
+  Keep it out of the heavy theorem lane:
+  it should stop at queue emission rather than trying to execute the current
+  long-compute Hecke batch.
 - [ ] Status boundary reminder for Track G: treat the current state as
   `Layer 1 closed / Layer 2 open`, not as a total theory. The only live
   mathematical bottleneck on the current generator universe is the next
   separating invariant `I₂` on the saturated branch. Do not spend cycles on
   new generators, new coarse taxonomies, or broader claims until that lane is
   discharged one way or the other.
+- [x] Separate the cheap carrier-level Monster/Ogg match from the still-open
+  saturated-scalar interpretation.
+  `Ontology/Hecke/MoonshinePrimeCarrierMatch.agda` now proves that the
+  intrinsic `SSP` carrier is exactly the canonical 15-prime list
+  `2,3,5,7,11,13,17,19,23,29,31,41,47,59,71`, and
+  `scripts/check_monster_prime_carrier_match.py` checks the same equality on
+  the Python side.
+  Keep the signature-level equality as an explicit target surface, and do not
+  describe `forcedStableCount = 15` as an Ogg/Monster theorem.
+- [x] Land the first non-accidental canonical prime-selection/signature bridge
+  surface without touching the heavy Hecke long-compute lane.
+  `DASHI/Physics/Closure/CanonicalPrimeSelectionBridge.agda` now packages the
+  current closure-side witnesses that really exist:
+  prime witness on the transported 15-lane carrier,
+  coarse/step commutation on the transported prime embedding,
+  coarse/step commutation on the transported Hecke signature,
+  and the current lower-bound bridge
+  `illegalCount_chamber <= forcedStableCount_hist`.
+  `scripts/check_canonical_prime_selection_bridge.py` now provides the matching
+  cheap runtime support/subset check on `MoonshinePrimeState` JSON payloads.
+  Keep `PrimeInvarianceTarget` and `PrimeIsolationTarget` as explicit open
+  theorem targets until the MDL concentration / isolation clauses are actually
+  discharged.
+- [x] Split the first light prime-selection invariance layer away from the
+  broader bridge and keep it support-level rather than whole-vector-level.
+  `DASHI/Physics/Closure/CanonicalPrimeInvariance.agda` now proves support
+  transport across the already-landed coarse/step commutation law for the
+  transported prime embedding, and it now also proves the current
+  support-level no-growth statement over the existing execution-admissibility
+  boundary.
+  Keep full MDL concentration and isolation as explicit later theorem work,
+  because the stronger whole-vector/selective concentration story still does
+  not follow from this support-level theorem.
+- [x] Add the first exponent-level concentration surface above support so the
+  next open theorem is no longer phrased on a saturated support notion.
+  `DASHI/Physics/Closure/CanonicalPrimeConcentration.agda` now defines
+  `PrimeWeight`, `PrimeDominates`, and `PrimeConcentrated` on the canonical
+  15-prime carrier, and proves weight transport across the already-landed
+  coarse/step commutation law.
+  `scripts/check_canonical_prime_concentration.py` now exposes the matching
+  cheap dominant-prime runtime check on `MoonshinePrimeState` payloads.
+  Keep existence and no-loss of concentration as the next explicit theorem
+  targets on this lane.
+- [x] Add the first thin selector surface above exponent-level concentration.
+  `DASHI/Physics/Closure/CanonicalPrimeSelector.agda` now packages the
+  selector problem concretely rather than vaguely.
+  The selector is now explicit on the Agda side and `selector-sound` is
+  discharged there: highest exponent, lowest prime on ties.
+  `scripts/select_canonical_prime.py` now implements the current explicit
+  runtime selector rule and matches the Agda surface.
+  Keep selector no-loss and selector/coarse-step commutation as the remaining
+  theorem-bearing open claims.
+- [x] Add a cheap Python falsification/probe surface for the still-open
+  selector commutation theorem before retrying Agda.
+  `scripts/check_selector_step_coarse.py` now compares two concrete
+  `MoonshinePrimeState` payloads interpreted as `coarse(step(x))` and
+  `step(coarse(x))`, and reports whether the explicit selector agrees on both
+  sides.
+  Use this to gather cheap evidence or a counterexample first; do not treat it
+  as a proof of `selector-step-coarse-target`.
+- [x] Add a repo-native bundle builder for that selector commutation probe so
+  the first runtime check no longer depends on hand-written
+  `MoonshinePrimeState` JSON.
+  `scripts/build_selector_step_coarse_bundle.py` now reuses the current
+  Agda-backed orientation-prime adapter from
+  `scripts/moonshine_prime_from_twined_trace_shift.py` and emits the required
+  `coarse_step` / `step_coarse` bundle shape directly.
+  Keep the boundary explicit:
+  this is a bridge-aligned runtime probe, not a full evaluator of the live
+  `shiftCoarse` / `shiftStep` schedule.
 - [ ] Physics-side execution-contract follow-up: now that
   `scripts/run_execution_contract_on_closure_csv.py` wires the reusable
   projected-delta enforcer onto `closure_embedding_per_step.csv` and
@@ -132,6 +225,19 @@ Priority bucket: `P0`
   `ExecutionContract.agda` consumes it directly, instantiate that interface
   with the nearest nontrivial source-side closure/eigen basis instead of
   keeping the projection object only abstract.
+- [x] LILA bridge follow-up: instantiate
+  `DASHI/Physics/Closure/LilaDashiBridge.agda` with a concrete execution
+  carrier and a real trace family so the LILA-side execution story stays
+  separated from the DASHI-side admissibility receipt.
+  The first pass now exists as `DASHI/Physics/Closure/LilaTraceFamily.agda`,
+  plus the companion scripts `scripts/delta_cone_lila.py` and
+  `scripts/checkpoint_prime_vectors.py`.
+- [x] LILA comparison pack follow-up: keep the PR-foot-forward bundle minimal
+  by pairing the delta-cone analyzer with `scripts/run_compare.sh` and
+  `scripts/plot_training_dynamics.py` so baseline-vs-LILA credibility checks
+  stay simple and reproducible.
+- [x] Make the bridge pack one-command runnable with `scripts/run_all.sh` and
+  add a short PlantUML-backed usage page so the PR stays legible at a glance.
 - [ ] Closure-side basin follow-up: now that
   `DASHI/Physics/Closure/Basin.agda` exists and the contract consumes it,
   replace the remaining heuristic basin choices with realization-sensitive
