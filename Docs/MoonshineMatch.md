@@ -6,6 +6,15 @@ Docs-only note under `Docs/`. Lane 5 formulates the precise inclusion/equality t
 ## Preconditions
 - Lane 4 ensures `SSP` and `Sig15` infrastructure plus `shiftPrimeEmbedding`/`shiftPipeline` are in place.
 - This note only becomes legal once the prime witness pipeline is implemented so we can assert equality/subset claims.
+- The carrier-level comparison is now explicit and cheap:
+  `Ontology/Hecke/MoonshinePrimeCarrierMatch.agda` proves that the current
+  intrinsic `SSP` carrier is exactly the canonical 15-prime
+  `2,3,5,7,11,13,17,19,23,29,31,41,47,59,71` list, and
+  `scripts/check_monster_prime_carrier_match.py` checks the same equality on
+  the Python side.
+- This does **not** identify the saturated Hecke scalar
+  `forcedStableCount = 15` with the Ogg/Monster prime set; it only validates
+  the 15-lane prime carrier/catalog.
 
 ## Tests and proof forms
 1. **Subset test (`PRxm ⊆ MonsterPrimes`)**

@@ -64,6 +64,11 @@ Current theorem status:
 
 - Stage A is complete: the orbit-profile discriminant selects Lorentz signature
   `(3,1)` in the current 4D framework.
+- Arithmetic lane now records canonicalization progress: `normalizeAdd` is
+  nonexpansive and lands in a canonical state, `CanonicalResidueZero`
+  collapses the residue budget there, and `CancellationPressureFromCanonical`
+  bounds the carry-budget pressure by the support proxy so normalized
+  states satisfy the current arithmetic pressure guarantee.
 - Stage B is complete for the current finite 4D realization: the
   cone/arrow/isotropy stack now drives shell enumeration through abstract
   interfaces rather than a shift-specific proof source.

@@ -66,3 +66,65 @@ Default inner loop:
    a long-budget validation pass
 4. treat `Everything.agda` as an occasional bounded checkpoint, not a routine
    target
+
+## Execution Stratification
+
+Use the repo in three layers:
+
+- `L0`: thin, interactive targets
+- `L1`: bounded medium targets
+- `L2`: heavy aggregate or heavy fixed-domain targets that should stay out of
+  the interactive loop
+
+Current policy examples:
+
+- `L0`
+  - the canonical bridge modules listed above
+  - `Kernel/*.agda`
+  - `Verification/*.agda`
+  - `Ontology/Hecke/Layer2FiniteSearchShell.agda`
+- `L1`
+  - `DASHI/Physics/Closure/CanonicalStageC.agda`
+  - `Ontology/Hecke/SaturatedInvariantRefinementStatus.agda`
+- `L2`
+  - `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`
+  - `DASHI/Everything.agda`
+  - the current heavy Hecke Layer 2 implementation lane:
+    `Ontology/Hecke/DefectOrbitSummaryRefinement.agda`,
+    `Ontology/Hecke/ForcedStableCountDecomposition.agda`,
+    `Ontology/Hecke/TriadIndexedDefectOrbitSummaryRefinement.agda`,
+    `Ontology/Hecke/CurrentSaturatedTriadHistogramSeparation.agda`,
+    `Ontology/Hecke/CurrentSaturatedSectorHistogramComputations.agda`,
+    `Ontology/Hecke/CurrentSaturatedPredictedPairComparisons.agda`,
+    `Ontology/Hecke/TriadSectorCorrelationRefinement.agda`, and
+    `Ontology/Hecke/Layer2FiniteSearch.agda`
+
+Control-plane helper:
+
+- `scripts/route_agda_by_layer.py`
+- `scripts/run_agda_easy_to_hard.py`
+
+Use it to classify one or more modules and route them as:
+
+- interactive direct Agda runs for `L0`
+- timeout-bounded Agda runs for `L1`
+- queue-only handoff for the heavy current Hecke `L2` lane
+
+Use `scripts/run_agda_easy_to_hard.py` when the task is not “classify this one
+target” but “run the current validated easiest-to-hardest sequence”.
+Its default order is:
+
+1. `Ontology/Hecke/Layer2FiniteSearchShell.agda`
+2. `Kernel/Monoid.agda`
+3. `Verification/Prelude.agda`
+4. `DASHI/Physics/Closure/CanonicalPrimeSelectionBridge.agda`
+5. `DASHI/Physics/Closure/CanonicalPrimeInvariance.agda`
+6. `DASHI/Physics/Closure/CanonicalPrimeConcentration.agda`
+7. `DASHI/Physics/Closure/CanonicalPrimeSelector.agda`
+8. `DASHI/Physics/Closure/CanonicalPrimeIsolation.agda`
+
+Optional flags then extend the run with:
+
+- bounded medium targets such as
+  `Ontology/Hecke/SaturatedInvariantRefinementStatus.agda`
+- Layer 2 queue generation only, not heavy theorem-lane execution

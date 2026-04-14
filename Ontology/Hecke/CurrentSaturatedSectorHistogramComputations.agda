@@ -104,7 +104,6 @@ postulate
   ⊥ : Set
 
   _≢_ : {A : Set} → A → A → Set
-  x ≢ y = x ≡ y → ⊥
 
   _⊎_ : Set → Set → Set
   ∃₂ : {A B : Set} → (A → B → Set) → Set

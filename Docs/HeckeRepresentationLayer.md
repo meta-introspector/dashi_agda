@@ -14,6 +14,10 @@ The key correction is simple:
 This does not demote the Hecke lane. It places it on the right side of the
 stack.
 
+For the current join-edge to pressure/severity bridge that connects this
+representation discussion back to the ITIR/SensibLaw legal-join thread, see
+[`JoinEdgePressureBridge.md`](./JoinEdgePressureBridge.md).
+
 ## The split
 
 The current codebase already has two different kinds of structure:
@@ -350,6 +354,17 @@ So the next proof effort should stay tightly local:
   `3 × 5` surface. The fixed-domain specialization is now also explicit in
   `Ontology/Hecke/CurrentSaturatedTriadHistogramSeparation.agda`:
   the next honest question is whether that triad-indexed histogram separates
+  the current saturated branch.
+
+Carrier-level Monster/Ogg comparison is now explicit and intentionally
+separate from that saturated scalar story.
+`Ontology/Hecke/MoonshinePrimeCarrierMatch.agda` proves that the intrinsic
+`SSP` carrier itself is exactly the canonical 15-prime list
+`2,3,5,7,11,13,17,19,23,29,31,41,47,59,71`, and
+`scripts/check_monster_prime_carrier_match.py` provides the matching cheap
+Python-side check.
+This is a catalog/carrier result only; it does not identify the current
+Hecke-side `forcedStableCount = 15` collapse with the Ogg/Monster prime set.
   any classes inside the already-classified current saturated taxonomy, or
   whether this refinement is exhausted too. The current-scope packaged-data
   companion is now also explicit in
