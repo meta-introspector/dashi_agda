@@ -171,6 +171,15 @@ isGC C = true
 isGC G = true
 isGC _ = false
 
+countGCWindow : Base → Base → Base → Nat
+countGCWindow a b c =
+  countGC a + countGC b + countGC c
+  where
+  countGC : Base → Nat
+  countGC x with isGC x
+  ... | true  = suc zero
+  ... | false = zero
+
 countGC3From : ∀ {n} → Base → Base → Base → Vec Base n → Nat
 countGC3From a b c [] = countWindow
   where
@@ -181,15 +190,6 @@ countGC3From a b c (d ∷ ds) =
   where
   countWindow : Nat
   countWindow = countGCWindow a b c
-
-countGCWindow : Base → Base → Base → Nat
-countGCWindow a b c =
-  countGC a + countGC b + countGC c
-  where
-  countGC : Base → Nat
-  countGC x with isGC x
-  ... | true  = suc zero
-  ... | false = zero
 
 gcStress3 : ∀ {n} → Vec Base n → Bool
 gcStress3 [] = true

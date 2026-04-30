@@ -29,6 +29,15 @@ The archive material pointed to four recurring ideas:
 - [`Ontology/DNA/Supervoxel4Adic.agda`](../Ontology/DNA/Supervoxel4Adic.agda)
 - [`Ontology/DNA/ChemistryQuotient.agda`](../Ontology/DNA/ChemistryQuotient.agda)
 - [`Ontology/DNA/ChemistryConcrete.agda`](../Ontology/DNA/ChemistryConcrete.agda)
+- [`Ontology/DNA/ChemistryUVCoordinates.agda`](../Ontology/DNA/ChemistryUVCoordinates.agda)
+- [`Ontology/DNA/ChemistryUVConcrete.agda`](../Ontology/DNA/ChemistryUVConcrete.agda)
+- [`Ontology/DNA/ComplementLaws.agda`](../Ontology/DNA/ComplementLaws.agda)
+- [`Ontology/DNA/ChemistrySheetHamiltonian.agda`](../Ontology/DNA/ChemistrySheetHamiltonian.agda)
+- [`Ontology/DNA/SupervoxelAdmissibility.agda`](../Ontology/DNA/SupervoxelAdmissibility.agda)
+- [`Ontology/DNA/StreamingEncoderSurface.agda`](../Ontology/DNA/StreamingEncoderSurface.agda)
+- [`Ontology/DNA/EigenclassSurface.agda`](../Ontology/DNA/EigenclassSurface.agda)
+- [`Ontology/DNA/ChannelCodingSurface.agda`](../Ontology/DNA/ChannelCodingSurface.agda)
+- [`Docs/DNAUVCoordinateBridge.md`](./DNAUVCoordinateBridge.md)
 
 ## What is now implemented
 
@@ -74,6 +83,10 @@ What is implemented:
 - the carrier hierarchy
 - the chemistry-visible quotient surface
 - the first quotient interface on `DNA256`
+- a local `U/V` coordinate bridge with:
+  - `encodeUV`
+  - `decodeUV`
+  - proofs that the `U/V` pair still determines the underlying base exactly
 - a first concrete chemistry quotient instance with:
   - `U/V` feature map
   - strong-base thermo scalar
@@ -83,22 +96,57 @@ What is implemented:
   - sliding 4-window GC-extremal ban
   - sliding 4-window reverse-complement palindrome ban
   - sliding 6-window hairpin-like reverse-complement ban
+- a UV-oriented concrete refinement with:
+  - adjacent pyrimidine dimer counting in the thermo kernel
+  - sliding 3-window pyrimidine-run exclusion in admissibility
+- complement-visible chemistry laws showing that Watson-Crick complement:
+  - preserves the strong/weak channel
+  - flips the purine/pyrimidine channel
+- a sheet-space chemistry Hamiltonian surface with:
+  - signed `U/V` sheet coordinates
+  - per-band transition energy
+  - cross-band coupling energy
+  - a packaged chemistry Hamiltonian over those sheets
+- a supervoxel admissibility/checksum surface with:
+  - paired voxel packaging
+  - reverse-complement supervoxel involution
+  - a typed checksum owner surface
+  - a theorem-thin admissibility contract
+- a streaming encoder surface with:
+  - typed encoder state
+  - generic admissible-next-base screening
+  - update and checksum surfaces
+- an eigenclass/macro-adjacency surface with:
+  - one concrete `DNA3` eigenclass classifier
+  - a scan-order type
+  - a first six-line macro-adjacency score
+- a channel-integration surface with:
+  - inner-code boundary
+  - outer recovery-code boundary
+  - physical-channel risk surface
+  - integrated emission/recovery interface
 
 What is not implemented:
 
+- stronger proofs on the new theorem-thin surfaces, especially:
+  - supervoxel involution closure under the full reverse-complement pairing law
+  - stronger checksum/eigen-check invariants
+  - richer encoder correctness statements beyond the current typed update spec
 - a longer-window reverse-complement or hairpin law beyond the current 6-window
   screen
 - richer GC-window theorems beyond the current 4-window extreme ban
-- dimer theorems
-- an encoder/decoder
+- dimer theorems beyond the current local UV-aware refinement
+- a full external DNA storage codec with real synthesis/sequencing channel logic
 - any connection to the physics closure bundle
 
 ## Next step
 
-The next honest move is no longer the first quotient instantiation.
-It is to strengthen the admissibility screen beyond the current local pairwise
-ban, for example by adding:
+The next honest move is no longer missing owner surfaces.
+It is to strengthen or prove the new ones, for example by adding:
 
+- a stronger supervoxel admissibility theorem under reverse-complement pairing,
 - a longer-window reverse-complement exclusion law,
 - a stronger GC-window constraint,
-- or a stronger hairpin/dimer kernel.
+- a richer hairpin/dimer kernel,
+- or a more realistic channel/error-correction instance beneath the new
+  integration interface.
