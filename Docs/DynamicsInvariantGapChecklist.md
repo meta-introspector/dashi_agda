@@ -154,9 +154,15 @@ Current status:
   leaving it as only a side export;
 - the recovery theorem now carries both the base and alternate transported
   target-side schedule families, not just one.
-- the remaining gap is now to make that bundle-level witness less canonical and
-  more realization-sensitive, rather than merely lifting it out of the shift RG
-  layer.
+- the first honest noncanonical inhabitant is now landed in
+  [`ShiftContractProjectionDeltaCompatibility.agda`](../DASHI/Physics/Closure/ShiftContractProjectionDeltaCompatibility.agda),
+  which exports `shiftContractProjectionDeltaCompatibility` on the broader live
+  `ShiftContractState` carrier using the noncanonical observable replay from
+  `ShiftContractObservableTransportPrimeCompatibilityProfileInstance.agda`.
+- the remaining gap is now to widen beyond that first noncanonical inhabitant
+  and make the realization-sensitive side less dependent on the current
+  shift-RG-flavored admissibility and cone transport, rather than merely
+  lifting the theorem out of the shift RG layer.
 
 ## 3. Lorentz Signature Uniqueness
 

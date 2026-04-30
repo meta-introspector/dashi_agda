@@ -117,5 +117,22 @@ That promotion has now been lifted one level higher:
   hard-coded to a single target-side schedule pair.
 
 So the remaining realization-independent gap is narrower again:
-the projection/Δ theorem is no longer trapped at the shift RG layer, but it is
-still only inhabited canonically on the bundle side.
+the projection/Δ theorem is no longer trapped at the shift RG layer, and it is
+no longer only inhabited canonically on the bundle side.
+
+The first honest noncanonical inhabitant is now landed too:
+
+- [`ShiftContractProjectionDeltaCompatibility.agda`](../DASHI/Physics/Closure/ShiftContractProjectionDeltaCompatibility.agda)
+  exports `shiftContractProjectionDeltaCompatibility`, a direct
+  `ProjectionDeltaCompatibility` witness on the broader live
+  `ShiftContractState` carrier using the noncanonical observable replay from
+  `ShiftContractObservableTransportPrimeCompatibilityProfileInstance.agda`.
+
+So the remaining realization-independent gap is no longer “find any
+noncanonical inhabitant at all.” It is narrower:
+
+- widen beyond the first `ShiftContractState` inhabitant;
+- reduce dependence on the current shift-RG-flavored admissibility and cone
+  transport;
+- and eventually promote a broader noncanonical transported or bundle-level
+  recovery witness.

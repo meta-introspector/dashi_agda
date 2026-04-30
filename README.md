@@ -1,7 +1,53 @@
+## Start Here
+
+This repo is a formal-and-bridge workspace around the DASHI program.
+For a new serious reader, the important split is:
+
+- `proved`: the canonical Agda theorem spine and the specific closure claims it currently discharges
+- `bridge`: documents and modules that connect the formal spine to physics-facing interpretations without claiming full derivation
+- `packaging`: summary surfaces that assemble current lanes without strengthening theorems
+- `empirical`: data-facing and measurement-facing surfaces that stay explicitly non-claiming
+- `speculative`: roadmap or intuition surfaces that are not current repo claims
+
+Use one of these reader tracks first:
+
+- Repo track: `Docs/RepoGuide.md`
+- Physics/unification track: `Docs/PhysicsGuide.md`
+- Short unification claim surface: `Docs/UnificationClaim.md`
+- Strong theorem owners:
+  `DASHI/Physics/Closure/UnifiedPhysicsTheorem.agda`,
+  `DASHI/Physics/Closure/AtomicChemistryRecoveryTheorem.agda`,
+  `DASHI/Physics/Closure/PhysicsUnificationToCanonicalClosureAdapter.agda`
+- Atom/wave secondary note: `Docs/AtomAndWaveRecoveryStatus.md`
+- Recovery truth surfaces: `Docs/PhysicsRecoveryLedger.md` and `Docs/ArchiveRecoveryCrosswalk.md`
+- Module and diagram entrypoint: [architecture.md](architecture.md)
+
+What not to read first:
+
+- do not start with `DASHI/Everything.agda`
+- do not start with long status bullets below
+- do not treat empirical or packaging lanes as theorem closure
+
 ## Repository Status
 
 Archive-backed status update:
 
+## Diagram Surfaces
+
+- Canonical architecture overview: [architecture.md](architecture.md)
+- Strong claim owners:
+  `UnifiedPhysicsTheorem.agda`,
+  `AtomicChemistryRecoveryTheorem.agda`,
+  `PhysicsUnificationToCanonicalClosureAdapter.agda`
+- Repo reader metasystem: `Docs/RepoMetasystem.puml` and `Docs/RepoMetasystem.svg`
+- Canonical theorem spine: `Docs/CanonicalProofSpine.puml` and `Docs/CanonicalProofSpine.svg`
+- Physics/unification boundary map: `Docs/PhysicsUnificationMap.puml` and `Docs/PhysicsUnificationMap.svg`
+- Physical reality roadmap: `Docs/PhysicsRealityRoadmap.puml` and `Docs/PhysicsRealityRoadmap.svg`
+- Observable/signature round: `Docs/ObservableSignatureGaugeEntryRound.puml` and `Docs/ObservableSignatureGaugeEntryRound.svg`
+- Training dynamics bridge: `Docs/TRAINING_DYNAMICS.puml` and `Docs/TRAINING_DYNAMICS.svg`
+- Versioned PlantUML sources: `Docs/*.puml`
+- Versioned rendered previews: `Docs/*.svg`
+- Re-render command: `./scripts/render_docs_diagrams.sh`
 - The orbit/signature/shell-family story remains the strongest part of the
   repo and is now better supported by sibling-repo and archive material.
 - The wave / psi / graded-series bridge is no longer only aspirational:
@@ -13,6 +59,43 @@ Archive-backed status update:
   prove the invariant quadratic + uniqueness-up-to-scale seams from the
   contraction/projection machinery and then derive the downstream
   signature/Clifford/gauge chain from that theorem.
+- Canonical bottleneck progress this round:
+  `ContractionForcesQuadraticStrong` now records explicit scale-aware
+  uniqueness data (`scaleFactor`, `normalizeToScaledQ̂core`) while keeping the
+  old normalized witness surface stable; it also now carries named
+  `NondegeneracySeam` and `IsotropyCompatibilitySeam` records instead of
+  leaving those bottleneck slots as raw `⊤` placeholders, while preserving the
+  old compatibility fields for downstream consumers.  Those seam records are
+  now theorem-bearing: nondegeneracy records full normalization to `Q̂core`
+  and now reduces the remaining anisotropy requirement through the definitional
+  bridge `Q̂core≡sumSq`, so `CoreAnisotropyAssumption` is no longer a raw
+  `Q̂core` assumption but two narrower local premises on `HFZ.sumSq`
+  recursion (`SquareZeroResidualPremise` and
+  `SumSqZeroDecompositionPremise`), and those local premises are now discharged
+  from the integer / `HFZ.sumSq` machinery already in repo, so strong
+  nondegeneracy no longer depends on a residual anisotropy assumption;
+  isotropy compatibility now carries explicit shell-respecting structure plus
+  an inhabited action-transport package whenever a shell transport boundary
+  witness is present, and the downstream signature/Clifford boundary now states
+  that only normalized quadratic is actually consumed, so unconditional
+  shell-orbit existence is not part of the current theorem contract; and the
+  non-unit scale path now has an explicit `CoreScaleSeam` obstruction theorem
+  in positive dimension, so the honest positive-dimensional non-unit story
+  lives on an explicit restricted carrier (`CoreScaleCarrierSeam`) rather than
+  the full core, while `AdmissibleFor` remains a whole-carrier surface whose
+  positive-dimensional scale factor is forced to unit. The strong closure
+  surface now also exposes `strongNondegeneracy` as the default discharged
+  theorem path, so downstream code can depend on null-cone reflection without
+  threading `CoreAnisotropyAssumption` manually. And
+  `QuadraticToCliffordBridgeTheorem` now replaces the old uniqueness
+  placeholder with an explicit generator-image uniqueness theorem on the
+  factorization surface. The spin/Dirac bridge now also exposes an explicit
+  `spinDiracBridgeBoundary`, confirming that the current downstream path still
+  consumes only the normalized-quadratic contract and does not require a wider
+  nondegeneracy surface. The core/full-closure side now says the same thing
+  explicitly through `closureQuadraticBoundary`, so the canonical closure stack
+  records that it is carrying bridge witnesses, not consuming null-cone
+  reflection.
 - Local merge-prep tooling status:
   the repo now treats a Nix/zkperf surface as acceptable only if it preserves
   the existing authoritative CI route through `DASHI/Everything.agda` and also
@@ -20,6 +103,43 @@ Archive-backed status update:
   Demo DA51/zkperf JSONL witness files are acceptable as illustrative tracked
   artifacts for now, but they must be documented as non-authoritative sample
   outputs rather than as canonical reproducibility inputs.
+- Layer-2 separator search now has an explicit target surface:
+  `Ontology.Hecke.ProfileSummaryFamilySeparation`
+  packages the honest split between
+  `CurrentProfileSummarySeparates`
+  and
+  `CurrentProfileSummaryCollapses`,
+  and
+  `Ontology.Hecke.CurrentSaturatedProfileSummaryFamilySeparation`
+  gives the current saturated-branch specialization of the same question,
+  while
+  `scripts/profile_summary_separation.py`
+  is the Python mirror that searches the current generator taxonomy for a
+  separating pair under the full `profileSummaryFamily` invariant, and
+  `scripts/profile_summary_adapter.py`
+  is now a precomputed-artifact-first seam over
+  `artifacts/hecke/profile_summary_family.json`; the remaining gap is the
+  missing materialized data, not missing Python shape. A schema example lives
+  at `artifacts/hecke/profile_summary_family.example.json`.
+  That gap is now closed locally by
+  `scripts/materialize_profile_summary_family.hs`, which materializes the JSON
+  artifact directly from the compiled MAlonzo bridge
+  `GeneratorCollapseClass -> primeImage -> profileSummaryFamily`.
+  On the current nine-generator taxonomy, the full family already separates,
+  and on the saturated-only slice it also separates. The current materialized
+  families cluster into five classes overall and four classes on the saturated
+  branch. `scripts/minimize_profile_summary_projection.py` now shows that
+  `forcedStableCount`, `totalDrift`, and `contractiveCount` each preserve the
+  same current partition as the full six-field family on both scopes.
+  `Ontology.Hecke.ContractiveCountLayer2Invariant`
+  now promotes `contractiveCount` as the theorem-facing current Layer-2
+  singleton surface, and
+  `Ontology.Hecke.CurrentSaturatedContractiveCountLayer2Invariant`
+  gives the same specialization on the current saturated branch.
+- Closure contract status now lives in `Docs/ClosureContractStatus.md`:
+  the strong layer carries discharged nondegeneracy, but the current
+  signature -> Clifford -> spin/Dirac -> full-closure chain still factors only
+  through the normalized-quadratic boundary.
 - Routine Agda target policy now lives in `Docs/AgdaValidationTargets.md`:
   use focused canonical bridge modules in normal edit loops, treat
   `PhysicsClosureValidationSummary.agda` as heavy/avoid-by-default, and treat
@@ -67,6 +187,274 @@ Archive-backed status update:
   provide the empirical-first owner stack, with
   `Docs/PhotonuclearEmpiricalRegistry.md` as the canonical map. This lane is
   explicitly empirical-only and non-claiming.
+- Unifying interface lane:
+  `DASHI/Physics/DashiDynamics.agda`
+  is now the theorem-thin entry surface that binds the current packaged
+  carriers together without claiming derivation between them. Its intended
+  reading is:
+  state/path/observable/scalar interfaces +
+  action/density/amplitude/reduction law slots +
+  photonuclear empirical validation carrier +
+  held/control pressure consumer +
+  explicit non-claim boundary.
+  It is a packaging interface, not a new physics theorem.
+  `DASHI/Physics/DashiDynamicsShiftInstance.agda`
+  is the first minimal inhabitant of that interface over an existing
+  repo-native carrier: the shift pressure-point surface plus the packaged
+  photonuclear validation summary.
+  That instance now owns the first non-placeholder core law surface:
+  density is empirical `densityProxy + pressure rank`,
+  action/amplitude are pressure-rank proxies on equality paths,
+  the exported density law is monotonic under the bounded three-point
+  pressure-advance endomap,
+  and the action law now also carries a bounded least-action witness:
+  among admissible monotone pressure targets on the three-point carrier,
+  `shiftPressureAdvance` chooses the smallest available pressure step.
+- Variational bridge lane:
+  `DASHI/Physics/PressureHamiltonJacobiGap.agda`
+  is now the theorem-thin least-action / Hamilton-Jacobi-facing consumer
+  over `DashiDynamics`.
+  Its intended reading is:
+  variational state +
+  admissible targets +
+  transition cost +
+  value function +
+  local optimality +
+  Bellman / Hamilton-Jacobi presentation,
+  all with explicit non-claim boundaries.
+  `DASHI/Physics/PressureHamiltonJacobiShiftInstance.agda`
+  is the first bounded inhabitant of that lane over the three-point shift
+  pressure carrier.
+  It reuses the existing least-action witness from
+  `DashiDynamicsShiftInstance`
+  and adds one discrete Bellman-style inequality witness, without claiming a
+  continuous-limit PDE or a Schrödinger derivation.
+- Gradient-flow seam:
+  `DASHI/Physics/PressureGradientFlowGap.agda`
+  is now the theorem-thin held-point / potential-descent consumer over
+  `DashiDynamics`.
+  `DASHI/Physics/PressureGradientFlowShiftInstance.agda`
+  is the first bounded inhabitant of that lane over the three-point shift
+  carrier.
+  The core
+  `DashiDynamicsShiftInstance`
+  reduction side now records an explicit held-point fixed point together with
+  a bounded potential-descent witness, so the repo has a local
+  gradient-flow-style seam before any wider continuum or wave-lift claim.
+  That seam is now sharpened one step further:
+  strict descent holds on the explicit non-held slice of the three-point
+  carrier, so the current core package now exposes the minimal Lyapunov-style
+  strengthening that was previously missing, still without claiming a global
+  convergence theorem.
+  The next bounded tightening is now landed too:
+  `DashiDynamicsShiftInstance`
+  carries a constructive convergence theorem to the held point on the
+  three-point carrier, together with an explicit `≤ 2` step bound.
+  That finite terminality story is now packaged explicitly at
+  `DASHI/Physics/PressureGradientFlowTerminalityGap.agda`
+  and
+  `DASHI/Physics/PressureGradientFlowTerminalityShiftInstance.agda`,
+  so the shift lane now records eventual held-entry, bounded convergence,
+  unique fixed point, and unique zero-potential point on the current carrier
+  without pretending this is already a general attractor theorem.
+  Separately,
+  `DASHI/Physics/ShiftPotentialQuadraticEnergy.agda`
+  packages the finite scalar quadratic energy induced by
+  `shiftHeldPotential`
+  and proves monotone descent of
+  `Q(s) = shiftHeldPotential(s)^2`
+  under the same pressure advance map, while staying explicitly short of the
+  full canonical quadratic-form lane.
+  The next handoff is now explicit too:
+  `DASHI/Physics/ShiftPotentialQuadraticBridge.agda`
+  packages that same finite energy surface as a local
+  `ContractionQuadraticBridge.QuadraticOutput`-compatible object, so the
+  pressure lane now has a real bridge into the repo's quadratic interface
+  layer without claiming it has reconstructed the canonical contraction =>
+  quadratic theorem path.
+  The bilinear-facing seam is now bounded too:
+  `DASHI/Physics/ShiftPotentialBilinearBridge.agda`
+  exposes one explicit symmetric pair form on the finite shift carrier whose
+  diagonal matches the pressure-induced quadratic energy exactly.
+  This is recorded as a local bilinear-style handoff, not as a full
+  polarization theorem or vector-space upgrade.
+  That local bilinear seam is now related to the existing Clifford-gate metric
+  interface too:
+  `DASHI/Physics/ShiftPotentialCliffordMetric.agda`
+  packages the same finite bilinear form as a
+  `DASHI.Geometry.CliffordGate.BilinearForm`
+  together with an explicit `RingLike ℤ` carrier and an exact diagonal
+  recovery theorem, still without constructing a Clifford algebra.
+- Schrödinger-facing packaging constraint:
+  the recovered tail of
+  `Classical Quantum Bridge`
+  (`69eb5a54-5f74-839f-96d4-0009db829915`,
+  canonical `d69ca38ba7051141efc5c7245437fe574b6a5057`)
+  should be implemented, if at all, as theorem-thin or assumption-guarded
+  consumers over `DashiDynamics`, not as a fake proof surface.
+  The intended order is:
+  `SchrodingerGap`
+  then
+  `SchrodingerAssumedTheorem`,
+  with any demo-only mock module treated as plumbing-only and non-citable.
+  That bounded packaging round is now landed:
+  `DASHI/Physics/SchrodingerGap.agda`
+  is the theorem-thin Schrödinger-facing consumer over `DashiDynamics`, and
+  `DASHI/Physics/SchrodingerAssumedTheorem.agda`
+  is the assumption-guarded theorem seam that only repackages a supplied
+  `schrodingerForm` witness from the gap surface.
+  The first concrete inhabitant is now also landed:
+  `DASHI/Physics/SchrodingerGapShiftInstance.agda`
+  defines a bounded pressure-ordered endomap on the existing three-point
+  shift carrier, ties density to the empirical `densityProxy` plus pressure
+  rank by reusing the core `DashiDynamicsShiftInstance` helpers, proves
+  monotonicity for density and amplitude proxies, and constructs one
+  assumption-guarded theorem instance from that real witness.
+  A second, more structured inhabitant is now landed too:
+  `DASHI/Physics/SchrodingerGapPhaseWaveShiftInstance.agda`
+  lifts `WaveState` from the raw pressure point to a record carrying
+  carrier point,
+  amplitude,
+  and phase proxy.
+  Its Schrödinger-form witness now packages density monotonicity,
+  amplitude monotonicity,
+  phase descent,
+  and one bounded interference / phase-transport law:
+  exact conservation of `amplitude + phase` on the current carrier.
+  The finite continuum-style follow-on now also exists at
+  `DASHI/Physics/ShiftPhaseWaveContinuumStory.agda`,
+  where the structured wave carrier is packaged with a bounded transport
+  coordinate, a conserved interference charge, and an exact
+  coordinate/phase balance law, all still explicitly below any PDE or
+  scaling-limit claim.
+  The next finite wave-facing layer is now landed too:
+  `DASHI/Physics/ShiftPhaseTableInterference.agda`
+  adds a four-class finite phase table with a symmetric interaction kernel
+  and bounded pair-state interference intensity observable,
+  while
+  `DASHI/Physics/ShiftDiscreteWaveStep.agda`
+  packages the same structured carrier as an integer-pair discrete wave with
+  finite phase encoding, superposition by vector addition, and one
+  Schrödinger-like Euler step under a scalar Hamiltonian proxy.
+  That finite wave package now has its next theorem-thin follow-on layers too:
+  `DASHI/Physics/ShiftWaveScalingInterface.agda`
+  introduces an explicit coarse/fine refinement surface with step
+  compatibility and a discrete second-difference operator, but still no limit
+  or PDE claim;
+  `DASHI/Physics/ShiftWaveRefinementSeam.agda`
+  now enriches that refinement story with coarse/fine observation records,
+  explicit `project` / `embed` maps, and transport/agreement witnesses over
+  the same carrier without claiming any actual limit theorem;
+  `DASHI/Physics/ShiftWaveRefinementHierarchy.agda`
+  now replaces the old same-carrier-only weak point with a genuine finite
+  `3 -> 5` hierarchy whose coarse points embed at interior refined points and
+  whose refined Laplacian agrees with the coarse Laplacian on embedded points
+  under the current projection-based field lift;
+  `DASHI/Physics/ShiftWaveRefinementLevel.agda`
+  now packages that concrete hierarchy as a reusable theorem-thin family
+  surface with named coarse/fine levels, a lift, and explicit refinement
+  boundary text so later `5 -> 9` or `9 -> 17` steps can reuse the same
+  interface without pretending a recursive family theorem;
+  `DASHI/Physics/ShiftWaveGlobalUpdate.agda`
+  now packages the current Euler-style Schrödinger step as a synchronous
+  whole-field one-pass update on both the coarse and refined carriers, with
+  compatibility on lifted coarse fields at embedded coarse points, but still
+  no unitarity, stability, or PDE claim;
+  `DASHI/Physics/ShiftSpatialLaplacian.agda`
+  adds the finite three-point spatial Laplacian with reflected endpoint
+  behavior;
+  `DASHI/Physics/ShiftDiscreteHelmholtzSurface.agda`
+  now packages the corresponding coarse/refined discrete Helmholtz residuals
+  and the modewise Schrödinger-step law
+  `ψ ↦ ψ + i λ ψ`
+  for finite eigenfields, still with no spectral or PDE claim;
+  `DASHI/Physics/ShiftDiscreteWaveEnergy.agda`
+  now makes the Euler-style step boundary explicit as a finite energy package:
+  held-state basis waves are preserved, while non-held basis waves expose
+  concrete growth witnesses instead of a fake stability theorem;
+  `DASHI/Physics/ShiftWaveEnergyHierarchy.agda`
+  now lifts that story across the concrete `3 -> 5` hierarchy with exact
+  coarse/fine field-energy surfaces, an exact lifted-field energy shape
+  theorem, and embedded-window Laplacian-energy control under the current
+  projection lift, while explicitly refusing stronger whole-five-point or
+  scaling-limit claims;
+  `DASHI/Physics/ShiftDiscreteContinuityCurrent.agda`
+  now packages the current finite continuity/current story as an explicit
+  bookkeeping surface: field-local energy, updated energy, Laplacian-stencil
+  current magnitude, pairwise phase/interference currents, and exact
+  conservation of `amplitude + phase` under one finite advance step, with no
+  PDE continuity or Noether overclaim;
+  `DASHI/Physics/ShiftDiscreteActionPrinciple.agda`
+  now packages a theorem-thin finite action surface over the same field:
+  local action density is defined exactly as local energy plus local current
+  magnitude, and the update law is pinned directly to the existing
+  Euler-style Schrödinger step without claiming a variational derivation;
+  `DASHI/Physics/ShiftFiniteEvolutionWitness.agda`
+  now adds a Dashi-style finite witness/search layer with bounded
+  PNF-style evolution obligations, explicit Skolem-style one-pass update
+  witnesses, and finite Herbrand-style candidate histories on both the coarse
+  and refined carriers;
+  `DASHI/Physics/ShiftFinitePathSum.agda`
+  now adds a bounded exact two-history path-sum surface over the existing
+  phase-table and discrete-wave weights, still explicitly below any continuum
+  path integral or analytic propagator claim;
+  `DASHI/Physics/ShiftFieldTheoryConsistency.agda`
+  now ties the current coarse witness, updated-energy view, action/current
+  bookkeeping, and bounded path-sum together as one exact theorem-thin
+  coherence package over the same deterministic one-pass advance, without any
+  path-selection, dominance, Noether, or continuum overclaim;
+  `DASHI/Physics/ShiftFiniteGaugeSymmetry.agda`
+  now packages the first finite local `C4`/`U(1)`-like phase-symmetry
+  surface over the integer-pair wave lane, keeping generic compose/inverse/
+  additive/scale equalities as explicit target-law surfaces rather than fake
+  closed proofs;
+  `DASHI/Physics/ShiftFiniteGaugeCoupling.agda`
+  now adds the first finite matter-plus-static-gauge lift over the current
+  coarse carrier with a bounded covariant Laplacian, Hamiltonian, and
+  one-pass update surface, together with explicit vacuum compatibility and
+  bounded gauge-covariance targets, still below any full local-covariance,
+  dynamic-gauge, or continuum claim;
+  `DASHI/Physics/ShiftGaugeFieldTheoryAgreement.agda`
+  now closes the next honest vacuum-gauge slice by tying the existing
+  field-theory coherence package, the hierarchy-energy package, and the new
+  finite gauge-coupling package to the same coarse one-pass update and its
+  lifted energy surfaces, still without any gauge-energy conservation or full
+  local-covariance overclaim;
+  `DASHI/Physics/ShiftConstantPhaseCovariance.agda`
+  now adds the next bounded symmetry tightening on top of that slice:
+  exact global `C4` constant-phase covariance is witnessed for the vacuum
+  static-gauge covariant operator itself, while the corresponding full
+  one-pass update covariance is kept as an explicit target surface rather
+  than overclaimed as a closed theorem;
+  `DASHI/Physics/ShiftGaugeCurrentConsistency.agda`
+  now packages the next bounded current-sourced gauge-update coherence
+  surface, reusing the existing coarse local-current magnitude pointwise on
+  the coarse carrier and closing exact covariance only for the current
+  intentionally neutral `currentPhase` reducer, while richer edge-current
+  invariance and nontrivial current-to-phase transport remain target-law
+  surfaces;
+  `DASHI/Physics/ShiftFiniteMatrixSymmetry.agda`
+  now repackages the current `Phase4`/`C4` quarter-turn action as a finite
+  matrix-action surface over the integer-pair wave lane and adds one bounded
+  first non-abelian doublet-action analogue with a concrete non-commuting
+  witness, still below any `SU(2)`, Hilbert-space, or analytic claim;
+  `DASHI/Physics/ShiftMinimalGaugeTheory.agda`
+  now packages the first minimal matter-plus-static-gauge world over the same
+  carrier, with one-pass matter evolution, exact vacuum reduction back to the
+  current coarse global update, and explicit vacuum-gauge retention, still
+  below any local-covariance, dynamic-gauge, or full-`U(1)` claim;
+  `DASHI/Physics/ShiftTwoFieldGaugeInteraction.agda`
+  now adds the first theorem-thin two-field gauge-mediated interaction
+  surface over that same static-gauge lane: two matter fields evolve through
+  bounded gauge-mediated nearest-neighbor coupling and a joint current-sourced
+  gauge update, but the active gauge-update reducer remains the neutral
+  inherited one, so the result is symmetry-safe rather than a promoted
+  physically reactive gauge theory;
+  and
+  `DASHI/Physics/ShiftUnitaryLikeConstraint.agda`
+  records the basis-level norm preservation and four-quarter-turn cycle for
+  `mulI`, while explicitly refusing to overclaim unitarity for the Euler-style
+  Schrödinger step.
 - Sibling-repo support surfaces:
   `../dashitest` contains useful diagnostic and measurement artifacts for
   wave/interference, MDL, and regime-style language, but it is currently a
@@ -137,6 +525,13 @@ Current theorem status:
   `WeightedValuationForwardCandidate`
   so the weighted lane has a record-level admissibility/coherence package
   without identifying that lane with `Q̂core`.
+  It now also exposes
+  `weightedValuationForwardCandidateToDeltaBridge`
+  and
+  `weightedValuationForwardCandidateNormalizesQuadratic`,
+  so a weighted forward candidate can be promoted into the theorem-side delta
+  bridge once a signature bridge is supplied, without adding any new
+  arithmetic-side identification claim.
   The weaker profile-side seam now also has its own arithmetic owner:
   `DASHI/Arithmetic/ArithmeticPrimeProfileBridge.agda`
   exposes
@@ -154,6 +549,38 @@ Current theorem status:
   inherited signature-31 data,
   and a specialized Clifford presentation handle
   without widening the cancellation-side claim.
+- Generic pressure algebra owner:
+  `DASHI/Pressure.agda`
+  now exposes a finite five-level pressure carrier with
+  `_⊑p_`,
+  `_⊔p_`,
+  and the basic join-semilattice laws as a reusable algebra surface.
+  This is intentionally generic and separate from the existing
+  `Ontology/Hecke/*Pressure*`
+  modules, which remain domain-specific consumers rather than the owner of the
+  reusable pressure chain.
+  The first thin consumer bridge now lives in
+  `Ontology/Hecke/PressureAdapter.agda`,
+  embedding the current three-tier Hecke `PressureClass`
+  into the generic pressure carrier and proving that the existing Hecke order
+  maps monotonically into `_⊑p_`.
+  The first concrete reuse site is now the Hecke representative-computation
+  layer:
+  `Ontology/Hecke/StaysOneMoreStepRepresentativeComputations.agda`,
+  `Ontology/Hecke/ExitToAnchoredRepresentativeComputations.agda`, and
+  `Ontology/Hecke/ImmediateExitRepresentativeComputations.agda`
+  each now expose both the domain-local `PressureClass` tier and the embedded
+  generic `DASHI.Pressure.Pressure` tier on the same computation record.
+  `Ontology/Hecke/RepresentativePressureOrder.agda`
+  is the current theorem-thin comparison surface over that generic tier.
+  It now also carries one pairwise join collapse
+  (`stay ⊔ anchored = anchored`)
+  plus the three-way envelope
+  (`(stay ⊔ anchored) ⊔ immediate-exit = immediate-exit`)
+  on the embedded generic carrier.
+  Treat this as the stable pressure owner boundary for now:
+  do not add further non-Hecke consumers unless a concrete cross-domain
+  pressure comparison actually needs the generic carrier.
 - The three-body test case is now scaffolded repo-side as a theorem-thin
   regime-classification surface under `DASHI/Physics/ThreeBody/`.
   The intended reading is:

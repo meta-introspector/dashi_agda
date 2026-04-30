@@ -17,7 +17,8 @@ This toolkit measures stepwise training behaviour without claiming mechanism.
 
 Outputs:
 
-- `runs_compare/training_dynamics.png`
+- `runs_compare/training_dynamics.png` (generated runtime plot, not a versioned
+  docs preview)
 - `runs_compare/delta_cone_rank.csv`
 
 ## Expected reading

@@ -1,13 +1,13 @@
 module DASHI.Physics.Closure.CanonicalAbstractGaugeMatterInstance where
 
-open import Agda.Primitive using (Set)
+open import Agda.Primitive using (Set; Setω)
 open import Agda.Builtin.Bool using (true)
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Agda.Builtin.Nat using (Nat; zero; suc)
 open import Agda.Builtin.Unit using (⊤; tt)
 open import Data.Empty using (⊥)
 open import Data.Vec using (_∷_; [])
-open import Relation.Binary.PropositionalEquality using (cong; sym)
+open import Relation.Binary.PropositionalEquality using (cong; sym; trans)
 open import Data.Product using (_×_; _,_)
 
 open import DASHI.Algebra.GaugeGroupContract as GGC
@@ -16,12 +16,14 @@ open import DASHI.Execution.Contract as EC
 open import DASHI.Geometry.ConeTimeIsotropy as CTI using (Signature)
 open import DASHI.Geometry.ShiftLorentzEmergenceInstance as SLEI
 open import DASHI.Geometry.Signature31Lock as S31L
+open import DASHI.Physics.DashiDynamicsShiftInstance as DDSI
 open import DASHI.Physics.Closure.AbstractGaugeMatterBundle as AGMB
 open import DASHI.Physics.Closure.CanonicalConstraintGaugePackage as CCGP
 open import DASHI.Physics.Closure.ParametricGaugeConstraintTheorem as PGCT
 open import DASHI.Physics.Closure.RGObservableInvariance as RGOI
 open import DASHI.Physics.Closure.ShiftExecutionInvariantCore as SEIC
 open import DASHI.Physics.Closure.ShiftRGObservableInstance as SRGOI
+open import DASHI.Physics.PressureHamiltonJacobiShiftInstance as PHJSI
 open import DASHI.Physics.Constraints.ConcreteInstance as CI
 open import Ontology.Hecke.Scan as HS
 open import Ontology.Hecke.PrimeHeckeEigenMotifPipeline as PHEM
@@ -180,6 +182,10 @@ CanonicalConservedCharge : Set
 CanonicalConservedCharge =
   GGC.Gauge × SRGOI.ShiftBasin × Nat × SRGOI.ShiftMotif × CanonicalEigenShadow
 
+CanonicalCoarseConservedCharge : Set
+CanonicalCoarseConservedCharge =
+  GGC.Gauge × SRGOI.ShiftBasin × SRGOI.ShiftMotif
+
 canonicalConservedChargeOf :
   CCGP.Carrier PGCT.canonicalConstraintGaugePackage → CanonicalConservedCharge
 canonicalConservedChargeOf x =
@@ -188,6 +194,14 @@ canonicalConservedChargeOf x =
   , canonicalMdlLevel x
   , canonicalMotifLevel x
   , canonicalEigenShadowLevel x
+  )
+
+canonicalCoarseConservedChargeOf :
+  CCGP.Carrier PGCT.canonicalConstraintGaugePackage → CanonicalCoarseConservedCharge
+canonicalCoarseConservedChargeOf x =
+  ( CCGP.pickGauge PGCT.canonicalConstraintGaugePackage x
+  , canonicalBasinLevel x
+  , canonicalMotifLevel x
   )
 
 canonicalConservedChargePreserved :
@@ -200,6 +214,79 @@ canonicalConservedChargePreserved CI.CP
 canonicalConservedChargePreserved CI.CC
   rewrite canonicalMotifPreserved CI.CC
   = refl
+
+projectTransportedCoarseCharge :
+  CanonicalObservable → CanonicalCoarseConservedCharge
+projectTransportedCoarseCharge (g , o) =
+  ( g
+  , RGOI.RGObservable.basinLabel o
+  , RGOI.RGObservable.motifClass o
+  )
+
+projectTransportedShiftCoarseCharge :
+  CanonicalShiftCarrier → CanonicalCoarseConservedCharge
+projectTransportedShiftCoarseCharge x =
+  projectTransportedCoarseCharge
+    (GGC.SU3×SU2×U1 , RGOI.RGObservableSurface.observe SRGOI.shiftRGSurface x)
+
+canonicalClosureCoarseCharge-to-stepSchedule :
+  ∀ x →
+  canonicalCoarseConservedChargeOf (canonicalClosureDynamics x)
+    ≡
+  projectTransportedShiftCoarseCharge
+    (SRGOI.shiftCoarse
+      (EC.Contract.step
+        (SLEI.shiftContract {suc zero} {suc (suc (suc zero))})
+        (canonicalTransportState x)))
+canonicalClosureCoarseCharge-to-stepSchedule CI.CR = refl
+canonicalClosureCoarseCharge-to-stepSchedule CI.CP = refl
+canonicalClosureCoarseCharge-to-stepSchedule CI.CC = refl
+
+canonicalClosureCoarseCharge-to-schedule :
+  ∀ x →
+  SRGOI.shiftRGAdmissible (canonicalTransportState x) →
+  canonicalCoarseConservedChargeOf (canonicalClosureDynamics x)
+    ≡
+  projectTransportedShiftCoarseCharge
+    (SRGOI.shiftCoarseAlt (canonicalTransportState x))
+canonicalClosureCoarseCharge-to-schedule x ax =
+  trans
+    (canonicalClosureCoarseCharge-to-stepSchedule x)
+    (cong
+      projectTransportedShiftCoarseCharge
+      (sym (SRGOI.shiftCoarseAlt≡shiftCoarse (canonicalTransportState x))))
+
+canonicalCoarseConservedChargePreservedLocal :
+  ∀ y →
+  canonicalCoarseConservedChargeOf y
+    ≡
+  canonicalCoarseConservedChargeOf (canonicalClosureDynamics y)
+canonicalCoarseConservedChargePreservedLocal CI.CR = refl
+canonicalCoarseConservedChargePreservedLocal CI.CP = refl
+canonicalCoarseConservedChargePreservedLocal CI.CC = refl
+
+canonicalSourceCoarseCharge-to-schedule :
+  ∀ x →
+  SRGOI.shiftRGAdmissible (canonicalTransportState x) →
+  canonicalCoarseConservedChargeOf x
+    ≡
+  projectTransportedShiftCoarseCharge
+    (SRGOI.shiftCoarseAlt (canonicalTransportState x))
+canonicalSourceCoarseCharge-to-schedule x ax =
+  trans
+    (canonicalCoarseConservedChargePreservedLocal x)
+    (canonicalClosureCoarseCharge-to-schedule x ax)
+
+canonicalCoarseConservedChargePreserved :
+  ∀ x →
+  SRGOI.shiftRGAdmissible (canonicalTransportState x) →
+  canonicalCoarseConservedChargeOf x
+    ≡
+  canonicalCoarseConservedChargeOf (canonicalClosureDynamics x)
+canonicalCoarseConservedChargePreserved x ax =
+  trans
+    (canonicalSourceCoarseCharge-to-schedule x ax)
+    (sym (canonicalClosureCoarseCharge-to-schedule x ax))
 
 canonicalAbstractGaugeMatterBundle : AGMB.AbstractGaugeMatterBundle
 canonicalAbstractGaugeMatterBundle =
@@ -241,11 +328,48 @@ canonicalConservedObservableWitness :
   AGMB.ConservedObservableWitness canonicalAbstractGaugeMatterBundle
 canonicalConservedObservableWitness =
   record
-    { Charge = CanonicalConservedCharge
-    ; chargeOf = canonicalConservedChargeOf
-    ; charge-evolve = λ x _ → canonicalConservedChargePreserved x
-    ; charge-coarse = λ x _ → canonicalConservedChargePreserved x
+    { Charge = CanonicalCoarseConservedCharge
+    ; chargeOf = canonicalCoarseConservedChargeOf
+    ; charge-evolve = λ x _ → canonicalCoarseConservedChargePreservedLocal x
+    ; charge-coarse = λ x _ → canonicalCoarseConservedChargePreservedLocal x
     ; observable-gauge-invariant = λ _ _ → refl
+    }
+
+record CanonicalTransportBackedNaturalCoarseTheorem : Setω where
+  field
+    natural :
+      AGMB.NaturalDynamicsWitness canonicalAbstractGaugeMatterBundle
+    conserved :
+      AGMB.ConservedObservableWitness canonicalAbstractGaugeMatterBundle
+    source-coarse-to-schedule :
+      ∀ x →
+      SRGOI.shiftRGAdmissible (canonicalTransportState x) →
+      canonicalCoarseConservedChargeOf x
+        ≡
+      projectTransportedShiftCoarseCharge
+        (SRGOI.shiftCoarseAlt (canonicalTransportState x))
+    evolve-coarse-to-schedule :
+      ∀ x →
+      SRGOI.shiftRGAdmissible (canonicalTransportState x) →
+      canonicalCoarseConservedChargeOf (canonicalClosureDynamics x)
+        ≡
+      projectTransportedShiftCoarseCharge
+        (SRGOI.shiftCoarseAlt (canonicalTransportState x))
+    shift-local-action :
+      DDSI.ShiftLeastActionLaw
+    shift-hamilton-jacobi :
+      PHJSI.ShiftHJPresentation
+
+canonicalTransportBackedNaturalCoarseTheorem :
+  CanonicalTransportBackedNaturalCoarseTheorem
+canonicalTransportBackedNaturalCoarseTheorem =
+  record
+    { natural = canonicalNaturalDynamicsWitness
+    ; conserved = canonicalConservedObservableWitness
+    ; source-coarse-to-schedule = canonicalSourceCoarseCharge-to-schedule
+    ; evolve-coarse-to-schedule = canonicalClosureCoarseCharge-to-schedule
+    ; shift-local-action = DDSI.shiftLeastActionWitness
+    ; shift-hamilton-jacobi = PHJSI.shiftHamiltonJacobiWitness
     }
 
 canonicalContinuumWitness :

@@ -1,0 +1,37 @@
+@startuml
+title Observable Signature Gauge Entry Round
+
+skinparam componentStyle rectangle
+
+component "Arithmetic budget\nL0(state)" as L0
+component "Delta to Q distortion\nweightedSupport + trackedSupport" as DQ
+component "Signature stress\nforced / conditional / blocked / held" as Sig
+component "Observable transport gate\nadmissible + stable + coherent" as Obs
+component "Pressure test instance\ncanonical singleton" as Test
+component "Shift pressure test\npointwise pressure status" as ShiftTest
+component "Gauge entry\nfiber/action laws" as Gauge
+component "Canonical execution receipt\nidentity step" as Exec
+component "Live shift execution receipt\ntrajectory i0 -> i1" as ShiftExec
+component "Physics receipt\nexecution + statuses + support budget" as Receipt
+
+L0 --> DQ : finite budget
+DQ --> Sig : controlled carrier path
+Sig --> Test : signature forced
+Obs --> Test : observable forced
+Sig --> ShiftTest : promotion-ready endpoints
+Obs --> ShiftTest : held/control separation
+Test --> Gauge : minimal entry, no matter claim
+Exec --> Receipt : admissible identity step
+ShiftExec --> Receipt : admissible shift step
+Test --> Receipt : promotion evidence
+ShiftTest --> Receipt : shift-backed status evidence
+DQ --> Receipt : pair support decomposition
+Obs --> Receipt : observableStatus
+Sig --> Receipt : signatureStatus
+
+note bottom of Gauge
+G is abstract.
+No Standard Model or matter recovery claim.
+end note
+
+@enduml

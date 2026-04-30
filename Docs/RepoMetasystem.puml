@@ -1,0 +1,118 @@
+@startuml
+title Repo Reader Metasystem
+left to right direction
+
+skinparam shadowing false
+skinparam roundcorner 18
+skinparam packageStyle rectangle
+skinparam ArrowThickness 2
+skinparam defaultTextAlignment center
+
+skinparam package {
+  BackgroundColor #f8fafc
+  BorderColor #334155
+  FontColor #0f172a
+}
+
+skinparam rectangle {
+  BorderColor #334155
+  FontColor #0f172a
+  BackgroundColor #ffffff
+}
+
+skinparam note {
+  BackgroundColor #ecfeff
+  BorderColor #0f766e
+  FontColor #134e4a
+}
+
+package "Entry surfaces" {
+  rectangle "README.md\nStart Here" as Readme #dbeafe
+  rectangle "architecture.md\nmodule + diagram entrypoint" as Arch #dbeafe
+}
+
+package "Reader tracks" {
+  rectangle "RepoGuide.md\nHow the repo is organized" as RepoGuide #dcfce7
+  rectangle "PhysicsGuide.md\nHow to read the physics program" as PhysicsGuide #dcfce7
+  rectangle "UnificationClaim.md\nStrongest disciplined claim" as UniClaim #dcfce7
+  rectangle "PhysicsRecoveryLedger.md\nRepo-native recovery status" as RecoveryLedger #dcfce7
+  rectangle "ArchiveRecoveryCrosswalk.md\nArchive truth vs repo truth" as RecoveryCrosswalk #dcfce7
+}
+
+package "Canonical code surfaces" {
+  rectangle "DASHI canonical theorem spine" as Spine #fef3c7
+  rectangle "UnifiedPhysicsTheorem\nstrong claim owner" as UnifiedOwner #fef3c7
+  rectangle "AtomicChemistryRecoveryTheorem\natom/chemistry recovery carrier" as AtomOwner #fef3c7
+  rectangle "PhysicsUnificationToCanonicalClosureAdapter\nabstract/canonical seam owner" as AdapterOwner #fef3c7
+  rectangle "Bridge / packaging consumers" as Consumers #fef3c7
+  rectangle "Empirical lane\nphotonuclear + HEPData" as Empirical #fee2e2
+}
+
+package "Diagram surfaces" {
+  rectangle "CanonicalProofSpine.puml/svg\nformal route map" as SpineDiagram #ede9fe
+  rectangle "PhysicsUnificationMap.puml/svg\nclaim-boundary map" as PhysDiagram #ede9fe
+  rectangle "ObservableSignatureGaugeEntryRound.puml/svg\nspecific bridge child graph" as ObsDiagram #ede9fe
+  rectangle "TRAINING_DYNAMICS.puml/svg\nruntime evidence child graph" as TrainDiagram #ede9fe
+}
+
+Readme --> RepoGuide : repo track
+Readme --> PhysicsGuide : physics track
+Readme --> UniClaim : shortest serious claim
+Readme --> RecoveryLedger : repo recovery truth
+Readme --> RecoveryCrosswalk : archive reconciliation
+Readme --> Arch : architecture entry
+
+Arch --> Spine : canonical module route
+Arch --> UnifiedOwner : theorem-owner route
+Arch --> AtomOwner : interpretation carrier route
+Arch --> AdapterOwner : abstract/canonical seam route
+Arch --> SpineDiagram : primary child graph
+Arch --> PhysDiagram : claim-boundary child graph
+Arch --> ObsDiagram : detailed bridge child graph
+Arch --> TrainDiagram : detailed runtime child graph
+
+RepoGuide --> Spine : canonical owners
+RepoGuide --> UnifiedOwner : strong claim owner
+PhysicsGuide --> UnifiedOwner : theorem-owner reading
+PhysicsGuide --> AtomOwner : bounded atom/wave reading
+PhysicsGuide --> Consumers : bridge + packaging reading
+PhysicsGuide --> Empirical : explicit non-claim lane
+UniClaim --> Spine : strongest current evidence
+UniClaim --> UnifiedOwner : theorem-owner route
+UniClaim --> AdapterOwner : abstract/canonical seam
+UniClaim --> AtomOwner : bounded interpretation layer
+UniClaim --> Consumers : bounded unification interfaces
+UniClaim --> Empirical : what does not count as proof
+RecoveryLedger --> Spine : owner modules and statuses
+RecoveryLedger --> UnifiedOwner : theorem-owner status
+RecoveryLedger --> AtomOwner : atom/chemistry recovery gates
+RecoveryLedger --> Consumers : nearest promotion steps
+RecoveryCrosswalk --> RecoveryLedger : corrects stale wording
+RecoveryCrosswalk --> Empirical : archive-backed interpretation
+
+SpineDiagram --> Spine
+SpineDiagram --> UnifiedOwner
+SpineDiagram --> AdapterOwner
+PhysDiagram --> Spine
+PhysDiagram --> UnifiedOwner
+PhysDiagram --> AtomOwner
+PhysDiagram --> AdapterOwner
+PhysDiagram --> Consumers
+PhysDiagram --> Empirical
+
+note bottom of Readme
+The README should route.
+It should not try to explain every lane itself.
+end note
+
+note bottom of Empirical
+Empirical data is visible and useful,
+but it is not the theorem source of truth.
+end note
+
+note bottom of UnifiedOwner
+The theorem-owner milestone is closed.
+The scientific roadmap is still open beyond this owner layer.
+end note
+
+@enduml

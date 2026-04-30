@@ -1,0 +1,126 @@
+@startuml
+title Present State -> Solved Unification
+left to right direction
+
+skinparam shadowing false
+skinparam roundcorner 18
+skinparam packageStyle rectangle
+skinparam ArrowThickness 2
+skinparam defaultTextAlignment center
+
+skinparam package {
+  BackgroundColor #f8fafc
+  BorderColor #334155
+  FontColor #0f172a
+}
+
+skinparam rectangle {
+  BackgroundColor #ffffff
+  BorderColor #334155
+  FontColor #0f172a
+}
+
+skinparam note {
+  BackgroundColor #fff7ed
+  BorderColor #c2410c
+  FontColor #7c2d12
+}
+
+package "1. Physical reality to explain" {
+  rectangle "Light and radiation\nphotons, interference,\nscattering signals" as RealityLight #dbeafe
+  rectangle "Atoms and chemistry\nelectrons, atomic spectra,\nbonding, materials" as RealityAtoms #dbeafe
+  rectangle "Nuclei and particle physics\nprotons, neutrons, quarks,\ngluons, collider events" as RealityNuclear #dbeafe
+  rectangle "Spacetime and gravity\nmotion, curvature,\nblack holes, cosmology" as RealityGravity #dbeafe
+}
+
+package "2. Standard successful formalisms" {
+  rectangle "Quantum mechanics\nwavefunctions, operators,\nenergy levels" as FormalQM #dcfce7
+  rectangle "Quantum field theory + Standard Model\nfields, gauge bosons,\nfermions, interactions" as FormalQFT #dcfce7
+  rectangle "General relativity\nLorentzian metric,\ncurvature, Einstein dynamics" as FormalGR #dcfce7
+}
+
+package "3. Current DASHI correspondences" {
+  rectangle "Canonical proof spine + theorem owner\nquadratic -> signature -> Clifford -> closure\nOwner: UnifiedPhysicsTheorem\nStatus: repo proved + theorem-owned strong claim\nWhat it currently gives:\n4D-signature-facing formal core" as DashiSpine #fef3c7
+  rectangle "Known-limits GR/QFT bridges\nStatus: repo bridge, theorem-backed regimes\nWhat they currently mean:\nregime recovery surfaces, not full recovery" as DashiBridges #fef3c7
+  rectangle "Atom/chemistry recovery carrier + bounded atom/wave consumers\nOwner: AtomicChemistryRecoveryTheorem\nStatus: repo packaging/bridge with explicit gates\nWhat they currently mean:\nshared shell/wave recovery carrier,\nfinite wave/phase interfaces,\nnot a final chemistry law" as DashiDynamics #fef3c7
+  rectangle "Photonuclear empirical lane\nWhat it currently means:\ncollider measurement sidecar and calibration,\nnot theorem closure" as DashiEmpirical #fee2e2
+}
+
+package "4. Missing steps to a serious unification claim" {
+  rectangle "Natural dynamics law\nCurrent status: repo bridge + archive design\nStill missing: non-engineered universal law" as GapDynamics #fce7f3
+  rectangle "Conserved physical quantity\nCurrent status: repo bridge + archive design\nStill missing: clear physical conserved quantity" as GapConserved #fce7f3
+  rectangle "Continuum limit + realization-independent recovery\nCurrent status: repo bridge + archive claim/design\nStill missing: broad noncanonical recovery theorem" as GapContinuum #fce7f3
+  rectangle "Gauge/matter recovery\nCurrent status: repo bridge + archive design\nStill missing: physically interpretable recovery of electrons,\nphotons, quarks, and interactions" as GapGaugeMatter #fce7f3
+  rectangle "Atomic and nuclear recovery\nCurrent status: archive-backed atom correspondence\n+ repo shell/wave packaging + empirical contact\nStill missing: spectra/scattering/chemistry in the right limits" as GapAtomic #fce7f3
+  rectangle "Abstract/canonical seam\nCurrent status: explicit theorem owner\nPhysicsUnificationToCanonicalClosureAdapter\nStill missing: stronger field-by-field adapter equalities only" as GapAdapter #fce7f3
+  rectangle "GR + QFT regime recovery\nCurrent status: theorem-backed known-limits bridges\nStill missing: strong full recovery a physicist would call unification" as GapRecovery #fce7f3
+}
+
+package "5. Solved unification" {
+  rectangle "One core theory whose limits recover:\nquantum matter, atoms, nuclei,\nparticle interactions, and gravity\non the right physical regimes" as Solved #bbf7d0
+}
+
+RealityLight --> FormalQM : textbook quantum optics
+RealityLight --> FormalQFT : photon field picture
+RealityAtoms --> FormalQM : atomic structure
+RealityAtoms --> FormalQFT : relativistic / field corrections
+RealityNuclear --> FormalQFT : particle and nuclear sector
+RealityGravity --> FormalGR : spacetime sector
+
+FormalQM --> DashiDynamics : nearest current vocabulary contact
+FormalQFT --> DashiBridges : partial bridge target
+FormalGR --> DashiBridges : partial bridge target
+FormalQFT --> DashiEmpirical : collider-facing measurements
+FormalGR --> DashiSpine : Lorentz/signature side relevance
+
+DashiSpine --> GapDynamics
+DashiSpine --> GapConserved
+DashiBridges --> GapRecovery
+DashiDynamics --> GapContinuum
+DashiDynamics --> GapGaugeMatter
+DashiEmpirical --> GapAtomic
+DashiSpine --> GapAdapter
+
+GapDynamics --> Solved
+GapConserved --> Solved
+GapContinuum --> Solved
+GapGaugeMatter --> Solved
+GapAtomic --> Solved
+GapAdapter --> Solved
+GapRecovery --> Solved
+
+note top of DashiSpine
+Strongest current evidence:
+formal geometric/closure structure.
+Closest to spacetime-formalism language,
+not yet to full atom-by-atom physics.
+end note
+
+note right of GapContinuum
+This is where the public story needed correction:
+not solved, but no longer "missing from zero" either.
+end note
+
+note bottom of DashiEmpirical
+Closest current contact with experimental reality:
+photonuclear / collider measurement organization.
+This is useful, but it is not the same as deriving QCD,
+and it is not the only atom/nuclear-facing surface.
+end note
+
+note bottom of Solved
+This is the bar for saying
+"we solved unification" without hedging.
+end note
+
+legend right
+|= Color |= Meaning |
+|<#dbeafe>| familiar physical world |
+|<#dcfce7>| standard accepted physics formalism |
+|<#fef3c7>| current DASHI correspondence |
+|<#fee2e2>| empirical contact surface |
+|<#fce7f3>| missing step / open gap |
+|<#bbf7d0>| solved unification target |
+endlegend
+
+@enduml

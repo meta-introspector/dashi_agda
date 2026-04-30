@@ -3,9 +3,11 @@ module DASHI.Physics.Closure.ShiftContractObservableTransportPrimeCompatibilityP
 open import Agda.Builtin.Bool using (Bool; true)
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Agda.Builtin.Nat using (zero; suc)
+open import Agda.Builtin.Unit using (⊤; tt)
 open import Data.Nat using (_≤_)
 open import Data.Nat.Properties as NatP using (≤-refl)
 open import Data.Product using (_,_; _×_)
+open import Relation.Binary.PropositionalEquality using (cong; sym; trans)
 
 open import DASHI.Algebra.GaugeGroupContract as GGC
 open import DASHI.Execution.Contract as EC
@@ -17,10 +19,17 @@ open import DASHI.Physics.Closure.RGObservableInvariance as RGOI
 open import DASHI.Physics.Closure.ShiftRGObservableInstance as SRGOI
   using
     ( ShiftBasin
+    ; ShiftConeCompatible
     ; ShiftMotif
     ; ShiftCanonicalInBasin
     ; canonicalBasin
     ; canonicalShiftHeckeState
+    ; shiftCoarse
+    ; shiftCoarseAlt
+    ; shiftCoarseAlt≡shiftCoarse
+    ; shiftConePreservedLeft
+    ; shiftConeTransportCoarseAlt
+    ; shiftRGAdmissible
     ; shiftPipeline
     ; shiftPrimeEmbedding
     )
@@ -47,6 +56,17 @@ private
 
 ShiftContractObservable : Set
 ShiftContractObservable = GGC.Gauge × RGOI.RGObservable ShiftBasin ShiftMotif
+
+ShiftContractContinuumCarrier : Set
+ShiftContractContinuumCarrier = GGC.Gauge × ShiftBasin × ShiftMotif
+
+projectObservableMotif :
+  ShiftContractObservable → ShiftContractContinuumCarrier
+projectObservableMotif (g , o) =
+  ( g
+  , RGOI.RGObservable.basinLabel o
+  , RGOI.RGObservable.motifClass o
+  )
 
 signatureOnGeo : SLEI.ShiftGeoV → HS.Sig15
 signatureOnGeo x =
@@ -75,6 +95,11 @@ observeOnGeo x =
     (eigenOnGeo x)
     (motifOnGeo x)
 
+shiftContractScheduledObservable :
+  ShiftContractState → ShiftContractObservable
+shiftContractScheduledObservable x =
+  GGC.SU3×SU2×U1 , observeOnGeo (canonicalShiftHeckeState (shiftCoarseAlt x))
+
 shiftContractObservableBundle : AGMB.AbstractGaugeMatterBundle
 shiftContractObservableBundle =
   record
@@ -92,8 +117,74 @@ shiftContractObservableBundle =
     ; gaugeAction = λ _ x → x
     ; matterOf = λ x → GGC.SU3×SU2×U1 , observeOnGeo (canonicalShiftHeckeState x)
     ; observableOf = λ x → GGC.SU3×SU2×U1 , observeOnGeo (canonicalShiftHeckeState x)
-    ; continuumLift = λ x → GGC.SU3×SU2×U1 , observeOnGeo (canonicalShiftHeckeState x)
+    ; continuumLift = shiftContractScheduledObservable
     ; pickGauge = λ _ → GGC.SU3×SU2×U1
+    }
+
+shiftCoarseAlt-preserve-evolve :
+  ∀ x →
+  shiftCoarseAlt (EC.Contract.step ShiftC x) ≡ shiftCoarseAlt x
+shiftCoarseAlt-preserve-evolve x =
+  trans
+    (SRGOI.shiftCoarseAltStep-commute x)
+    (cong (EC.Contract.step ShiftC) (SRGOI.shiftCoarseFixed x))
+
+shiftCoarseAlt-preserve-coarse :
+  ∀ x →
+  shiftCoarseAlt (shiftCoarse x) ≡ shiftCoarseAlt x
+shiftCoarseAlt-preserve-coarse x =
+  cong (EC.Contract.step ShiftC) (SRGOI.shiftCoarse-idem x)
+
+shiftCoarseAlt-preserve-offset :
+  ∀ x →
+  shiftCoarseAlt (shiftCoarseAlt x) ≡ shiftCoarseAlt x
+shiftCoarseAlt-preserve-offset x =
+  trans
+    (shiftCoarseAlt-preserve-evolve (shiftCoarse x))
+    (shiftCoarseAlt-preserve-coarse x)
+
+shiftContractObservableContinuumScale :
+  ShiftContractState → ShiftContractContinuumCarrier
+shiftContractObservableContinuumScale x =
+  projectObservableMotif (shiftContractScheduledObservable x)
+
+shiftContractObservableContinuumWitness :
+  AGMB.ContinuumWitness shiftContractObservableBundle
+shiftContractObservableContinuumWitness =
+  record
+    { LimitCarrier = ShiftContractContinuumCarrier
+    ; LimitObservable = ⊤
+    ; scaleToLimit = projectObservableMotif
+    ; limitObservable = λ _ → tt
+    ; observableProjection = λ _ → tt
+    ; limitCone = λ _ → ⊤
+    ; limitMdl = λ _ → zero
+    ; scaleFromCarrier = shiftContractObservableContinuumScale
+    ; continuum-compatible = λ _ → refl
+    ; continuum-cone-compatible = λ _ _ → tt
+    ; continuum-mdl-compatible = λ _ → refl
+    ; scale-lift-compatible = λ _ → refl
+    ; scale-preserve-evolve =
+        λ x →
+          cong
+            (λ s →
+              projectObservableMotif
+                (GGC.SU3×SU2×U1 , observeOnGeo (canonicalShiftHeckeState s)))
+            (shiftCoarseAlt-preserve-evolve x)
+    ; scale-preserve-coarse =
+        λ x →
+          cong
+            (λ s →
+              projectObservableMotif
+                (GGC.SU3×SU2×U1 , observeOnGeo (canonicalShiftHeckeState s)))
+            (shiftCoarseAlt-preserve-coarse x)
+    ; scale-preserve-offset =
+        λ x →
+          cong
+            (λ s →
+              projectObservableMotif
+                (GGC.SU3×SU2×U1 , observeOnGeo (canonicalShiftHeckeState s)))
+            (shiftCoarseAlt-preserve-offset x)
     }
 
 shiftContractObservableTransportWitness :
@@ -105,6 +196,44 @@ shiftContractObservableTransportWitness =
     ; transport = canonicalShiftHeckeState
     ; transport-sound = λ _ _ → refl
     }
+
+shiftContractObservableReplayTransportWitness :
+  AGMB.ObservableTransportWitness shiftContractObservableBundle
+shiftContractObservableReplayTransportWitness =
+  record
+    { TargetCarrier = ShiftContractState
+    ; observeTarget = AGMB.observableOf shiftContractObservableBundle
+    ; transport = λ x → x
+    ; transport-sound = λ _ _ → refl
+    }
+
+shiftContractTransportedProjectionDeltaWitness :
+  AGMB.TransportedProjectionDeltaWitness shiftContractObservableBundle
+shiftContractTransportedProjectionDeltaWitness =
+  record
+    { transportW = shiftContractObservableReplayTransportWitness
+    ; admissibleT = shiftRGAdmissible
+    ; projectAT = λ x → shiftCoarse (EC.Contract.step ShiftC x)
+    ; projectBT = shiftCoarseAlt
+    ; coneT = ShiftConeCompatible
+    ; cone-projectAT = shiftConePreservedLeft
+    ; cone-projectBT = λ x _ cx → shiftConeTransportCoarseAlt x cx
+    ; universalityT =
+        λ x _ →
+          cong
+            (AGMB.observableOf shiftContractObservableBundle)
+            (sym (shiftCoarseAlt≡shiftCoarse x))
+    }
+
+shiftContractTransportedProjectionDeltaCompatibility :
+  RGOI.ProjectionDeltaCompatibility
+    ShiftContractState
+    ShiftContractObservable
+    _≡_
+shiftContractTransportedProjectionDeltaCompatibility =
+  AGMB.toTransportedProjectionDeltaCompatibility
+    shiftContractObservableBundle
+    shiftContractTransportedProjectionDeltaWitness
 
 shiftContractObservablePrimeCompatibilityProfile :
   PCP.PrimeCompatibilityProfile ShiftContractState

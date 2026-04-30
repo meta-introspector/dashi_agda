@@ -1,0 +1,94 @@
+@startuml
+title Physics Unification Map
+top to bottom direction
+
+skinparam shadowing false
+skinparam roundcorner 18
+skinparam packageStyle rectangle
+skinparam ArrowThickness 2
+skinparam defaultTextAlignment center
+
+skinparam package {
+  BackgroundColor #f8fafc
+  BorderColor #334155
+  FontColor #0f172a
+}
+
+skinparam rectangle {
+  BorderColor #334155
+  FontColor #0f172a
+  BackgroundColor #ffffff
+}
+
+skinparam note {
+  BackgroundColor #fff7ed
+  BorderColor #c2410c
+  FontColor #7c2d12
+}
+
+package "Proved formal core" {
+  rectangle "Canonical theorem spine + theorem owner\nquadratic -> signature -> Clifford -> closure\nUnifiedPhysicsTheorem\n[proved]" as FormalCore #dcfce7
+}
+
+package "Bridge layers" {
+  rectangle "Signature / Clifford / Dirac / known-limits bridges\nplus narrow realization-independence\nand explicit abstract/canonical adapter\n[bridge]" as BridgeLayers #fef3c7
+}
+
+package "Packaging layers" {
+  rectangle "DashiDynamics\nshared state/path/observable interface\n[packaging]" as DashiDynamics #dbeafe
+  rectangle "Hamilton-Jacobi / gradient-flow / Schrodinger /\nfinite wave-phase consumers\n[packaging + bridge]" as DynamicsConsumers #dbeafe
+  rectangle "MinimalCrediblePhysicsClosureShiftInstance\ncurrent milestone package\n[packaging]" as Milestone #dbeafe
+  rectangle "AtomicChemistryRecoveryTheorem\natom/chemistry interpretation carrier with explicit gates\n[packaging + bridge]" as AtomCarrier #dbeafe
+}
+
+package "Empirical lane" {
+  rectangle "Photonuclear empirical registry + validation + HEPData normalization\n[empirical]" as EmpiricalLane #fee2e2
+}
+
+package "Open program" {
+  rectangle "Natural dynamics law in the strong sense\nbroad realization-independent closure\nfull gauge/matter recovery\ncontinuum-limit theorem with physical recovery\n[speculative / open]" as OpenProgram #fce7f3
+}
+
+FormalCore --> BridgeLayers : formal transport
+FormalCore --> Milestone : current bounded closure package
+BridgeLayers --> DashiDynamics : shared vocabulary pressure
+DashiDynamics --> DynamicsConsumers : bounded consumer interfaces
+EmpiricalLane --> DashiDynamics : packaged validation input
+Milestone --> OpenProgram : does not close this gap
+DynamicsConsumers --> OpenProgram : suggestive, not sufficient
+BridgeLayers --> OpenProgram : bridge, not final recovery
+BridgeLayers --> AtomCarrier : adapter + wave/quotient support
+AtomCarrier --> OpenProgram : strong interpretation layer, not final chemistry proof
+
+note right of FormalCore
+This is the part to trust first.
+It carries the strongest current evidence.
+end note
+
+note left of BridgeLayers
+Important correction:
+some recovery structure is already theorem-bearing here.
+The open gap is stronger physical recovery,
+not total absence of bridge theorems.
+end note
+
+note right of EmpiricalLane
+Useful for calibration and interpretation contracts.
+Not evidence of theorem closure by itself.
+end note
+
+note bottom of OpenProgram
+This is the live non-claim boundary.
+The repo is not entitled to cross it yet.
+end note
+
+legend right
+|= Color |= Meaning |
+|<#dcfce7>| proved |
+|<#fef3c7>| bridge |
+|<#dbeafe>| packaging |
+|<#fee2e2>| empirical |
+|<#fce7f3>| speculative / open |
+endlegend
+
+@enduml
