@@ -754,3 +754,28 @@ canonicalWeightedValuationForwardCandidate
           theorem deltaSurface kSurface dim≡15 input
     ; transportCompatibility = compatibility
     }
+
+weightedValuationForwardCandidateToDeltaBridge :
+  (signatureBridge : CQSB.ContractionQuadraticToSignatureBridgeTheorem) →
+  (candidate : WeightedValuationForwardCandidate) →
+  DeltaToQuadraticBridgeTheorem
+weightedValuationForwardCandidateToDeltaBridge signatureBridge candidate =
+  fromAdmissibleDeltaCandidate
+    (WeightedValuationForwardCandidate.theoremSurface candidate)
+    signatureBridge
+    (WeightedValuationForwardCandidate.deltaInteractionInput candidate)
+    (WeightedValuationForwardCandidate.kPrimeInteractionInput candidate)
+    (WeightedValuationForwardCandidate.forwardCandidateQuadratic candidate)
+    (WeightedValuationForwardCandidate.forwardCandidateAdmissible candidate)
+
+weightedValuationForwardCandidateNormalizesQuadratic :
+  (signatureBridge : CQSB.ContractionQuadraticToSignatureBridgeTheorem) →
+  (candidate : WeightedValuationForwardCandidate) →
+  ∀ x →
+    QF.QuadraticForm.Q
+      (WeightedValuationForwardCandidate.forwardCandidateQuadratic candidate)
+      x
+    ≡ QP.Q̂core x
+weightedValuationForwardCandidateNormalizesQuadratic signatureBridge candidate =
+  DeltaToQuadraticBridgeTheorem.normalizedDeltaQuadratic
+    (weightedValuationForwardCandidateToDeltaBridge signatureBridge candidate)

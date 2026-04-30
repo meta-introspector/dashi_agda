@@ -1,9 +1,10 @@
 module DASHI.Physics.Closure.ExecutionContractLaws where
 
-open import Agda.Primitive using (Level; lsuc; _⊔_)
+open import Agda.Primitive using (Level; lzero; lsuc; _⊔_)
 open import Data.Product using (_×_; _,_)
 
 open import DASHI.Physics.Closure.ExecutionContract as EC
+open import MDL.Core.Core as OldMDL
 
 ------------------------------------------------------------------------
 -- Readable receipt layer above the generic execution contract.
@@ -57,6 +58,36 @@ admissible→receipt (arrow-ok , cone-ok , mdl-ok , basin-ok , eigen-ok) =
     ; basinOK = basin-ok
     ; eigenOK = eigen-ok
     }
+
+-- A compact theorem-facing bridge that keeps the live Lyapunov witness next
+-- to the actual execution receipt instead of hiding it behind a trivial
+-- compatibility lemma.
+record ExecutionContractLyapunovReceipt
+  {ℓx ℓδ ℓπ ℓe : Level}
+  (C : EC.ExecutionContract {ℓx} {lzero} {ℓδ} {ℓπ} {ℓe})
+  (x x' : EC.State C)
+  : Set (lsuc (ℓx ⊔ ℓδ ⊔ ℓπ ⊔ ℓe)) where
+  field
+    sourceLyapunov : OldMDL.Lyapunov (EC.sourceStep C)
+    receipt : ExecutionContractReceipt C x x'
+
+open ExecutionContractLyapunovReceipt public
+
+bridge→admissible :
+  {ℓx ℓδ ℓπ ℓe : Level}
+  {C : EC.ExecutionContract {ℓx} {lzero} {ℓδ} {ℓπ} {ℓe}}
+  {x x' : EC.State C} →
+  ExecutionContractLyapunovReceipt C x x' →
+  EC.AdmissibleStep C x x'
+bridge→admissible bridge = receipt→admissible (receipt bridge)
+
+bridge→mdl :
+  {ℓx ℓδ ℓπ ℓe : Level}
+  {C : EC.ExecutionContract {ℓx} {lzero} {ℓδ} {ℓπ} {ℓe}}
+  {x x' : EC.State C} →
+  ExecutionContractLyapunovReceipt C x x' →
+  EC.MDLAdmissible C x x'
+bridge→mdl {C = C} bridge = EC.admissible→mdl C (bridge→admissible bridge)
 
 ------------------------------------------------------------------------
 -- Phase split: proposal channels may be rich, but truth still lives at the

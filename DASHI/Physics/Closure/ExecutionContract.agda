@@ -3,7 +3,7 @@ module DASHI.Physics.Closure.ExecutionContract where
 open import Agda.Primitive using (Level; lsuc; _⊔_)
 open import Agda.Builtin.Nat using (Nat)
 open import Data.Nat using (_≤_)
-open import Data.Product using (_×_; _,_)
+open import Data.Product using (_×_; _,_; proj₁; proj₂)
 
 open import DASHI.Physics.Closure.Basin as Basin using (Basin)
 open import DASHI.Physics.Closure.Projection as Projection using (Projection)
@@ -73,5 +73,11 @@ record ExecutionContract
     × MDLAdmissible x x'
     × BasinAdmissible x x'
     × EigenAdmissible x x'
+
+  admissible→mdl :
+    ∀ {x x'} →
+    AdmissibleStep x x' →
+    MDLAdmissible x x'
+  admissible→mdl a = proj₁ (proj₂ (proj₂ a))
 
 open ExecutionContract public

@@ -77,3 +77,11 @@ canonicalContractionQuadraticToSignatureBridgeTheorem :
 canonicalContractionQuadraticToSignatureBridgeTheorem =
   contractionQuadraticToSignatureBridgeFromProvider
     S31C.shiftCoreProvider
+
+signatureBridgeBoundary :
+  (bridge : ContractionQuadraticToSignatureBridgeTheorem) →
+  CFQS.SignatureCliffordGaugeBoundary
+    (ContractionQuadraticToSignatureBridgeTheorem.strengthenedContraction bridge)
+signatureBridgeBoundary bridge =
+  CFQS.signatureCliffordGaugeBoundary
+    (ContractionQuadraticToSignatureBridgeTheorem.strengthenedContraction bridge)
