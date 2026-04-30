@@ -3,6 +3,7 @@ module Ontology.Hecke.ImmediateExitRepresentativeComputations where
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Agda.Builtin.Nat using (Nat)
 
+open import DASHI.Pressure using (Pressure; high)
 open import DASHI.Physics.Closure.ShiftContractCollapseTime as SCT
   using
     ( GeneratorCollapseClass
@@ -45,6 +46,10 @@ open import Ontology.Hecke.DefectOrbitCollapsePressure as DOCP
     ; pressureClass
     ; pressureClass-explicit-immediateExit
     )
+open import Ontology.Hecke.PressureAdapter using
+  ( embedPressureClass
+  ; embedPressureClass-high
+  )
 open import Ontology.Hecke.FactorVecDefectOrbitSummaries
   using (DefectOrbitSummary)
 
@@ -104,6 +109,11 @@ immediateExitRepresentativePressureClass :
 immediateExitRepresentativePressureClass c =
   pressureClass (immediateExitCollapseClass c)
 
+immediateExitRepresentativePressure :
+  CertifiedImmediateExitClass → Pressure
+immediateExitRepresentativePressure c =
+  embedPressureClass (immediateExitRepresentativePressureClass c)
+
 immediateExitRepresentativeHighPressure :
   ∀ c →
   immediateExitRepresentativePressureClass c ≡ highPressure
@@ -111,6 +121,13 @@ immediateExitRepresentativeHighPressure c =
   pressureClass-explicit-immediateExit
     (immediateExitCollapseClass c)
     (immediateExitCollapseTime c)
+
+immediateExitRepresentativePressureIsHigh :
+  ∀ c →
+  immediateExitRepresentativePressure c ≡ high
+immediateExitRepresentativePressureIsHigh c
+  rewrite immediateExitRepresentativeHighPressure c
+  = embedPressureClass-high
 
 record ImmediateExitRepresentativeComputation : Set₁ where
   field
@@ -123,7 +140,9 @@ record ImmediateExitRepresentativeComputation : Set₁ where
     illegalAtP2 : Nat
     forcedStableOrbitAtP2 : Nat
     pressureTier : PressureClass
+    genericPressureTier : Pressure
     pressureIsHigh : pressureTier ≡ highPressure
+    genericPressureIsHigh : genericPressureTier ≡ high
 
 immediateExitComputationAt :
   CertifiedImmediateExitClass → ImmediateExitRepresentativeComputation
@@ -138,7 +157,9 @@ immediateExitComputationAt c =
     ; forcedStableOrbitAtP2 =
         immediateExitRepresentativeForcedStableCountOrbitP2 c
     ; pressureTier = immediateExitRepresentativePressureClass c
+    ; genericPressureTier = immediateExitRepresentativePressure c
     ; pressureIsHigh = immediateExitRepresentativeHighPressure c
+    ; genericPressureIsHigh = immediateExitRepresentativePressureIsHigh c
     }
 
 immediateExitRepresentativePressureSummary :

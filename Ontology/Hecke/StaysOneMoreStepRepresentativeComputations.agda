@@ -2,7 +2,9 @@ module Ontology.Hecke.StaysOneMoreStepRepresentativeComputations where
 
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Agda.Builtin.Nat using (Nat)
+open import Data.Nat using (_<_; z≤n; s≤s)
 
+open import DASHI.Pressure using (Pressure; low)
 open import DASHI.Physics.Closure.ShiftContractCollapseTime as SCT
   using
     ( GeneratorCollapseClass
@@ -41,6 +43,10 @@ open import Ontology.Hecke.DefectOrbitCollapsePressure as DOCP
     ; pressureClass
     ; pressureClass-explicit-staysOneMoreStep
     )
+open import Ontology.Hecke.PressureAdapter using
+  ( embedPressureClass
+  ; embedPressureClass-low
+  )
 open import Ontology.Hecke.FactorVecDefectOrbitSummaries
   using (DefectOrbitSummary)
 
@@ -88,6 +94,11 @@ stayRepresentativePressureClass :
 stayRepresentativePressureClass c =
   pressureClass (stayCollapseClass c)
 
+stayRepresentativePressure :
+  CertifiedStayClass → Pressure
+stayRepresentativePressure c =
+  embedPressureClass (stayRepresentativePressureClass c)
+
 stayRepresentativeLowPressure :
   ∀ c →
   stayRepresentativePressureClass c ≡ lowPressure
@@ -95,6 +106,13 @@ stayRepresentativeLowPressure c =
   pressureClass-explicit-staysOneMoreStep
     (stayCollapseClass c)
     (stayCollapseTime c)
+
+stayRepresentativePressureIsLow :
+  ∀ c →
+  stayRepresentativePressure c ≡ low
+stayRepresentativePressureIsLow c
+  rewrite stayRepresentativeLowPressure c
+  = embedPressureClass-low
 
 record StaysOneMoreStepRepresentativeComputation : Set₁ where
   field
@@ -107,7 +125,9 @@ record StaysOneMoreStepRepresentativeComputation : Set₁ where
     illegalAtP2 : Nat
     forcedStableOrbitAtP2 : Nat
     pressureTier : PressureClass
+    genericPressureTier : Pressure
     pressureIsLow : pressureTier ≡ lowPressure
+    genericPressureIsLow : genericPressureTier ≡ low
 
 computationAt :
   CertifiedStayClass → StaysOneMoreStepRepresentativeComputation
@@ -122,7 +142,9 @@ computationAt c =
     ; forcedStableOrbitAtP2 =
         stayRepresentativeForcedStableCountOrbitP2 c
     ; pressureTier = stayRepresentativePressureClass c
+    ; genericPressureTier = stayRepresentativePressure c
     ; pressureIsLow = stayRepresentativeLowPressure c
+    ; genericPressureIsLow = stayRepresentativePressureIsLow c
     }
 
 stayRepresentativePressureSummary :
@@ -144,3 +166,17 @@ stayForcedStableOrbitP2-explicitWidth3 = refl
 stayForcedStableOrbitP2-denseComposed :
   stayRepresentativeForcedStableCountOrbitP2 certifiedDenseComposed ≡ 15
 stayForcedStableOrbitP2-denseComposed = refl
+
+------------------------------------------------------------------------
+-- Honest strictness on the certified stay slice.
+--
+-- `explicitWidth1` is the only current stay representative whose forced
+-- stable count sits strictly below the saturated `15` plateau.
+
+stayForcedStableOrbitP2-explicitWidth1<explicitWidth3 :
+  stayRepresentativeForcedStableCountOrbitP2 certifiedExplicitWidth1 <
+  stayRepresentativeForcedStableCountOrbitP2 certifiedExplicitWidth3
+stayForcedStableOrbitP2-explicitWidth1<explicitWidth3
+  rewrite stayForcedStableOrbitP2-explicitWidth1
+        | stayForcedStableOrbitP2-explicitWidth3
+  = s≤s (s≤s (s≤s z≤n))

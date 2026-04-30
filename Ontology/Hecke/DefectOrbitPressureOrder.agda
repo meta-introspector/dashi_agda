@@ -135,6 +135,32 @@ stays-vs-anchored-monotone-pressure c₁ c₂ stay anchored
         | pressureClass-explicit-exitToAnchored c₂ anchored
   = low≤medium
 
+record PressureDescentLaw : Set₁ where
+  field
+    stayVsAnchored :
+      ∀ c₁ c₂ →
+      collapseTime c₁ ≡ staysOneMoreStep →
+      collapseTime c₂ ≡ exitToAnchored →
+      pressureClass c₁ ≤P pressureClass c₂
+    stayVsImmediate :
+      ∀ c₁ c₂ →
+      collapseTime c₁ ≡ staysOneMoreStep →
+      collapseTime c₂ ≡ immediateExit →
+      pressureClass c₁ ≤P pressureClass c₂
+    anchoredVsImmediate :
+      ∀ c₁ c₂ →
+      collapseTime c₁ ≡ exitToAnchored →
+      collapseTime c₂ ≡ immediateExit →
+      pressureClass c₁ ≤P pressureClass c₂
+
+pressureDescentLaw : PressureDescentLaw
+pressureDescentLaw =
+  record
+    { stayVsAnchored = stays-vs-anchored-monotone-pressure
+    ; stayVsImmediate = collapseTime-monotone-pressure
+    ; anchoredVsImmediate = anchored-vs-immediate-monotone-pressure
+    }
+
 stayCertifiedClass :
   CertifiedStayClass → GeneratorCollapseClass
 stayCertifiedClass c = SCT.prefixClass (stayClassToGeneratorClass c)

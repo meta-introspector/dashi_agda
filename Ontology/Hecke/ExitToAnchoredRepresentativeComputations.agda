@@ -3,6 +3,7 @@ module Ontology.Hecke.ExitToAnchoredRepresentativeComputations where
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Agda.Builtin.Nat using (Nat)
 
+open import DASHI.Pressure using (Pressure; medium)
 open import DASHI.Physics.Closure.ShiftContractCollapseTime as SCT
   using
     ( GeneratorCollapseClass
@@ -38,6 +39,10 @@ open import Ontology.Hecke.DefectOrbitCollapsePressure as DOCP
     ; pressureClass
     ; pressureClass-explicit-exitToAnchored
     )
+open import Ontology.Hecke.PressureAdapter using
+  ( embedPressureClass
+  ; embedPressureClass-medium
+  )
 open import Ontology.Hecke.FactorVecDefectOrbitSummaries
   using (DefectOrbitSummary)
 
@@ -87,6 +92,11 @@ exitToAnchoredRepresentativePressureClass :
 exitToAnchoredRepresentativePressureClass c =
   pressureClass (exitToAnchoredCollapseClass c)
 
+exitToAnchoredRepresentativePressure :
+  CertifiedExitToAnchoredClass → Pressure
+exitToAnchoredRepresentativePressure c =
+  embedPressureClass (exitToAnchoredRepresentativePressureClass c)
+
 exitToAnchoredRepresentativeMediumPressure :
   ∀ c →
   exitToAnchoredRepresentativePressureClass c ≡ mediumPressure
@@ -94,6 +104,13 @@ exitToAnchoredRepresentativeMediumPressure c =
   pressureClass-explicit-exitToAnchored
     (exitToAnchoredCollapseClass c)
     (exitToAnchoredCollapseTime c)
+
+exitToAnchoredRepresentativePressureIsMedium :
+  ∀ c →
+  exitToAnchoredRepresentativePressure c ≡ medium
+exitToAnchoredRepresentativePressureIsMedium c
+  rewrite exitToAnchoredRepresentativeMediumPressure c
+  = embedPressureClass-medium
 
 record ExitToAnchoredRepresentativeComputation : Set₁ where
   field
@@ -106,7 +123,9 @@ record ExitToAnchoredRepresentativeComputation : Set₁ where
     illegalAtP2 : Nat
     forcedStableOrbitAtP2 : Nat
     pressureTier : PressureClass
+    genericPressureTier : Pressure
     pressureIsMedium : pressureTier ≡ mediumPressure
+    genericPressureIsMedium : genericPressureTier ≡ medium
 
 exitToAnchoredComputationAt :
   CertifiedExitToAnchoredClass → ExitToAnchoredRepresentativeComputation
@@ -121,7 +140,9 @@ exitToAnchoredComputationAt c =
     ; forcedStableOrbitAtP2 =
         exitToAnchoredRepresentativeForcedStableCountOrbitP2 c
     ; pressureTier = exitToAnchoredRepresentativePressureClass c
+    ; genericPressureTier = exitToAnchoredRepresentativePressure c
     ; pressureIsMedium = exitToAnchoredRepresentativeMediumPressure c
+    ; genericPressureIsMedium = exitToAnchoredRepresentativePressureIsMedium c
     }
 
 exitToAnchoredRepresentativePressureSummary :
@@ -147,4 +168,3 @@ exitToAnchoredForcedStableOrbitP2-balancedCycle = refl
 exitToAnchoredForcedStableOrbitP2-balancedComposed :
   exitToAnchoredRepresentativeForcedStableCountOrbitP2 certifiedBalancedComposed ≡ 15
 exitToAnchoredForcedStableOrbitP2-balancedComposed = refl
-
