@@ -8,11 +8,18 @@ from typing import Any
 
 import numpy as np
 
-from hepdata_consumer import (
-    build_summary,
-    load_hepdata_artifact,
-    to_measurement_surface,
-)
+try:
+    from hepdata_consumer import (
+        build_summary,
+        load_hepdata_artifact,
+        to_measurement_surface,
+    )
+except ModuleNotFoundError:
+    from scripts.hepdata_consumer import (
+        build_summary,
+        load_hepdata_artifact,
+        to_measurement_surface,
+    )
 
 
 def build_surface_report(artifact: dict[str, Any], *, family: str | None = None) -> dict[str, Any]:

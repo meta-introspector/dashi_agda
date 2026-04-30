@@ -76,6 +76,7 @@ Role:
 - `scripts/hepdata_consumer.py`
 - `scripts/hepdata_family_crosswalk.json`
 - `scripts/hepdata_surface_report.py`
+- `scripts/hepdata_program_surface.py`
 - `scripts/hepdata_projection_contract.py`
 
 Role:
@@ -112,6 +113,16 @@ Surface-report role:
   projection lane,
 - stays measurement-side and report-only,
 - does not construct a `DashiStateSchema` or a `Δ` interpretation.
+
+Program-surface role:
+
+- promotes one already-validated measurement/report path into a single named
+  repo-facing empirical program surface,
+- packages the measurement summary, surface health report, and projection
+  contract in one artifact,
+- keeps the empirical lane explicit and reusable without pretending that a
+  `MeasurementSurface -> DashiStateSchema` interpretation already exists,
+- stays packaging-side only and makes no theorem claims.
 
 Projection-contract role:
 

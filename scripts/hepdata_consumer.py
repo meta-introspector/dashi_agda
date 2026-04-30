@@ -7,7 +7,10 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
-from prototype_schema import MeasurementSurface, load_measurement_surface
+try:
+    from prototype_schema import MeasurementSurface, load_measurement_surface
+except ModuleNotFoundError:
+    from scripts.prototype_schema import MeasurementSurface, load_measurement_surface
 
 
 def load_hepdata_artifact(path: Path) -> dict[str, Any]:
