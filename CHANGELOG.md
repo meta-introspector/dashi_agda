@@ -2,6 +2,170 @@
 
 ## 2026-04-17
 
+- inhabit the observable/signature pressure gate for the current physics
+  closure round.  Added a canonical `promotionReady` instance, finite
+  arithmetic distortion budget, alternative-carrier control cases, minimal
+  observable gauge-entry fiber/action laws, and a receipt bridge carrying
+  distortion plus observable/signature/promotion statuses.  Also added the
+  PlantUML sketch in `Docs/ObservableSignatureGaugeEntryRound.puml`.
+- extend the arithmetic distortion budget with
+  `pairWeightedTransportedDistortion`, the first nontrivial computable
+  DeltaPair comparison between scalar cancellation pressure and weighted pair
+  energy.  The bound uses an exact finite epsilon and avoids asserting
+  Delta/Q equality.
+- strengthen `pairWeightedTransportedDistortion` so its public epsilon is now
+  the structural `weightedSupport + scalarPressure` budget, proved via
+  `weightedPressure≤weightedSupport`; the exact absolute difference remains
+  available as `pairExactEpsilon`.
+- tighten `pairWeightedTransportedDistortion` again by replacing the scalar
+  self-budget with tracked support.  The public epsilon is now
+  `weightedSupport + trackedSupport`, using
+  `weightedPressure≤weightedSupport` for the weighted side and
+  `totalPressure≤trackedSupport` for the scalar side.
+- thread that decomposed pair support budget into the observable/signature
+  receipt lane.  `PairSupportDistortionBudget` now exposes the weighted leg,
+  tracked-support leg, epsilon decomposition, and combined bound, and
+  `receiptFromObservableSignatureWithPairSupport` packages it beside the
+  promotion/status receipt.
+- add the first concrete observable/signature receipt instance.
+  `CanonicalObservableSignatureReceiptInstance` builds a minimal identity-step
+  execution contract for the canonical shift state and uses it to inhabit a
+  pair-support observable/signature receipt for the canonical promoted point,
+  without claiming recovered dynamics or gauge/matter closure.
+- add a live shift-step observable/signature receipt instance.
+  `ShiftObservableSignatureReceiptInstance` adapts the existing
+  `shiftContract {1}{3}` admissibility witness into the newer closure receipt
+  shape, then packages the anchored
+  `trajectoryGen i0 -> trajectoryGen i1`
+  step with the promoted observable/signature point and decomposed pair-support
+  budget.
+- add a non-singleton shift-backed observable/signature pressure-test instance.
+  `ShiftObservableSignaturePressureTestInstance` places the forced
+  observable/signature gate over the live shift carrier and exposes the
+  anchored trajectory endpoints as promotion-ready pressure points; the live
+  shift receipt now uses that shift-backed promotion witness rather than the
+  singleton canonical pressure point.
+- refine the shift-backed pressure status so the shift carrier is no longer
+  described as wholly promotion-ready.
+  The status surface now discriminates promotion-ready anchored endpoints from
+  held/control states while keeping the observable/signature gate wording
+  theorem-thin.
+- add a report-only held/control pressure surface beside the promoted receipt
+  lane.  `ReceiptFromObservableSignature` now exposes
+  `ObservableSignaturePressureReport`, and
+  `ShiftObservableSignatureReceiptInstance` instantiates it for the
+  held/control shift exit point without changing the execution receipt
+  contract.
+- sharpen the alternative-carrier control lane with explicit typed reports.
+  `AlternativeCarrierCases` now exposes forced / held / failed case reports
+  rather than leaving those statuses implied by the case labels alone.
+- strengthen `ObservableGaugeEntry` so the abstract entry contract now carries
+  an explicit per-state `gaugeFiber` witness in addition to observable and
+  admissibility preservation.
+- tighten the arithmetic Δ→Q control surface by adding
+  `zeroErrorDominanceTransport` in
+  `DASHI/Physics/Closure/DeltaQuadraticDistortion.agda`, giving a concrete
+  constructor from distortion data to a bounded `DominanceTransport` witness
+  with explicit finite error legs.
+- tighten the canonical quadratic bottleneck by extending
+  `ContractionForcesQuadraticStrong.UniqueUpToScaleSeam` with explicit
+  scale-aware data (`scaleFactor`, `normalizeToScaledQ̂core`) and by exposing
+  scale-aware admissibility and agreement witnesses while preserving the
+  existing normalized consumer surface.
+- tighten that same bottleneck again by replacing the raw `⊤` placeholder
+  slots for nondegeneracy and isotropy compatibility with named
+  `NondegeneracySeam` and `IsotropyCompatibilitySeam` records on
+  `ContractionForcesQuadraticStrong` and `AdmissibleFor`, while keeping the
+  old compatibility fields available for downstream consumers that still read
+  them directly.
+- strengthen those new seam records into theorem-bearing inhabitants on the
+  canonical lane: `NondegeneracySeam` now records canonical origin
+  normalization, `IsotropyCompatibilitySeam` now records compatibility of the
+  dynamics step with `Q̂core`, and the scale path now has a
+  scale-parameterized constructor plus one genuine non-unit admissible
+  double-scale witness on the canonical `m = 0` lane.
+- strengthen the canonical quadratic bottleneck again: `NondegeneracySeam`
+  now carries full normalization to `Q̂core` and exposes a conditional strong
+  nondegeneracy upgrade through `CoreAnisotropyAssumption`;
+  `IsotropyCompatibilitySeam` now carries explicit shell-respecting isotropy
+  structure plus a named residual action-level gap; and the non-unit scale
+  witness is generalized from one hard-coded object to any strong witness with
+  `dimension ≡ 0`.
+- tighten those remaining canonical quadratic gaps again:
+  `CoreScaleSeam` now exposes the positive-dimension non-unit scaling boundary
+  explicitly and threads it into scale-aware admissibility constructors without
+  pretending a positive-dimensional witness already exists;
+  `CoreAnisotropyAssumption` is now reduced through the definitional bridge
+  `Q̂core≡sumSq`, so the remaining anisotropy gap is stated as an explicit
+  `HFZ.sumSq` zero-only-at-origin premise; and `ResidualIsotropyGap` now
+  carries an action application surface plus a shell-to-action transport lift,
+  so the remaining isotropy gap is unconditional inhabited transport rather
+  than the older shell-only boundary.
+- tighten the same seams again:
+  positive-dimensional full-core `CoreScaleSeam` now has an explicit
+  obstruction theorem (`positiveDimensionCoreScaleSeamForcesUnit`), and the
+  remaining non-unit story is pushed onto an explicit restricted carrier
+  interface (`CoreScaleCarrierSeam`); `CoreAnisotropyAssumption` is narrowed
+  further to `SquareZeroResidualPremise` plus
+  `SumSqZeroDecompositionPremise`, from which the older
+  `CoreAnisotropyResidualPremise` is derived; and isotropy now packages a real
+  inhabited action transport object (`InhabitedIsotropyTransport`) whenever a
+  shell transport boundary witness is available.
+- tighten the bottleneck boundary again:
+  `AdmissibleFor` remains a whole-carrier surface, with
+  `admissibleForCoreScaleSeam` and
+  `admissibleForPositiveDimensionScaleFactorUnit` making explicit that any
+  positive-dimensional admissible whole-carrier witness already forces unit
+  scale; the local anisotropy kernel is now discharged through
+  `squareZeroResidualTheorem` and `sumSqZeroDecompositionTheorem`, yielding
+  `dischargedCoreAnisotropyAssumption` and the default strong theorem path
+  `strongNondegeneracy`; and the downstream
+  signature/Clifford/gauge boundary is now stated explicitly as
+  normalized-quadratic-only, so unconditional shell-orbit existence is not
+  part of the current consumer contract.
+- extend that same explicit downstream boundary to the spin/Dirac layer via
+  `spinDiracBridgeBoundary`, so the Stage-C path now states directly that it
+  factors through the existing normalized-quadratic-only signature contract
+  rather than implicitly relying on stronger closure facts.
+- extend the same boundary one layer higher into the canonical closure stack:
+  `PhysicsClosureCoreWitness` now exposes `closureQuadraticBoundary`, and
+  `PhysicsClosureFullCanonicalBridgePackage` records that normalized-quadratic
+  boundary explicitly beside the stored bridge witnesses. This makes the
+  full-closure side honest about carrying bridge packages rather than
+  consuming nondegeneracy.
+- add the explicit Layer-2 separator search artifacts:
+  `Ontology.Hecke.ProfileSummaryFamilySeparation` now states the honest choice
+  between a separating pair and full collapse under `profileSummaryFamily`,
+  `Ontology.Hecke.CurrentSaturatedProfileSummaryFamilySeparation` adds the
+  saturated-branch specialization, and `scripts/profile_summary_separation.py`
+  is the Python mirror over the current generator taxonomy. Replace the pure
+  stub adapter with a precomputed-artifact-first
+  `scripts/profile_summary_adapter.py`, add the schema example
+  `artifacts/hecke/profile_summary_family.example.json`, and record that the
+  remaining gap is missing materialized data rather than missing Python shape.
+  Add `Docs/ClosureContractStatus.md` to record that the present downstream
+  closure chain is normalized-quadratic-only.
+- close that remaining materialization gap:
+  `scripts/materialize_profile_summary_family.hs` now emits
+  `artifacts/hecke/profile_summary_family.json` directly from the compiled
+  MAlonzo bridge, and the resulting search shows that the full
+  `profileSummaryFamily` invariant already separates both the full current
+  nine-generator taxonomy and the saturated-only slice.
+- add `scripts/minimize_profile_summary_projection.py` and record the first
+  minimization result: on the current materialized artifact, each of
+  `forcedStableCount`, `totalDrift`, and `contractiveCount` preserves the same
+  partition as the full six-field family on both scopes. Promote
+  `contractiveCount` into theorem-facing Agda surfaces via
+  `Ontology.Hecke.ContractiveCountLayer2Invariant` and
+  `Ontology.Hecke.CurrentSaturatedContractiveCountLayer2Invariant`, keeping
+  the current claim honest: this is a current-domain Layer-2 singleton
+  surface, not yet an extension-robust global minimality theorem.
+  `forcedStableCount`, `totalDrift`, and `contractiveCount` alone preserves the
+  same partition as the full six-field family on both the full taxonomy and
+  the saturated-only slice.
+- tighten `QuadraticToCliffordBridgeTheorem` by replacing the old
+  `factorUniqueSeam` placeholder with an explicit generator-image uniqueness
+  theorem on the universal factorization surface.
 - add the canonical normalized empirical-artifact boundary for legacy
   `dashitest` HEPData outputs.
   `scripts/hepdata_artifact_schema.json` now defines the repo-native JSON
@@ -3199,3 +3363,47 @@
 - updated `Docs/MoonshinePrimeObject.md` and `TODO.md` to record that this
   first principled lift is now landed and that the next moonshine step is a
   richer normalized-observable lift beyond verdict-slot/cardinality metadata
+# 2026-04-19
+
+- add `DASHI/Pressure.agda` as the generic finite pressure algebra owner,
+  exposing a five-level `Pressure` carrier together with `_⊑p_`, `_⊔p_`,
+  upper-bound / least-upper-bound laws, and monotonicity lemmas
+- add `Ontology/Hecke/PressureAdapter.agda` as the first thin domain adapter,
+  embedding Hecke `PressureClass` into the generic pressure carrier and proving
+  the existing `_≤P_` order maps monotonically into `_⊑p_`
+- thread the generic pressure carrier into the first Hecke representative
+  computation records.
+  `Ontology/Hecke/StaysOneMoreStepRepresentativeComputations.agda`,
+  `Ontology/Hecke/ExitToAnchoredRepresentativeComputations.agda`, and
+  `Ontology/Hecke/ImmediateExitRepresentativeComputations.agda`
+  now each expose both the local `PressureClass` tier and the embedded generic
+  `Pressure` tier, together with the exact low/medium/high witness for the
+  current representative class
+- add `Ontology/Hecke/RepresentativePressureOrder.agda` as the first
+  theorem-thin generic pressure comparison surface over those Hecke
+  representatives.
+  It proves the embedded generic ordering
+  `stay <= anchored <= immediate-exit`
+  without introducing any new pressure source or widening the current owner
+  boundary beyond Hecke
+- extend that same Hecke comparison surface with the first generic-pressure
+  join/summary laws over the representative lanes.
+  `Ontology/Hecke/RepresentativePressureOrder.agda`
+  now also proves
+  `stay ⊔ anchored = anchored`
+  and
+  `(stay ⊔ anchored) ⊔ immediate-exit = immediate-exit`
+  on the embedded generic carrier
+- add the first bounded promotion from the weighted valuation forward lane
+  into the theorem-side delta bridge.
+  `DASHI/Physics/Closure/DeltaToQuadraticBridgeTheorem.agda`
+  now exposes
+  `weightedValuationForwardCandidateToDeltaBridge`
+  plus
+  `weightedValuationForwardCandidateNormalizesQuadratic`,
+  so a weighted forward candidate can be reused by the theorem-side bridge
+  once a signature bridge is supplied, without widening the open
+  cancellation-pressure seam
+- update `README.md` and `TODO.md` to record the ownership split:
+  generic pressure algebra now lives in `DASHI/`,
+  while `Ontology/Hecke/*Pressure*` remains the domain-specific consumer lane

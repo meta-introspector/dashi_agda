@@ -1,5 +1,472 @@
 # TODO
 
+## Track P0.8 -- Pressure Dynamics and Action Variational Bridge (2026-04-28)
+
+Priority bucket: `P0`
+
+- [x] Run `robust-context-fetch` for
+  `69f03090-b914-8398-b672-4424926a104c`.
+  Result:
+  live pull into the canonical archive succeeded
+  (`ok=1`, `49` messages),
+  but the resolver still missed on UUID-first lookup in the current merged
+  archive shape and then hit the known Cloudflare web-fallback failure.
+  The skill troubleshooting path
+  `/home/c/Documents/code/ITIR-suite/.venv/bin/python -m re_gpt.cli --view`
+  recovered the live thread content directly:
+  title `Pressure Dynamics and Action`,
+  online UUID `69f03090-b914-8398-b672-4424926a104c`,
+  source `web`.
+  A follow-on title-exact resolver pass then recovered the canonical DB
+  identity:
+  `e02fe1b902e868c01ccf15ed72d6473b97fb96d2`
+  from `db`.
+- [x] Record the governing repo-facing delta from the recovered thread:
+  the wave layer was already present; the missing seam was
+  `pressure -> least action -> Hamilton-Jacobi`.
+  The next honest move is a theorem-thin variational bridge package, not a
+  wider Schrödinger or continuum-limit claim.
+- [x] Land the theorem-thin least-action / Hamilton-Jacobi consumer.
+  Owner surface:
+  `DASHI/Physics/PressureHamiltonJacobiGap.agda`
+  plus aggregate import wiring in
+  `DASHI/Everything.agda`.
+  Success condition:
+  expose a `DashiDynamics`-backed interface for
+  variational state,
+  admissible targets,
+  transition-action cost,
+  value function,
+  local optimality,
+  and Bellman / Hamilton-Jacobi presentation
+  without claiming a continuous-limit PDE.
+- [x] Land the first bounded shift inhabitant of that consumer.
+  Owner surface:
+  `DASHI/Physics/PressureHamiltonJacobiShiftInstance.agda`.
+  Success condition:
+  reuse the existing three-point least-action witness from
+  `DashiDynamicsShiftInstance`
+  and add one bounded discrete Bellman-style inequality witness without
+  widening theorem status.
+- [ ] Next follow-up:
+  decide whether the next non-placeholder variational step is:
+  1. strengthen the reduction side so the core dynamics exposes a cleaner
+     gradient-flow / held-point reading; or
+  2. lift the variational value / wave side beyond pressure-rank proxies
+     before any continuum-limit story is attempted.
+  Update:
+  the gradient-flow / held-point branch is now the chosen next move and the
+  first bounded seam is landed:
+  `DashiDynamicsShiftInstance` reduction now packages a held-point fixed point
+  plus potential descent,
+  and
+  `PressureGradientFlowGap` / `PressureGradientFlowShiftInstance`
+  expose that as a theorem-thin consumer lane.
+  The next tightening on that branch is also now landed:
+  strict descent holds on the explicit non-held slice of the current
+  three-point carrier.
+  That next tightening is now landed too:
+  `DashiDynamicsShiftInstance`
+  now carries a constructive convergence theorem to
+  `shiftHeldExitPoint`
+  together with an explicit `≤ 2` step bound on the current carrier.
+  The finite terminality / attractor package is now landed too at
+  `DASHI/Physics/PressureGradientFlowTerminalityGap.agda`
+  and
+  `DASHI/Physics/PressureGradientFlowTerminalityShiftInstance.agda`,
+  packaging eventual held-entry, bounded convergence,
+  unique fixed point, and unique zero-potential point on the current
+  three-point carrier.
+  A separate finite scalar quadratic-energy package is also now landed at
+  `DASHI/Physics/ShiftPotentialQuadraticEnergy.agda`,
+  proving monotone descent for
+  `Q(s) = shiftHeldPotential(s)^2`.
+  The handoff into the existing quadratic interface layer is now landed too:
+  `DASHI/Physics/ShiftPotentialQuadraticBridge.agda`
+  packages the same finite energy surface as a local
+  `ContractionQuadraticBridge.QuadraticOutput`-compatible object.
+  The next bounded enrichment is now landed too:
+  `DASHI/Physics/ShiftPotentialBilinearBridge.agda`
+  exposes a finite symmetric pair form whose diagonal matches that same
+  quadratic energy exactly on the current carrier.
+  That bilinear seam is now related to the existing Clifford-gate metric
+  interface too:
+  `DASHI/Physics/ShiftPotentialCliffordMetric.agda`
+  packages the same finite pair form as a
+  `CliffordGate.BilinearForm`
+  plus a `RingLike ℤ` carrier and exact diagonal recovery theorem.
+  The next fork now narrows to:
+  1. keep descending and decide whether any Clifford-algebra realization
+     should ever be introduced at this finite carrier level; or
+  2. continue the upward lift of the wave-facing carrier beyond pressure-rank
+     proxies.
+  Update:
+  the upward lift is now also started:
+  `DASHI/Physics/SchrodingerGapPhaseWaveShiftInstance.agda`
+  adds a second Schrödinger-gap inhabitant whose `WaveState` carries
+  `carrier + amplitude + phase`
+  instead of only the raw pressure point.
+  The next bounded wave-facing law is now landed too:
+  that same structured carrier now proves exact conservation of
+  `amplitude + phase`
+  under one step of `advanceWavePhaseState`.
+  The finite continuum-style packaging is also now landed at
+  `DASHI/Physics/ShiftPhaseWaveContinuumStory.agda`,
+  with a bounded transport coordinate,
+  conserved interference charge,
+  and exact coordinate/phase balance law.
+  The next finite interaction layer is now landed too:
+  `DASHI/Physics/ShiftPhaseTableInterference.agda`
+  adds a four-class phase table, symmetric interaction kernel, and bounded
+  pair-state interference intensity observable over the structured carrier.
+  On top of that,
+  `DASHI/Physics/ShiftDiscreteWaveStep.agda`
+  now packages the same carrier as a discrete `(re , im)` wave with finite
+  phase encoding, vector-additive superposition, and a bounded
+  Schrödinger-like Euler step under the local quadratic-energy Hamiltonian
+  proxy.
+  That next finite structural seam is now landed too:
+  `DASHI/Physics/ShiftWaveScalingInterface.agda`
+  exposes an explicit coarse/fine scaling surface over the current shift-wave
+  carrier together with step compatibility and a discrete second-difference
+  operator,
+  `DASHI/Physics/ShiftWaveRefinementSeam.agda`
+  enriches that story with coarse/fine observation records, finite
+  `project` / `embed` maps, and transport/agreement witnesses over the same
+  carrier,
+  `DASHI/Physics/ShiftWaveRefinementHierarchy.agda`
+  now upgrades that weak same-carrier story to a genuine finite
+  `3 -> 5` hierarchy with Laplacian consistency on embedded points,
+  `DASHI/Physics/ShiftWaveRefinementLevel.agda`
+  now repackages that same concrete step as a reusable theorem-thin
+  refinement-family surface with named coarse/fine levels,
+  `DASHI/Physics/ShiftWaveGlobalUpdate.agda`
+  now packages the current Euler-style Schrödinger step as a synchronous
+  whole-field one-pass update on both carriers with compatibility on lifted
+  coarse fields at embedded coarse points,
+  `DASHI/Physics/ShiftSpatialLaplacian.agda`
+  adds the finite three-point spatial Laplacian with reflected endpoint
+  behavior,
+  `DASHI/Physics/ShiftDiscreteHelmholtzSurface.agda`
+  now adds the coarse/refined Helmholtz residuals and the finite
+  eigenmode-to-Schrödinger-step law over those same Laplacians,
+  `DASHI/Physics/ShiftDiscreteWaveEnergy.agda`
+  makes the finite energy/stability boundary of the Euler-style step explicit
+  by packaging held-state preservation together with concrete non-held
+  basis-level growth witnesses,
+  `DASHI/Physics/ShiftWaveEnergyHierarchy.agda`
+  now lifts that energy story across the concrete `3 -> 5` hierarchy with
+  exact coarse/fine field-energy surfaces, an exact lifted-field energy shape
+  theorem, and embedded-window Laplacian-energy control,
+  `DASHI/Physics/ShiftDiscreteContinuityCurrent.agda`
+  now packages the finite field-local continuity/current bookkeeping surface,
+  including exact continuity of `amplitude + phase`,
+  `DASHI/Physics/ShiftDiscreteActionPrinciple.agda`
+  now packages a theorem-thin finite action density/observable surface pinned
+  directly to the current Euler-style Schrödinger step,
+  `DASHI/Physics/ShiftFiniteEvolutionWitness.agda`
+  now packages bounded PNF-style evolution obligations, explicit
+  Skolem-style one-pass witnesses, and finite Herbrand-style candidate
+  histories over the current multiscale wave family,
+  `DASHI/Physics/ShiftFinitePathSum.agda`
+  now packages a bounded exact two-history path-sum surface over the current
+  phase-table and discrete-wave weights,
+  and
+  `DASHI/Physics/ShiftUnitaryLikeConstraint.agda`
+  adds the basis-level norm-preservation and four-quarter-turn cycle
+  constraints for `mulI`.
+  The next finite field-theory tightening is now landed too:
+  `DASHI/Physics/ShiftFieldTheoryConsistency.agda`
+  packages the current coarse witness, updated-energy view, action/current
+  bookkeeping identity, and bounded two-history path-sum as one exact
+  theorem-thin coherence surface over the same deterministic one-pass
+  advance, without promoting any path-selection or dominance theorem.
+  The first finite matter-plus-gauge lift is now landed too:
+  `DASHI/Physics/ShiftFiniteGaugeSymmetry.agda`
+  packages the local `C4`/finite-`U(1)`-like phase-symmetry surface, and
+  `DASHI/Physics/ShiftFiniteGaugeCoupling.agda`
+  packages the bounded static-gauge covariant Laplacian / Hamiltonian /
+  Euler-style update surface with explicit vacuum compatibility and
+  gauge-covariance target laws.
+  The next vacuum-gauge agreement tightening is now landed too:
+  `DASHI/Physics/ShiftGaugeFieldTheoryAgreement.agda`
+  packages exact agreement between the vacuum static-gauge update, the
+  current coarse witness field, and the hierarchy-energy lift/control surfaces
+  on that same updated field.
+  The next bounded constant-phase and two-field follow-ons are now landed too:
+  `DASHI/Physics/ShiftConstantPhaseCovariance.agda`
+  now witnesses exact global `C4` constant-phase covariance for the vacuum
+  static-gauge covariant operator and keeps the corresponding full one-pass
+  update covariance as an explicit target surface,
+  and
+  `DASHI/Physics/ShiftMinimalGaugeTheory.agda`
+  now packages the first theorem-thin matter-plus-static-gauge world with
+  exact vacuum reduction to the current coarse global update and explicit
+  vacuum-gauge retention.
+  The next bounded gauge-current / matrix / interaction follow-ons are now
+  landed too:
+  `DASHI/Physics/ShiftGaugeCurrentConsistency.agda`
+  now packages a symmetry-safe current-sourced gauge-update surface over the
+  same finite `C4` lane, with exact covariance for the intentionally neutral
+  `currentPhase` reducer and richer current invariance left as target-law
+  surfaces,
+  `DASHI/Physics/ShiftFiniteMatrixSymmetry.agda`
+  now packages the current `Phase4` action as a finite matrix-action surface
+  and adds one bounded first non-abelian doublet analogue with a concrete
+  non-commuting witness,
+  and
+  `DASHI/Physics/ShiftTwoFieldGaugeInteraction.agda`
+  now packages the first theorem-thin two-field gauge-mediated interaction
+  step with coupled matter evolution, combined-current gauge update, and exact
+  vacuum gauge stability.
+  The next honest follow-up is now narrower still:
+  1. strengthen the current finite gauge story beyond the neutral/symmetry-safe
+     slice toward an exact one-pass constant-phase covariance witness, a
+     non-neutral `currentPhase` reducer, and then bounded local gauge
+     covariance / gauge-aware energy-agreement witnesses; or
+  2. generalize the current theorem-thin `3 -> 5` refinement family package
+     into a broader family before any actual scaling-limit theorem is
+     attempted.
+
+## Track P0.7 -- Schrödinger Packaging Lanes from Classical Quantum Bridge (2026-04-25)
+
+Priority bucket: `P0`
+
+- [x] Re-run `robust-context-fetch` for
+  `69eb5a54-5f74-839f-96d4-0009db829915`
+  before assigning the next implementation lanes.
+  Result:
+  exact DB resolution still holds as
+  `Classical Quantum Bridge`
+  (`d69ca38ba7051141efc5c7245437fe574b6a5057`),
+  now with `73` archived messages and latest timestamp
+  `2026-04-24T15:15:26+00:00`.
+- [x] Record the sharper governance constraint from the recovered tail:
+  do not add a fake Schrödinger proof surface.
+  Acceptable next objects are theorem-thin or assumption-guarded packaging
+  surfaces only.
+- [x] Worker lane C -- theorem-thin Schrödinger gap consumer.
+  Owner surface:
+  `DASHI/Physics/SchrodingerGap.agda`
+  plus aggregate import wiring in
+  `DASHI/Everything.agda`.
+  Success condition:
+  define a `DashiDynamics`-backed interface that exposes
+  evolution,
+  wave-state,
+  Hamiltonian,
+  density continuity,
+  amplitude evolution,
+  and Schrödinger-form witness slots,
+  while keeping the whole module explicitly non-claiming.
+  Return contract:
+  compact `O/R/C/S/L/P/G/F`,
+  exact files edited,
+  one bounded implementation target,
+  and one targeted Agda compile check.
+  Landed bounded target:
+  `DASHI/Physics/SchrodingerGap.agda`
+  now provides the theorem-thin Schrödinger-facing consumer over
+  `DashiDynamics`, and aggregate import wiring is present in
+  `DASHI/Everything.agda`.
+- [x] Worker lane D -- assumption-guarded Schrödinger theorem consumer.
+  Owner surface:
+  `DASHI/Physics/SchrodingerAssumedTheorem.agda`
+  and, if needed for a minimal inhabitant,
+  `DASHI/Physics/SchrodingerGapShiftInstance.agda`.
+  Success condition:
+  expose a named theorem surface that only consumes a
+  worker-supplied `schrodingerForm` witness from `SchrodingerGap`,
+  without strengthening the claim to an unconditional proof.
+  Return contract:
+  compact `O/R/C/S/L/P/G/F`,
+  exact files edited,
+  one bounded implementation target,
+  and one targeted Agda compile check.
+  Landed bounded target:
+  `DASHI/Physics/SchrodingerAssumedTheorem.agda`
+  now consumes the real `SchrodingerGap` surface and exposes an
+  assumption-guarded theorem whose conclusion is definitionally the supplied
+  `schrodingerForm` witness.
+- [ ] Optional worker lane E -- demo-only plumbing surface.
+  Owner surface:
+  `DASHI/Physics/SchrodingerDemoPretend.agda`.
+  Activation gate:
+  only if downstream wiring genuinely needs a mock object and the module is
+  clearly labelled demo-only in both code and docs.
+  Non-goal:
+  this lane must never be reported as a proof or theorem result.
+- [x] Next follow-up:
+  add one minimal `SchrodingerGap` instance once there is a concrete bounded
+  law that can be stated honestly without pretending a Schrödinger derivation.
+  Landed bounded target:
+  `DASHI/Physics/SchrodingerGapShiftInstance.agda`
+  now provides a pressure-ordered shift inhabitant whose `evolve` map steps
+  upward along the three-point carrier, whose density is the empirical
+  `densityProxy` plus pressure rank, and whose `schrodingerForm` witness is
+  the pair of monotonicity laws for density and amplitude proxies.
+- [x] Next follow-up:
+  strengthen the `DashiDynamicsShiftInstance` action side with a bounded
+  least-action witness rather than widening the Schrödinger-facing surface.
+  Landed bounded target:
+  `DASHI/Physics/DashiDynamicsShiftInstance.agda`
+  now defines an explicit admissible-target surface for the three-point shift
+  carrier, a transition-action cost on those targets, and a least-action
+  witness proving that `shiftPressureAdvance` chooses the smallest admissible
+  monotone pressure step.
+- [ ] Next follow-up:
+  decide whether the next non-placeholder step should strengthen the
+  `DashiDynamicsShiftInstance` reduction side further or start lifting the
+  Schrödinger-gap wave-state carrier beyond a scalar pressure proxy.
+  Current refinement:
+  the newly recovered
+  `Pressure Dynamics and Action`
+  thread suggests packaging the variational / Hamilton-Jacobi seam first,
+  before widening the Schrödinger-facing surface again.
+
+## Track P0.6 -- Archive Reconciliation and Worker-Lane Restart (2026-04-24)
+
+Priority bucket: `P0`
+
+- [x] Run `robust-context-fetch` on the requested online Dashi UUID
+  `69eb5a54-5f74-839f-96d4-0009db829915`.
+  Result:
+  resolved after credential refresh.
+  The direct UUID pull inserted `49` messages into `/home/c/chat_archive.sqlite`,
+  and the canonical resolver now matches
+  `Classical Quantum Bridge`
+  (`d69ca38ba7051141efc5c7245437fe574b6a5057`)
+  from `db`.
+- [x] Record the confirmed adjacent local archive coverage so repo-facing docs
+  stop overclaiming absence:
+  `Dashi on Quantum Computing`
+  (`69e0cb8f-9984-8399-a5fe-d9dbffca71e3`,
+  canonical `934b67438a1d7732f48b2690a3ea215077cc47c3`)
+  and
+  `Dashi and Physics Insights`
+  (`69ca43a9-09fc-839b-8cc3-e5ce3868eef5`,
+  canonical `ad17536d8eeb320106585654a0950424abafa93b`)
+  both resolve from the canonical local archive DB.
+- [x] Record the archive-wide correction that the local DB already contains
+  concrete physics topics the chat said were missing:
+  `double slit`,
+  `tunneling`,
+  `harmonic oscillator`,
+  and `hydrogen atom`
+  all return direct archive hits.
+- [x] Worker lane A -- empirical/program surface packaging.
+  Owner surface:
+  `Docs/PhotonuclearEmpiricalRegistry.md`,
+  `Docs/MeasurementSurfaceProjectionContract.md`,
+  `scripts/hepdata_artifact_schema.json`,
+  `scripts/hepdata_adapter.py`,
+  `scripts/hepdata_consumer.py`,
+  `scripts/hepdata_family_crosswalk.json`,
+  `scripts/hepdata_projection_contract.py`,
+  `scripts/hepdata_surface_report.py`,
+  and `scripts/hepdata_transform_validator.py`.
+  Success condition:
+  promote the existing validated surface-report path into one named
+  repo-facing measurement/program surface without crossing the deferred
+  `MeasurementSurface -> DashiStateSchema` boundary and without making new
+  theorem claims.
+  Return contract:
+  compact `O/R/C/S/L/P/G/F`,
+  exact files to edit,
+  and one bounded implementation target.
+  Landed bounded target:
+  `scripts/hepdata_program_surface.py`
+  now promotes one validated measurement/report path into the named
+  repo-facing empirical program surface without crossing the deferred
+  `MeasurementSurface -> DashiStateSchema` boundary.
+- [x] Worker lane B -- observable/signature pressure-report consumer.
+  Owner surface:
+  one new packaging surface
+  `DASHI/Physics/Closure/ShiftObservableSignaturePressureConsumer.agda`
+  plus the aggregate import surface
+  `DASHI/Everything.agda`.
+  Success condition:
+  the held/control pressure report is consumed by one repo-facing surface
+  beyond the local shift instance, without widening the receipt type or
+  adding new proof obligations.
+  Return contract:
+  compact `O/R/C/S/L/P/G/F`,
+  exact files to edit,
+  and one bounded implementation target.
+  Context note:
+  `Classical Quantum Bridge` now sharpens the packaging direction toward a
+  unifying interface surface rather than another theorem-claim surface.
+  Landed bounded target:
+  `DASHI/Physics/Closure/ShiftObservableSignaturePressureConsumer.agda`
+  now consumes the existing held/control pressure report and re-exposes its
+  statuses through one repo-facing consumer surface.
+- [x] Design the next theorem-thin unifying interface over the packaged
+  carriers.
+  Landed bounded target:
+  `DASHI/Physics/DashiDynamics.agda`
+  now binds the dynamics-facing state/path/action/density/amplitude/reduction
+  slots to the current photonuclear empirical validation carrier and the
+  held/control pressure consumer, with explicit non-claim boundaries.
+- [x] Next follow-up:
+  instantiate one minimal concrete `DashiDynamics` package over an existing
+  repo-native carrier without turning the interface layer into a theorem claim.
+  Landed bounded target:
+  `DASHI/Physics/DashiDynamicsShiftInstance.agda`
+  now inhabits the interface over the shift pressure-point carrier and the
+  packaged photonuclear validation summary.
+
+## Track P0.5 -- Observable Signature Gate Habitation (2026-04-21)
+
+Priority bucket: `P0`
+
+- [x] Inhabit one canonical `ObservableSignaturePressureTest` path and expose
+  `canonicalPromotionReadyPoint`.
+- [x] Add alternative-carrier controls for B4, synthetic one-minus, and
+  tail-permutation cases, including at least one non-forced classification.
+- [x] Add a canonical arithmetic distortion budget with finite per-state
+  epsilon and a normalization nonexpansion law.
+- [x] Add a minimal abstract observable gauge-entry fiber/action contract.
+- [x] Add receipt wiring for distortion, observable status, signature status,
+  and promotion status.
+- [x] Add the first nontrivial computed pair comparison:
+  `pairWeightedTransportedDistortion` compares scalar cancellation pressure
+  with weighted pair energy using an exact finite epsilon, without claiming
+  definitional equality.
+- [x] Strengthen the pair comparison from exact finite epsilon to a structural
+  `weightedSupport + scalarPressure` epsilon using
+  `weightedPressure≤weightedSupport`.
+- [x] Tighten the structural epsilon by bounding the scalar pressure component
+  against tracked support.  The public pair epsilon is now
+  `weightedSupport + trackedSupport`, with the weighted side controlled by
+  `weightedPressure≤weightedSupport` and the scalar side controlled by
+  `totalPressure≤trackedSupport`.
+- [x] Thread the tightened pair distortion budget into the
+  observable/signature promotion receipt so the receipt carries the support
+  decomposition, not just the gate status.
+- [x] Instantiate the pair-support receipt from one concrete execution receipt
+  path.  `CanonicalObservableSignatureReceiptInstance` uses a deliberately
+  minimal identity-step execution contract to package the canonical promoted
+  point with the decomposed pair-support budget.
+- [x] Add a nontrivial shift-step execution receipt beside the identity
+  placeholder.  `ShiftObservableSignatureReceiptInstance` adapts the existing
+  `shiftContract {1}{3}` admissibility surface and packages the anchored
+  `trajectoryGen i0 -> trajectoryGen i1` live step with the same promoted
+  observable/signature receipt lane.
+- [x] Connect the live shift-step receipt to a non-singleton
+  observable/signature pressure carrier.  `ShiftObservableSignaturePressureTestInstance`
+  places the forced observable/signature gate over the live shift carrier and
+  exposes both anchored trajectory endpoints as promotion-ready pressure
+  points.
+- [x] Make the shift-backed pressure status discriminate promotion-ready
+  anchored endpoints from held/control states rather than marking the whole
+  shift carrier promotion-ready.
+- [x] Surface the held/control pressure point in the receipt
+  reporting lane, so promoted receipts and held pressure reports are both
+  queryable without changing the execution receipt contract.
+- [ ] Next follow-up: add one broader consumer over
+  `ObservableSignaturePressureReport` so the held/control report surface is
+  not local only to the shift instance.
+
 ## Track A — Arithmetic Pressure / Interaction Lane (2026-04-15)
 
 Priority bucket: `P0`
@@ -213,11 +680,62 @@ Priority bucket: `P0`
   theorem-side quadratic on the same carrier.
   This remains the sole open cancellation-side seam in
   `DASHI/Physics/Closure/DeltaToQuadraticBridgeTheorem.agda`.
+- [x] Add the first bounded promotion from the weighted valuation forward lane
+  into the theorem-side delta bridge.
+  `DASHI/Physics/Closure/DeltaToQuadraticBridgeTheorem.agda`
+  now exposes
+  `weightedValuationForwardCandidateToDeltaBridge`
+  plus
+  `weightedValuationForwardCandidateNormalizesQuadratic`,
+  so a weighted forward candidate can be reused by the theorem-side bridge
+  once a signature bridge is supplied, without changing the open
+  cancellation-pressure seam.
 - [x] Tighten the bridge seam into a more structured repo-native witness.
   `DASHI/Physics/Closure/DeltaToQuadraticBridgeTheorem.agda`
   now exposes
   `CancellationPressureCompatibility`
   plus
+## Track H — Pressure Algebra Ownership (2026-04-19)
+
+Priority bucket: `P1`
+
+- [x] Add a generic finite pressure semilattice owner in
+  `DASHI/Pressure.agda`
+  rather than burying reusable pressure algebra under a domain-specific
+  `Ontology/Hecke` module.
+- [ ] Decide whether any non-Hecke consumer should now import the generic
+  `DASHI.Pressure.Pressure` carrier directly,
+  or whether the current ownership should remain limited to the Hecke adapter
+  and representative-computation surfaces until a concrete cross-domain
+  pressure consumer exists.
+  Current default: keep the owner stable and stop at the Hecke comparison
+  surface unless a real non-Hecke pressure consumer appears.
+- [x] Add one theorem-thin generic comparison surface over the current Hecke
+  representative lanes.
+  `Ontology/Hecke/RepresentativePressureOrder.agda`
+  now proves the generic pressure ordering
+  `stay <= anchored <= immediate-exit`
+  using the embedded `Pressure` tier already exposed by the representative
+  computation records.
+- [x] Add the first generic-pressure join/summary theorem over the current
+  Hecke representative lanes.
+  `Ontology/Hecke/RepresentativePressureOrder.agda`
+  now also proves the pairwise join collapse
+  `stay ⊔ anchored = anchored`
+  and the three-way envelope
+  `(stay ⊔ anchored) ⊔ immediate-exit = immediate-exit`
+  on the embedded generic pressure carrier.
+- [x] Add the first thin Hecke consumer bridge in
+  `Ontology/Hecke/PressureAdapter.agda`
+  so the existing three-tier `PressureClass` embeds into the generic
+  `DASHI.Pressure.Pressure` carrier with an explicit monotonicity witness.
+- [x] Thread the generic pressure tier through the first concrete Hecke
+  consumers.
+  `Ontology/Hecke/StaysOneMoreStepRepresentativeComputations.agda`,
+  `Ontology/Hecke/ExitToAnchoredRepresentativeComputations.agda`, and
+  `Ontology/Hecke/ImmediateExitRepresentativeComputations.agda`
+  now expose both the local `PressureClass` field and the embedded generic
+  `Pressure` field on their representative computation records.
   `canonicalCancellationPressureCompatibility`
   so the cancellation lane records
   pressure bridge,
@@ -1138,12 +1656,16 @@ Priority bucket: `P0`
   carrier rather than leaving the archive discussion external only.
 - [x] Add a first DNA 4/16/64/256 carrier and chemistry quotient surface under
   `Ontology/DNA/`.
+- [x] Formalize the remaining DNA owner surfaces beyond the first local
+  carrier/quotient/screen slice: sheet-space Hamiltonian, supervoxel
+  admissibility/checksum, streaming encoder surface, eigenclass/macro-
+  adjacency surface, and channel integration boundary.
 - [ ] Next DNA supervoxel step:
-  strengthen the concrete `DNA256` chemistry screen beyond the current local
-  repeat/complement ban; the bounded span-2 complement screen, 4-window
-  GC-extreme ban, 4-window reverse-complement palindrome ban, and bounded
-  6-window hairpin-style law are now landed, so the next step is a longer-
-  window reverse-complement, stronger GC-window, or richer hairpin/dimer law.
+  strengthen the new theorem-thin DNA surfaces into stronger theorem-bearing
+  ones: prove a reverse-complement supervoxel admissibility closure law,
+  strengthen the checksum/eigen-check story, and keep extending the chemistry
+  screen with longer-window reverse-complement, stronger GC-window, or richer
+  hairpin/dimer laws as needed.
 - [x] Promote the current phase-aware shift universality result into a
   realization-independent offset theorem surface above the current canonical
   shift instance.
@@ -1497,6 +2019,110 @@ Current focus:
 - [x] Strengthen `QuadraticToCliffordBridgeTheorem` from a raw
   presentation-level seam to an explicit factorization interface carrying:
   target carrier, factor map, and generator-compatibility law.
+- [x] Tighten the canonical quadratic bottleneck so
+  `UniqueUpToScaleSeam` records explicit scale data
+  (`scaleFactor`, `normalizeToScaledQ̂core`) and exposes
+  scale-aware witnesses on `ContractionForcesQuadraticStrong`
+  without breaking existing normalized consumers.
+- [x] Tighten `QuadraticToCliffordBridgeTheorem` again by replacing the
+  placeholder uniqueness seam with an explicit generator-image uniqueness
+  theorem on the universal factorization surface.
+- [x] Construct a genuine non-unit admissible scale witness on
+  the canonical quadratic lane by adding a scale-parameterized constructor
+  path and one canonical `m = 0` double-scale witness.
+- [x] Replace the raw `⊤` placeholder slots on the strong
+  quadratic record surface with named seam records for
+  `nondegenerate` and `compatibleWithIsotropy`, while preserving the old
+  compatibility fields for downstream consumers.
+- [x] Strengthen the new
+  `NondegeneracySeam` and `IsotropyCompatibilitySeam` from witness-carrying
+  placeholders into theorem-bearing inhabitants on the canonical lane.
+- [x] Generalize the current non-unit scale witness beyond the hard-coded
+  canonical `m = 0` object by factoring it through a
+  dimension-parameterized zero-dimensional constructor.
+- [x] Strengthen `NondegeneracySeam` beyond origin normalization and
+  strengthen `IsotropyCompatibilitySeam` beyond compatibility-to-`Q̂core` by
+  introducing explicit isotropy structure.
+- [x] Generalize the non-unit scale seam beyond the zero-dimensional lane by
+  adding an explicit positive-dimension `CoreScaleSeam` together with
+  fixed-point-style helpers, while keeping the existing zero-dimensional path
+  as the only unconditional constructor.
+- [x] Strengthen `CoreAnisotropyAssumption` away from a raw `Q̂core`
+  assumption by reducing it through the definitional bridge
+  `Q̂core≡sumSq`, so the remaining anisotropy gap is now an explicit
+  `HFZ.sumSq` zero-only-at-origin premise.
+- [x] Replace the shell-only isotropy residual boundary with an explicit
+  action-level transport lift from shell transport witnesses, without
+  inventing unconditional transport or group-law structure.
+- [x] Resolve the positive-dimensional `CoreScaleSeam` lane honestly by
+  proving that a global full-core inhabitant forces unit scale, and introduce
+  an explicit restricted-carrier seam for the remaining non-unit path.
+- [x] Reduce `CoreAnisotropyResidualPremise` to two narrower local `HFZ.sumSq`
+  premises: scalar square-zero reflection and head/tail zero decomposition.
+- [x] Strengthen the action-level isotropy lift into a genuine inhabited
+  transport package once a shell transport boundary witness is supplied.
+- [x] Keep `AdmissibleFor` as a whole-carrier admissibility surface.
+  The new `admissibleForCoreScaleSeam` and
+  `admissibleForPositiveDimensionScaleFactorUnit` lemmas show that any
+  positive-dimensional admissible whole-carrier witness already collapses to
+  unit scale, so carrier-restricted non-unit scaling belongs on a separate
+  interface rather than inside `AdmissibleFor`.
+- [x] Discharge `SquareZeroResidualPremise` and
+  `SumSqZeroDecompositionPremise` from local integer / `HFZ.sumSq` theorems so
+  strong nondegeneracy no longer depends on residual kernel assumptions.
+- [x] Expose the discharged anisotropy result as the default strong theorem
+  path via `strongNondegeneracy`, while keeping the assumption-parameterized
+  helpers available for boundary-sensitive uses.
+- [x] Make the downstream dependency honest: current
+  signature/Clifford/gauge consumers do not require unconditional shell-orbit
+  existence, so the isotropy boundary stays conditional and is not promoted
+  into a stronger theorem contract.
+- [x] Make the spin/Dirac layer explicit about the same contract by adding a
+  boundary helper that factors through the existing normalized-quadratic-only
+  signature bridge.
+- [x] Make the core/full-closure layer explicit about the same contract by
+  exposing a canonical closure-quadratic boundary helper instead of leaving
+  the normalized-only dependency implicit in stored bridge witnesses.
+- [x] Add the explicit Layer-2 separator search surface:
+  `Ontology.Hecke.ProfileSummaryFamilySeparation`
+  now names the honest split between separator target and collapse fallback,
+  `Ontology.Hecke.CurrentSaturatedProfileSummaryFamilySeparation`
+  specializes that same split to the current saturated branch,
+  and `scripts/profile_summary_separation.py` mirrors that search over the
+  current generator taxonomy.
+- [ ] Next follow-up: design an explicit restricted-carrier admissibility
+  surface only if a downstream theorem genuinely needs non-unit positive-
+  dimensional scaling on something smaller than the full core.
+- [ ] Next follow-up: decide whether the discharged anisotropy theorem should
+  replace any remaining `CoreAnisotropyAssumption`-based helper surfaces beyond
+  the strong layer, but only when a concrete downstream contract actually needs
+  null-cone reflection instead of normalized quadratic alone.
+- [ ] Next follow-up: inspect the full closure constructor/realization-
+  independence side for the first consumer that truly needs stronger closure
+  data than the normalized-quadratic boundary, if any such consumer exists.
+- [x] Replace the default
+  `scripts/profile_summary_adapter.py` boundary artifact with a concrete
+  `artifacts/hecke/profile_summary_family.json` materialization and record
+  whether the current generator taxonomy separates or collapses under the full
+  `profileSummaryFamily`.
+- [ ] Next follow-up: minimize the now-materialized full-family separator to
+  the weakest projection that still separates both the current taxonomy and the
+  saturated-only slice.
+- [x] Determine the smallest current field projections that preserve the same
+  partition as the full six-field `profileSummaryFamily` on both scopes.
+- [x] Promote one of the current singleton partition-preserving
+  fields (`forcedStableCount`, `totalDrift`, or `contractiveCount`) into the
+  next theorem-facing Layer-2 invariant surface, instead of keeping the full
+  six-field family as the public answer.
+- [ ] Next follow-up: make the current-domain `contractiveCount` promotion
+  explicit as a partition-preserving theorem relative to the full
+  `profileSummaryFamily`, not just as the honest separator/collapse surface.
+- [ ] Next follow-up: test whether the promoted `contractiveCount` singleton
+  remains partition-preserving under generator extensions before treating it as
+  more than a current-domain Layer-2 invariant.
+- [ ] Next follow-up: keep shell-orbit existence out of the main bottleneck
+  until a concrete consumer needs it; if that happens, derive it as a separate
+  theorem rather than strengthening the current boundary preemptively.
 - [x] Complete canonical `Quadratic⇒Clifford` theorem surface as the exclusive
   upstream for `WaveLift⇒Even`.
 - [x] Add canonical Clifford grading + even-subalgebra interfaces on
