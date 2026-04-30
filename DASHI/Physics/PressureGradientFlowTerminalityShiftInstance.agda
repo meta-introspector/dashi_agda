@@ -11,6 +11,7 @@ open import DASHI.Physics.Closure.Basin as Basin
 open import DASHI.Physics.DashiDynamicsShiftInstance as DDSI
 open import DASHI.Physics.DynamicsCollapseDepth as DCD
 open import DASHI.Physics.DynamicsCollapseDepthMonotone as DCDM
+open import DASHI.Physics.DynamicsCollapseDepthPotentialBridge as DCDP
 open import DASHI.Physics.DynamicsFixedPointUniqueness as DFPU
 open import DASHI.Physics.DynamicsStepCoherence as DSC
 open import DASHI.Physics.PressureGradientFlowShiftInstance as PGFSI
@@ -142,6 +143,25 @@ shiftDynamicsCollapseDepthMonotone =
     shiftCollapseDepthMonotoneWitness
     shiftCollapseDepthStrictOffHeldWitness
     shiftCollapseDepthHeldZero
+
+ShiftCollapseDepthPotentialAgreement : Set
+ShiftCollapseDepthPotentialAgreement =
+  (s : PGFSI.ShiftFlowState) →
+  shiftCollapseDepth s ≡ PGFSI.shiftFlowPotential s
+
+shiftCollapseDepthPotentialAgreementWitness :
+  ShiftCollapseDepthPotentialAgreement
+shiftCollapseDepthPotentialAgreementWitness SPTI.shiftStartPoint = refl
+shiftCollapseDepthPotentialAgreementWitness SPTI.shiftNextPoint = refl
+shiftCollapseDepthPotentialAgreementWitness SPTI.shiftHeldExitPoint = refl
+
+shiftDynamicsCollapseDepthPotentialBridge :
+  DCDP.DynamicsCollapseDepthPotentialBridge Nat
+shiftDynamicsCollapseDepthPotentialBridge =
+  DCDP.mkDynamicsCollapseDepthPotentialBridge
+    shiftDynamicsCollapseDepth
+    PGFSI.shiftFlowPotential
+    shiftCollapseDepthPotentialAgreementWitness
 
 shiftPressureGradientFlowTerminalityGap :
   PGFTG.PressureGradientFlowTerminalityGap Nat
