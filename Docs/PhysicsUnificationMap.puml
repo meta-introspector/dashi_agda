@@ -41,12 +41,18 @@ package "Packaging layers" {
   rectangle "AtomicChemistryRecoveryTheorem\natom/chemistry interpretation carrier with explicit gates\n[packaging + bridge]" as AtomCarrier #dbeafe
 }
 
+package "Adjacent archive-derived lanes" {
+  rectangle "DNA-first supervoxel / chemistry quotient lane\ncarrier + quotient + UV bridge + checksum/\nstreaming/eigen/channel owner surfaces\n[packaging + local formalization]" as DNALane #dbeafe
+  rectangle "Brain-side structure / analysis lane\nmostly sibling-repo and archive-backed,\nnot yet a local Agda theorem lane here\n[archive-guided adjacent program]" as BrainLane #fff7ed
+  rectangle "Brain-DNA / codec / channel crossover\nstorage semantics, synthesis-sequencing channel,\nand wider bridge ideas still only partial locally\n[archive-guided adjacent program]" as CrossoverLane #fff7ed
+}
+
 package "Empirical lane" {
   rectangle "Photonuclear empirical registry + validation + HEPData normalization\n[empirical]" as EmpiricalLane #fee2e2
 }
 
 package "Open program" {
-  rectangle "Natural dynamics law in the strong sense\nbroad realization-independent closure\nfull gauge/matter recovery\ncontinuum-limit theorem with physical recovery\n[speculative / open]" as OpenProgram #fce7f3
+  rectangle "Open program, now lane-split\nNatural/conserved: advanced but blocked on next ingredient\nContinuum/adapter: advanced but blocked on richer MDL seam\nGauge/GR-QFT: advanced, then blocked on upstream recovery\nAtomic/nuclear: advanced, then blocked on interpretation + owner-cycle cleanup\n[speculative / open]" as OpenProgram #fce7f3
 }
 
 FormalCore --> BridgeLayers : formal transport
@@ -59,6 +65,11 @@ DynamicsConsumers --> OpenProgram : suggestive, not sufficient
 BridgeLayers --> OpenProgram : bridge, not final recovery
 BridgeLayers --> AtomCarrier : adapter + wave/quotient support
 AtomCarrier --> OpenProgram : strong interpretation layer, not final chemistry proof
+AtomCarrier --> DNALane : chemistry-facing adjacent formal lane
+BridgeLayers --> CrossoverLane : bridge pressure, not theorem closure
+DNALane --> CrossoverLane : codec/channel pressure
+BrainLane --> CrossoverLane : structural pressure
+CrossoverLane --> OpenProgram : adjacent research pressure, not evidence
 
 note right of FormalCore
 This is the part to trust first.
@@ -77,9 +88,19 @@ Useful for calibration and interpretation contracts.
 Not evidence of theorem closure by itself.
 end note
 
+note left of DNALane
+Important scope split:
+the DNA lane is now genuinely localized in Agda,
+but it is not itself a physics-unification theorem lane.
+The brain and crossover material remain mostly archive-guided
+or sibling-repo adjacent rather than local theorem closure here.
+end note
+
 note bottom of OpenProgram
 This is the live non-claim boundary.
 The repo is not entitled to cross it yet.
+Several lanes are now advanced or explicitly blocker-bound,
+not "missing from zero."
 end note
 
 legend right
@@ -87,6 +108,7 @@ legend right
 |<#dcfce7>| proved |
 |<#fef3c7>| bridge |
 |<#dbeafe>| packaging |
+|<#fff7ed>| archive-guided adjacent |
 |<#fee2e2>| empirical |
 |<#fce7f3>| speculative / open |
 endlegend

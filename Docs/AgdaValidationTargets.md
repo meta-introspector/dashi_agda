@@ -25,12 +25,21 @@ canonical closure spine:
 
 Use these for routine theorem-edit loops and targeted bridge checks.
 
-## Heavy / Avoid In Routine Loops
+## Heavy / Certification-Only
 
-These should not be part of normal rapid validation passes:
+These should not be part of normal rapid validation passes. They are closure
+certification targets only:
 
 - `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`
 - `DASHI/Everything.agda`
+- `DASHI/Physics/Closure/ShiftContractObservableTransportPrimeCompatibilityProfileInstance.agda`
+- `DASHI/Physics/Closure/ShiftObservableSignaturePressureConsumer.agda`
+- `DASHI/Physics/DashiDynamicsShiftInstance.agda`
+- `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+- `DASHI/Physics/Closure/CanonicalGaugeMatterStrengtheningTheorem.agda`
+- `DASHI/Physics/Closure/KnownLimitsFullMatterGaugeTheorem.agda`
+- `DASHI/Physics/Closure/AtomicPhotonuclearContactGateTheorem.agda`
+- `DASHI/Physics/Closure/CanonicalScheduleIndependentNaturalChargeNextIngredientGap.agda`
 
 Reason:
 
@@ -39,6 +48,15 @@ Reason:
 - `Everything.agda` is the authoritative top-level route, but bounded local
   checks currently time out because it eventually pulls the heavy validation
   summary path.
+- The closure-recovery chain from
+  `ShiftContractObservableTransportPrimeCompatibilityProfileInstance.agda`
+  through `KnownLimitsFullMatterGaugeTheorem.agda` and
+  `AtomicPhotonuclearContactGateTheorem.agda` repeatedly drags in the expensive
+  shift/observable/canonical-gauge stack and should be treated as offline-only
+  unless that exact lane is the subject of the current work.
+- `CanonicalScheduleIndependentNaturalChargeNextIngredientGap.agda` appears to
+  be logically live, but it currently pulls enough of the same heavy recovery
+  stack that it should stay out of routine local validation.
 
 ## Bounded-Only Target
 
@@ -47,13 +65,36 @@ Reason:
 This module is not banned, but it is heavy enough that bounded runs can still
 time out. Use it as a checkpoint module, not as the default inner-loop target.
 
+## Certification-Only Rule
+
+`L2` modules are never required for:
+
+- branch classification
+- roadmap state
+- theorem promotion
+- staging decisions in the normal interactive loop
+
+`L2` modules are only required for:
+
+- closure certification
+- deliberate offline coherence checks
+- decomposition work on the global closure cone
+
+Interpretation rule:
+
+- if an `L0` or `L1` target compiles, that is enough to classify the local lane
+- if an `L2` target has not been rerun recently, that does not invalidate an
+  `advanced` or `blocked` lane classification
+- if an `L2` target fails, that is a closure-certification event, not an excuse
+  to collapse branch status back into `unknown`
+
 ## Hygiene Script Policy
 
 - `scripts/run_closure_hygiene.py`
 - `scripts/run_closure_hygiene.sh`
 
 These now skip learned `heavy` and `aggregator` tasks by default. Use
-`--include-heavy` only for deliberate aggregate validation runs with a larger
+`--include-heavy` only for deliberate closure-certification runs with a larger
 runtime budget.
 
 ## Practical Rule
@@ -64,7 +105,7 @@ Default inner loop:
 2. run `PhysicsClosureSummary.agda` if you need a broader canonical surface
 3. avoid `PhysicsClosureValidationSummary.agda` unless you are explicitly doing
    a long-budget validation pass
-4. treat `Everything.agda` as an occasional bounded checkpoint, not a routine
+4. treat `Everything.agda` as an occasional offline checkpoint, not a routine
    target
 
 ## Execution Stratification
@@ -75,6 +116,12 @@ Use the repo in three layers:
 - `L1`: bounded medium targets
 - `L2`: heavy aggregate or heavy fixed-domain targets that should stay out of
   the interactive loop
+
+Layer contract:
+
+- `L0` / `L1` are the authoritative working surfaces for branch truth
+- `L2` is the closure-certification layer
+- do not mix those roles
 
 Current policy examples:
 
@@ -89,6 +136,15 @@ Current policy examples:
 - `L2`
   - `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`
   - `DASHI/Everything.agda`
+  - the current heavy closure recovery lane:
+    `DASHI/Physics/Closure/ShiftContractObservableTransportPrimeCompatibilityProfileInstance.agda`,
+    `DASHI/Physics/Closure/ShiftObservableSignaturePressureConsumer.agda`,
+    `DASHI/Physics/DashiDynamicsShiftInstance.agda`,
+    `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`,
+    `DASHI/Physics/Closure/CanonicalGaugeMatterStrengtheningTheorem.agda`,
+    `DASHI/Physics/Closure/KnownLimitsFullMatterGaugeTheorem.agda`,
+    `DASHI/Physics/Closure/AtomicPhotonuclearContactGateTheorem.agda`, and
+    `DASHI/Physics/Closure/CanonicalScheduleIndependentNaturalChargeNextIngredientGap.agda`
   - the current heavy Hecke Layer 2 implementation lane:
     `Ontology/Hecke/DefectOrbitSummaryRefinement.agda`,
     `Ontology/Hecke/ForcedStableCountDecomposition.agda`,
@@ -108,7 +164,25 @@ Use it to classify one or more modules and route them as:
 
 - interactive direct Agda runs for `L0`
 - timeout-bounded Agda runs for `L1`
-- queue-only handoff for the heavy current Hecke `L2` lane
+- queue-only or offline-certification handoff for `L2`
+
+## Offline Closure Certification
+
+Use exactly one aggregate target for a deliberate full closure pass:
+
+- `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`
+
+Run it through:
+
+- `scripts/run_closure_full_check.sh`
+
+Valid outcomes are only:
+
+1. `clean`
+2. `error`
+3. `too_large`
+
+Do not interpret an `L2` timeout as a branch-classification failure.
 
 Use `scripts/run_agda_easy_to_hard.py` when the task is not “classify this one
 target” but “run the current validated easiest-to-hardest sequence”.

@@ -1,6 +1,7 @@
 module DASHI.Physics.Closure.AtomicChemistryRecoveryTheorem where
 
 open import Agda.Primitive using (Setω)
+open import Agda.Builtin.Equality using (_≡_; refl)
 open import Data.Product using (_×_)
 
 open import DASHI.Physics.CliffordEvenLiftBridge as CE
@@ -8,6 +9,7 @@ open import DASHI.Physics.Closure.PhysicsClosureFullCanonicalBridgePackage as PC
 open import DASHI.Physics.Closure.CliffordToEvenWaveLiftBridgeTheorem as CTEW
 open import DASHI.Physics.Closure.KnownLimitsRecoveredWaveObservablesTheorem as KLRWO
 open import DASHI.Physics.Closure.SyntheticRealizationWitness as SRW
+open import DASHI.Physics.Closure.Validation.ObservableCollapse as OC
 open import DASHI.Physics.Closure.Validation.ObservableCollapseReport as OCR
 open import DASHI.Physics.Closure.Validation.ObservableCollapseShift as OCS
 open import Ontology.DNA.ChemistryQuotient as CDQ
@@ -48,6 +50,11 @@ record AtomicChemistryRecoveryTheorem : Setω where
     shellObservableReport :
       OCR.ObservableCollapseReport
 
+    shellCollapseEstablished :
+      OCR.ObservableCollapseReport.verdict shellObservableReport
+      ≡
+      OC.collapseEstablished
+
     shellProfileCompatibility : Set
     closedShellRecovery : Set
     chemistryDictionaryCompatibility : Set
@@ -75,6 +82,7 @@ canonicalAtomicChemistryRecoveryTheorem =
         CTEW.CliffordToEvenWaveLiftBridgeTheorem.canonicalWaveLiftIntoEvenFromContractionQuadratic
           waveBridge
     ; shellObservableReport = OCS.shiftReport
+    ; shellCollapseEstablished = refl
     ; shellProfileCompatibility = SRW.SyntheticRealizationWitness
     ; closedShellRecovery = SRW.SyntheticRealizationWitness
     ; chemistryDictionaryCompatibility =

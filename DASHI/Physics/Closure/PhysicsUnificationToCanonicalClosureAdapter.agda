@@ -1,6 +1,7 @@
 module DASHI.Physics.Closure.PhysicsUnificationToCanonicalClosureAdapter where
 
 open import Agda.Primitive using (Setω)
+open import Agda.Builtin.Equality using (_≡_; refl)
 
 open import DASHI.Physics.ClosureBuilder as CB
 open import DASHI.Physics.ContractionQuadraticBridge as CQB
@@ -10,6 +11,7 @@ open import DASHI.Physics.ConcreteClosureStack as CCS
 open import DASHI.Physics.UnifiedClosure as UC
 
 open import DASHI.Physics.Closure.CanonicalContractionToCliffordBridgeTheorem as CCTCB
+open import DASHI.Physics.Closure.CanonicalToNoncanonicalCoarseRecoveryIdentification as CNCRI
 open import DASHI.Physics.Closure.PhysicsClosureTheoremChecklist as PCTC
 open import DASHI.Physics.Closure.PhysicsClosureFullCanonicalBridgePackage as PCBP
 
@@ -30,6 +32,9 @@ record PhysicsUnificationToCanonicalClosureAdapter : Setω where
     canonicalBridgePackage :
       PCBP.PhysicsClosureFullCanonicalBridgePackage
 
+    coarseRecoveryIdentification :
+      CNCRI.CanonicalToNoncanonicalCoarseRecoveryIdentification
+
     contractionQuadraticBridge :
       CQB.Contraction⇒Quadratic
         (CB.U CCS.realStack) (CB.T CCS.realStack)
@@ -42,6 +47,18 @@ record PhysicsUnificationToCanonicalClosureAdapter : Setω where
 
     waveLiftEvenBridge :
       CE.WaveLift⇒Even
+
+    bridgeFieldCoherence :
+      contractionQuadraticBridge ≡ UC.PhysicsUnification.cq concreteUnification
+
+    signatureFieldCoherence :
+      signatureBridge ≡ UC.PhysicsUnification.qs concreteUnification
+
+    cliffordFieldCoherence :
+      cliffordBridge ≡ UC.PhysicsUnification.q2cl concreteUnification
+
+    waveLiftFieldCoherence :
+      waveLiftEvenBridge ≡ UC.PhysicsUnification.wl concreteUnification
 
 canonicalPhysicsUnificationToCanonicalClosureAdapter :
   PhysicsUnificationToCanonicalClosureAdapter
@@ -59,6 +76,8 @@ canonicalPhysicsUnificationToCanonicalClosureAdapter =
         PCTC.canonicalPhysicsClosureTheoremChecklist
     ; canonicalBridgePackage =
         PCBP.canonicalPhysicsClosureFullCanonicalBridgePackage
+    ; coarseRecoveryIdentification =
+        CNCRI.canonicalToNoncanonicalCoarseRecoveryIdentification
     ; contractionQuadraticBridge =
         UC.PhysicsUnification.cq concreteUnification
     ; signatureBridge =
@@ -67,4 +86,8 @@ canonicalPhysicsUnificationToCanonicalClosureAdapter =
         UC.PhysicsUnification.q2cl concreteUnification
     ; waveLiftEvenBridge =
         UC.PhysicsUnification.wl concreteUnification
+    ; bridgeFieldCoherence = refl
+    ; signatureFieldCoherence = refl
+    ; cliffordFieldCoherence = refl
+    ; waveLiftFieldCoherence = refl
     }

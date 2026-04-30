@@ -40,6 +40,16 @@ What is real today:
 - substantial shell/orbit/profile formalism and a theorem-bearing known-limits
   wave ladder, now packaged into an atom/chemistry recovery carrier even
   though that carrier still leaves explicit chemistry/atomic-recovery gates;
+- a schedule-independent coarse natural/conserved law, plus explicit
+  widening-obstruction and next-ingredient gap surfaces for that lane;
+- an explicit canonical-to-noncanonical coarse recovery identification at the
+  adapter seam, plus fieldwise `gauge/basin/motif` seam equalities and an
+  explicit richer MDL-side blocker;
+- a gauge/matter interpretable-observable theorem that now reaches the
+  known-limits GR/QFT bridge owners and a downstream consumer surface;
+- shell/dictionary recovery, atomic/photonuclear contact, and
+  chemistry-right-limits gates, plus an explicit interpretation blocker for
+  stronger chemistry claims;
 - an empirical photonuclear lane that is normalized and explicitly non-claiming.
 
 What is not real today:
@@ -189,19 +199,30 @@ The theorem-owner milestone is complete. The unified-physics roadmap is not.
 
 The main open gates are:
 
-- a stronger natural dynamics law that does not depend on the present
-  engineered/local shift choices;
-- a conserved physical quantity theorem in the stronger physical sense rather
-  than only current abstract bundle packaging;
-- a broader continuum-limit and realization-independent recovery theorem;
-- a finished gauge/matter recovery theorem;
-- a stronger field-by-field adapter story beyond the present owner-level
-  `PhysicsUnificationToCanonicalClosureAdapter`;
-- a closed-shell / shell-filling / chemistry-dictionary theorem that promotes
-  the current atom/chemistry carrier beyond explicit gates;
-- physical scale, spectra, and chemistry recovery theorems;
-- stronger GR/QFT recovery than the current theorem-bearing known-limits
-  bridge surfaces.
+- natural dynamics:
+  advanced, but still blocked on the `p2`-key carrier/schedule bridge named by
+  `CanonicalScheduleIndependentNaturalChargeNextIngredientGap`;
+- conserved quantity:
+  advanced at the coarse quotient level, but still blocked on any honest
+  widening beyond `Gauge × basin × motif`;
+- continuum / realization recovery:
+  advanced at the coarse carrier level, but blocked on the richer MDL-side seam
+  obligations now isolated at the adapter seam;
+- gauge/matter:
+  advanced to an interpretable observable payload, but not yet a finished
+  recovery theorem;
+- abstract/canonical seam:
+  advanced through fieldwise equalities, but still blocked on richer carrier
+  identification beyond the current coarse seam;
+- atomic/nuclear:
+  advanced through shell/dictionary, photonuclear contact, and right-limits
+  gates, but blocked on the interpretation contract and atomic owner-cycle
+  cleanup recorded by `ChemistryRightLimitsInterpretationBlockerSpec`;
+- physical scale, spectra, and chemistry recovery theorems:
+  still open and explicitly out of scope for the current atomic lane;
+- stronger GR/QFT recovery:
+  payload exposure is stronger, but further progress is now blocked on upstream
+  natural/continuum recovery rather than bridge packaging.
 
 ## Formal owner modules
 

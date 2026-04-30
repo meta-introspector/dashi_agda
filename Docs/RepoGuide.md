@@ -103,14 +103,50 @@ Known heavy or bounded-only surfaces:
 
 - `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda`
 - `DASHI/Everything.agda`
+- `DASHI/Physics/Closure/ShiftContractObservableTransportPrimeCompatibilityProfileInstance.agda`
+- `DASHI/Physics/Closure/ShiftObservableSignaturePressureConsumer.agda`
+- `DASHI/Physics/DashiDynamicsShiftInstance.agda`
+- `DASHI/Physics/Closure/CanonicalAbstractGaugeMatterInstance.agda`
+- `DASHI/Physics/Closure/CanonicalGaugeMatterStrengtheningTheorem.agda`
+- `DASHI/Physics/Closure/KnownLimitsFullMatterGaugeTheorem.agda`
+- `DASHI/Physics/Closure/AtomicPhotonuclearContactGateTheorem.agda`
+- `DASHI/Physics/Closure/CanonicalScheduleIndependentNaturalChargeNextIngredientGap.agda`
 - `DASHI/Physics/Closure/CanonicalStageC.agda` as a checkpoint, not a default
   inner-loop target
+
+Policy:
+
+- `L0` and `L1` decide branch truth, roadmap truth, and theorem promotion.
+- `L2` does not decide branch truth. It is reserved for closure certification.
+- If a theorem-owner or blocker surface is classified through `L0`/`L1`, do not
+  reroute that decision back through `Everything.agda` or
+  `PhysicsClosureValidationSummary.agda`.
+
+Reason:
+
+- `Everything.agda` and `PhysicsClosureValidationSummary.agda` are still the
+  obvious top-level aggregates.
+- The listed closure recovery modules form the current hot path that repeatedly
+  pulls the expensive shift-observable, canonical-gauge, and known-limits
+  theorem stack into local validation runs.
+- `CanonicalScheduleIndependentNaturalChargeNextIngredientGap.agda` appears
+  structurally live, but it should remain blacklisted from routine checks until
+  that dependency path is made cheaper.
+
+Offline closure certification:
+
+- treat `DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda` as the
+  single aggregate closure target
+- run it as a batch job, not as part of the interactive loop
+- use `scripts/run_closure_full_check.sh` for the aggregate pass
+- classify the result only as `clean`, `error`, or `too_large`
 
 Useful script entrypoints:
 
 - `scripts/run_agda_easy_to_hard.py`
 - `scripts/route_agda_by_layer.py`
 - `scripts/run_closure_hygiene.py`
+- `scripts/run_closure_full_check.sh`
 - `scripts/render_docs_diagrams.sh`
 
 ## Docs, Diagrams, And Modules

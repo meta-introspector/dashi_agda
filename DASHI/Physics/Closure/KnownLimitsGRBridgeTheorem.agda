@@ -11,9 +11,11 @@ module DASHI.Physics.Closure.KnownLimitsGRBridgeTheorem where
 -- - known limits
 
 open import Agda.Primitive using (Setω)
-open import Relation.Binary.PropositionalEquality using (_≡_)
+open import Relation.Binary.PropositionalEquality using (_≡_; refl)
+open import Data.Product using (Σ; _,_)
 
 open import DASHI.Physics.GR as GR
+open import DASHI.Physics.Closure.CanonicalGaugeMatterInterpretableObservableTheorem as CGMIOT
 open import DASHI.Physics.Closure.KnownLimitsFullMatterGaugeTheorem as KLMGFT
 open import DASHI.Physics.Closure.KnownLimitsRecovery as KLR
 open import DASHI.Physics.Closure.KnownLimitsStatus as KLS
@@ -23,6 +25,8 @@ record KnownLimitsGRBridgeTheorem : Setω where
     grAdapter : GR.GRAdapter
     fullMatterGaugeRecovery :
       KLMGFT.KnownLimitsFullMatterGaugeTheorem
+    interpretableObservableRecovery :
+      CGMIOT.CanonicalGaugeMatterInterpretableObservableTheorem
     grRecovered :
       KLS.KnownLimitsStatus.grLike KLS.canonicalKnownLimitsStatus
       ≡ KLS.grLikeTheoremBacked
@@ -34,8 +38,20 @@ canonicalKnownLimitsGRBridgeTheorem =
     { grAdapter = GR.canonicalGRAdapter
     ; fullMatterGaugeRecovery =
         KLMGFT.canonicalKnownLimitsFullMatterGaugeTheorem
+    ; interpretableObservableRecovery =
+        KLMGFT.KnownLimitsFullMatterGaugeTheorem.canonicalGaugeMatterInterpretableObservable
+          KLMGFT.canonicalKnownLimitsFullMatterGaugeTheorem
     ; grRecovered =
         KLR.KnownLimitsRecoveryWitness.grLikeRecovered
           KLR.canonicalKnownLimitsRecovery
     ; recovery = KLR.canonicalKnownLimitsRecovery
     }
+
+canonicalKnownLimitsGRBridgeRecoveryTransport :
+  KLR.KnownLimitsRecoveryWitness.grLikeRecovered
+    (KnownLimitsGRBridgeTheorem.recovery
+      canonicalKnownLimitsGRBridgeTheorem)
+  ≡
+  KnownLimitsGRBridgeTheorem.grRecovered
+    canonicalKnownLimitsGRBridgeTheorem
+canonicalKnownLimitsGRBridgeRecoveryTransport = refl

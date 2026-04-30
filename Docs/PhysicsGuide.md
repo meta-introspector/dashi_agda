@@ -20,6 +20,8 @@ Important correction:
 - some are already theorem-bearing bridge surfaces in repo
 - some have stronger archive-backed design language than the current repo docs admit
 - none of that, by itself, upgrades the repo to solved unification
+- several lanes are now best read as `advanced but blocked`, with named
+  theorem-side blocker surfaces rather than generic missing steps
 
 ## Claim Levels
 
@@ -45,6 +47,13 @@ The current repo claim is not "physics is solved." The canonical theorem route
  are real and useful, but they are packaging/bridge surfaces over bounded
  carriers, not a proof of full physical unification.
 
+The repo also now has adjacent archive-derived lanes that matter for how a
+serious reader interprets the broader DASHI program: a local DNA-first Agda
+lane under `Ontology/DNA/`, plus brain-side and brain-DNA/channel crossover
+material that is still mostly archive-backed or sibling-repo adjacent. Those
+lanes are now shown on `Docs/PhysicsUnificationMap.puml`, but they are not to
+be read as current theorem evidence for physics closure.
+
 ## Staged Reading Ladder
 
 1. Start with [CanonicalProofSpine.md](CanonicalProofSpine.md).
@@ -64,11 +73,14 @@ The current repo claim is not "physics is solved." The canonical theorem route
    This is the plain-language map from repo surfaces to familiar physics.
 8. Read `Docs/PhysicsRecoveryLedger.md` and `Docs/ArchiveRecoveryCrosswalk.md`.
    These settle which recovery lanes are repo-native, archive-backed, or still open.
-9. Read `DASHI.Physics.Closure.UnifiedPhysicsTheorem`,
+9. Read `Docs/PhysicsUnificationMap.svg`.
+   This now includes the adjacent DNA / brain / crossover lanes and marks them
+   explicitly as adjacent rather than theorem-closing.
+10. Read `DASHI.Physics.Closure.UnifiedPhysicsTheorem`,
    `DASHI.Physics.Closure.AtomicChemistryRecoveryTheorem`, and
    `DASHI.Physics.Closure.PhysicsUnificationToCanonicalClosureAdapter`.
    These are the current theorem-owner claim surfaces.
-10. Read [Docs/AtomAndWaveRecoveryStatus.md](AtomAndWaveRecoveryStatus.md).
+11. Read [Docs/AtomAndWaveRecoveryStatus.md](AtomAndWaveRecoveryStatus.md).
    This is the canonical public status surface for shell/orbit/profile and
    wave/regime progress, plus the remaining chemistry/quantum gap.
 
@@ -116,6 +128,20 @@ The main bottleneck is still the same one recorded across the repo docs:
 In repo terms, the strongest theorem pressure remains on the
 contraction/projection/delta/Lorentz side, not on additional high-level
 analogy language.
+
+## Current Lane State
+
+- `natural/conserved`: advanced to a schedule-independent coarse law, then
+  blocked on a named next ingredient rather than widened by rhetoric.
+- `continuum/adapter`: advanced to a canonical/noncanonical coarse recovery
+  identification with fieldwise seam equalities, then blocked on richer
+  MDL-side obligations.
+- `gauge/GR-QFT`: advanced to an interpretable observable payload that now
+  reaches the bridge owners and a downstream consumer, but stronger recovery is
+  blocked on upstream lanes.
+- `atomic/nuclear`: advanced through shell/dictionary recovery, photonuclear
+  contact, and chemistry-right-limits gates, but blocked on interpretation
+  contract + atomic owner-cycle cleanup before any spectra/scale-setting move.
 
 ## Strongest Evidence
 

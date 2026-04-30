@@ -46,17 +46,23 @@ package "3. Current DASHI correspondences" {
   rectangle "Photonuclear empirical lane\nWhat it currently means:\ncollider measurement sidecar and calibration,\nnot theorem closure" as DashiEmpirical #fee2e2
 }
 
-package "4. Missing steps to a serious unification claim" {
-  rectangle "Natural dynamics law\nCurrent status: repo bridge + archive design\nStill missing: non-engineered universal law" as GapDynamics #fce7f3
-  rectangle "Conserved physical quantity\nCurrent status: repo bridge + archive design\nStill missing: clear physical conserved quantity" as GapConserved #fce7f3
-  rectangle "Continuum limit + realization-independent recovery\nCurrent status: repo bridge + archive claim/design\nStill missing: broad noncanonical recovery theorem" as GapContinuum #fce7f3
-  rectangle "Gauge/matter recovery\nCurrent status: repo bridge + archive design\nStill missing: physically interpretable recovery of electrons,\nphotons, quarks, and interactions" as GapGaugeMatter #fce7f3
-  rectangle "Atomic and nuclear recovery\nCurrent status: archive-backed atom correspondence\n+ repo shell/wave packaging + empirical contact\nStill missing: spectra/scattering/chemistry in the right limits" as GapAtomic #fce7f3
-  rectangle "Abstract/canonical seam\nCurrent status: explicit theorem owner\nPhysicsUnificationToCanonicalClosureAdapter\nStill missing: stronger field-by-field adapter equalities only" as GapAdapter #fce7f3
-  rectangle "GR + QFT regime recovery\nCurrent status: theorem-backed known-limits bridges\nStill missing: strong full recovery a physicist would call unification" as GapRecovery #fce7f3
+package "3b. Adjacent archive-derived programs" {
+  rectangle "DNA-first Agda lane\nCurrent status: local carrier/quotient/UV/\nchemistry/supervoxel/streaming/eigen/channel surfaces\nWhat it currently means:\nreal formal adjacent program,\nnot yet a unification theorem lane" as AdjacentDNA #fff7ed
+  rectangle "Brain-side lane\nCurrent status: mainly archive + sibling-repo adjacent\nWhat it currently means:\nstructural/analysis pressure,\nnot localized as a theorem lane here" as AdjacentBrain #fff7ed
+  rectangle "Brain-DNA / codec / channel crossover\nCurrent status: partial local interfaces + archive design\nWhat it currently means:\nstorage/channel bridge pressure,\nnot current closure evidence" as AdjacentCrossover #fff7ed
 }
 
-package "5. Solved unification" {
+package "4. Open gates to a serious unification claim" {
+  rectangle "Natural dynamics law\nCurrent status: advanced but blocked\nLanded:\nCanonicalScheduleIndependentNaturalChargeLaw\nBlocked on:\np2-key carrier/schedule bridge\nNext steps:\n1. land the p2-key bridge\n2. reconnect it to canonical bundle transport\n3. only then widen the law beyond the current coarse quotient" as GapDynamics #fce7f3
+  rectangle "Conserved physical quantity\nCurrent status: advanced but blocked\nLanded:\nCanonicalScheduleIndependentNaturalChargeLaw\nCanonicalScheduleIndependentNaturalChargeWideningObstruction\nCanonicalScheduleIndependentNaturalChargeNextIngredientGap\nBlocked on:\nno proved widening beyond Gauge × basin × motif\nNext steps:\n1. find a new conserved key that survives CP\n2. prove it is quotient-visible and schedule-stable\n3. tie it back to the natural law" as GapConserved #fce7f3
+  rectangle "Continuum limit + realization-independent recovery\nCurrent status: advanced but blocked\nLanded:\nCanonicalToNoncanonicalCoarseRecoveryIdentification\nplus fieldwise gauge/basin/motif equalities\nBlocked on:\nmissing richer MDL-side seam hypotheses\nNext steps:\n1. prove the missing MDL equalities on transported states\n2. reduce coarse-projection dependence further\n3. only then widen to broader carrier recovery" as GapContinuum #fce7f3
+  rectangle "Gauge/matter recovery\nCurrent status: advanced\nLanded:\nCanonicalGaugeMatterInterpretableObservableTheorem\nKnownLimitsInterpretableObservableConsumer\nNext steps:\n1. strengthen canonical payload further\n2. recover more physically interpretable fields\n3. upgrade from bundle shape to a finished recovery theorem" as GapGaugeMatter #fce7f3
+  rectangle "Atomic and nuclear recovery\nCurrent status: advanced but blocked\nLanded:\nShellDictionaryRecoveryGateTheorem\nAtomicPhotonuclearContactGateTheorem\nChemistryRightLimitsGateTheorem\nBlocked on:\nChemistryRightLimitsInterpretationBlockerSpec\nand atomic owner-cycle cleanup\nNext steps:\n1. break the atomic theorem cycle\n2. land a theorem-side interpretation contract\n3. only then move toward spectra/scattering/chemistry" as GapAtomic #fce7f3
+  rectangle "Abstract/canonical seam\nCurrent status: advanced but blocked\nLanded:\nPhysicsUnificationToCanonicalClosureAdapter\nplus coarse recovery identification\nBlocked on:\nricher MDL/refined carrier identification\nNext steps:\n1. keep fieldwise equalities explicit\n2. discharge the richer MDL-side seam obligations\n3. only then tighten abstract/canonical identification further" as GapAdapter #fce7f3
+  rectangle "GR + QFT regime recovery\nCurrent status: advanced but blocked\nLanded:\nstronger payload exposure in GR/QFT bridge owners\nplus KnownLimitsInterpretableObservableConsumer\nBlocked on:\nupstream natural/continuum recovery, not bridge packaging\nNext steps:\n1. strengthen upstream recovery payloads\n2. feed them through the known-limits consumers\n3. only then move beyond regime-note strength" as GapRecovery #fce7f3
+}
+
+package "5. Target state: solved unification" {
   rectangle "One core theory whose limits recover:\nquantum matter, atoms, nuclei,\nparticle interactions, and gravity\non the right physical regimes" as Solved #bbf7d0
 }
 
@@ -80,6 +86,11 @@ DashiDynamics --> GapContinuum
 DashiDynamics --> GapGaugeMatter
 DashiEmpirical --> GapAtomic
 DashiSpine --> GapAdapter
+DashiDynamics --> AdjacentDNA : chemistry/contact pressure
+AdjacentDNA --> AdjacentCrossover : codec/channel pressure
+AdjacentBrain --> AdjacentCrossover : structure pressure
+AdjacentCrossover --> GapAtomic : storage/channel/chemistry pressure
+AdjacentCrossover --> GapContinuum : adjacent modeling pressure
 
 GapDynamics --> Solved
 GapConserved --> Solved
@@ -98,7 +109,8 @@ end note
 
 note right of GapContinuum
 This is where the public story needed correction:
-not solved, but no longer "missing from zero" either.
+not solved, no longer "missing from zero",
+and now blocked on named seam hypotheses rather than vague future work.
 end note
 
 note bottom of DashiEmpirical
@@ -106,6 +118,13 @@ Closest current contact with experimental reality:
 photonuclear / collider measurement organization.
 This is useful, but it is not the same as deriving QCD,
 and it is not the only atom/nuclear-facing surface.
+end note
+
+note left of AdjacentDNA
+These adjacent lanes matter for roadmap truthfulness.
+They widen the program beyond the core physics spine,
+but they do not upgrade the current repo to solved unification
+or to local theorem closure on brain/crossover claims.
 end note
 
 note bottom of Solved
@@ -118,6 +137,7 @@ legend right
 |<#dbeafe>| familiar physical world |
 |<#dcfce7>| standard accepted physics formalism |
 |<#fef3c7>| current DASHI correspondence |
+|<#fff7ed>| adjacent archive-derived program |
 |<#fee2e2>| empirical contact surface |
 |<#fce7f3>| missing step / open gap |
 |<#bbf7d0>| solved unification target |

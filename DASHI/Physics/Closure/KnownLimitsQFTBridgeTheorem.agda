@@ -12,7 +12,7 @@ module DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem where
 -- - known limits
 
 open import Agda.Primitive using (Setω)
-open import Relation.Binary.PropositionalEquality using (_≡_)
+open import Relation.Binary.PropositionalEquality using (_≡_; refl)
 open import Data.Product using (Σ; _,_)
 
 open import DASHI.Physics.ClosureBuilder as CB
@@ -21,6 +21,7 @@ open import DASHI.Physics.CliffordEvenLiftBridge as CE
 open import DASHI.Physics.ConcreteClosureStack as CCS
 open import DASHI.Physics.UnifiedClosure as UC
 open import DASHI.Physics.QFT as QFT
+open import DASHI.Physics.Closure.CanonicalGaugeMatterInterpretableObservableTheorem as CGMIOT
 open import DASHI.Physics.Closure.ContractionSignatureToSpinDiracBridgeTheorem as CSSDB
 open import DASHI.Physics.Closure.CliffordToEvenWaveLiftBridgeTheorem as CTEW
 open import DASHI.Physics.Closure.KnownLimitsFullMatterGaugeTheorem as KLMGFT
@@ -65,6 +66,8 @@ record KnownLimitsQFTBridgeTheorem : Setω where
            CE.EvenSubalgebra.incl physicalWaveEvenSubalgebra e)
     gaugeCouplingStructure :
       KLMGFT.KnownLimitsFullMatterGaugeTheorem
+    interpretableObservableRecovery :
+      CGMIOT.CanonicalGaugeMatterInterpretableObservableTheorem
     qftRecovered :
       KLS.KnownLimitsStatus.qftLike KLS.canonicalKnownLimitsStatus
       ≡ KLS.qftLikeTheoremBacked
@@ -100,12 +103,24 @@ canonicalKnownLimitsQFTBridgeTheorem =
     ; physicalWaveLandsInEven = CE.WaveLiftIntoEven.landsInEven waveIntoEven
     ; gaugeCouplingStructure =
         KLMGFT.canonicalKnownLimitsFullMatterGaugeTheorem
+    ; interpretableObservableRecovery =
+        KLMGFT.KnownLimitsFullMatterGaugeTheorem.canonicalGaugeMatterInterpretableObservable
+          KLMGFT.canonicalKnownLimitsFullMatterGaugeTheorem
     ; concreteContractionQuadraticBridge = cq
     ; qftRecovered =
         KLR.KnownLimitsRecoveryWitness.qftLikeRecovered
           KLR.canonicalKnownLimitsRecovery
     ; recovery = KLR.canonicalKnownLimitsRecovery
     }
+
+canonicalKnownLimitsQFTBridgeRecoveryTransport :
+  KLR.KnownLimitsRecoveryWitness.qftLikeRecovered
+    (KnownLimitsQFTBridgeTheorem.recovery
+      canonicalKnownLimitsQFTBridgeTheorem)
+  ≡
+  KnownLimitsQFTBridgeTheorem.qftRecovered
+    canonicalKnownLimitsQFTBridgeTheorem
+canonicalKnownLimitsQFTBridgeRecoveryTransport = refl
 
 canonicalPhysicalWaveLiftLandsInEven :
   ∀ s →

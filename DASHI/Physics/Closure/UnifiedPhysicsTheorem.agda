@@ -7,6 +7,7 @@ open import DASHI.Physics.Closure.PhysicsClosureFivePillarsTheorem as PC5
 open import DASHI.Physics.Closure.PhysicsClosureFull as PCF
 open import DASHI.Physics.Closure.PhysicsClosureFullInstance as PCFI
 open import DASHI.Physics.Closure.PhysicsClosureFullCanonicalBridgePackage as PCBP
+open import DASHI.Physics.Closure.CanonicalToNoncanonicalCoarseRecoveryIdentification as CNCRI
 open import DASHI.Physics.Closure.PhysicsUnificationToCanonicalClosureAdapter as PUCTCA
 open import DASHI.Physics.ConcreteClosureStack as CCS
 open import DASHI.Physics.UnifiedClosure as UC
@@ -21,6 +22,8 @@ record UnifiedPhysicsTheorem : Setω where
     fivePillarsTheorem : PC5.PhysicsClosureFivePillarsTheorem
     fullClosure : PCF.PhysicsClosureFull
     fullCanonicalBridgePackage : PCBP.PhysicsClosureFullCanonicalBridgePackage
+    coarseRecoveryIdentification :
+      CNCRI.CanonicalToNoncanonicalCoarseRecoveryIdentification
     unificationAdapter :
       PUCTCA.PhysicsUnificationToCanonicalClosureAdapter
     concreteUnification :
@@ -43,6 +46,8 @@ canonicalUnifiedPhysicsTheorem =
         PCFI.physicsClosureFull
     ; fullCanonicalBridgePackage =
         PCBP.canonicalPhysicsClosureFullCanonicalBridgePackage
+    ; coarseRecoveryIdentification =
+        CNCRI.canonicalToNoncanonicalCoarseRecoveryIdentification
     ; unificationAdapter =
         PUCTCA.canonicalPhysicsUnificationToCanonicalClosureAdapter
     ; concreteUnification =

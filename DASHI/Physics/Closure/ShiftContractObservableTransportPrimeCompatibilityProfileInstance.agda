@@ -2,7 +2,7 @@ module DASHI.Physics.Closure.ShiftContractObservableTransportPrimeCompatibilityP
 
 open import Agda.Builtin.Bool using (Bool; true)
 open import Agda.Builtin.Equality using (_≡_; refl)
-open import Agda.Builtin.Nat using (zero; suc)
+open import Agda.Builtin.Nat using (Nat; zero; suc)
 open import Agda.Builtin.Unit using (⊤; tt)
 open import Data.Nat using (_≤_)
 open import Data.Nat.Properties as NatP using (≤-refl)
@@ -59,6 +59,9 @@ ShiftContractObservable = GGC.Gauge × RGOI.RGObservable ShiftBasin ShiftMotif
 
 ShiftContractContinuumCarrier : Set
 ShiftContractContinuumCarrier = GGC.Gauge × ShiftBasin × ShiftMotif
+
+ShiftContractMdlRefinedContinuumCarrier : Set
+ShiftContractMdlRefinedContinuumCarrier = GGC.Gauge × ShiftBasin × Nat × ShiftMotif
 
 projectObservableMotif :
   ShiftContractObservable → ShiftContractContinuumCarrier
@@ -147,6 +150,18 @@ shiftContractObservableContinuumScale :
   ShiftContractState → ShiftContractContinuumCarrier
 shiftContractObservableContinuumScale x =
   projectObservableMotif (shiftContractScheduledObservable x)
+
+shiftContractObservableMdlRefinedContinuumScale :
+  ShiftContractState → ShiftContractMdlRefinedContinuumCarrier
+shiftContractObservableMdlRefinedContinuumScale x =
+  ( GGC.SU3×SU2×U1
+  , RGOI.RGObservable.basinLabel
+      (observeOnGeo (canonicalShiftHeckeState (shiftCoarseAlt x)))
+  , RGOI.RGObservable.mdlLevel
+      (observeOnGeo (canonicalShiftHeckeState (shiftCoarseAlt x)))
+  , RGOI.RGObservable.motifClass
+      (observeOnGeo (canonicalShiftHeckeState (shiftCoarseAlt x)))
+  )
 
 shiftContractObservableContinuumWitness :
   AGMB.ContinuumWitness shiftContractObservableBundle
